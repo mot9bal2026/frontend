@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker {
+  animation: ticker 28s linear infinite;
+  will-change: transform;
+}
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+:root {
+  --brand-brown: #3D2817;
+  --brand-coffee: #5A3825;
+  --brand-cream: #FAF6F0;
+  --brand-gold: #C8A876;
+  --brand-coral: #E3998B;
+  --brand-ink: #211915;
+  --brand-muted: #7A6A5E;
+  --brand-border: #E6D8C8;
+  --brand-white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--brand-white);
+  color: var(--brand-ink);
+  font-family: 'Tajawal', sans-serif;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Tajawal', sans-serif;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* Mobile: prevent font size inflation */
+@media (max-width: 640px) {
+  h1 { font-size: clamp(1.5rem, 5vw, 1.9rem); }
+  h2 { font-size: clamp(1.25rem, 4.5vw, 1.6rem); }
+}
+
+/* Warm section backgrounds */
+.bg-section-warm { background-color: #FBF7F0; }
+
+/* Shimmer animation for CTA buttons */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+/* Pulse for urgency badges */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .rtl-space {
+    direction: rtl;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--brand-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand-border);
+  border-radius: 2px;
+}
