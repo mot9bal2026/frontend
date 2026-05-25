@@ -290,44 +290,44 @@ export default async function ProductPage({ params }: Props) {
           {/* ── RIGHT col on desktop / TOP on mobile: image + stats pills ── */}
           <div className="order-first md:order-last">
 
-            {/* ─ Before/After hero image — full width on mobile, rounded on desktop ─ */}
-            {/* Replace img src below with your real before/after photo */}
+            {/* ─ Before/After hero image — CSS split, full-width on mobile ─ */}
             <div className="relative overflow-hidden md:rounded-2xl md:shadow-xl" style={{ aspectRatio: "4/3" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80"
-                alt="قبل وبعد استخدام قهوة كولاجين إشراقة"
-                className="w-full h-full object-cover object-top"
-              />
+              {/* Split background */}
+              <div className="absolute inset-0 flex">
+                <div className="flex-1 bg-gradient-to-b from-[#E8D5C0] via-[#D4B896] to-[#C8A876]" />
+                <div className="flex-1 bg-gradient-to-b from-[#C4895A] via-[#A8683A] to-[#8B4513]" />
+              </div>
+              {/* Vertical divider */}
+              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-0.5 bg-white/30 z-10" />
               {/* BEFORE / AFTER labels */}
-              <div className="absolute top-3 inset-x-0 flex justify-between px-5 z-10 pointer-events-none">
+              <div className="absolute top-4 inset-x-0 flex justify-between px-5 z-10 pointer-events-none">
                 <span className="bg-white/90 text-[#5A4A3E] text-xs font-black px-3 py-1 rounded-full shadow">BEFORE</span>
                 <span className="bg-[#1A0F0A] text-white text-xs font-black px-3 py-1 rounded-full shadow">AFTER</span>
               </div>
               {/* Center product card */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                <div className="bg-white/95 rounded-2xl shadow-2xl px-4 py-3 flex flex-col items-center border border-[#E6D8C8]" style={{ width: 130 }}>
-                  <span className="text-5xl mb-1">☕</span>
-                  <p className="text-[#3D2817] font-black text-[10px] text-center leading-tight">{product.nameAr}</p>
-                  <p className="text-[#7A6A5E] text-[8px] mt-0.5">إشراقة للجمال</p>
-                  <div className="mt-1.5 bg-[#3D2817] text-white text-[8px] font-bold px-2 py-0.5 rounded-full">SFDA ✓</div>
+              <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                <div className="bg-white rounded-2xl shadow-2xl px-4 py-4 flex flex-col items-center border border-[#E6D8C8]" style={{ width: 150 }}>
+                  <span className="text-5xl mb-2">☕</span>
+                  <p className="text-[#3D2817] font-black text-[11px] text-center leading-tight">{product.nameAr}</p>
+                  <p className="text-[#7A6A5E] text-[9px] mt-1">إشراقة للجمال</p>
+                  <div className="mt-2 bg-[#3D2817] text-white text-[9px] font-bold px-2.5 py-0.5 rounded-full">SFDA ✓</div>
                 </div>
               </div>
-              {/* Photo replace hint */}
-              <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-black/50 text-white text-[9px] px-2 py-0.5 rounded-full z-20 pointer-events-none whitespace-nowrap">
-                📸 استبدلي الصورة
+              {/* Bottom ribbon */}
+              <div className="absolute bottom-0 inset-x-0 bg-[#1A0F0A]/85 px-4 py-2.5 z-10">
+                <p className="text-white text-xs font-bold text-center">✨ فرق واضح بعد 30 يوم — مضمون أو فلوسك ترجع</p>
               </div>
             </div>
 
-            {/* ─ 4 stats pills — directly below image, no gap ─ */}
-            <div className="grid grid-cols-4 bg-white border-t border-[#E6D8C8] md:border md:rounded-b-2xl md:rounded-t-none md:shadow-sm">
+            {/* ─ 4 stats pills — flush below image, no gap ─ */}
+            <div className="grid grid-cols-4 bg-white border-t border-[#E6D8C8] md:border-x md:border-b md:rounded-b-2xl md:shadow-sm">
               {c.statsRow.map((s, idx) => (
                 <div
                   key={s.label}
                   className={`py-3 px-1 text-center ${idx < 3 ? "border-l border-[#E6D8C8]" : ""}`}
                 >
-                  <p className="font-black text-[#1A0F0A] text-sm md:text-base">{s.value}</p>
-                  <p className="text-[9px] md:text-[10px] text-[#7A6A5E] leading-tight mt-0.5">{s.label}</p>
+                  <p className="font-black text-[#1A0F0A] text-sm">{s.value}</p>
+                  <p className="text-[9px] text-[#7A6A5E] leading-tight mt-0.5">{s.label}</p>
                 </div>
               ))}
             </div>
