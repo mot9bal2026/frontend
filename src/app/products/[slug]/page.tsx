@@ -60,10 +60,10 @@ const content: Record<string, {
       source: "خبراء الأمراض الجلدية في الخليج",
     },
     painPoints: [
-      { q: "«الخطوط حول عيني وفمي بدأت تظهر وأنا في الثلاثينات — ما ساعدني شي.»", a: "كولاجين بحري 5000ملجم يعالج السبب الفعلي للخطوط من داخل الخلية، مو مجرد ترطيب سطحي." },
-      { q: "«ملّيت من الكريمات الغالية اللي تعطيني ترطيب يومين وبس.»", a: "الكريم يلمس 0.001 ملم من الجلد. قهوتنا تشتغل عبر الدم على كل الطبقات — هذا الفرق الحقيقي." },
-      { q: "«الهالات تفضحني حتى لو نمت 9 ساعات.»", a: "فيتامين C 200ملجم يحفّز إنتاج الكولاجين الطبيعي ويبيّض الهالات من الداخل في أسبوعين." },
-      { q: "«أخاف من البوتوكس بس أبي شي طبيعي يشتغل فعلاً.»", a: "حمض الهيالورونيك يملأ الخطوط والتجاعيد من الداخل. نتيجة الإبر — بدون الإبر تماماً." },
+      { q: "نمت 8 ساعات والهالات للحين توضّحني، وكأن وجهي ضدي.", a: "السبب مو النوم. الشمس والتكييف يضعفون الكولاجين حول العين — والكولاجين البحري مع فيتامين C يدعم المنطقة من الداخل." },
+      { q: "أحطّ كونسيلر يومياً، وملّيت أخفي وجهي بدل ما أظهره.", a: "المكياج يغطي اللون ساعات فقط. قهوة إشراقة تدعم نضارة البشرة ومظهر الهالات من السبب، مو من السطح." },
+      { q: "كريمات العين الغالية تعطيني ترطيب فقط، والهالات في مكانها.", a: "الكريم يلامس الطبقة الخارجية فقط. تركيبتنا تصل عبر الدم لتدعم الكولاجين والترطيب العميق من الداخل." },
+      { q: "زوجي يسألني: وش فيك تعبانة؟ وأنا بس ملامحي مرهقة.", a: "فيتامين C + الكولاجين + الهيالورونيك يساعدون مظهر البشرة على الرجوع لطبيعته تدريجياً — من أول روتين صباحي." },
     ],
     womanStat: "73٪",
     ingredients: [
@@ -362,56 +362,43 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           PAIN POINTS — namabeauty exact layout
       ══════════════════════════════════════════ */}
-      <section className="py-10 md:py-14 px-4 bg-white">
+      <section className="py-12 md:py-16 px-4 bg-white">
         <div className="max-w-[1200px] mx-auto">
-          <div className="mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-2">هل تعانين من هذا؟</p>
-            <h2 className="text-[1.5rem] md:text-[2rem] font-black text-[#3D2817] leading-tight">مشاكل تعرفينها — وحلول من الداخل</h2>
-            <p className="text-[#5A4A3E] text-sm mt-1">مو نخفّف الأعراض. نحلّ السبب الجذري — مكوّن لكل ألم.</p>
+          <div className="max-w-[720px] ml-auto mb-6 md:mb-8 text-right">
+            <p className="text-[11px] font-bold text-[#315B43] mb-2">هل تعانين من هذا؟</p>
+            <h2 className="text-[1.65rem] md:text-[2.15rem] font-black text-[#0F3024] leading-tight">
+              مشاكل تعرفينها — وحلول من الداخل
+            </h2>
+            <p className="text-[#5A4A3E] text-sm md:text-[15px] mt-2">
+              مو نخفّف الأعراض، نحلّ السبب الجذري — مكوّن لكل ألم.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch">
-            {/* Pain/Solution pairs — RIGHT col */}
-            <div className="space-y-2">
-              {c.painPoints.map((p, i) => (
-                <div key={i} className="space-y-1">
-                  {/* Problem */}
-                  <div className="flex items-start gap-3 bg-[#FFF0EE] rounded-xl md:rounded-2xl px-3.5 py-3 md:px-4 md:py-3.5">
-                    <span className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full border-2 border-red-400 text-red-500 text-[10px] flex items-center justify-center font-black mt-0.5">✗</span>
-                    <p className="text-[#3D2817] text-[0.82rem] font-semibold italic leading-relaxed">«{p.q.replace(/[«»"]/g, "")}»</p>
-                  </div>
-                  {/* Solution */}
-                  <div className="flex items-start gap-3 bg-[#EDFAF3] rounded-xl md:rounded-2xl px-3.5 py-3 md:px-4 md:py-3.5">
-                    <span className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#1E7A47] text-white text-[10px] flex items-center justify-center font-black mt-0.5">✓</span>
-                    <p className="text-[#2A4A35] text-[0.82rem] leading-relaxed font-medium">{p.a}</p>
-                  </div>
+          <div className="max-w-[720px] ml-auto space-y-4 md:space-y-5">
+            {c.painPoints.map((p, i) => (
+              <div
+                key={i}
+                className="overflow-hidden rounded-[18px] border border-[#E8DDCC] bg-white shadow-[0_10px_28px_rgba(61,40,23,0.05)]"
+              >
+                <div className="flex items-start gap-3 px-4 py-4 md:px-5 md:py-4.5">
+                  <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#FFE8E8] text-red-500 ring-1 ring-red-200">
+                    <span className="text-sm font-black leading-none">×</span>
+                  </span>
+                  <p className="text-[14px] md:text-[15px] font-black italic leading-relaxed text-[#17382A]">
+                    «{p.q.replace(/[«»"]/g, "")}»
+                  </p>
                 </div>
-              ))}
-            </div>
 
-            {/* Portrait image — Left col with stat card overlay */}
-            <div className="relative rounded-3xl overflow-hidden shadow-xl order-first md:order-last min-h-[280px] md:min-h-[540px]">
-              {/* Real woman portrait */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop&crop=face&q=85"
-                alt="سيدة سعودية"
-                className="absolute inset-0 w-full h-full object-cover object-top"
-              />
-              {/* Bottom gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-
-              {/* Stat card — namabeauty style */}
-              <div className="absolute bottom-4 left-4 right-4 z-10 bg-[#2C3B2E]/95 backdrop-blur-sm rounded-2xl px-4 py-3.5">
-                <div className="flex items-center gap-3">
-                  <span className="text-[2.5rem] font-black text-[#C8A876] leading-none flex-shrink-0">{c.womanStat}</span>
-                  <div>
-                    <p className="text-white text-[0.72rem] leading-relaxed">{c.stat.text}</p>
-                    <p className="text-[#C8A876]/70 text-[10px] mt-0.5">{c.stat.source}</p>
-                  </div>
+                <div className="flex items-start gap-3 border-t border-[#E5D9C8] bg-[#ECE9DD] px-4 py-4 md:px-5 md:py-4.5">
+                  <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#CFE1D1] text-[#2E6B4B] ring-1 ring-[#B7CFBA]">
+                    <span className="text-sm font-black leading-none">✓</span>
+                  </span>
+                  <p className="text-[13px] md:text-[14px] font-semibold leading-relaxed text-[#123024]">
+                    {p.a}
+                  </p>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

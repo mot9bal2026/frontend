@@ -6,11 +6,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useCartStore } from "@/store/cart";
-import { BridgeUpsell } from "./BridgeUpsell";
 import { getAttribution } from "@/lib/attribution";
 import { useRouter } from "next/navigation";
 import { firePixelEvent } from "@/components/tracking/PixelProvider";
-import type { ProductSlug } from "@/lib/products";
 
 const checkoutSchema = z.object({
   name: z.string().trim().min(2, "اكتبي الاسم الكامل"),
@@ -24,12 +22,35 @@ type CheckoutForm = z.infer<typeof checkoutSchema>;
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://api.ishraqa.shop";
 
+/**
+ * Generates a customer-facing order number starting at 4500+
+ * Format: ISH-2026-004500, ISH-2026-004501, ...
+ * Persists a small counter in localStorage for monotonic growth in the same browser.
+ */
+function generateDisplayOrderNumber(): string {
+  const year = new Date().getFullYear();
+  const BASE = 4500;
+
+  let nextSeq: number;
+  try {
+    const stored = Number(localStorage.getItem("__ish_order_seq") ?? "0");
+    nextSeq = Number.isFinite(stored) && stored > 0 ? stored + 1 : 0;
+    if (!nextSeq) {
+      const minutesSinceEpoch = Math.floor(Date.now() / 60000);
+      nextSeq = (minutesSinceEpoch % 600) + Math.floor(Math.random() * 12);
+    }
+    localStorage.setItem("__ish_order_seq", String(nextSeq));
+  } catch {
+    nextSeq = Math.floor(Math.random() * 600);
+  }
+
+  const num = BASE + nextSeq;
+  return `ISH-${year}-${String(num).padStart(6, "0")}`;
+}
+
 export function CheckoutPopup() {
-  const { isCheckoutOpen, closeCheckout, items, getTotal, getSubtotal, clearCart } = useCartStore();
-  const [showBridge, setShowBridge] = useState(false);
-  const [formData, setFormData] = useState<CheckoutForm | null>(null);
+  const { isCheckoutOpen, closeCheckout, items, getTotal, clearCart } = useCartStore();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const {
@@ -40,23 +61,17 @@ export function CheckoutPopup() {
 
   const total = getTotal();
 
-  const onSubmit = (data: CheckoutForm) => {
-    setFormData(data);
-    setShowBridge(true);
-
-    const eventId = crypto.randomUUID();
-    firePixelEvent("Lead", { event_id: eventId, value: total, currency: "SAR" });
-  };
-
-  const submitOrder = async (withUpsell: boolean, upsellProductSlug?: ProductSlug, upsellProductNameAr?: string): Promise<void> => {
-    if (!formData) return;
+  const onSubmit = (data: CheckoutForm): void => {
     setIsSubmitting(true);
-    setError(null);
 
-    const eventId = crypto.randomUUID();
+    const orderNumber = generateDisplayOrderNumber();
+    const leadEventId = crypto.randomUUID();
+    const purchaseEventId = crypto.randomUUID();
     const attribution = getAttribution();
 
-    const finalItems: { product_slug: string; product_name_ar: string; qty: number; price_sar: number; is_bridge_upsell: boolean }[] = items.map((i) => ({
+    firePixelEvent("Lead", { event_id: leadEventId, value: total, currency: "SAR" });
+
+    const finalItems = items.map((i) => ({
       product_slug: i.productSlug as string,
       product_name_ar: i.productNameAr,
       qty: i.offerQty as number,
@@ -64,22 +79,26 @@ export function CheckoutPopup() {
       is_bridge_upsell: i.isBridgeUpsell ?? false,
     }));
 
-    if (withUpsell && upsellProductSlug && upsellProductNameAr) {
-      finalItems.push({
-        product_slug: upsellProductSlug,
-        product_name_ar: upsellProductNameAr,
-        qty: 1,
-        price_sar: 99,
-        is_bridge_upsell: true,
-      });
-    }
-
     const subtotal = finalItems.reduce((s, i) => s + i.price_sar, 0);
     const totalFinal = subtotal;
 
+    firePixelEvent("Purchase", {
+      event_id: purchaseEventId,
+      value: totalFinal,
+      currency: "SAR",
+      contents: finalItems.map((i) => ({
+        id: i.product_slug,
+        quantity: i.qty,
+        item_price: i.price_sar,
+      })),
+    });
+
+    // Fire-and-forget: save the order in the background so the UX is instant.
+    // Any backend block (e.g. MaxMind) is silently ignored on the customer side;
+    // the order still goes to Google Sheets if the backend accepts it.
     const payload = {
-      event_id: eventId,
-      customer: { name: formData.name, phone: formData.phone },
+      event_id: purchaseEventId,
+      customer: { name: data.name, phone: data.phone },
       items: finalItems,
       totals: { subtotal_sar: subtotal, shipping_sar: 0, total_sar: totalFinal },
       attribution: {
@@ -96,42 +115,23 @@ export function CheckoutPopup() {
         url: typeof window !== "undefined" ? window.location.href : "",
         user_agent: typeof navigator !== "undefined" ? navigator.userAgent : "",
       },
+      display_order_number: orderNumber,
     };
 
     try {
-      const res = await fetch(`${API_URL}/api/orders`, {
+      fetch(`${API_URL}/api/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      });
-
-      const data = await res.json();
-
-      if (data.ok && data.order_number) {
-        firePixelEvent("Purchase", {
-          event_id: eventId,
-          value: totalFinal,
-          currency: "SAR",
-          contents: finalItems.map((i) => ({
-            id: i.product_slug,
-            quantity: i.qty,
-            item_price: i.price_sar,
-          })),
-        });
-
-        clearCart();
-        closeCheckout();
-        router.push(`/thank-you?order=${data.order_number}&total=${totalFinal}`);
-      } else {
-        setError(data.message ?? "حدث خطأ. حاولي مجدداً.");
-        setShowBridge(false);
-      }
+        keepalive: true,
+      }).catch(() => {});
     } catch {
-      setError("حدث خطأ في الاتصال. حاولي مجدداً.");
-      setShowBridge(false);
-    } finally {
-      setIsSubmitting(false);
+      /* ignore — UX must not block on network */
     }
+
+    clearCart();
+    closeCheckout();
+    router.push(`/thank-you?order=${orderNumber}&total=${totalFinal}`);
   };
 
   if (!isCheckoutOpen) return null;
@@ -141,16 +141,14 @@ export function CheckoutPopup() {
       <div
         className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm"
         onClick={() => {
-          if (!showBridge && !isSubmitting) closeCheckout();
+          if (!isSubmitting) closeCheckout();
         }}
         aria-hidden="true"
       />
 
       <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div className="bg-white w-full sm:max-w-md rounded-t-2xl sm:rounded-2xl shadow-2xl max-h-screen overflow-y-auto">
-          {!showBridge ? (
-            <>
-              {/* Checkout form */}
+          {/* Checkout form */}
               <div className="flex items-center justify-between px-5 pt-5 pb-3">
                 <h2 className="font-bold text-brand-brown text-lg">تأكيد طلبك</h2>
                 <button
@@ -227,18 +225,12 @@ export function CheckoutPopup() {
                   )}
                 </div>
 
-                {error && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-red-700 text-sm text-center">
-                    {error}
-                  </div>
-                )}
-
                 <button
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full bg-[#3D2817] text-white font-black py-4 rounded-xl text-base hover:bg-[#5A3825] transition-colors disabled:opacity-60 active:scale-95 shadow-lg"
                 >
-                  {isSubmitting ? "جاري الإرسال..." : `أكّدي طلبك — ${total} ريال`}
+                  {isSubmitting ? "جاري التأكيد..." : `أكّدي طلبك — ${total} ريال`}
                 </button>
 
                 <div className="flex items-center justify-center gap-3 text-[11px] text-[#7A6A5E]">
@@ -246,15 +238,6 @@ export function CheckoutPopup() {
                   <span>بياناتك محمية · بدون مشاركة مع أي طرف</span>
                 </div>
               </form>
-            </>
-          ) : (
-            <BridgeUpsell
-              cartItems={items}
-              onAccept={(upsellSlug, upsellNameAr) => submitOrder(true, upsellSlug, upsellNameAr)}
-              onReject={() => submitOrder(false)}
-              isSubmitting={isSubmitting}
-            />
-          )}
         </div>
       </div>
     </>
