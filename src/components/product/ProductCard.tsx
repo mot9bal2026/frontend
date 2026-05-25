@@ -68,15 +68,17 @@ export function ProductCard({ product }: Props) {
         <p className="text-xs text-brand-muted mb-3 leading-relaxed">{meta.tagline}</p>
 
         {/* Offers mini */}
-        <div className="flex gap-2 mb-3">
+        <div className="grid grid-cols-3 gap-1.5 mb-3">
           {[
-            { qty: "1 علبة", price: "199 ريال" },
-            { qty: "2 علبة", price: "279 ريال" },
-            { qty: "3 علبة", price: "349 ريال" },
+            { qty: "1 علبة", price: "199" },
+            { qty: "علبتان", price: "279" },
+            { qty: "3 علب", price: "349" },
           ].map((o) => (
-            <div key={o.qty} className="flex-1 bg-brand-cream rounded-lg p-1.5 text-center border border-brand-border">
-              <p className="text-xs text-brand-muted leading-tight">{o.qty}</p>
-              <p className="text-xs font-bold text-brand-brown font-inter">{o.price}</p>
+            <div key={o.qty} className="bg-brand-cream rounded-lg px-1 py-1.5 text-center border border-brand-border min-w-0">
+              <p className="text-[10px] text-brand-muted leading-tight truncate">{o.qty}</p>
+              <p className="text-[11px] font-bold text-brand-brown font-inter whitespace-nowrap">
+                {o.price}<span className="text-[9px] text-brand-muted font-normal mr-0.5">ريال</span>
+              </p>
             </div>
           ))}
         </div>

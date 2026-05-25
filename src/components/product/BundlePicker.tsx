@@ -127,7 +127,7 @@ export function BundlePicker({ product }: Props) {
         {offers.map((offer) => (
           <label
             key={offer.qty}
-            className={`relative flex items-center justify-between p-4 rounded-xl border-2 cursor-pointer transition-all ${
+            className={`relative flex items-center justify-between gap-2 p-3 md:p-4 rounded-xl border-2 cursor-pointer transition-all ${
               selected === offer.qty
                 ? offer.highlight
                   ? "border-brand-brown bg-amber-50"
@@ -150,7 +150,7 @@ export function BundlePicker({ product }: Props) {
               }}
               className="sr-only"
             />
-            <div className="flex items-center gap-3 flex-1">
+            <div className="flex items-center gap-2.5 md:gap-3 flex-1 min-w-0">
               <div
                 className={`w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${
                   selected === offer.qty ? "border-brand-brown" : "border-brand-border"
@@ -160,12 +160,12 @@ export function BundlePicker({ product }: Props) {
                   <div className="w-2.5 h-2.5 rounded-full bg-brand-brown" />
                 )}
               </div>
-              <div>
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="font-bold text-brand-brown text-sm">{offer.label}</span>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <span className="font-bold text-brand-brown text-[13px] md:text-sm leading-snug">{offer.label}</span>
                   {offer.badge && (
                     <span
-                      className={`text-xs px-2 py-0.5 rounded-full font-bold ${
+                      className={`text-[10px] md:text-xs px-1.5 md:px-2 py-0.5 rounded-full font-bold whitespace-nowrap ${
                         offer.highlight
                           ? "bg-brand-brown text-white"
                           : offer.savings > 0
@@ -177,13 +177,13 @@ export function BundlePicker({ product }: Props) {
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-brand-muted mt-0.5">{offer.sublabel}</p>
+                <p className="text-[11px] md:text-xs text-brand-muted mt-0.5">{offer.sublabel}</p>
               </div>
             </div>
-            <div className="text-left mr-2 flex-shrink-0">
-              <p className="font-bold text-brand-brown font-inter">{offer.price} ريال</p>
+            <div className="text-left flex-shrink-0">
+              <p className="font-black text-brand-brown font-inter text-[15px] md:text-base whitespace-nowrap">{offer.price} ريال</p>
               {offer.savings > 0 && (
-                <p className="text-xs text-brand-muted line-through font-inter">{offer.originalPrice} ريال</p>
+                <p className="text-[10px] md:text-xs text-brand-muted line-through font-inter whitespace-nowrap">{offer.originalPrice} ريال</p>
               )}
             </div>
           </label>
