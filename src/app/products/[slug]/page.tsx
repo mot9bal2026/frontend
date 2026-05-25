@@ -254,43 +254,25 @@ export default async function ProductPage({ params }: Props) {
       <MobileStickyCTA product={product} />
 
       {/* ══════════════════════════════════════════
-          HERO — namabeauty mobile-first layout:
-          image top → stats pills → H1 → sub → BundlePicker
-          On desktop: image left, text right (2-col)
+          HERO
+          Mobile stack order:
+            1. Before/After image (full-width, no padding)
+            2. 4 stats pills (flush below image)
+            3. Rating
+            4. H1
+            5. Subtitle
+            6. BundlePicker
+          Desktop: 2-col (image+stats left, text right)
       ══════════════════════════════════════════ */}
       <section className="bg-[#FBF7F0]">
 
-        {/* ── Desktop 2-col wrapper ── */}
-        <div className="max-w-[1200px] mx-auto md:grid md:grid-cols-2 md:gap-10 md:items-start md:px-8 md:py-12">
+        {/* ─── Desktop 2-col grid wrapper ─── */}
+        <div className="md:max-w-[1200px] md:mx-auto md:grid md:grid-cols-2 md:gap-10 md:items-start md:px-8 md:py-12">
 
-          {/* ── LEFT col on desktop / BOTTOM on mobile: text + BundlePicker ── */}
-          <div className="px-4 pb-8 md:px-0 md:pb-0 md:pt-2 order-last md:order-first">
-            {/* Rating */}
-            <div className="flex items-center gap-1.5 mt-4 md:mt-0 mb-3 flex-wrap">
-              <div className="flex gap-0.5">
-                {[1,2,3,4,5].map(s => <Star key={s} size={14} className="text-yellow-400 fill-yellow-400" />)}
-              </div>
-              <span className="text-sm text-[#7A6A5E] font-medium">4.9 ({c.numbers[1].n} · مؤكدة)</span>
-              <span className="text-[#C8A876]">·</span>
-              <span className="text-sm font-bold text-[#3D2817]">من 199 ريال / علبة</span>
-            </div>
+          {/* ══ IMAGE COLUMN — top on mobile, right on desktop ══ */}
+          <div className="md:order-last">
 
-            {/* H1 */}
-            <h1 className="text-[1.75rem] md:text-[2.5rem] font-black text-[#1A0F0A] mb-3 leading-[1.18]">
-              {c.heroH1.map((line, i) => <span key={i} className="block">{line}</span>)}
-            </h1>
-            <p className="text-[#5A4A3E] leading-relaxed mb-5 text-[0.92rem] md:text-[0.95rem]">{c.heroSub}</p>
-
-            {/* Bundle Picker */}
-            <div id="bundle">
-              <BundlePicker product={product} />
-            </div>
-          </div>
-
-          {/* ── RIGHT col on desktop / TOP on mobile: image + stats pills ── */}
-          <div className="order-first md:order-last">
-
-            {/* ─ Before/After hero image — CSS split, full-width on mobile ─ */}
+            {/* Before/After CSS image — full-width on mobile, rounded on desktop */}
             <div className="relative overflow-hidden md:rounded-2xl md:shadow-xl" style={{ aspectRatio: "4/3" }}>
               {/* Split background */}
               <div className="absolute inset-0 flex">
@@ -298,7 +280,7 @@ export default async function ProductPage({ params }: Props) {
                 <div className="flex-1 bg-gradient-to-b from-[#C4895A] via-[#A8683A] to-[#8B4513]" />
               </div>
               {/* Vertical divider */}
-              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-0.5 bg-white/30 z-10" />
+              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-white/30 z-10" />
               {/* BEFORE / AFTER labels */}
               <div className="absolute top-4 inset-x-0 flex justify-between px-5 z-10 pointer-events-none">
                 <span className="bg-white/90 text-[#5A4A3E] text-xs font-black px-3 py-1 rounded-full shadow">BEFORE</span>
@@ -319,13 +301,10 @@ export default async function ProductPage({ params }: Props) {
               </div>
             </div>
 
-            {/* ─ 4 stats pills — flush below image, no gap ─ */}
-            <div className="grid grid-cols-4 bg-white border-t border-[#E6D8C8] md:border-x md:border-b md:rounded-b-2xl md:shadow-sm">
+            {/* 4 stats pills — flush below image, zero gap */}
+            <div className="grid grid-cols-4 bg-white border-t border-[#E6D8C8] md:border-x md:border-b md:rounded-b-2xl">
               {c.statsRow.map((s, idx) => (
-                <div
-                  key={s.label}
-                  className={`py-3 px-1 text-center ${idx < 3 ? "border-l border-[#E6D8C8]" : ""}`}
-                >
+                <div key={s.label} className={`py-3 px-1 text-center ${idx < 3 ? "border-l border-[#E6D8C8]" : ""}`}>
                   <p className="font-black text-[#1A0F0A] text-sm">{s.value}</p>
                   <p className="text-[9px] text-[#7A6A5E] leading-tight mt-0.5">{s.label}</p>
                 </div>
@@ -333,6 +312,35 @@ export default async function ProductPage({ params }: Props) {
             </div>
 
           </div>
+
+          {/* ══ TEXT COLUMN — below image on mobile, left on desktop ══ */}
+          <div className="px-4 pt-5 pb-8 md:px-0 md:pt-0 md:pb-0 md:order-first md:flex md:flex-col md:justify-center">
+
+            {/* Rating row */}
+            <div className="flex items-center gap-1.5 mb-3 flex-wrap">
+              <div className="flex gap-0.5">
+                {[1,2,3,4,5].map(s => <Star key={s} size={14} className="text-yellow-400 fill-yellow-400" />)}
+              </div>
+              <span className="text-sm text-[#7A6A5E] font-medium">4.9 ({c.numbers[1].n} · مؤكدة)</span>
+              <span className="text-[#C8A876]">·</span>
+              <span className="text-sm font-bold text-[#3D2817]">من 199 ريال / علبة</span>
+            </div>
+
+            {/* H1 */}
+            <h1 className="text-[1.75rem] md:text-[2.5rem] font-black text-[#1A0F0A] mb-3 leading-[1.18]">
+              {c.heroH1.map((line, i) => <span key={i} className="block">{line}</span>)}
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-[#5A4A3E] leading-relaxed mb-5 text-[0.92rem] md:text-[0.95rem]">{c.heroSub}</p>
+
+            {/* Bundle Picker */}
+            <div id="bundle">
+              <BundlePicker product={product} />
+            </div>
+
+          </div>
+
         </div>
       </section>
 
