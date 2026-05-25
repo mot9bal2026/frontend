@@ -254,76 +254,84 @@ export default async function ProductPage({ params }: Props) {
       <MobileStickyCTA product={product} />
 
       {/* ══════════════════════════════════════════
-          HERO
+          HERO — namabeauty mobile-first layout:
+          image top → stats pills → H1 → sub → BundlePicker
+          On desktop: image left, text right (2-col)
       ══════════════════════════════════════════ */}
-      <section className="py-6 md:py-10 px-4 bg-gradient-to-b from-[#FBF7F0] to-white">
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-14 items-start">
+      <section className="bg-[#FBF7F0]">
 
-            {/* Info — RIGHT in RTL */}
-            <div className="order-last md:order-first">
-              {/* Rating */}
-              <div className="flex items-center gap-1.5 mb-2.5 flex-wrap">
-                <div className="flex gap-0.5">
-                  {[1,2,3,4,5].map(s => <Star key={s} size={14} className="text-yellow-400 fill-yellow-400" />)}
-                </div>
-                <span className="text-sm text-[#7A6A5E] font-medium">4.9 ({c.numbers[1].n} · مؤكدة)</span>
-                <span className="text-[#C8A876]">·</span>
-                <span className="text-sm font-bold text-[#3D2817]">من 199 ريال / علبة</span>
+        {/* ── Desktop 2-col wrapper ── */}
+        <div className="max-w-[1200px] mx-auto md:grid md:grid-cols-2 md:gap-10 md:items-start md:px-8 md:py-12">
+
+          {/* ── LEFT col on desktop / BOTTOM on mobile: text + BundlePicker ── */}
+          <div className="px-4 pb-8 md:px-0 md:pb-0 md:pt-2 order-last md:order-first">
+            {/* Rating */}
+            <div className="flex items-center gap-1.5 mt-4 md:mt-0 mb-3 flex-wrap">
+              <div className="flex gap-0.5">
+                {[1,2,3,4,5].map(s => <Star key={s} size={14} className="text-yellow-400 fill-yellow-400" />)}
               </div>
+              <span className="text-sm text-[#7A6A5E] font-medium">4.9 ({c.numbers[1].n} · مؤكدة)</span>
+              <span className="text-[#C8A876]">·</span>
+              <span className="text-sm font-bold text-[#3D2817]">من 199 ريال / علبة</span>
+            </div>
 
-              {/* H1 */}
-              <h1 className="text-[1.7rem] md:text-[2.5rem] font-black text-[#3D2817] mb-3 leading-[1.2]">
-                {c.heroH1.map((line, i) => <span key={i} className="block">{line}</span>)}
-              </h1>
-              <p className="text-[#5A4A3E] leading-relaxed mb-4 text-[0.92rem] md:text-[0.95rem]">{c.heroSub}</p>
+            {/* H1 */}
+            <h1 className="text-[1.75rem] md:text-[2.5rem] font-black text-[#1A0F0A] mb-3 leading-[1.18]">
+              {c.heroH1.map((line, i) => <span key={i} className="block">{line}</span>)}
+            </h1>
+            <p className="text-[#5A4A3E] leading-relaxed mb-5 text-[0.92rem] md:text-[0.95rem]">{c.heroSub}</p>
 
-              {/* Bundle Picker */}
-              <div id="bundle" className="mt-4 md:mt-6">
-                <BundlePicker product={product} />
+            {/* Bundle Picker */}
+            <div id="bundle">
+              <BundlePicker product={product} />
+            </div>
+          </div>
+
+          {/* ── RIGHT col on desktop / TOP on mobile: image + stats pills ── */}
+          <div className="order-first md:order-last">
+
+            {/* ─ Before/After hero image — full width on mobile, rounded on desktop ─ */}
+            {/* Replace img src below with your real before/after photo */}
+            <div className="relative overflow-hidden md:rounded-2xl md:shadow-xl" style={{ aspectRatio: "4/3" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=800&q=80"
+                alt="قبل وبعد استخدام قهوة كولاجين إشراقة"
+                className="w-full h-full object-cover object-top"
+              />
+              {/* BEFORE / AFTER labels */}
+              <div className="absolute top-3 inset-x-0 flex justify-between px-5 z-10 pointer-events-none">
+                <span className="bg-white/90 text-[#5A4A3E] text-xs font-black px-3 py-1 rounded-full shadow">BEFORE</span>
+                <span className="bg-[#1A0F0A] text-white text-xs font-black px-3 py-1 rounded-full shadow">AFTER</span>
+              </div>
+              {/* Center product card */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                <div className="bg-white/95 rounded-2xl shadow-2xl px-4 py-3 flex flex-col items-center border border-[#E6D8C8]" style={{ width: 130 }}>
+                  <span className="text-5xl mb-1">☕</span>
+                  <p className="text-[#3D2817] font-black text-[10px] text-center leading-tight">{product.nameAr}</p>
+                  <p className="text-[#7A6A5E] text-[8px] mt-0.5">إشراقة للجمال</p>
+                  <div className="mt-1.5 bg-[#3D2817] text-white text-[8px] font-bold px-2 py-0.5 rounded-full">SFDA ✓</div>
+                </div>
+              </div>
+              {/* Photo replace hint */}
+              <div className="absolute top-3 left-1/2 -translate-x-1/2 bg-black/50 text-white text-[9px] px-2 py-0.5 rounded-full z-20 pointer-events-none whitespace-nowrap">
+                📸 استبدلي الصورة
               </div>
             </div>
 
-            {/* Image — LEFT in RTL */}
-            <div className="order-first md:order-last">
-              {/* Before / After hero image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-xl" style={{aspectRatio: "3/4", maxWidth: "420px", margin: "0 auto"}}>
-                {/* Split background */}
-                <div className="absolute inset-0 flex">
-                  <div className="flex-1 bg-gradient-to-b from-[#E8D5C0] via-[#D4B896] to-[#C8A876]" />
-                  <div className="flex-1 bg-gradient-to-b from-[#C4895A] via-[#A8683A] to-[#8B4513]" />
+            {/* ─ 4 stats pills — directly below image, no gap ─ */}
+            <div className="grid grid-cols-4 bg-white border-t border-[#E6D8C8] md:border md:rounded-b-2xl md:rounded-t-none md:shadow-sm">
+              {c.statsRow.map((s, idx) => (
+                <div
+                  key={s.label}
+                  className={`py-3 px-1 text-center ${idx < 3 ? "border-l border-[#E6D8C8]" : ""}`}
+                >
+                  <p className="font-black text-[#1A0F0A] text-sm md:text-base">{s.value}</p>
+                  <p className="text-[9px] md:text-[10px] text-[#7A6A5E] leading-tight mt-0.5">{s.label}</p>
                 </div>
-                {/* Divider label */}
-                <div className="absolute top-4 inset-x-0 flex justify-center gap-8 z-10">
-                  <span className="bg-white/90 backdrop-blur-sm text-[#7A6A5E] text-xs font-bold px-3 py-1 rounded-full shadow">BEFORE</span>
-                  <span className="bg-[#3D2817] text-white text-xs font-bold px-3 py-1 rounded-full shadow">AFTER</span>
-                </div>
-                {/* Center product */}
-                <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <div className="bg-white rounded-2xl shadow-2xl p-5 flex flex-col items-center border border-[#E6D8C8]" style={{width: "160px"}}>
-                    <span className="text-6xl mb-2">☕</span>
-                    <p className="text-[#3D2817] font-bold text-xs text-center leading-snug">{product.nameAr}</p>
-                    <p className="text-[#7A6A5E] text-[10px] mt-1">إشراقة للجمال</p>
-                  </div>
-                </div>
-                {/* Bottom overlay */}
-                <div className="absolute bottom-0 inset-x-0 bg-[#3D2817]/90 px-4 py-3 z-10">
-                  <p className="text-white text-xs font-medium text-center">
-                    ✨ فرق واضح بعد 30 يوم — مضمون أو فلوسك ترجع
-                  </p>
-                </div>
-              </div>
-
-              {/* Stats pills below image */}
-              <div className="grid grid-cols-4 gap-2 mt-3" style={{maxWidth: "480px", margin: "12px auto 0"}}>
-                {c.statsRow.map(s => (
-                  <div key={s.label} className="bg-white rounded-xl p-2.5 text-center border border-[#E6D8C8] shadow-sm">
-                    <p className="font-black text-[#3D2817] text-sm">{s.value}</p>
-                    <p className="text-[9px] text-[#7A6A5E] leading-tight mt-0.5">{s.label}</p>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
+
           </div>
         </div>
       </section>
