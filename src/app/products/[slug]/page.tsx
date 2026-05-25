@@ -360,11 +360,12 @@ export default async function ProductPage({ params }: Props) {
       </div>
 
       {/* ══════════════════════════════════════════
-          PAIN POINTS — namabeauty exact layout
+          PAIN POINTS — 2-col with portrait image
       ══════════════════════════════════════════ */}
       <section className="py-12 md:py-16 px-4 bg-white">
         <div className="max-w-[1200px] mx-auto">
-          <div className="max-w-[720px] ml-auto mb-6 md:mb-8 text-right">
+          {/* Section header */}
+          <div className="mb-6 md:mb-8 text-right">
             <p className="text-[11px] font-bold text-[#315B43] mb-2">هل تعانين من هذا؟</p>
             <h2 className="text-[1.65rem] md:text-[2.15rem] font-black text-[#0F3024] leading-tight">
               مشاكل تعرفينها — وحلول من الداخل
@@ -374,31 +375,61 @@ export default async function ProductPage({ params }: Props) {
             </p>
           </div>
 
-          <div className="max-w-[720px] ml-auto space-y-4 md:space-y-5">
-            {c.painPoints.map((p, i) => (
-              <div
-                key={i}
-                className="overflow-hidden rounded-[18px] border border-[#E8DDCC] bg-white shadow-[0_10px_28px_rgba(61,40,23,0.05)]"
-              >
-                <div className="flex items-start gap-3 px-4 py-4 md:px-5 md:py-4.5">
-                  <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#FFE8E8] text-red-500 ring-1 ring-red-200">
-                    <span className="text-sm font-black leading-none">×</span>
-                  </span>
-                  <p className="text-[14px] md:text-[15px] font-black italic leading-relaxed text-[#17382A]">
-                    «{p.q.replace(/[«»"]/g, "")}»
-                  </p>
-                </div>
+          {/* 2-col: image + cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
 
-                <div className="flex items-start gap-3 border-t border-[#E5D9C8] bg-[#ECE9DD] px-4 py-4 md:px-5 md:py-4.5">
-                  <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#CFE1D1] text-[#2E6B4B] ring-1 ring-[#B7CFBA]">
-                    <span className="text-sm font-black leading-none">✓</span>
-                  </span>
-                  <p className="text-[13px] md:text-[14px] font-semibold leading-relaxed text-[#123024]">
-                    {p.a}
-                  </p>
-                </div>
+            {/* ── IMAGE SLOT 1 ── صورة بورتريه (ضعي صورتك هنا) */}
+            <div className="relative rounded-2xl overflow-hidden bg-[#F0E8DC] order-last md:order-first" style={{ minHeight: 520 }}>
+              {/* Replace this img src with your real product/model photo */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80"
+                alt="سيدة سعودية تعاني من الهالات السوداء"
+                className="w-full h-full object-cover absolute inset-0"
+                style={{ minHeight: 520 }}
+              />
+              {/* Overlay badge */}
+              <div className="absolute bottom-0 inset-x-0 bg-[#0F3024]/85 px-5 py-4 z-10">
+                <p className="text-white text-sm font-bold text-center">
+                  هالات سوداء وتجاعيد — السبب ليس التعب
+                </p>
+                <p className="text-[#C8A876] text-xs text-center mt-1">
+                  السبب هو ضعف الكولاجين وشعيرات دموية هشّة — وهذا ما نعالجه
+                </p>
               </div>
-            ))}
+              {/* Photo replace hint (hidden on production — remove if unwanted) */}
+              <div className="absolute top-3 right-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
+                📸 قابل للاستبدال
+              </div>
+            </div>
+
+            {/* Pain-solution cards */}
+            <div className="space-y-4 md:space-y-5">
+              {c.painPoints.map((p, i) => (
+                <div
+                  key={i}
+                  className="overflow-hidden rounded-[18px] border border-[#E8DDCC] bg-white shadow-[0_10px_28px_rgba(61,40,23,0.05)]"
+                >
+                  <div className="flex items-start gap-3 px-4 py-4 md:px-5 md:py-4.5">
+                    <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#FFE8E8] text-red-500 ring-1 ring-red-200">
+                      <span className="text-sm font-black leading-none">×</span>
+                    </span>
+                    <p className="text-[14px] md:text-[15px] font-black italic leading-relaxed text-[#17382A]">
+                      «{p.q.replace(/[«»"]/g, "")}»
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3 border-t border-[#E5D9C8] bg-[#ECE9DD] px-4 py-4 md:px-5 md:py-4.5">
+                    <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#CFE1D1] text-[#2E6B4B] ring-1 ring-[#B7CFBA]">
+                      <span className="text-sm font-black leading-none">✓</span>
+                    </span>
+                    <p className="text-[13px] md:text-[14px] font-semibold leading-relaxed text-[#123024]">
+                      {p.a}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>
@@ -415,34 +446,31 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
-            {/* Product image — RIGHT in RTL (first in DOM) */}
-            <div className="relative rounded-2xl overflow-hidden bg-white border border-[#E6D8C8] shadow-lg min-h-[220px] md:min-h-[480px]">
-              {/* Product display */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FAF6F0] to-[#F0E8DC] flex items-center justify-center">
-                {/* Scattered ingredients */}
-                <div className="relative w-full h-full flex items-center justify-center">
-                  {/* Floating ingredient dots */}
-                  <div className="absolute top-8 right-8 text-4xl opacity-60">☕</div>
-                  <div className="absolute top-12 left-12 text-3xl opacity-50">🫐</div>
-                  <div className="absolute bottom-16 right-12 text-3xl opacity-50">🍊</div>
-                  <div className="absolute bottom-8 left-8 text-4xl opacity-60">💧</div>
-                  <div className="absolute top-1/3 right-6 text-2xl opacity-40">✨</div>
-                  <div className="absolute top-1/4 left-6 text-2xl opacity-40">⚗️</div>
-                  {/* Center product */}
-                  <div className="bg-white rounded-3xl shadow-xl p-6 flex flex-col items-center border-2 border-[#C8A876]" style={{width: "180px"}}>
-                    <div className="text-6xl mb-3">☕</div>
-                    <p className="text-[#3D2817] font-black text-xs text-center">قهوة كولاجين</p>
-                    <p className="text-[#7A6A5E] text-[9px] mt-1">إشراقة للجمال</p>
-                    <div className="mt-2 bg-[#3D2817] text-white text-[9px] font-bold px-2 py-0.5 rounded-full">SFDA ✓</div>
-                  </div>
-                  {/* Labels */}
-                  <div className="absolute top-6 left-1/2 -translate-x-1/2">
-                    <span className="bg-[#3D2817] text-white text-[10px] font-bold px-2.5 py-1 rounded-full">5000 ملجم كولاجين</span>
-                  </div>
-                </div>
+            {/* ── IMAGE SLOT 2 ── صورة المكوّنات/المنتج (ضعي صورتك هنا) */}
+            <div className="relative rounded-2xl overflow-hidden border border-[#E6D8C8] shadow-lg" style={{ minHeight: 480 }}>
+              {/* Replace this img src with your real product flat-lay or ingredient photo */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1610415040795-f32cde0765b0?w=600&q=80"
+                alt="مكوّنات قهوة كولاجين إشراقة"
+                className="w-full h-full object-cover absolute inset-0"
+                style={{ minHeight: 480 }}
+              />
+              {/* Ingredient badges overlaid */}
+              <div className="absolute inset-0 bg-[#0F1A14]/30" />
+              <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
+                <span className="bg-[#3D2817]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                  كولاجين بحري 5000 ملجم
+                </span>
+                <span className="bg-[#3D2817]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                  فيتامين C نشط
+                </span>
+                <span className="bg-[#3D2817]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                  هيالورونيك اسيد
+                </span>
               </div>
               {/* Free-of section at bottom */}
-              <div className="absolute bottom-0 inset-x-0 bg-white border-t border-[#E6D8C8] px-4 py-3">
+              <div className="absolute bottom-0 inset-x-0 bg-white border-t border-[#E6D8C8] px-4 py-3 z-10">
                 <p className="text-xs font-bold text-[#3D2817] mb-2">ما لن تجديه في علبتك:</p>
                 <div className="flex flex-wrap gap-1.5">
                   {c.freeOf.map(f => (
@@ -451,6 +479,10 @@ export default async function ProductPage({ params }: Props) {
                     </span>
                   ))}
                 </div>
+              </div>
+              {/* Photo replace hint */}
+              <div className="absolute top-3 left-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
+                📸 قابل للاستبدال
               </div>
             </div>
 
@@ -539,41 +571,86 @@ export default async function ProductPage({ params }: Props) {
       </section>
 
       {/* ══════════════════════════════════════════
-          TIMELINE
+          TIMELINE — with lifestyle image
       ══════════════════════════════════════════ */}
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
-        <div className="max-w-[800px] mx-auto">
+        <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">النتائج أسبوعاً بأسبوع</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">وش راح تشوفين خلال أول 30 يوم؟</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">بشرتك تتغيّر أسبوع بأسبوع — ووجهك يقولها قبل ما تقوليه.</p>
           </div>
 
-          <div className="relative">
-            {/* Connecting line */}
-            <div className="absolute right-8 top-10 bottom-10 w-0.5 bg-[#E6D8C8] hidden md:block" />
-            <div className="space-y-4">
-              {c.timeline.map((t, i) => (
-                <div key={t.label} className="flex items-start gap-4 bg-white rounded-2xl border border-[#E6D8C8] p-5 relative">
-                  <div className="w-10 h-10 rounded-full bg-[#3D2817] text-white font-black flex items-center justify-center flex-shrink-0 text-sm z-10">
-                    {i + 1}
-                  </div>
-                  <div>
-                    <p className="font-black text-[#3D2817] mb-1">{t.label}</p>
-                    <p className="text-sm text-[#7A6A5E] leading-relaxed">{t.desc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
+
+            {/* Timeline steps */}
+            <div>
+              <div className="relative">
+                {/* Connecting line */}
+                <div className="absolute right-5 top-10 bottom-10 w-0.5 bg-[#E6D8C8] hidden md:block" />
+                <div className="space-y-4">
+                  {c.timeline.map((t, i) => (
+                    <div key={t.label} className="flex items-start gap-4 bg-white rounded-2xl border border-[#E6D8C8] p-5 relative">
+                      <div className="w-10 h-10 rounded-full bg-[#3D2817] text-white font-black flex items-center justify-center flex-shrink-0 text-sm z-10">
+                        {i + 1}
+                      </div>
+                      <div>
+                        <p className="font-black text-[#3D2817] mb-1">{t.label}</p>
+                        <p className="text-sm text-[#7A6A5E] leading-relaxed">{t.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-[#3D2817] text-white rounded-2xl p-4 mt-5 text-center">
+                <p className="text-sm">
+                  العلبة الأولى تعطيكِ النتيجة.{" "}
+                  <span className="font-black text-[#C8A876]">العلبتان والثلاث يثبّتانها</span> — ووفّري حتى 248 ريال.
+                </p>
+              </div>
+              <p className="text-center text-xs text-[#7A6A5E] mt-3 opacity-70">* النتائج تتفاوت من شخص لآخر. المنتج لدعم مظهر البشرة وليس علاجاً طبياً.</p>
+            </div>
+
+            {/* ── IMAGE SLOT 3 ── صورة نتيجة/قبل وبعد (ضعي صورتك هنا) */}
+            <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: 420 }}>
+              {/* Replace this img src with a real before/after or glowing skin photo */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80"
+                alt="نتيجة قهوة كولاجين إشراقة بعد 30 يوم"
+                className="w-full h-full object-cover absolute inset-0"
+                style={{ minHeight: 420 }}
+              />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-[#3D2817]/20" />
+              {/* Result badges */}
+              <div className="absolute inset-0 flex flex-col justify-end p-5 z-10">
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4">
+                  <p className="text-[#3D2817] font-black text-sm mb-2">✨ بعد 30 يوم من روتين إشراقة</p>
+                  <div className="grid grid-cols-3 gap-2 text-center">
+                    <div>
+                      <p className="font-black text-[#A0640A] text-base">↓ 70%</p>
+                      <p className="text-[9px] text-[#7A6A5E]">هالات أخف</p>
+                    </div>
+                    <div>
+                      <p className="font-black text-[#A0640A] text-base">↑ 85%</p>
+                      <p className="text-[9px] text-[#7A6A5E]">مرونة البشرة</p>
+                    </div>
+                    <div>
+                      <p className="font-black text-[#A0640A] text-base">↓ 60%</p>
+                      <p className="text-[9px] text-[#7A6A5E]">خطوط دقيقة</p>
+                    </div>
                   </div>
                 </div>
-              ))}
+              </div>
+              {/* Photo replace hint */}
+              <div className="absolute top-3 right-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
+                📸 قابل للاستبدال
+              </div>
             </div>
-          </div>
 
-          <div className="bg-[#3D2817] text-white rounded-2xl p-4 mt-5 text-center">
-            <p className="text-sm">
-              العلبة الأولى تعطيكِ النتيجة.{" "}
-              <span className="font-black text-[#C8A876]">العلبتان والثلاث يثبّتانها</span> — ووفّري حتى 248 ريال.
-            </p>
           </div>
-          <p className="text-center text-xs text-[#7A6A5E] mt-3 opacity-70">* النتائج تتفاوت من شخص لآخر. المنتج لدعم مظهر البشرة وليس علاجاً طبياً.</p>
         </div>
       </section>
 
