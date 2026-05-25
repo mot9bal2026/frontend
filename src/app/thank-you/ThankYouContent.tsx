@@ -10,7 +10,6 @@ import {
   PackageCheck,
   ShieldCheck,
   Clock,
-  Copy,
   CheckCheck,
   MessageCircle,
   Star,
@@ -20,7 +19,6 @@ import {
   Camera,
 } from "lucide-react";
 
-const SUPPORT_PHONE = "0550000000";
 const WHATSAPP_NUMBER = "966550000000";
 
 export function ThankYouContent() {
@@ -34,7 +32,6 @@ export function ThankYouContent() {
     return match ? parseInt(match[1], 10) : 4500;
   })();
 
-  const [copied, setCopied] = useState(false);
   const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
@@ -42,13 +39,6 @@ export function ThankYouContent() {
     const t = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
-
-  const handleCopy = () => {
-    navigator.clipboard?.writeText(orderNumber).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
-  };
 
   const callDeadline =
     now != null ? new Date(now.getTime() + 24 * 60 * 60 * 1000) : null;
@@ -69,7 +59,7 @@ export function ThankYouContent() {
       <div className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 text-white text-center text-xs md:text-sm py-2.5 font-semibold tracking-wide px-3">
         <span className="inline-flex items-center gap-1.5">
           <CheckCheck size={14} />
-          تم استلام طلبكِ — فريقنا سيتواصل معكِ خلال 24 ساعة
+          تم استلام طلبكِ — فريقنا سيتواصل معكِ
         </span>
       </div>
 
@@ -90,7 +80,7 @@ export function ThankYouContent() {
           </h1>
           <p className="text-[#3D2817]/80 text-[15px] md:text-base mt-2 max-w-md mx-auto leading-relaxed">
             شكراً لثقتكِ بـ <span className="font-black text-[#3D2817]">إشراقة</span> —
-            فريقنا سيتواصل معكِ خلال 24 ساعة لتأكيد الطلب.
+            فريقنا سيتواصل معكِ لتأكيد الطلب.
           </p>
 
           {/* Social proof — customer rank */}
@@ -125,30 +115,14 @@ export function ThankYouContent() {
           </div>
 
           <div className="p-5">
-            {/* Order number — copy-to-clipboard */}
+            {/* Order number */}
             <div className="bg-[#FBF7F0] border border-[#E8DDCC] rounded-2xl p-4 mb-4">
               <p className="text-[11px] text-[#7A6A5E] font-bold mb-1.5 uppercase tracking-wider">
                 رقم الطلب
               </p>
-              <div className="flex items-center justify-between gap-3">
-                <span className="font-black text-[#3D2817] text-xl md:text-2xl font-inter tracking-wide">
-                  {orderNumber}
-                </span>
-                <button
-                  onClick={handleCopy}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 ${
-                    copied
-                      ? "bg-emerald-100 text-emerald-700"
-                      : "bg-white border border-[#E8DDCC] text-[#3D2817] hover:border-[#C8A876]"
-                  }`}
-                >
-                  {copied ? <CheckCheck size={13} /> : <Copy size={13} />}
-                  {copied ? "تم النسخ" : "نسخ"}
-                </button>
-              </div>
-              <p className="text-[11px] text-[#7A6A5E] mt-2 leading-relaxed">
-                📸 احفظي صورة من الشاشة أو خذي screenshot للرقم — يسهّل تتبّع الطلب لاحقاً.
-              </p>
+              <span className="font-black text-[#3D2817] text-xl md:text-2xl font-inter tracking-wide">
+                {orderNumber}
+              </span>
             </div>
 
             {/* Total + Payment method */}
@@ -385,16 +359,6 @@ export function ThankYouContent() {
             FOOTER LINKS
         ──────────────────────────────────────────── */}
         <div className="mt-7 flex flex-col items-center gap-3 text-center">
-          <div className="flex items-center gap-2 bg-white border border-[#E8DDCC] rounded-full px-4 py-2 text-[12px] text-[#5A4A3E]">
-            <Phone size={12} className="text-[#C8A876]" />
-            <span>للدعم: </span>
-            <a
-              href={`tel:${SUPPORT_PHONE}`}
-              className="font-bold text-[#3D2817] font-inter"
-            >
-              {SUPPORT_PHONE}
-            </a>
-          </div>
           <Link
             href="/"
             className="text-[#7A6A5E] text-sm hover:text-[#3D2817] transition-colors underline-offset-4 hover:underline"
