@@ -87,7 +87,7 @@ export default function HomePage() {
               {/* Category claim badge */}
               <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-4 shadow-sm">
                 <FlaskConical size={12} />
-                قهوة الجمال · للهالات والتجاعيد
+                قهوة الجمال · ضد الهالات والتجاعيد
               </div>
 
               <h1 className="text-[2rem] md:text-[2.6rem] font-black text-[#1A0F0A] mb-4 leading-[1.2]">

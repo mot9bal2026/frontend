@@ -334,7 +334,7 @@ export default async function ProductPage({ params }: Props) {
             {/* Category badge */}
             <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-3 shadow-sm self-start">
               <FlaskConical size={12} />
-              قهوة الجمال · للهالات والتجاعيد
+              قهوة الجمال · ضد الهالات والتجاعيد
             </div>
 
             {/* Rating row */}
