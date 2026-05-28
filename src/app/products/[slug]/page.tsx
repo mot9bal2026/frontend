@@ -287,28 +287,17 @@ export default async function ProductPage({ params }: Props) {
           {/* ══ IMAGE COLUMN — top on mobile, right on desktop ══ */}
           <div className="md:order-last">
 
-            {/* Before/After CSS image — full-width on mobile, rounded on desktop */}
-            <div className="relative overflow-hidden md:rounded-2xl md:shadow-xl" style={{ aspectRatio: "4/3" }}>
-              {/* Split background */}
-              <div className="absolute inset-0 flex">
-                <div className="flex-1 bg-gradient-to-b from-[#E8D5C0] via-[#D4B896] to-[#C8A876]" />
-                <div className="flex-1 bg-gradient-to-b from-[#C4895A] via-[#A8683A] to-[#8B4513]" />
-              </div>
-              {/* Vertical divider */}
-              <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px bg-white/30 z-10" />
+            {/* Before/After image — full-width on mobile, rounded on desktop */}
+            <div className="relative overflow-hidden md:rounded-2xl md:shadow-xl w-full">
+              <img 
+                src="/before-after-results.png?v=2" 
+                alt="نتيجة قبل وبعد استخدام قهوة إشراقة" 
+                className="w-full h-auto block"
+              />
               {/* BEFORE / AFTER labels */}
               <div className="absolute top-4 inset-x-0 flex justify-between px-5 z-10 pointer-events-none">
                 <span className="bg-white/90 text-[#5A4A3E] text-xs font-black px-3 py-1 rounded-full shadow">BEFORE</span>
                 <span className="bg-[#1A0F0A] text-white text-xs font-black px-3 py-1 rounded-full shadow">AFTER</span>
-              </div>
-              {/* Center product card */}
-              <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                <div className="bg-white rounded-2xl shadow-2xl px-4 py-4 flex flex-col items-center border border-[#E6D8C8]" style={{ width: 150 }}>
-                  <span className="text-5xl mb-2">☕</span>
-                  <p className="text-[#3D2817] font-black text-[11px] text-center leading-tight">{product.nameAr}</p>
-                  <p className="text-[#7A6A5E] text-[9px] mt-1">إشراقة للجمال</p>
-                  <div className="mt-2 bg-[#3D2817] text-white text-[9px] font-bold px-2.5 py-0.5 rounded-full">SFDA ✓</div>
-                </div>
               </div>
               {/* Bottom ribbon */}
               <div className="absolute bottom-0 inset-x-0 bg-[#1A0F0A]/85 px-4 py-2.5 z-10">
