@@ -9,10 +9,17 @@ export type CartItem = {
   isBridgeUpsell?: boolean;
 };
 
+/**
+ * The drawer has two internal views: the cart summary (`cart`)
+ * and the checkout form (`checkout`). This replaces the old separate
+ * `CheckoutPopup` so we never stack two overlays on top of each other.
+ */
+export type DrawerView = "cart" | "checkout";
+
 type CartState = {
   items: CartItem[];
   isOpen: boolean;
-  isCheckoutOpen: boolean;
+  view: DrawerView;
 
   /* Tracks which offer the user has selected on the product page
      so the mobile sticky CTA can reflect the right price */
@@ -26,8 +33,9 @@ type CartState = {
   clearCart: () => void;
   openCart: () => void;
   closeCart: () => void;
-  openCheckout: () => void;
-  closeCheckout: () => void;
+  goToCheckout: () => void;
+  backToCart: () => void;
+  closeAll: () => void;
 
   getTotal: () => number;
   getSubtotal: () => number;
@@ -36,7 +44,7 @@ type CartState = {
 export const useCartStore = create<CartState>((set, get) => ({
   items: [],
   isOpen: false,
-  isCheckoutOpen: false,
+  view: "cart",
 
   selectedOfferQty: 2,
   selectedOfferPrice: 279,
@@ -72,10 +80,16 @@ export const useCartStore = create<CartState>((set, get) => ({
 
   clearCart: () => set({ items: [] }),
 
-  openCart: () => set({ isOpen: true }),
+  /* Open the drawer to the cart view (default entry point) */
+  openCart: () => set({ isOpen: true, view: "cart" }),
   closeCart: () => set({ isOpen: false }),
-  openCheckout: () => set({ isCheckoutOpen: true, isOpen: false }),
-  closeCheckout: () => set({ isCheckoutOpen: false }),
+
+  /* Switch the drawer to the checkout form view — same panel, no stacking */
+  goToCheckout: () => set({ view: "checkout", isOpen: true }),
+  backToCart: () => set({ view: "cart" }),
+
+  /* Reset everything — called after successful order + on thank-you mount */
+  closeAll: () => set({ isOpen: false, view: "cart", items: [] }),
 
   getSubtotal: () => {
     return get().items.reduce((sum, item) => sum + item.unitBundlePrice, 0);

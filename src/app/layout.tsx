@@ -4,7 +4,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { TopAnnouncementBar } from "@/components/layout/TopAnnouncementBar";
 import { CartDrawer } from "@/components/cart/CartDrawer";
-import { CheckoutPopup } from "@/components/checkout/CheckoutPopup";
 import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
 import { LivePurchaseToast } from "@/components/marketing/LivePurchaseToast";
 
@@ -38,7 +37,6 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <CartDrawer />
-        <CheckoutPopup />
         <LivePurchaseToast />
         <DeferredPixelLoader />
       </body>

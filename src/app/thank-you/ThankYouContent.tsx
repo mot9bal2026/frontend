@@ -18,6 +18,7 @@ import {
   Heart,
   Camera,
 } from "lucide-react";
+import { useCartStore } from "@/store/cart";
 
 const WHATSAPP_NUMBER = "966550000000";
 
@@ -25,6 +26,13 @@ export function ThankYouContent() {
   const params = useSearchParams();
   const orderNumber = params.get("order") ?? "ISH-2026-004500";
   const total = params.get("total") ?? "0";
+
+  /* Defensive reset — guarantees the drawer can never leak onto thank-you,
+     even if the user lands here via back/forward or a deep link. */
+  const closeAll = useCartStore((s) => s.closeAll);
+  useEffect(() => {
+    closeAll();
+  }, [closeAll]);
 
   // Extract numeric customer rank for social proof (e.g. "004523" → 4523)
   const customerRank = (() => {
