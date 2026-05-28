@@ -1,6 +1,21 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Star, Shield, Truck, CheckCircle, ShieldCheck, Package } from "lucide-react";
+import {
+  Star,
+  Shield,
+  Truck,
+  CheckCircle,
+  ShieldCheck,
+  Package,
+  FlaskConical,
+  Microscope,
+  Droplets,
+  Sparkles,
+  Wallet,
+  Phone,
+  PackageCheck,
+  Quote,
+} from "lucide-react";
 import { products, getProduct } from "@/lib/products";
 import { BundlePicker } from "@/components/product/BundlePicker";
 import { ViewContentFire } from "@/components/tracking/ViewContentFire";
@@ -316,14 +331,20 @@ export default async function ProductPage({ params }: Props) {
           {/* ══ TEXT COLUMN — below image on mobile, left on desktop ══ */}
           <div className="px-4 pt-5 pb-8 md:px-0 md:pt-0 md:pb-0 md:order-first md:flex md:flex-col md:justify-center">
 
+            {/* Clinical category badge */}
+            <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-3 shadow-sm self-start">
+              <FlaskConical size={12} />
+              قهوة جمال سريرية · للهالات والتجاعيد
+            </div>
+
             {/* Rating row */}
             <div className="flex items-center gap-1.5 mb-3 flex-wrap">
               <div className="flex gap-0.5">
-                {[1,2,3,4,5].map(s => <Star key={s} size={14} className="text-yellow-400 fill-yellow-400" />)}
+                {[1,2,3,4,5].map(s => <Star key={s} size={14} className="text-[#E5B547] fill-[#E5B547]" />)}
               </div>
-              <span className="text-sm text-[#7A6A5E] font-medium">4.9 ({c.numbers[1].n} · مؤكدة)</span>
-              <span className="text-[#C8A876]">·</span>
-              <span className="text-sm font-bold text-[#3D2817]">من 199 ريال / علبة</span>
+              <span className="text-sm text-[#5A4A3E] font-semibold">4.9 ({c.numbers[1].n} · مؤكدة)</span>
+              <span className="text-brand-apothecary">·</span>
+              <span className="text-sm font-black text-[#3D2817]">من 199 ريال / علبة</span>
             </div>
 
             {/* H1 */}
@@ -345,20 +366,20 @@ export default async function ProductPage({ params }: Props) {
       </section>
 
       {/* ══════════════════════════════════════════
-          TRUST BAR
+          TRUST BAR — Apothecary Green (matches homepage)
       ══════════════════════════════════════════ */}
-      <div className="bg-[#3D2817] text-white py-4 md:py-5 px-4">
+      <div className="bg-brand-apothecary text-white py-4 md:py-5 px-4">
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center">
           {[
-            { icon: <Package size={18} />, t: "اطلبي بدون دفع الآن", s: "الدفع عند الاستلام فقط" },
-            { icon: <Truck size={18} />, t: "يوصلك بسرعة", s: "1–3 أيام للمدن الرئيسية" },
-            { icon: <Shield size={18} />, t: "تجربة مطمئنة", s: "دعم سريع بعد الطلب" },
-            { icon: <ShieldCheck size={18} />, t: "ثقة قبل الشراء", s: "SFDA · حلال · GMP" },
+            { icon: <Wallet size={18} />, t: "بدون دفع أونلاين", s: "الدفع عند الاستلام فقط" },
+            { icon: <Truck size={18} />, t: "توصيل سريع", s: "1–3 أيام للمدن الرئيسية" },
+            { icon: <Phone size={18} />, t: "دعم سعودي", s: "مكالمة تأكيد عربية" },
+            { icon: <ShieldCheck size={18} />, t: "موثوقة وآمنة", s: "SFDA · حلال · GMP" },
           ].map(item => (
-            <div key={item.t} className="flex flex-col items-center gap-1 bg-white/5 rounded-xl py-2.5 px-2">
-              <span className="text-[#C8A876]">{item.icon}</span>
+            <div key={item.t} className="flex flex-col items-center gap-1 bg-white/10 rounded-xl py-2.5 px-2 border border-white/10">
+              <span className="text-brand-gold">{item.icon}</span>
               <p className="font-black text-[12px] md:text-sm leading-tight">{item.t}</p>
-              <p className="text-[10px] md:text-[11px] text-[#C8A876]/85 leading-tight">{item.s}</p>
+              <p className="text-[10px] md:text-[11px] text-brand-gold/90 leading-tight">{item.s}</p>
             </div>
           ))}
         </div>
@@ -456,7 +477,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">السرّ العلمي</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>التركيبة السريرية</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">مكونات قليلة، لكن كل واحد له وظيفة واضحة</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">لسنا نبيع قائمة طويلة. نبيع روتيناً يومياً مفهوماً: كولاجين للبنية، فيتامين C للدعم، وهيالورونيك للامتلاء.</p>
           </div>
@@ -502,29 +523,33 @@ export default async function ProductPage({ params }: Props) {
               </div>
             </div>
 
-            {/* Ingredient cards — LEFT in RTL (second in DOM) */}
+            {/* Ingredient cards — clinical apothecary style (matches homepage) */}
             <div className="space-y-4">
-              {c.ingredients.map(ing => (
-                <div key={ing.name} className="bg-white rounded-2xl border border-[#E6D8C8] p-5 hover:border-[#C8A876] hover:shadow-md transition-all">
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#FAF6F0] border border-[#E6D8C8] flex items-center justify-center flex-shrink-0 text-xl">
-                      {ing.icon}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <h3 className="font-black text-[#3D2817] text-sm">{ing.name}</h3>
-                        <span className="text-[10px] bg-[#3D2817] text-white px-2 py-0.5 rounded-full font-bold">{ing.dose}</span>
+              {c.ingredients.map((ing, idx) => {
+                /* Map each ingredient to a clinical lucide icon */
+                const Icon = idx === 0 ? Microscope : idx === 1 ? FlaskConical : Droplets;
+                return (
+                  <div key={ing.name} className="bg-white rounded-2xl border border-[#E6D8C8] p-5 hover:border-brand-apothecary hover:shadow-md transition-all">
+                    <div className="flex items-start gap-3 mb-3">
+                      <div className="w-12 h-12 rounded-2xl bg-brand-sage border border-brand-deepSage flex items-center justify-center flex-shrink-0 text-brand-apothecary">
+                        <Icon size={20} />
                       </div>
-                      <p className="text-[10px] text-[#C8A876] font-medium">{ing.sci}</p>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="font-black text-[#3D2817] text-sm">{ing.name}</h3>
+                          <span className="text-[10px] bg-brand-apothecary text-white px-2 py-0.5 rounded-full font-bold font-inter">{ing.dose}</span>
+                        </div>
+                        <p className="text-[10px] text-brand-apothecary font-semibold mt-0.5">{ing.sci}</p>
+                      </div>
+                    </div>
+                    <p className="text-[13px] text-[#5A4A3E] leading-relaxed mb-3">{ing.desc}</p>
+                    <div className="flex items-center gap-1.5 text-[12px] text-brand-apothecary font-bold bg-brand-sage rounded-lg px-3 py-2 border border-brand-deepSage/50">
+                      <CheckCircle size={13} className="text-brand-apothecary flex-shrink-0" />
+                      {ing.benefit}
                     </div>
                   </div>
-                  <p className="text-sm text-[#7A6A5E] leading-relaxed mb-3">{ing.desc}</p>
-                  <div className="flex items-center gap-1.5 text-xs text-green-700 font-medium bg-green-50 rounded-lg px-3 py-2">
-                    <CheckCircle size={12} className="text-green-600 flex-shrink-0" />
-                    {ing.benefit}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -536,7 +561,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">الثقة العلمية</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الثقة السريرية</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">لماذا تستحق أكثر من قهوة عادية؟</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">لأنها ليست نكهة فقط. هي روتين جمال يومي بجرعات واضحة، ثقة غذائية، وطريقة استخدام سهلة.</p>
           </div>
@@ -556,21 +581,17 @@ export default async function ProductPage({ params }: Props) {
             ))}
           </div>
 
-          {/* Expert card */}
-          <div className="max-w-2xl mx-auto bg-[#FAFAF7] rounded-2xl border border-[#E6D8C8] overflow-hidden mb-8">
-            <div className="grid grid-cols-1 sm:grid-cols-[auto,1fr]">
-              {/* Expert "photo" */}
-              <div className="bg-gradient-to-b from-[#E8D5C0] to-[#C8A876] sm:w-32 flex items-center justify-center p-6">
-                <div className="w-16 h-16 rounded-full bg-white/80 flex items-center justify-center text-3xl shadow-lg">
-                  👩‍⚕️
-                </div>
-              </div>
-              <div className="p-5">
-                <blockquote className="text-[#3D2817] text-sm italic leading-relaxed mb-3">
-                  "{c.expertQuote}"
-                </blockquote>
-                <p className="text-[#7A6A5E] text-xs font-medium">{c.expertName}</p>
-              </div>
+          {/* Expert card — clinical brown gradient (matches homepage) */}
+          <div className="max-w-2xl mx-auto bg-gradient-to-br from-brand-brown to-brand-coffee text-white rounded-3xl p-7 md:p-9 text-center shadow-xl relative overflow-hidden mb-8">
+            <Quote size={56} className="absolute top-4 right-4 text-brand-gold/20" strokeWidth={1.5} />
+            <div className="relative">
+              <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "Inter, sans-serif" }}>
+                نهج علمي · رأي مستشار سريري
+              </p>
+              <blockquote className="text-brand-cream text-[14.5px] md:text-[16px] font-medium italic leading-relaxed mb-4">
+                «{c.expertQuote}»
+              </blockquote>
+              <p className="text-brand-gold text-[12.5px] font-semibold">— {c.expertName}</p>
             </div>
           </div>
 
@@ -592,7 +613,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">النتائج أسبوعاً بأسبوع</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>النتائج أسبوعاً بأسبوع</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">كيف يبدأ الفرق خلال أول 30 يوم؟</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">ليس تغييراً مفاجئاً يخوّفك. هو تحسّن تدريجي تلاحظينه في المرآة والصور.</p>
           </div>
@@ -676,7 +697,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[1100px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">للسعوديات تحديداً</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>للسعوديات تحديداً</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">متى تبدئين قهوة إشراقة؟</h2>
             <p className="text-[#5A4A3E] text-sm mt-1.5">المواقف اللي تستاهلين فيها تبدئين روتينك من اليوم</p>
           </div>
@@ -703,7 +724,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">تجارب حقيقية</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>تجارب حقيقية</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">ما تقوله {c.numbers[1].n} سعودية</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">مشتريات مؤكدة من مدن مختلفة — من الشابات للأمهات، من العرائس لأمهات الأطفال.</p>
           </div>
@@ -740,7 +761,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">المقارنة</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>المقارنة</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">قارني — وقرّري بنفسك</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">كل بديل جربتيه من قبل، وليه فشل. وكيف إشراقة تحلّه بشكل مختلف.</p>
           </div>
@@ -781,32 +802,34 @@ export default async function ProductPage({ params }: Props) {
       </section>
 
       {/* ══════════════════════════════════════════
-          GUARANTEE
+          GUARANTEE — Apothecary Green
       ══════════════════════════════════════════ */}
-      <section className="py-10 md:py-14 px-4 bg-white">
+      <section className="py-10 md:py-14 px-4 bg-brand-sage/40 border-y border-brand-deepSage/40">
         <div className="max-w-[700px] mx-auto text-center">
-          {/* Shield visual */}
+          {/* Apothecary shield */}
           <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">
-            <div className="absolute inset-0 rounded-full bg-[#FBF7F0] border-4 border-[#C8A876]" />
-            <Shield size={36} className="text-[#3D2817] relative z-10" />
+            <div className="absolute inset-0 rounded-full bg-white border-4 border-brand-apothecary shadow-md" />
+            <ShieldCheck size={36} className="text-brand-apothecary relative z-10" />
           </div>
 
-          <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-2">الضمان الكامل</p>
-          <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817] mb-3">14 يوم — أو فلوسك ترجع. بدون أسئلة.</h2>
+          <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الضمان الكامل</p>
+          <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817] mb-3">14 يوم — أو فلوسكِ ترجع. بدون أسئلة.</h2>
           <p className="text-[#5A4A3E] mb-6 md:mb-8 leading-relaxed text-sm max-w-lg mx-auto">
-            جربي العلبة الأولى كاملة. إذا ما حسّيتي بفرق يستاهل، اتصلي علينا وفلوسك ترجع — بدون نماذج، بدون أسئلة، بدون مكسلات. لأن إذا تركيبتنا ما اشتغلت معك، ما نستحق فلوسك.
+            جرّبي العلبة الأولى كاملة. إذا ما حسّيتي بفرق يستاهل، تواصلي معنا وفلوسكِ ترجع — بدون نماذج، بدون أسئلة، بدون مكسلات. وأصلاً ما تدفعين إلا عند الاستلام.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
             {[
-              {icon:"📞",t:"اتصلي علينا",s:"في أي يوم خلال الـ 14 يوم"},
-              {icon:"📦",t:"رجّعي العلبة",s:"حتى لو فاضية — ما يهمّنا"},
-              {icon:"💰",t:"فلوسك ترجع كاملة",s:"خلال 3–5 أيام عمل"}
+              { icon: <Phone size={20} />, t: "تواصلي معنا", s: "في أي يوم خلال الـ 14 يوم" },
+              { icon: <Package size={20} />, t: "رجّعي العلبة", s: "حتى لو فاضية — ما يهمّنا" },
+              { icon: <Wallet size={20} />, t: "فلوسكِ ترجع كاملة", s: "خلال 3–5 أيام عمل" },
             ].map(s => (
-              <div key={s.t} className="bg-[#FAFAF7] rounded-2xl border border-[#E6D8C8] p-4 text-center">
-                <div className="text-3xl mb-2">{s.icon}</div>
+              <div key={s.t} className="bg-white rounded-2xl border border-brand-deepSage p-4 text-center shadow-sm">
+                <div className="w-11 h-11 rounded-2xl bg-brand-sage border border-brand-deepSage text-brand-apothecary flex items-center justify-center mx-auto mb-2">
+                  {s.icon}
+                </div>
                 <p className="font-black text-[#3D2817] text-sm">{s.t}</p>
-                <p className="text-[11px] text-[#7A6A5E] mt-1">{s.s}</p>
+                <p className="text-[11px] text-[#5A4A3E] mt-1">{s.s}</p>
               </div>
             ))}
           </div>
@@ -819,7 +842,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[800px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">طريقة الاستخدام</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>طريقة الاستخدام</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">أبسط روتين عمرك جربتيه</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">دقيقتان باليوم · قهوة حقيقية اللذة · بدون التزام معقّد.</p>
           </div>
@@ -858,21 +881,23 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[800px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">التوصيل</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>التوصيل</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">كيف يوصلك طلبك — بكل بساطة</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">بدون دفع أونلاين، بدون التزام، بدون مفاجآت.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {[
-              {n:"1",icon:"📱",t:"اطلبي الآن",d:"اختاري العرض، اكتبي اسمك ورقم جوالك. بدون دفع أونلاين أو بطاقة بنكية."},
-              {n:"2",icon:"📞",t:"نتصل للتأكيد",d:"فريقنا السعودي يتواصل معك خلال ساعات لتأكيد الطلب. عربي 100٪."},
-              {n:"3",icon:"🚚",t:"استلمي وادفعي",d:"1–3 أيام للمدن الرئيسية. تدفعين كاش أو شبكة وقت وصول الطلب."},
+              { n: "1", icon: <PackageCheck size={22} />, t: "اطلبي الآن", d: "اختاري العرض، اكتبي اسمكِ ورقم جوالكِ. بدون دفع أونلاين أو بطاقة بنكية." },
+              { n: "2", icon: <Phone size={22} />, t: "نتصل للتأكيد", d: "فريقنا السعودي يتواصل معكِ خلال ساعات لتأكيد الطلب. عربي 100٪." },
+              { n: "3", icon: <Wallet size={22} />, t: "استلمي وادفعي", d: "1–3 أيام للمدن الرئيسية. تدفعين كاش أو شبكة وقت وصول الطلب." },
             ].map(s => (
-              <div key={s.n} className="bg-[#FBF7F0] rounded-2xl border border-[#E6D8C8] p-4 sm:p-5 flex items-start gap-3 sm:flex-col sm:items-center sm:text-center">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#3D2817] text-white font-black flex items-center justify-center flex-shrink-0 sm:mx-auto sm:mb-2 text-sm">{s.n}</div>
+              <div key={s.n} className="bg-brand-sage/40 rounded-2xl border border-brand-deepSage/40 p-4 sm:p-5 flex items-start gap-3 sm:flex-col sm:items-center sm:text-center">
+                <div className="w-11 h-11 rounded-2xl bg-white border border-brand-deepSage text-brand-apothecary flex items-center justify-center flex-shrink-0 sm:mx-auto sm:mb-2">
+                  {s.icon}
+                </div>
                 <div>
-                  <div className="text-xl sm:text-2xl sm:mb-2 mb-0.5">{s.icon}</div>
+                  <div className="w-7 h-7 rounded-full bg-brand-brown text-brand-gold font-black flex items-center justify-center mx-auto mb-2 text-[12px] font-inter">{s.n}</div>
                   <p className="font-black text-[#3D2817] text-sm mb-0.5 sm:mb-1">{s.t}</p>
                   <p className="text-[11px] text-[#5A4A3E] leading-relaxed">{s.d}</p>
                 </div>
@@ -899,7 +924,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[700px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-xs font-bold text-[#C8A876] uppercase tracking-widest mb-1">الأسئلة الشائعة</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الأسئلة الشائعة</p>
             <h2 className="text-[1.5rem] md:text-2xl font-black text-[#3D2817]">قبل ما تطلبين — كل اللي تحتاجين</h2>
           </div>
           <div className="space-y-2">
@@ -917,19 +942,32 @@ export default async function ProductPage({ params }: Props) {
       </section>
 
       {/* ══════════════════════════════════════════
-          FINAL CTA
+          FINAL CTA — Brand gradient + tagline
       ══════════════════════════════════════════ */}
-      <section className="py-10 md:py-14 px-4 bg-[#3D2817]">
-        <div className="max-w-[600px] mx-auto text-center">
-          <p className="text-[#C8A876] text-xs font-black uppercase tracking-widest mb-2">قراركِ اليوم</p>
-          <h2 className="text-[1.5rem] md:text-3xl font-black text-white mb-2 leading-tight">
-            كل يوم تأجّلين فيه — تجاعيدك تكبر معك
-          </h2>
-          <p className="text-[#FAF6F0] mb-6 text-sm leading-relaxed">
-            ابدئي اليوم — وبعد 30 يوم رح تشكرين نفسك
+      <section className="py-12 md:py-16 px-4 bg-gradient-to-br from-brand-brown via-brand-coffee to-brand-brown relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-apothecary/15 rounded-full blur-3xl" />
+
+        <div className="relative max-w-[600px] mx-auto text-center">
+          <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "Inter, sans-serif" }}>
+            قراركِ اليوم
           </p>
-          <div className="bg-white rounded-2xl p-4 md:p-5 shadow-2xl">
+          <h2 className="text-[1.6rem] md:text-3xl font-black text-white mb-3 leading-tight">
+            كل يوم تأجّلين فيه — تجاعيدكِ تكبر معكِ
+          </h2>
+          <p className="text-brand-gold text-[14.5px] italic mb-2">«الجمال يبدأ بجرعة دقيقة.»</p>
+          <p className="text-brand-cream/80 mb-7 text-[13.5px] leading-relaxed">
+            ابدئي اليوم — وبعد 30 يوم رح تشكرين نفسكِ
+          </p>
+          <div className="bg-white rounded-3xl p-4 md:p-6 shadow-2xl border border-brand-gold/30">
             <BundlePicker product={product} />
+          </div>
+          <div className="flex items-center justify-center gap-4 mt-6 text-[11.5px] text-brand-gold font-semibold flex-wrap">
+            <span className="flex items-center gap-1.5"><ShieldCheck size={13} /> SFDA</span>
+            <span>·</span>
+            <span className="flex items-center gap-1.5"><Sparkles size={13} /> ضمان 14 يوم</span>
+            <span>·</span>
+            <span className="flex items-center gap-1.5"><Wallet size={13} /> الدفع عند الاستلام</span>
           </div>
         </div>
       </section>
