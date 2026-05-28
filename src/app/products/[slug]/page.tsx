@@ -654,7 +654,7 @@ export default async function ProductPage({ params }: Props) {
               {/* Replace this img src with a real before/after or glowing skin photo */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600&q=80"
+                src="/before-after-results.png"
                 alt="نتيجة قهوة كولاجين إشراقة بعد 30 يوم"
                 className="w-full h-full object-cover absolute inset-0"
                 style={{ minHeight: 420 }}
