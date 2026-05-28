@@ -1,7 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { X, ShoppingBag, Shield, Truck, Plus, ChevronRight, Lock, ArrowRight } from "lucide-react";
+import {
+  X,
+  ShoppingBag,
+  Shield,
+  Truck,
+  Plus,
+  ChevronRight,
+  ArrowRight,
+  Star,
+  Flame,
+  Phone,
+  XCircle,
+  ShieldCheck,
+} from "lucide-react";
 import { useForm, type UseFormRegister, type UseFormHandleSubmit, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -342,7 +355,7 @@ function CartView({
 
             <button
               onClick={onProceed}
-              className="w-full bg-[#3D2817] text-white font-black py-4 rounded-2xl text-base hover:bg-[#5A3825] transition-colors active:scale-[0.98] shadow-xl shimmer relative overflow-hidden flex items-center justify-center gap-2"
+              className="w-full bg-brand-apothecary text-white font-black py-4 rounded-2xl text-base hover:bg-[#174A33] transition-colors active:scale-[0.98] shadow-[0_10px_30px_rgba(30,91,63,0.35)] flex items-center justify-center gap-2"
             >
               <span>تابعي لتأكيد الطلب — {total} ريال</span>
               <ChevronRight size={18} />
@@ -384,6 +397,14 @@ type CheckoutViewProps = {
   isSubmitting: boolean;
 };
 
+/** Translates offer qty into "boxes · duration" e.g. "2 علب · شهرين" */
+function offerLabel(qty: number): string {
+  if (qty === 1) return "1 علبة · شهر";
+  if (qty === 2) return "2 علب · شهرين";
+  if (qty === 3) return "3 علب · 3 شهور";
+  return `${qty} علب`;
+}
+
 function CheckoutView({
   items,
   total,
@@ -395,56 +416,89 @@ function CheckoutView({
 }: CheckoutViewProps) {
   return (
     <div className="flex-1 overflow-y-auto">
-      {/* Trust banner */}
+      {/* ─── Urgency banner (matches reference) ─── */}
       <div className="px-5 pt-4">
-        <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-2 text-[11px] text-emerald-800 text-center font-semibold flex items-center justify-center gap-1.5">
-          <Shield size={12} />
-          بياناتك محمية · ما تدفعين ريال واحد أونلاين
+        <div className="bg-[#FFF1EE] border border-[#F5B5A8] rounded-full px-4 py-2 text-[12px] text-[#B83C26] text-center font-bold flex items-center justify-center gap-1.5">
+          <Flame size={13} className="text-[#B83C26]" />
+          <span>آخر 48 ساعة على عرض الشحن المجاني</span>
         </div>
       </div>
 
-      {/* Order summary */}
-      <div className="mx-5 mt-3 mb-4 bg-[#FAF6F0] border border-[#E6D8C8] rounded-2xl px-4 py-3">
-        <p className="text-[11px] text-[#7A6A5E] mb-2 font-bold uppercase tracking-wider">
-          ملخص طلبك
+      {/* ─── Rating + social proof ─── */}
+      <div className="px-5 pt-3 pb-1 flex items-center justify-center gap-2 text-[12px] font-semibold text-[#3D2817]">
+        <span className="font-inter font-black">4.9</span>
+        <span className="flex gap-0.5">
+          {[1, 2, 3, 4, 5].map((s) => (
+            <Star key={s} size={12} className="text-[#E5B547] fill-[#E5B547]" />
+          ))}
+        </span>
+        <span className="text-[#7A6A5E] text-[11.5px] font-medium">
+          · <span className="font-inter font-bold">1,200+</span> سعودية طلبت هذا الأسبوع
+        </span>
+      </div>
+
+      {/* ─── Order summary card ─── */}
+      <div className="mx-5 mt-3 mb-4 bg-[#FAF6F0] border border-[#E6D8C8] rounded-2xl p-4">
+        <p className="text-[12px] text-[#3D2817] mb-3 font-black">طلبكِ</p>
+
+        <div className="space-y-3">
+          {items.map((item) => (
+            <div
+              key={`${item.productSlug}-${item.isBridgeUpsell}`}
+              className="flex items-center gap-3"
+            >
+              {/* Product thumb */}
+              <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-white to-[#F0E6D5] border border-[#E6D8C8] flex items-center justify-center text-2xl shadow-sm">
+                ☕
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-bold text-[#3D2817] text-[13px] leading-snug truncate">
+                  {item.productNameAr}
+                </p>
+                <p className="text-[11px] text-[#7A6A5E] mt-0.5">
+                  {offerLabel(item.offerQty)}
+                </p>
+              </div>
+              <div className="text-left flex-shrink-0">
+                <p className="font-black font-inter text-[#3D2817] text-[14px] whitespace-nowrap">
+                  {item.unitBundlePrice} ريال
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Total row */}
+        <div className="border-t border-[#E6D8C8] mt-3 pt-3 flex justify-between items-center">
+          <span className="text-[#3D2817] font-black text-[14px]">الإجمالي</span>
+          <span className="text-brand-apothecary font-black font-inter text-[20px]">
+            {total} ريال
+          </span>
+        </div>
+
+        {/* Free shipping line */}
+        <p className="flex items-center justify-center gap-1.5 text-[11.5px] text-brand-apothecary font-bold mt-2.5">
+          <ShieldCheck size={13} />
+          شحن مجاني · الدفع عند الاستلام فقط
         </p>
-        {items.map((item) => (
-          <div
-            key={`${item.productSlug}-${item.isBridgeUpsell}`}
-            className="flex justify-between text-sm py-1"
-          >
-            <span className="text-[#3D2817]">{item.productNameAr}</span>
-            <span className="font-bold font-inter text-[#3D2817]">
-              {item.unitBundlePrice} ريال
-            </span>
-          </div>
-        ))}
-        <div className="flex justify-between text-xs py-1 text-emerald-700 font-bold">
-          <span>الشحن</span>
-          <span>مجاني ✓</span>
-        </div>
-        <div className="border-t border-[#E6D8C8] mt-1.5 pt-2 flex justify-between font-black text-base">
-          <span className="text-[#3D2817]">الإجمالي</span>
-          <span className="text-[#3D2817] font-inter">{total} ريال</span>
-        </div>
       </div>
 
-      {/* Form */}
+      {/* ─── Form ─── */}
       <form onSubmit={handleSubmit(onSubmit)} className="px-5 pb-5 space-y-3">
         <div>
-          <label className="block text-sm font-bold text-[#3D2817] mb-1">
+          <label className="block text-[13px] font-black text-[#3D2817] mb-1.5">
             الاسم الكامل
           </label>
           <input
             {...register("name")}
             type="text"
-            placeholder="مثال: نورة محمد العتيبي"
+            placeholder="مثال: سارة محمد"
             autoComplete="name"
             disabled={isSubmitting}
-            className={`w-full border rounded-xl px-4 py-3 text-[#211915] placeholder:text-[#9A8A7E] focus:outline-none focus:ring-2 focus:ring-[#3D2817]/15 text-right bg-white transition-all ${
+            className={`w-full border rounded-2xl px-4 py-3.5 text-[#211915] placeholder:text-[#9A8A7E] text-[14px] focus:outline-none focus:ring-2 focus:ring-brand-apothecary/15 text-right bg-white transition-all ${
               errors.name
                 ? "border-red-400 focus:border-red-500"
-                : "border-[#E6D8C8] focus:border-[#3D2817]"
+                : "border-[#E6D8C8] focus:border-brand-apothecary"
             }`}
             dir="rtl"
           />
@@ -454,11 +508,8 @@ function CheckoutView({
         </div>
 
         <div>
-          <label className="block text-sm font-bold text-[#3D2817] mb-1">
-            رقم الجوال
-            <span className="text-[10px] text-[#7A6A5E] font-normal mr-2">
-              (نتصلكِ للتأكيد)
-            </span>
+          <label className="block text-[13px] font-black text-[#3D2817] mb-1.5">
+            رقم الجوال السعودي
           </label>
           <input
             {...register("phone")}
@@ -466,57 +517,62 @@ function CheckoutView({
             placeholder="05XXXXXXXX"
             autoComplete="tel"
             disabled={isSubmitting}
-            className={`w-full border rounded-xl px-4 py-3 text-[#211915] placeholder:text-[#9A8A7E] focus:outline-none focus:ring-2 focus:ring-[#3D2817]/15 font-inter text-right bg-white transition-all ${
+            className={`w-full border rounded-2xl px-4 py-3.5 text-[#211915] placeholder:text-[#9A8A7E] text-[14px] focus:outline-none focus:ring-2 focus:ring-brand-apothecary/15 font-inter text-right bg-white transition-all ${
               errors.phone
                 ? "border-red-400 focus:border-red-500"
-                : "border-[#E6D8C8] focus:border-[#3D2817]"
+                : "border-[#E6D8C8] focus:border-brand-apothecary"
             }`}
             dir="ltr"
             inputMode="tel"
           />
-          {errors.phone && (
-            <p className="text-red-600 text-xs mt-1 font-medium">{errors.phone.message}</p>
+          {errors.phone ? (
+            <p className="text-red-600 text-xs mt-1 font-medium">
+              {errors.phone.message}
+            </p>
+          ) : (
+            <p className="text-center text-[11px] text-[#7A6A5E] mt-2 font-medium">
+              يرجى إدخال رقم جوال سعودي صحيح لتأكيد التوصيل
+            </p>
           )}
         </div>
 
-        {/*
-          Submit button is ALWAYS clickable.
-          Validation runs on click; errors render inline above.
-          Only `disabled` while the request is in-flight.
-        */}
+        {/* Submit — Apothecary Green, always clickable */}
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-[#3D2817] text-white font-black py-4 rounded-2xl text-base hover:bg-[#5A3825] active:scale-[0.98] transition-all shadow-xl shimmer relative overflow-hidden disabled:opacity-80 disabled:cursor-wait flex items-center justify-center gap-2"
+          className="w-full bg-brand-apothecary text-white font-black py-4 rounded-2xl text-[15px] hover:bg-[#174A33] active:scale-[0.98] transition-all shadow-[0_10px_30px_rgba(30,91,63,0.35)] disabled:opacity-80 disabled:cursor-wait flex items-center justify-center gap-2 mt-4"
         >
-          <span className="relative z-10">
-            {isSubmitting ? "جاري التأكيد..." : `أكّدي طلبك — ${total} ريال`}
+          <span>
+            {isSubmitting ? "جاري التأكيد..." : "تأكيد الطلب بالدفع عند الاستلام"}
           </span>
-          {!isSubmitting && <ChevronRight size={18} className="relative z-10" />}
+          {!isSubmitting && <ChevronRight size={18} />}
         </button>
 
-        <div className="flex items-center justify-center gap-3 text-[11px] text-[#7A6A5E] pt-1">
-          <Lock size={11} />
-          <span>بياناتكِ آمنة · غير مشتركة مع أي طرف</span>
+        {/* ─── 3 Trust badges row (matches reference) ─── */}
+        <div className="grid grid-cols-3 gap-2 pt-3 border-t border-[#E6D8C8] mt-4">
+          <TrustBadge icon={<Shield size={16} />} label="بدون دفع الآن" />
+          <TrustBadge icon={<Phone size={16} />} label="نتصل للتأكيد" />
+          <TrustBadge icon={<XCircle size={16} />} label="ترفضين بدون تكلفة" />
         </div>
 
-        <div className="flex items-center justify-center gap-3 text-[10px] text-[#7A6A5E] font-medium pt-2 border-t border-[#E6D8C8]">
-          <span className="flex items-center gap-1">
-            <Shield size={11} className="text-[#C8A876]" />
-            بدون دفع أونلاين
-          </span>
-          <span className="text-[#C8A876]">·</span>
-          <span className="flex items-center gap-1">
-            <Truck size={11} className="text-[#C8A876]" />
-            1–3 أيام
-          </span>
-          <span className="text-[#C8A876]">·</span>
-          <span className="flex items-center gap-1">
-            <Shield size={11} className="text-[#C8A876]" />
-            ضمان 14 يوم
-          </span>
-        </div>
+        {/* Privacy line */}
+        <p className="text-center text-[10.5px] text-[#7A6A5E] font-medium pt-1">
+          بياناتكِ آمنة · غير مشتركة مع أي طرف
+        </p>
       </form>
+    </div>
+  );
+}
+
+function TrustBadge({ icon, label }: { icon: React.ReactNode; label: string }) {
+  return (
+    <div className="flex flex-col items-center gap-1 text-center">
+      <span className="w-9 h-9 rounded-full bg-brand-sage border border-brand-deepSage text-brand-apothecary flex items-center justify-center">
+        {icon}
+      </span>
+      <span className="text-[10.5px] text-[#3D2817] font-bold leading-tight">
+        {label}
+      </span>
     </div>
   );
 }
