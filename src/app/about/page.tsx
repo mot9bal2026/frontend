@@ -1,51 +1,287 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  ShieldCheck,
+  FlaskConical,
+  Microscope,
+  Sun,
+  Sparkles,
+  Droplets,
+  Award,
+  Wallet,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "من نحن | إشراقة للجمال",
-  description: "إشراقة للجمال — قهوة كولاجين سعودية فاخرة صُممت للمرأة السعودية",
+  title: "قصة إشراقة | قهوة الجمال السريرية — للمرأة السعودية",
+  description:
+    "إشراقة — أول قهوة جمال سريرية في المملكة. جرعات معلنة بمعايير صيدلانية، مصممة لاستهداف الهالات والتجاعيد. SFDA · حلال · الدفع عند الاستلام.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-brand-cream py-16 px-4">
-      <div className="max-w-content mx-auto max-w-2xl">
-        <h1 className="text-4xl font-bold text-brand-brown mb-6">من نحن</h1>
-
-        <div className="bg-white rounded-2xl border border-brand-border p-8 mb-6">
-          <h2 className="text-xl font-bold text-brand-brown mb-4">قصة إشراقة</h2>
-          <p className="text-brand-muted leading-relaxed mb-4">
-            إشراقة للجمال هي علامة سعودية لقهوة الكولاجين، صُنعت للنساء اللواتي يرغبن في دعم مظهر وجه أكثر شباباً وإشراقاً من خلال طقس يومي بسيط، ومكونات واضحة، وثقة تناسب سوق السعودية.
-          </p>
-          <p className="text-brand-muted leading-relaxed">
-            نؤمن بأن الجمال يبدأ من الداخل، وأن كل امرأة تستحق روتيناً بسيطاً يمنحها الثقة بنفسها يومياً. لذلك صممنا منتجاتنا بمكونات واضحة، بدون خلطات مخفية، وبسعر عادل مع الدفع عند الاستلام.
+    <div className="min-h-screen bg-white">
+      {/* ── HERO ────────────────────────────── */}
+      <section className="bg-gradient-to-b from-brand-cream via-white to-brand-cream/30 py-16 md:py-20 px-4">
+        <div className="max-w-content mx-auto max-w-3xl text-center">
+          <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-5 shadow-sm">
+            <FlaskConical size={12} />
+            قصة العلامة
+          </div>
+          <h1 className="text-[2.2rem] md:text-[2.8rem] font-black text-[#1A0F0A] mb-4 leading-[1.15]">
+            أوّل <span className="text-brand-brown">قهوة جمال سريرية</span> في المملكة.
+          </h1>
+          <p className="text-[#3D2817]/85 text-[15.5px] md:text-base leading-relaxed max-w-2xl mx-auto">
+            بُنيت إشراقة على فكرة بسيطة: المرأة السعودية تستحق منتج جمال يعمل بمنطق
+            الصيدلية — لا بمنطق الموضة. <span className="font-bold">جرعات معلنة،
+            مكونات شفافة، طقس يومي بسيط</span>، وضمان حقيقي.
           </p>
         </div>
+      </section>
 
-        <div className="bg-white rounded-2xl border border-brand-border p-8 mb-6">
-          <h2 className="text-xl font-bold text-brand-brown mb-4">قيمنا</h2>
-          <div className="space-y-3">
-            {[
-              { title: "الشفافية", desc: "مكونات واضحة، بدون خلطات مخفية" },
-              { title: "الثقة", desc: "الدفع عند الاستلام فقط، بدون مخاطرة" },
-              { title: "السعودية أولاً", desc: "صُممت خصيصاً للمرأة السعودية" },
-              { title: "البساطة", desc: "روتين يومي بسيط تلتزمين فيه" },
-            ].map((v) => (
-              <div key={v.title} className="flex items-start gap-3">
-                <span className="text-brand-gold font-bold">✦</span>
-                <div>
-                  <p className="font-medium text-brand-brown">{v.title}</p>
-                  <p className="text-brand-muted text-sm">{v.desc}</p>
-                </div>
-              </div>
-            ))}
+      {/* ── STORY ───────────────────────────── */}
+      <section className="py-14 px-4 bg-white">
+        <div className="max-w-content mx-auto max-w-3xl space-y-5">
+          <StorySection
+            label="البداية"
+            title="من الفجوة في السوق وُلدت إشراقة"
+            body="بعد سنوات من ملاحظة فجوة بين منتجات Instagram الجمالية بدون مصداقية، وكبسولات الصيدلية الجافة التي يصعب الالتزام بها — صمّمنا حلاً وسطياً: صيغة سريرية موزونة، في طقس قهوة لذيذ. مكونات تُعرض بجرعاتها، لا تُخفى في خلطات سرية."
+          />
+          <StorySection
+            label="الفلسفة"
+            title="الجمال يبدأ بجرعة دقيقة"
+            body="نؤمن أن الفرق بين منتج يعطي نتائج ومنتج يستهلك ميزانيتك هو شيء واحد: الجرعة الصحيحة + الالتزام اليومي. لهذا كل كيس من إشراقة يحمل جرعة موزونة من ٣ مكونات رئيسية فقط — لا حشو، لا مكونات للزينة."
+          />
+          <StorySection
+            label="الالتزام"
+            title="سعودية أولاً. عربية أولاً. COD أولاً."
+            body="منتجاتنا مسجّلة لدى هيئة الغذاء والدواء السعودية، حلال 100٪ بكولاجين بحري بدلاً من الجيلاتين الحيواني، ومتاحة بنظام الدفع عند الاستلام في كل مناطق المملكة — لأن الثقة تُكسب، لا تُطلب مقدّماً."
+          />
+        </div>
+      </section>
+
+      {/* ── BRAND PILLARS ──────────────────── */}
+      <section className="py-16 px-4 bg-brand-sage/40">
+        <div className="max-w-content mx-auto">
+          <div className="text-center mb-10">
+            <p
+              className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              ركائزنا الخمس
+            </p>
+            <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
+              التزامات إشراقة معكِ
+            </h2>
+            <p className="text-[#5A4A3E] text-[14.5px] max-w-xl mx-auto">
+              خمسة وعود نلتزم بها مع كل علبة تخرج من مستودعنا.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            <PillarCard
+              num="01"
+              icon={<Microscope size={20} />}
+              title="مصداقية سريرية"
+              desc="جرعات معلنة على كل كيس: 5000 ملجم كولاجين، 200 ملجم فيتامين C، 100 ملجم هيالورونيك. بلا خلطات سرية."
+            />
+            <PillarCard
+              num="02"
+              icon={<ShieldCheck size={20} />}
+              title="سعودية أولاً"
+              desc="SFDA · حلال 100٪ · صياغة عربية · الدفع عند الاستلام. مصنوعة لك، لا مستوردة من سوق آخر."
+            />
+            <PillarCard
+              num="03"
+              icon={<FlaskConical size={20} />}
+              title="جمال وظيفي"
+              desc="كل غرام له هدف. لا فيتامينات حشو، لا نكهات صناعية، لا «روائح علاجية» وهمية."
+            />
+            <PillarCard
+              num="04"
+              icon={<Sun size={20} />}
+              title="طقس يومي بسيط"
+              desc="بدل سبع كبسولات في اليوم — كيس قهوة واحد. أسهل التزام، أعلى نتيجة."
+            />
+            <PillarCard
+              num="05"
+              icon={<Sparkles size={20} />}
+              title="ضمان نتيجة"
+              desc="14 يوم استرجاع كامل. ما حسّيتي بفرق؟ ترجع لكِ فلوسكِ. بدون نماذج، بدون أسئلة."
+              highlight
+            />
+            <PillarCard
+              num="06"
+              icon={<Droplets size={20} />}
+              title="من الداخل"
+              desc="الكولاجين البحري يصل عبر الدم لكل طبقات البشرة. ليس ترطيب سطحي يزول بغسلة وجه."
+            />
           </div>
         </div>
+      </section>
 
-        <div className="bg-brand-brown text-brand-cream rounded-2xl p-8 text-center">
-          <p className="font-bold text-xl mb-2">إشراقة للجمال</p>
-          <p className="text-brand-gold">ISHRAQA Beauty · المملكة العربية السعودية</p>
+      {/* ── BADGES STRIP ───────────────────── */}
+      <section className="py-12 px-4 bg-white">
+        <div className="max-w-content mx-auto max-w-4xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <BadgeCard
+              icon={<ShieldCheck size={22} />}
+              top="هيئة الغذاء والدواء"
+              bottom="SFDA Registered"
+            />
+            <BadgeCard
+              icon={<Award size={22} />}
+              top="حلال 100٪"
+              bottom="بدون جيلاتين حيواني"
+            />
+            <BadgeCard
+              icon={<Wallet size={22} />}
+              top="الدفع عند الاستلام"
+              bottom="بدون دفع أونلاين"
+            />
+            <BadgeCard
+              icon={<Sparkles size={22} />}
+              top="ضمان 14 يوم"
+              bottom="استرجاع كامل"
+            />
+          </div>
         </div>
+      </section>
+
+      {/* ── CLOSING CTA ────────────────────── */}
+      <section className="py-16 px-4 bg-gradient-to-br from-brand-brown via-brand-coffee to-brand-brown text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-gold/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-apothecary/15 rounded-full blur-3xl" />
+
+        <div className="relative max-w-content mx-auto max-w-2xl text-center">
+          <p
+            className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3"
+            style={{ fontFamily: "Inter, sans-serif" }}
+          >
+            انضمي للعائلة
+          </p>
+          <h2 className="text-[1.8rem] md:text-[2.2rem] font-black mb-4 leading-tight">
+            ابدئي طقس إشراقتكِ.
+            <br />
+            <span className="text-brand-gold">
+              «الجمال يبدأ بجرعة دقيقة.»
+            </span>
+          </h2>
+          <p className="text-brand-cream/80 mb-7 text-[14.5px]">
+            1,400+ سعودية بدأن — والنتائج تتكلم.
+          </p>
+          <Link
+            href="/collection"
+            className="inline-flex items-center gap-2 bg-brand-gold text-brand-brown font-black px-10 py-4 rounded-2xl text-[1rem] hover:bg-amber-300 transition-colors shadow-xl active:scale-[0.98]"
+          >
+            اطلعي على المنتج
+            <span>←</span>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════
+   Sub-components
+════════════════════════════════════════════════════ */
+
+function StorySection({
+  label,
+  title,
+  body,
+}: {
+  label: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="bg-brand-cream/60 border border-brand-border rounded-3xl p-6 md:p-8">
+      <p
+        className="text-[10.5px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
+        style={{ fontFamily: "Inter, sans-serif" }}
+      >
+        {label}
+      </p>
+      <h2 className="text-[1.2rem] md:text-[1.4rem] font-black text-brand-brown mb-3 leading-tight">
+        {title}
+      </h2>
+      <p className="text-[#3D2817]/85 text-[14px] leading-relaxed">{body}</p>
+    </div>
+  );
+}
+
+function PillarCard({
+  num,
+  icon,
+  title,
+  desc,
+  highlight,
+}: {
+  num: string;
+  icon: React.ReactNode;
+  title: string;
+  desc: string;
+  highlight?: boolean;
+}) {
+  return (
+    <div
+      className={`relative rounded-3xl p-6 border transition-all ${
+        highlight
+          ? "bg-brand-apothecary text-white border-brand-apothecary shadow-lg"
+          : "bg-white border-brand-border hover:border-brand-apothecary hover:shadow-md"
+      }`}
+    >
+      <p
+        className={`absolute top-5 left-5 text-[11px] font-black tracking-widest font-inter ${
+          highlight ? "text-brand-gold/80" : "text-brand-gold"
+        }`}
+      >
+        {num}
+      </p>
+      <div
+        className={`w-11 h-11 rounded-2xl flex items-center justify-center mb-4 ${
+          highlight
+            ? "bg-white/10 text-brand-gold"
+            : "bg-brand-sage text-brand-apothecary border border-brand-deepSage"
+        }`}
+      >
+        {icon}
       </div>
+      <h3
+        className={`font-black text-[15px] mb-2 leading-tight ${
+          highlight ? "text-white" : "text-brand-brown"
+        }`}
+      >
+        {title}
+      </h3>
+      <p
+        className={`text-[12.5px] leading-relaxed ${
+          highlight ? "text-white/90" : "text-[#5A4A3E]"
+        }`}
+      >
+        {desc}
+      </p>
+    </div>
+  );
+}
+
+function BadgeCard({
+  icon,
+  top,
+  bottom,
+}: {
+  icon: React.ReactNode;
+  top: string;
+  bottom: string;
+}) {
+  return (
+    <div className="bg-brand-cream/50 border border-brand-border rounded-2xl p-5 text-center hover:border-brand-apothecary transition-colors">
+      <div className="w-12 h-12 rounded-2xl bg-white border border-brand-deepSage text-brand-apothecary flex items-center justify-center mx-auto mb-3">
+        {icon}
+      </div>
+      <p className="font-black text-brand-brown text-[13.5px] leading-tight">{top}</p>
+      <p className="text-[11px] text-[#7A6A5E] mt-1">{bottom}</p>
     </div>
   );
 }

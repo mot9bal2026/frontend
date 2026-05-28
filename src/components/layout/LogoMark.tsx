@@ -9,19 +9,19 @@ export function LogoMark() {
         <img src="/logo-icon.png" alt="إشراقة للجمال" className="w-full h-full object-cover" />
       </div>
 
-      {/* Brand name — Arabic large, English small — exact namabeauty style */}
+      {/* Brand name — Arabic large, English small (Apothecary-style lockup) */}
       <div className="flex flex-col leading-none gap-0.5">
         <span
           className="text-[#3D2817] font-black leading-none"
-          style={{ fontFamily: "Tajawal, sans-serif", fontSize: "17px" }}
+          style={{ fontFamily: "Tajawal, sans-serif", fontSize: "18px", letterSpacing: "-0.01em" }}
         >
-          إشراقة للجمال
+          إشراقة
         </span>
         <span
-          className="text-[#9A8070] font-medium leading-none tracking-widest uppercase"
-          style={{ fontFamily: "Inter, sans-serif", fontSize: "9px", letterSpacing: "0.12em" }}
+          className="text-[#1E5B3F] font-semibold leading-none tracking-widest uppercase"
+          style={{ fontFamily: "Inter, sans-serif", fontSize: "8.5px", letterSpacing: "0.18em" }}
         >
-          ISHRAQA Beauty
+          ISHRAQA · CLINICAL BEAUTY
         </span>
       </div>
     </Link>
