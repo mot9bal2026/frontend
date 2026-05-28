@@ -19,7 +19,7 @@ import { products } from "@/lib/products";
 import { ProductCard } from "@/components/product/ProductCard";
 
 /* ─────────────────────────────────────────────────────────────
-   ISHRAQA — Clinical Beauty Coffee
+   ISHRAQA — Beauty Coffee
    Pharmacy-grade positioning · trust-first · Saudi COD
 ───────────────────────────────────────────────────────────── */
 
@@ -61,7 +61,7 @@ const faqs = [
   },
   {
     q: "وش الفرق بينها وبين أي مكمل ثاني في الصيدلية؟",
-    a: "إشراقة هي قهوة جمال سريرية: جرعات معلنة (5000 ملجم كولاجين بحري، 200 ملجم فيتامين C، 100 ملجم هيالورونيك)، طقس يومي بسيط بدل كبسولات تنسينها، ومخصصة للتجاعيد والهالات. لا خلطات سرية.",
+    a: "إشراقة هي قهوة الجمال بجرعات معلنة (5000 ملجم كولاجين بحري، 200 ملجم فيتامين C، 100 ملجم هيالورونيك)، طقس يومي بسيط بدل كبسولات تنسينها، ومخصصة للتجاعيد والهالات. لا خلطات سرية.",
   },
   {
     q: "هل هي حلال ومرخّصة؟",
@@ -77,7 +77,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* ─────────────────────────────────────────────
-          HERO — Clinical category claim
+          HERO — Category claim
       ───────────────────────────────────────────── */}
       <section className="relative bg-gradient-to-b from-brand-cream via-white to-brand-cream/40 pt-12 pb-14 md:pt-16 md:pb-20 px-4 overflow-hidden">
         <div className="max-w-content mx-auto">
@@ -87,11 +87,11 @@ export default function HomePage() {
               {/* Category claim badge */}
               <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-4 shadow-sm">
                 <FlaskConical size={12} />
-                أوّل قهوة جمال سريرية في المملكة
+                قهوة الجمال · للهالات والتجاعيد
               </div>
 
               <h1 className="text-[2rem] md:text-[2.6rem] font-black text-[#1A0F0A] mb-4 leading-[1.2]">
-                ⁠صيغة صيدلانية موزونة —
+                ⁠صيغة موزونة بدقة —
                 <br />
                 <span className="text-brand-brown">
                   للهالات والتجاعيد.
@@ -155,7 +155,7 @@ export default function HomePage() {
                       className="text-[9px] text-brand-apothecary font-bold uppercase tracking-[0.18em] mt-1"
                       style={{ fontFamily: "Inter, sans-serif" }}
                     >
-                      CLINICAL BEAUTY COFFEE
+                      BEAUTY COFFEE
                     </p>
                   </div>
                 </div>
@@ -218,7 +218,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             <PillarCard
               icon={<Microscope size={22} />}
-              title="مصداقية سريرية"
+              title="مصداقية بالأرقام"
               desc="جرعات معلنة على كل كيس: 5000 ملجم كولاجين بحري، 200 ملجم فيتامين C، 100 ملجم هيالورونيك. لا خلطات سرية."
             />
             <PillarCard
@@ -262,7 +262,7 @@ export default function HomePage() {
               المنتج
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
-              قهوة الجمال السريرية
+              قهوة الجمال
             </h2>
             <p className="text-[#5A4A3E] max-w-md mx-auto text-[14.5px]">
               صيغة واحدة — مدروسة، موزونة، ومركّزة على هدفين: التجاعيد، والهالات السوداء.
@@ -329,7 +329,7 @@ export default function HomePage() {
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
                style={{ fontFamily: "Inter, sans-serif" }}>
-              التركيبة السريرية
+              التركيبة الموزونة
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
               مكونات معلنة · جرعات موزونة
@@ -395,7 +395,7 @@ export default function HomePage() {
             <div className="relative">
               <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-4"
                  style={{ fontFamily: "Inter, sans-serif" }}>
-                نهج علمي · رأي مستشار سريري
+                نهج علمي · رأي خبير
               </p>
               <blockquote className="text-brand-cream text-[15.5px] md:text-[17px] font-medium italic leading-relaxed mb-5">
                 «الكولاجين البحري المتحلّل مع فيتامين C وحمض الهيالورونيك هو نهج
@@ -406,7 +406,7 @@ export default function HomePage() {
                 ، خصوصاً في المناخ الخليجي الجاف.»
               </blockquote>
               <p className="text-brand-gold text-[13px] font-semibold">
-                — مستشار التغذية السريرية، فريق إشراقة
+                — فريق التغذية والجمال في إشراقة
               </p>
             </div>
           </div>

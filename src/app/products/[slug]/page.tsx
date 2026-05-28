@@ -111,7 +111,7 @@ const content: Record<string, {
     expertQuote: "الخلط بين كولاجين بحري متحلّل بجرعة عالية، فيتامين C، وهيالورونيك أسيد يعطي روتيناً منطقياً للنساء اللواتي يلاحظن هالات وخطوطاً مبكرة. الأهم هو الالتزام اليومي، لأن البشرة لا تتغيّر من استخدام متقطع.",
     expertName: "د. خلود منصور أحمد · اختصاصية أمراض الجلد والتجميل",
     numbers: [
-      { n: "60+", l: "دراسة سريرية" },
+      { n: "60+", l: "دراسة علمية" },
       { n: "800+", l: "عميلة سعودية راضية" },
       { n: "4.9★", l: "متوسط التقييم" },
       { n: "14 يوم", l: "ضمان استرجاع" },
@@ -207,10 +207,10 @@ const content: Record<string, {
       },
     ],
     freeOf: ["سكر مضاف", "جيلاتين حيواني", "مواد حافظة", "ألوان صناعية", "GMO", "جلوتين"],
-    expertQuote: "الكولاجين البحري بجرعة 5000ملجم مع فيتامين C النشط هي بالضبط النسب المثبتة سريرياً لدعم مرونة البشرة وتقليل علامات الشيخوخة. التركيبة تعبر عبر الدم لجميع طبقات الجلد — لهذا فعاليتها أعمق من أي كريم.",
-    expertName: "د. سارة العتيبي · أخصائية تغذية سريرية · الرياض",
+    expertQuote: "الكولاجين البحري بجرعة 5000ملجم مع فيتامين C النشط هي بالضبط النسب المثبتة علمياً لدعم مرونة البشرة وتقليل علامات الشيخوخة. التركيبة تعبر عبر الدم لجميع طبقات الجلد — لهذا فعاليتها أعمق من أي كريم.",
+    expertName: "د. سارة العتيبي · أخصائية تغذية · الرياض",
     numbers: [
-      { n: "60+", l: "دراسة سريرية" },
+      { n: "60+", l: "دراسة علمية" },
       { n: "600+", l: "عميلة سعودية راضية" },
       { n: "4.9★", l: "متوسط التقييم" },
       { n: "14 يوم", l: "ضمان استرجاع" },
@@ -331,10 +331,10 @@ export default async function ProductPage({ params }: Props) {
           {/* ══ TEXT COLUMN — below image on mobile, left on desktop ══ */}
           <div className="px-4 pt-5 pb-8 md:px-0 md:pt-0 md:pb-0 md:order-first md:flex md:flex-col md:justify-center">
 
-            {/* Clinical category badge */}
+            {/* Category badge */}
             <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-3 shadow-sm self-start">
               <FlaskConical size={12} />
-              قهوة جمال سريرية · للهالات والتجاعيد
+              قهوة الجمال · للهالات والتجاعيد
             </div>
 
             {/* Rating row */}
@@ -477,7 +477,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>التركيبة السريرية</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>التركيبة الموزونة</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">مكونات قليلة، لكن كل واحد له وظيفة واضحة</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">لسنا نبيع قائمة طويلة. نبيع روتيناً يومياً مفهوماً: كولاجين للبنية، فيتامين C للدعم، وهيالورونيك للامتلاء.</p>
           </div>
@@ -561,7 +561,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الثقة السريرية</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الثقة العلمية</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">لماذا تستحق أكثر من قهوة عادية؟</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">لأنها ليست نكهة فقط. هي روتين جمال يومي بجرعات واضحة، ثقة غذائية، وطريقة استخدام سهلة.</p>
           </div>
@@ -586,7 +586,7 @@ export default async function ProductPage({ params }: Props) {
             <Quote size={56} className="absolute top-4 right-4 text-brand-gold/20" strokeWidth={1.5} />
             <div className="relative">
               <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "Inter, sans-serif" }}>
-                نهج علمي · رأي مستشار سريري
+                نهج علمي · رأي خبير
               </p>
               <blockquote className="text-brand-cream text-[14.5px] md:text-[16px] font-medium italic leading-relaxed mb-4">
                 «{c.expertQuote}»
@@ -790,7 +790,7 @@ export default async function ProductPage({ params }: Props) {
                 <span className="text-xs font-black bg-[#C8A876] text-[#3D2817] px-3 py-1 rounded-full">من 199 ريال</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                {["تشتغل عبر الدم على كل الطبقات","بدون إبر أو مخاطر","دفع عند الاستلام","حلال 100٪ · SFDA","مكونات بجرعات سريرية","ضمان 14 يوم"].map(pro => (
+                {["تشتغل عبر الدم على كل الطبقات","بدون إبر أو مخاطر","دفع عند الاستلام","حلال 100٪ · SFDA","مكونات بجرعات موزونة","ضمان 14 يوم"].map(pro => (
                   <p key={pro} className="text-xs text-[#C8A876] flex items-center gap-1.5">
                     <span className="font-bold">✓</span>{pro}
                   </p>

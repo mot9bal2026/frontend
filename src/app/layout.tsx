@@ -8,14 +8,14 @@ import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
 import { LivePurchaseToast } from "@/components/marketing/LivePurchaseToast";
 
 export const metadata: Metadata = {
-  title: "إشراقة | قهوة الجمال السريرية — للهالات والتجاعيد · SFDA · حلال",
+  title: "إشراقة | قهوة الجمال — للهالات والتجاعيد · SFDA · حلال",
   description:
-    "أول قهوة جمال سريرية في المملكة. كولاجين بحري 5000 ملجم + فيتامين C + هيالورونيك — جرعات معلنة تستهدف الهالات والتجاعيد مباشرة. مرخّصة SFDA · حلال 100٪ · الدفع عند الاستلام · توصيل 1–3 أيام.",
+    "قهوة الجمال من إشراقة. كولاجين بحري 5000 ملجم + فيتامين C + هيالورونيك — جرعات معلنة تستهدف الهالات والتجاعيد مباشرة. مرخّصة SFDA · حلال 100٪ · الدفع عند الاستلام · توصيل 1–3 أيام.",
   openGraph: {
     locale: "ar_SA",
     type: "website",
     url: "https://ishraqa.shop",
-    title: "إشراقة — قهوة الجمال السريرية",
+    title: "إشراقة — قهوة الجمال",
     description:
       "صيغة موزونة بمعايير صيدلانية. تشتغل من الداخل على التجاعيد والهالات السوداء. الدفع عند الاستلام.",
   },

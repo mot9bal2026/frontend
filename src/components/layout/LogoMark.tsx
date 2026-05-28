@@ -21,7 +21,7 @@ export function LogoMark() {
           className="text-[#1E5B3F] font-semibold leading-none tracking-widest uppercase"
           style={{ fontFamily: "Inter, sans-serif", fontSize: "8.5px", letterSpacing: "0.18em" }}
         >
-          ISHRAQA · CLINICAL BEAUTY
+          ISHRAQA · BEAUTY COFFEE
         </span>
       </div>
     </Link>

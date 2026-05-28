@@ -25,14 +25,14 @@ export function Footer() {
                   className="text-[10px] text-brand-gold font-semibold tracking-[0.18em] uppercase leading-tight mt-0.5"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
-                  ISHRAQA · CLINICAL BEAUTY
+                  ISHRAQA · BEAUTY COFFEE
                 </p>
               </div>
             </div>
 
             <p className="text-[13px] text-brand-cream/80 leading-relaxed mb-4">
-              أول <span className="font-bold text-brand-gold">قهوة جمال سريرية</span> في
-              المملكة — كولاجين بحري بجرعات معلنة، فيتامين C، وحمض الهيالورونيك. مصممة
+              <span className="font-bold text-brand-gold">قهوة الجمال</span> من إشراقة —
+              كولاجين بحري بجرعات معلنة، فيتامين C، وحمض الهيالورونيك. مصممة
               لاستهداف <span className="font-semibold text-brand-cream">الهالات
               والتجاعيد</span> من الداخل، بطقس يومي بسيط.
             </p>
@@ -57,7 +57,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm">
               {[
                 { href: "/", label: "الرئيسية" },
-                { href: "/collection", label: "قهوة الجمال السريرية" },
+                { href: "/collection", label: "قهوة الجمال" },
                 { href: "/about", label: "قصة إشراقة" },
                 { href: "/contact", label: "تواصلي معنا" },
               ].map((link) => (
@@ -122,7 +122,7 @@ export function Footer() {
             «الجمال يبدأ بجرعة دقيقة.»
           </p>
           <p className="text-center text-[10.5px] text-brand-cream/55">
-            © 2026 إشراقة · ISHRAQA Clinical Beauty · المملكة العربية السعودية
+            © 2026 إشراقة · ISHRAQA Beauty Coffee · المملكة العربية السعودية
           </p>
         </div>
       </div>

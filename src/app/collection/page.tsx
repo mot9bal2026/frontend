@@ -14,9 +14,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "قهوة الجمال السريرية | إشراقة — للهالات والتجاعيد",
+  title: "قهوة الجمال | إشراقة — للهالات والتجاعيد",
   description:
-    "صيغة سريرية موزونة: كولاجين بحري 5000 ملجم + فيتامين C + هيالورونيك. لاستهداف الهالات والتجاعيد مباشرة. SFDA · حلال · الدفع عند الاستلام.",
+    "صيغة موزونة بدقة: كولاجين بحري 5000 ملجم + فيتامين C + هيالورونيك. لاستهداف الهالات والتجاعيد مباشرة. SFDA · حلال · الدفع عند الاستلام.",
 };
 
 const faqs = [
@@ -50,10 +50,10 @@ export default function CollectionPage() {
         <div className="max-w-content mx-auto text-center max-w-2xl">
           <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-5 shadow-sm">
             <FlaskConical size={12} />
-            صيغة سريرية · SFDA · حلال
+            صيغة موزونة · SFDA · حلال
           </div>
           <h1 className="text-[2rem] md:text-[2.4rem] font-black text-[#1A0F0A] mb-3 leading-[1.2]">
-            قهوة الجمال السريرية
+            قهوة الجمال
           </h1>
           <p className="text-[#5A4A3E] text-[14.5px] md:text-[15.5px] leading-relaxed">
             صيغة موزونة من <span className="font-bold font-inter text-brand-brown">5000 ملجم</span>{" "}
@@ -75,7 +75,7 @@ export default function CollectionPage() {
         </div>
       </section>
 
-      {/* ── WHY CLINICAL COFFEE ──────────── */}
+      {/* ── WHY BEAUTY COFFEE ────────────── */}
       <section className="py-14 px-4 bg-brand-sage/40">
         <div className="max-w-content mx-auto max-w-4xl">
           <div className="text-center mb-9">
@@ -83,7 +83,7 @@ export default function CollectionPage() {
               className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              لماذا القهوة السريرية؟
+              لماذا قهوة الجمال؟
             </p>
             <h2 className="text-[1.6rem] md:text-2xl font-black text-brand-brown">
               ثلاث ميزات لا توفّرها لكِ كبسولة عادية

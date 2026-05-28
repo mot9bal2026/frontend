@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Mail, Phone, MessageCircle, Clock, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "تواصلي معنا | إشراقة — قهوة الجمال السريرية",
+  title: "تواصلي معنا | إشراقة — قهوة الجمال",
   description:
     "فريق إشراقة جاهز لمساعدتكِ. تواصلي معنا عبر البريد الإلكتروني أو واتساب. خدمة عملاء سعودية من الأحد إلى الخميس.",
 };
