@@ -39,9 +39,9 @@ export function ProductCard({ product }: Props) {
           className="h-56 flex items-center justify-center relative overflow-hidden"
           style={{ background: "linear-gradient(135deg, #FAF6F0, #EDE0CE)" }}
         >
-          <div className="text-center group-hover:scale-105 transition-transform duration-300">
-            <div className="text-7xl mb-2">☕</div>
-            <div className="text-3xl">✨</div>
+          <div className="group-hover:scale-105 transition-transform duration-300 w-full h-full flex items-center justify-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/product-box-lux.png" alt={product.nameAr} className="h-48 w-auto object-contain drop-shadow-lg" />
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1" style={{ backgroundColor: product.colorAccent }} />
         </div>

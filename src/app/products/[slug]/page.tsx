@@ -761,7 +761,11 @@ export default async function ProductPage({ params }: Props) {
             {/* Our product */}
             <div className="bg-[#3D2817] rounded-2xl p-5 border-2 border-[#C8A876]">
               <div className="flex items-center justify-between mb-4">
-                <p className="font-black text-white text-base">قهوة كولاجين إشراقة للجمال ☕</p>
+                <p className="font-black text-white text-base flex items-center gap-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/product-box-lux.png" alt="إشراقة" className="w-8 h-8 object-contain rounded" />
+                  قهوة كولاجين إشراقة للجمال
+                </p>
                 <span className="text-xs font-black bg-[#C8A876] text-[#3D2817] px-3 py-1 rounded-full">من 199 ريال</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -840,7 +844,7 @@ export default async function ProductPage({ params }: Props) {
                   {i + 1}
                 </div>
                 <p className="text-[#3D2817] text-sm font-medium">{step}</p>
-                {i === 0 && <span className="mr-auto text-2xl">☕</span>}
+                {i === 0 && <img src="/product-box-lux.png" alt="إشراقة" className="mr-auto w-8 h-8 object-contain flex-shrink-0" />}
                 {i === 1 && <span className="mr-auto text-2xl">💧</span>}
                 {i === 2 && <span className="mr-auto text-2xl">🌅</span>}
                 {i === 3 && <span className="mr-auto text-2xl">✨</span>}
