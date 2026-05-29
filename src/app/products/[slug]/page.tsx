@@ -395,7 +395,7 @@ export default async function ProductPage({ params }: Props) {
               {/* Replace this img src with your real product/model photo */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80"
+                src="/pain-point-tired-woman.png"
                 alt="سيدة سعودية تعاني من الهالات السوداء"
                 className="w-full h-full object-cover absolute inset-0"
                 style={{ minHeight: 520 }}
@@ -410,7 +410,7 @@ export default async function ProductPage({ params }: Props) {
                 </p>
               </div>
               {/* Photo replace hint (hidden on production — remove if unwanted) */}
-              <div className="absolute top-3 right-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
+              <div className="hidden absolute top-3 right-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
                 📸 قابل للاستبدال
               </div>
             </div>
