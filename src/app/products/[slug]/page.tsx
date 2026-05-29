@@ -463,8 +463,8 @@ export default async function ProductPage({ params }: Props) {
               {/* Replace this img src with your real product flat-lay or ingredient photo */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="https://images.unsplash.com/photo-1610415040795-f32cde0765b0?w=600&q=80"
-                alt="مكوّنات قهوة كولاجين إشراقة"
+                src="/product-box-lux.png"
+                alt="قهوة إشراقة للكولاجين"
                 className="w-full h-full object-cover absolute inset-0"
                 style={{ minHeight: 480 }}
               />
@@ -493,7 +493,7 @@ export default async function ProductPage({ params }: Props) {
                 </div>
               </div>
               {/* Photo replace hint */}
-              <div className="absolute top-3 left-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
+              <div className="hidden absolute top-3 left-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
                 📸 قابل للاستبدال
               </div>
             </div>
