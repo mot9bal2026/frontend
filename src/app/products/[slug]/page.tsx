@@ -20,6 +20,7 @@ import { products, getProduct } from "@/lib/products";
 import { BundlePicker } from "@/components/product/BundlePicker";
 import { ViewContentFire } from "@/components/tracking/ViewContentFire";
 import { MobileStickyCTA } from "@/components/marketing/MobileStickyCTA";
+import { HeroImageSlider } from "@/components/product/HeroImageSlider";
 import Link from "next/link";
 import type { ProductSlug } from "@/lib/products";
 
@@ -287,25 +288,8 @@ export default async function ProductPage({ params }: Props) {
           {/* ══ IMAGE COLUMN — top on mobile, right on desktop ══ */}
           <div className="md:order-last">
 
-            {/* Before/After image — full-width on mobile, rounded on desktop */}
-            <div className="relative overflow-hidden md:rounded-2xl md:shadow-xl w-full">
-              <img 
-                src="/before-after-results.png?v=2" 
-                alt="نتيجة قبل وبعد استخدام قهوة إشراقة" 
-                className="w-full h-auto block"
-              />
-              {/* BEFORE / AFTER labels */}
-              <div className="absolute top-4 left-4 z-10 pointer-events-none">
-                <span className="bg-white/90 text-[#5A4A3E] text-sm font-black px-4 py-1 rounded-full shadow border border-white/50">قبل</span>
-              </div>
-              <div className="absolute top-4 right-4 z-10 pointer-events-none">
-                <span className="bg-brand-apothecary text-white text-sm font-black px-4 py-1 rounded-full shadow border border-brand-apothecary">بعد</span>
-              </div>
-              {/* Bottom ribbon */}
-              <div className="absolute bottom-0 inset-x-0 bg-[#1A0F0A]/85 px-4 py-2.5 z-10">
-                <p className="text-white text-xs font-bold text-center">✨ فرق واضح بعد 30 يوم — مضمون أو فلوسك ترجع</p>
-              </div>
-            </div>
+            {/* Before/After image Slider */}
+            <HeroImageSlider />
 
             {/* 4 stats pills — flush below image, zero gap */}
             <div className="grid grid-cols-4 bg-white border-t border-[#E6D8C8] md:border-x md:border-b md:rounded-b-2xl">
