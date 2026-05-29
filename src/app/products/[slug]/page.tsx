@@ -295,9 +295,11 @@ export default async function ProductPage({ params }: Props) {
                 className="w-full h-auto block"
               />
               {/* BEFORE / AFTER labels */}
-              <div className="absolute top-4 inset-x-0 flex justify-between px-5 z-10 pointer-events-none">
-                <span className="bg-white/90 text-[#5A4A3E] text-xs font-black px-3 py-1 rounded-full shadow">BEFORE</span>
-                <span className="bg-[#1A0F0A] text-white text-xs font-black px-3 py-1 rounded-full shadow">AFTER</span>
+              <div className="absolute top-4 left-4 z-10 pointer-events-none">
+                <span className="bg-white/90 text-[#5A4A3E] text-sm font-black px-4 py-1 rounded-full shadow border border-white/50">قبل</span>
+              </div>
+              <div className="absolute top-4 right-4 z-10 pointer-events-none">
+                <span className="bg-brand-apothecary text-white text-sm font-black px-4 py-1 rounded-full shadow border border-brand-apothecary">بعد</span>
               </div>
               {/* Bottom ribbon */}
               <div className="absolute bottom-0 inset-x-0 bg-[#1A0F0A]/85 px-4 py-2.5 z-10">
