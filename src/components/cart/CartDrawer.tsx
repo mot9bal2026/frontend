@@ -450,7 +450,7 @@ function CheckoutView({
               {/* Product thumb */}
               <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-white to-[#F0E6D5] border border-[#E6D8C8] flex items-center justify-center overflow-hidden shadow-sm">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/product-box-lux.png" alt={item.productNameAr} className="w-full h-full object-contain p-0.5" />
+                <img src="/product-box-lux.png?v=3" alt={item.productNameAr} className="w-full h-full object-contain p-0.5" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="font-bold text-[#3D2817] text-[13px] leading-snug truncate">

@@ -75,7 +75,7 @@ export function MobileStickyCTA({ product }: Props) {
           {/* Product mini info */}
           <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FBF7F0] to-[#E6D8C8] flex items-center justify-center overflow-hidden shadow border-2 border-[#C8A876]/40">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/product-box-lux.png" alt="قهوة إشراقة" className="w-full h-full object-contain p-0.5" />
+            <img src="/product-box-lux.png?v=3" alt="قهوة إشراقة" className="w-full h-full object-contain p-0.5" />
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-[10px] text-[#C8A876] font-bold">{offerLabels[selectedOfferQty]}</p>

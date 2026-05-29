@@ -41,7 +41,7 @@ export function ProductCard({ product }: Props) {
         >
           <div className="group-hover:scale-105 transition-transform duration-300 w-full h-full flex items-center justify-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/product-box-lux.png" alt={product.nameAr} className="h-48 w-auto object-contain drop-shadow-lg" />
+            <img src="/product-box-lux.png?v=3" alt={product.nameAr} className="h-48 w-auto object-contain drop-shadow-lg" />
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1" style={{ backgroundColor: product.colorAccent }} />
         </div>
