@@ -56,7 +56,7 @@ export function BundlePicker({ product }: Props) {
   const [selected, setSelected] = useState<OfferQty>(2);
   const [viewers, setViewers] = useState(0);
   const [stock, setStock] = useState(0);
-  const { addItem, openCart, setSelectedOffer } = useCartStore();
+  const { addItem, goToCheckout, setSelectedOffer } = useCartStore();
 
   /* Live viewers + stock scarcity — boosts urgency 20-30% */
   useEffect(() => {
@@ -96,7 +96,14 @@ export function BundlePicker({ product }: Props) {
       content_name: product.nameAr,
     });
 
-    openCart();
+    firePixelEvent("InitiateCheckout", {
+      event_id: crypto.randomUUID(),
+      value: selectedOffer.price,
+      currency: "SAR",
+      content_ids: [product.slug],
+    });
+
+    goToCheckout();
   };
 
   return (

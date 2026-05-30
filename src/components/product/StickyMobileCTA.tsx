@@ -13,7 +13,7 @@ type Props = {
 
 export function StickyMobileCTA({ product, selectedQty, selectedPrice }: Props) {
   const [visible, setVisible] = useState(false);
-  const { addItem, openCart } = useCartStore();
+  const { addItem, goToCheckout } = useCartStore();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,7 +39,13 @@ export function StickyMobileCTA({ product, selectedQty, selectedPrice }: Props) 
       currency: "SAR",
       content_ids: [product.slug],
     });
-    openCart();
+    firePixelEvent("InitiateCheckout", {
+      event_id: crypto.randomUUID(),
+      value: selectedPrice,
+      currency: "SAR",
+      content_ids: [product.slug],
+    });
+    goToCheckout();
   };
 
   if (!visible) return null;

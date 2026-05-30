@@ -22,7 +22,7 @@ export function MobileStickyCTA({ product }: Props) {
   const [unlocked, setUnlocked] = useState(false);
   const {
     addItem,
-    openCart,
+    goToCheckout,
     selectedOfferQty,
     selectedOfferPrice,
     selectedOfferOriginal,
@@ -60,7 +60,13 @@ export function MobileStickyCTA({ product }: Props) {
       content_ids: [product.slug],
       content_name: product.nameAr,
     });
-    openCart();
+    firePixelEvent("InitiateCheckout", {
+      event_id: crypto.randomUUID(),
+      value: selectedOfferPrice,
+      currency: "SAR",
+      content_ids: [product.slug],
+    });
+    goToCheckout();
   };
 
   return (
