@@ -33,12 +33,32 @@ import { getAttribution } from "@/lib/attribution";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://api.ishraqa.shop";
 
+/**
+ * Reduce any pasted Saudi mobile format (+966 / 00966 / 966 / 05 / 5,
+ * with spaces or dashes) down to the national "5XXXXXXXX" digits.
+ * Returns null when it is not a valid Saudi mobile number.
+ */
+function saudiNationalDigits(value: string): string | null {
+  let digits = value.replace(/\D/g, "");
+  if (digits.startsWith("00966")) digits = digits.slice(5);
+  else if (digits.startsWith("966")) digits = digits.slice(3);
+  else if (digits.startsWith("0")) digits = digits.slice(1);
+  if (digits.startsWith("0")) digits = digits.slice(1);
+  return /^5\d{8}$/.test(digits) ? digits : null;
+}
+
+/** Canonical local format sent to the backend: 05XXXXXXXX. */
+function toLocalSaudiPhone(value: string): string {
+  const national = saudiNationalDigits(value);
+  return national ? `0${national}` : value.trim();
+}
+
 const checkoutSchema = z.object({
   name: z.string().trim().min(2, "اكتبي الاسم الكامل"),
   phone: z
     .string()
     .trim()
-    .regex(/^05\d{8}$/, "اكتبي رقم جوال سعودي صحيح يبدأ بـ 05"),
+    .refine((v) => saudiNationalDigits(v) !== null, "اكتبي رقم جوال سعودي صحيح"),
 });
 
 type CheckoutForm = z.infer<typeof checkoutSchema>;
@@ -157,7 +177,7 @@ export function CartDrawer() {
 
     const payload = {
       event_id: purchaseEventId,
-      customer: { name: data.name, phone: data.phone },
+      customer: { name: data.name, phone: toLocalSaudiPhone(data.phone) },
       items: finalItems,
       totals: { subtotal_sar: subtotal, shipping_sar: 0, total_sar: totalFinal },
       attribution: {
