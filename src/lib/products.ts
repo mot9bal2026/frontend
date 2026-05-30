@@ -15,6 +15,7 @@ export type Product = {
   };
   image: string;
   colorAccent: string;
+  sku: string;
 };
 
 export const products: Product[] = [
@@ -29,6 +30,7 @@ export const products: Product[] = [
     price: { one: 199, two: 279, three: 349, bridgeUpsell: 99 },
     image: "/images/product-1.webp",
     colorAccent: "#E3998B",
+    sku: "ISHR-CLG-8842",
   },
 ];
 
