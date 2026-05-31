@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 
 const images = [
-  { src: "/before-after-hero.png?v=2", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للهالات" },
-  { src: "/before-after-wrinkles.png", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للتجاعيد" }
+  { src: "/before-after-wrinkles.png", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للتجاعيد" },
+  { src: "/before-after-results.png?v=3", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للهالات" }
 ];
 
 export function HeroImageSlider() {
@@ -52,16 +52,18 @@ export function HeroImageSlider() {
       </div>
 
       {/* Slider Indicators */}
-      <div className="absolute bottom-11 inset-x-0 flex justify-center gap-2 z-10">
-        {images.map((_, index) => (
-          <div
-            key={index}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              index === currentIndex ? "w-6 bg-white" : "w-1.5 bg-white/50"
-            }`}
-          />
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div className="absolute bottom-11 inset-x-0 flex justify-center gap-2 z-10">
+          {images.map((_, index) => (
+            <div
+              key={index}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === currentIndex ? "w-6 bg-white" : "w-1.5 bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
