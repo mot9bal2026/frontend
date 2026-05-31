@@ -231,3 +231,4 @@ export function BundlePicker({ product }: Props) {
     </div>
   );
 }
+

@@ -488,3 +488,4 @@ function formatShortDate(date: Date) {
   const days = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
   return `${days[date.getDay()]} ${date.getDate()}/${date.getMonth() + 1}`;
 }
+

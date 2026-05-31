@@ -49,3 +49,4 @@ export function TopAnnouncementBar() {
     </div>
   );
 }
+

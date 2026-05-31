@@ -67,3 +67,4 @@ export function StickyMobileCTA({ product, selectedQty, selectedPrice }: Props) 
     </div>
   );
 }
+

@@ -285,3 +285,4 @@ function BadgeCard({
     </div>
   );
 }
+

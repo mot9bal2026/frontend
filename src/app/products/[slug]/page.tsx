@@ -463,7 +463,7 @@ export default async function ProductPage({ params }: Props) {
               {/* Replace this img src with your real product flat-lay or ingredient photo */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/product-box-lux.png?v=3"
+                src="/product-box-lifestyle.png?v=1"
                 alt="قهوة إشراقة للكولاجين"
                 className="w-full h-full object-cover absolute inset-0"
                 style={{ minHeight: 480 }}
@@ -763,7 +763,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="flex items-center justify-between mb-4">
                 <p className="font-black text-white text-base flex items-center gap-2">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/product-box-lux.png?v=3" alt="إشراقة" className="w-8 h-8 object-contain rounded" />
+                  <img src="/product-box-lux.png?v=4" alt="إشراقة" className="w-8 h-8 object-contain rounded" />
                   قهوة كولاجين إشراقة للجمال
                 </p>
                 <span className="text-xs font-black bg-[#C8A876] text-[#3D2817] px-3 py-1 rounded-full">من 199 ريال</span>
@@ -844,7 +844,7 @@ export default async function ProductPage({ params }: Props) {
                   {i + 1}
                 </div>
                 <p className="text-[#3D2817] text-sm font-medium">{step}</p>
-                {i === 0 && <img src="/product-box-lux.png?v=3" alt="إشراقة" className="mr-auto w-8 h-8 object-contain flex-shrink-0" />}
+                {i === 0 && <img src="/product-box-lux.png?v=4" alt="إشراقة" className="mr-auto w-8 h-8 object-contain flex-shrink-0" />}
                 {i === 1 && <span className="mr-auto text-2xl">💧</span>}
                 {i === 2 && <span className="mr-auto text-2xl">🌅</span>}
                 {i === 3 && <span className="mr-auto text-2xl">✨</span>}

@@ -22,3 +22,4 @@ export function ViewContentFire({ productSlug, productNameAr, price }: Props) {
 
   return null;
 }
+

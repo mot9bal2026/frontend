@@ -138,3 +138,4 @@ function TrustChip({ icon, label }: { icon: React.ReactNode; label: string }) {
     </span>
   );
 }
+
