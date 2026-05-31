@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 
 const images = [
-  { src: "/before-after-wrinkles.png", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للتجاعيد" },
-  { src: "/before-after-results.png?v=3", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للهالات" }
+  { src: "/before-after-wrinkles.png", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للتجاعيد" }
 ];
 
 export function HeroImageSlider() {
@@ -20,21 +19,10 @@ export function HeroImageSlider() {
   return (
     <div className="relative overflow-hidden md:rounded-2xl md:shadow-xl w-full bg-[#E8D5C0]">
       <div className="relative w-full">
-        {/* We render the first image normally (relative) so the container gets the correct height based on the image's aspect ratio */}
         <img
           src={images[0].src}
           alt={images[0].alt}
-          className={`w-full h-auto block transition-opacity duration-1000 ${
-            currentIndex === 0 ? "opacity-100" : "opacity-0"
-          }`}
-        />
-        {/* The second image is absolute, overlapping the first one exactly */}
-        <img
-          src={images[1].src}
-          alt={images[1].alt}
-          className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
-            currentIndex === 1 ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
+          className="w-full h-auto block"
         />
       </div>
 
