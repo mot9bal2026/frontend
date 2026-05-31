@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { captureAttribution } from "@/lib/attribution";
+import { captureAttribution, trackVisit } from "@/lib/attribution";
 
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
 const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID ?? "";
@@ -57,6 +57,7 @@ function initPixels(): void {
 export function DeferredPixelLoader() {
   useEffect(() => {
     captureAttribution();
+    trackVisit();
 
     if (!ENABLE_PIXELS) return;
 

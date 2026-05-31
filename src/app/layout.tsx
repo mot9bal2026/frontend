@@ -6,6 +6,7 @@ import { TopAnnouncementBar } from "@/components/layout/TopAnnouncementBar";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
 import { LivePurchaseToast } from "@/components/marketing/LivePurchaseToast";
+import { ChromeGate } from "@/components/layout/ChromeGate";
 
 export const metadata: Metadata = {
   title: "إشراقة | قهوة الجمال — للهالات والتجاعيد · SFDA · حلال",
@@ -35,13 +36,24 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="bg-brand-white text-brand-ink font-arabic antialiased">
-        <TopAnnouncementBar />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <CartDrawer />
-        <LivePurchaseToast />
-        <DeferredPixelLoader />
+        <ChromeGate
+          header={
+            <>
+              <TopAnnouncementBar />
+              <Header />
+            </>
+          }
+          footer={
+            <>
+              <Footer />
+              <CartDrawer />
+              <LivePurchaseToast />
+              <DeferredPixelLoader />
+            </>
+          }
+        >
+          {children}
+        </ChromeGate>
       </body>
     </html>
   );
