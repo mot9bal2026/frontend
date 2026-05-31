@@ -411,7 +411,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
               {/* Photo replace hint (hidden on production — remove if unwanted) */}
               <div className="hidden absolute top-3 right-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
-                📸 قابل للاستبدال
+                
               </div>
             </div>
 
@@ -494,7 +494,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
               {/* Photo replace hint */}
               <div className="hidden absolute top-3 left-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
-                📸 قابل للاستبدال
+                
               </div>
             </div>
 
@@ -656,9 +656,9 @@ export default async function ProductPage({ params }: Props) {
                   </div>
                 </div>
               </div>
-              {/* Photo replace hint */}
-              <div className="absolute top-3 right-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
-                📸 قابل للاستبدال
+              {/* Result Guarantee badge */}
+              <div className="absolute top-3 right-3 bg-brand-apothecary/80 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1.5 rounded-full z-20 pointer-events-none">
+                ✨ النتائج مضمونة
               </div>
             </div>
 
