@@ -13,7 +13,7 @@ export function HeroImageSlider() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 15000);
+    }, 10000);
     return () => clearInterval(timer);
   }, []);
 
