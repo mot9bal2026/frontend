@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 const images = [
-  { src: "/before-after-results.png?v=2", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للهالات" },
+  { src: "/before-after-results.png?v=4", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للهالات" },
   { src: "/before-after-wrinkles.png", alt: "نتيجة قبل وبعد استخدام قهوة إشراقة للتجاعيد" }
 ];
 
