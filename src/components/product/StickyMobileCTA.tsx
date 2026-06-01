@@ -1,14 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { Product } from "@/lib/products";
+import type { Product, BundlePrice } from "@/lib/products";
 import { useCartStore } from "@/store/cart";
 import { firePixelEvent } from "@/components/tracking/PixelProvider";
 
 type Props = {
   product: Product;
   selectedQty: 1 | 2 | 3;
-  selectedPrice: 199 | 279 | 349;
+  selectedPrice: BundlePrice;
 };
 
 export function StickyMobileCTA({ product, selectedQty, selectedPrice }: Props) {

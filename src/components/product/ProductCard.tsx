@@ -70,9 +70,9 @@ export function ProductCard({ product }: Props) {
         {/* Offers mini */}
         <div className="grid grid-cols-3 gap-1.5 mb-3">
           {[
-            { qty: "1 علبة", price: "199" },
-            { qty: "علبتان", price: "279" },
-            { qty: "3 علب", price: "349" },
+            { qty: "1 علبة", price: String(product.price.one) },
+            { qty: "علبتان", price: String(product.price.two) },
+            { qty: "3 علب", price: String(product.price.three) },
           ].map((o) => (
             <div key={o.qty} className="bg-brand-cream rounded-lg px-1 py-1.5 text-center border border-brand-border min-w-0">
               <p className="text-[10px] text-brand-muted leading-tight truncate">{o.qty}</p>

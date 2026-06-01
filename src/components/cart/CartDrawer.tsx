@@ -335,7 +335,7 @@ function CartView({
                     <p className="font-bold text-[#3D2817] text-sm leading-snug">
                       {crossSellProduct.nameAr}
                     </p>
-                    <p className="text-[#C8A876] font-black font-inter mt-1">199 ريال</p>
+                    <p className="text-[#C8A876] font-black font-inter mt-1">{crossSellProduct.price.one} ريال</p>
                   </div>
                   <button
                     onClick={() => {
@@ -343,7 +343,7 @@ function CartView({
                         productSlug: crossSellProduct.slug,
                         productNameAr: crossSellProduct.nameAr,
                         offerQty: 1,
-                        unitBundlePrice: 199,
+                        unitBundlePrice: crossSellProduct.price.one,
                       });
                     }}
                     className="flex items-center gap-1 bg-[#3D2817] text-white px-3 py-2 rounded-lg text-sm hover:bg-[#5A3825] transition-colors active:scale-95"

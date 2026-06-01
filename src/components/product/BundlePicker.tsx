@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useCartStore } from "@/store/cart";
-import type { Product } from "@/lib/products";
+import type { Product, BundlePrice } from "@/lib/products";
 import { firePixelEvent } from "@/components/tracking/PixelProvider";
 import { ShieldCheck, Eye, Flame } from "lucide-react";
 
@@ -24,8 +24,8 @@ const offers: {
 }[] = [
   {
     qty: 1,
-    price: 199,
-    originalPrice: 199,
+    price: 129,
+    originalPrice: 129,
     savings: 0,
     label: "علبة واحدة",
     sublabel: "30 كيساً · شهر كامل",
@@ -33,9 +33,9 @@ const offers: {
   },
   {
     qty: 2,
-    price: 279,
-    originalPrice: 398,
-    savings: 119,
+    price: 199,
+    originalPrice: 258,
+    savings: 59,
     label: "علبتان · ثبّتي النتيجة",
     sublabel: "60 كيساً · شهران",
     badge: "الأكثر اختياراً",
@@ -43,12 +43,12 @@ const offers: {
   },
   {
     qty: 3,
-    price: 349,
-    originalPrice: 597,
-    savings: 248,
+    price: 239,
+    originalPrice: 387,
+    savings: 148,
     label: "ثلاث علب · النتيجة الكاملة",
     sublabel: "90 كيساً · ثلاثة أشهر",
-    badge: "الأوفر — وفّري 248 ريال",
+    badge: "الأوفر — وفّري 148 ريال",
   },
 ];
 
@@ -85,7 +85,7 @@ export function BundlePicker({ product }: Props) {
       productSlug: product.slug,
       productNameAr: product.nameAr,
       offerQty: selected,
-      unitBundlePrice: selectedOffer.price as 199 | 279 | 349,
+      unitBundlePrice: selectedOffer.price as BundlePrice,
     });
 
     firePixelEvent("AddToCart", {
@@ -151,8 +151,8 @@ export function BundlePicker({ product }: Props) {
                 setSelected(offer.qty);
                 setSelectedOffer(
                   offer.qty,
-                  offer.price as 199 | 279 | 349,
-                  offer.originalPrice as 199 | 398 | 597
+                  offer.price as BundlePrice,
+                  offer.originalPrice as 129 | 258 | 387
                 );
               }}
               className="sr-only"

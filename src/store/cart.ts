@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import type { ProductSlug } from "@/lib/products";
+import type { ProductSlug, BundlePrice } from "@/lib/products";
 
 export type CartItem = {
   productSlug: ProductSlug;
   productNameAr: string;
   offerQty: 1 | 2 | 3;
-  unitBundlePrice: 199 | 279 | 349;
+  unitBundlePrice: BundlePrice;
   isBridgeUpsell?: boolean;
 };
 
@@ -24,9 +24,9 @@ type CartState = {
   /* Tracks which offer the user has selected on the product page
      so the mobile sticky CTA can reflect the right price */
   selectedOfferQty: 1 | 2 | 3;
-  selectedOfferPrice: 199 | 279 | 349;
-  selectedOfferOriginal: 199 | 398 | 597;
-  setSelectedOffer: (qty: 1 | 2 | 3, price: 199 | 279 | 349, original: 199 | 398 | 597) => void;
+  selectedOfferPrice: BundlePrice;
+  selectedOfferOriginal: 129 | 258 | 387;
+  setSelectedOffer: (qty: 1 | 2 | 3, price: BundlePrice, original: 129 | 258 | 387) => void;
 
   addItem: (item: CartItem) => void;
   removeItem: (slug: ProductSlug, isBridgeUpsell?: boolean) => void;
@@ -47,8 +47,8 @@ export const useCartStore = create<CartState>((set, get) => ({
   view: "cart",
 
   selectedOfferQty: 2,
-  selectedOfferPrice: 279,
-  selectedOfferOriginal: 398,
+  selectedOfferPrice: 199,
+  selectedOfferOriginal: 258,
   setSelectedOffer: (qty, price, original) =>
     set({ selectedOfferQty: qty, selectedOfferPrice: price, selectedOfferOriginal: original }),
 
