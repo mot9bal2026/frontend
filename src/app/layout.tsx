@@ -7,6 +7,7 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
 import { LivePurchaseToast } from "@/components/marketing/LivePurchaseToast";
 import { ChromeGate } from "@/components/layout/ChromeGate";
+import { ENABLE_PIXELS, TIKTOK_PIXEL_ID, tiktokPixelBootstrap } from "@/lib/pixels";
 
 export const metadata: Metadata = {
   title: "إشراقة | قهوة الجمال — للهالات والتجاعيد · SFDA · حلال",
@@ -34,6 +35,12 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://analytics.tiktok.com" />
+        {ENABLE_PIXELS && TIKTOK_PIXEL_ID ? (
+          <script
+            dangerouslySetInnerHTML={{ __html: tiktokPixelBootstrap(TIKTOK_PIXEL_ID) }}
+          />
+        ) : null}
       </head>
       <body className="bg-brand-white text-brand-ink font-arabic antialiased">
         <ChromeGate
