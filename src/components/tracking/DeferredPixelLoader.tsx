@@ -2,11 +2,12 @@
 
 import { useEffect } from "react";
 import { captureAttribution, trackVisit } from "@/lib/attribution";
-
-const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
-const TIKTOK_PIXEL_ID = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID ?? "";
-const SNAP_PIXEL_ID = process.env.NEXT_PUBLIC_SNAP_PIXEL_ID ?? "";
-const ENABLE_PIXELS = process.env.NEXT_PUBLIC_ENABLE_PIXELS !== "false";
+import {
+  ENABLE_PIXELS,
+  META_PIXEL_ID,
+  SNAP_PIXEL_ID,
+  TIKTOK_PIXEL_ID,
+} from "@/lib/pixels";
 
 function injectInlineScript(code: string): void {
   const script = document.createElement("script");
