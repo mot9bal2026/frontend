@@ -24,6 +24,12 @@ import { products } from "@/lib/products";
 import { CartLineItem } from "./CartLineItem";
 import { firePixelEvent } from "@/components/tracking/PixelProvider";
 import { getAttribution } from "@/lib/attribution";
+import {
+  saudiNationalDigits,
+  toCountryDigits,
+  toE164SaudiPhone,
+  toLocalSaudiPhone,
+} from "@/lib/phone";
 
 /* ════════════════════════════════════════════════════════════════
    Single-panel cart + checkout drawer.
@@ -32,26 +38,6 @@ import { getAttribution } from "@/lib/attribution";
 ════════════════════════════════════════════════════════════════ */
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://api.ishraqa.shop";
-
-/**
- * Reduce any pasted Saudi mobile format (+966 / 00966 / 966 / 05 / 5,
- * with spaces or dashes) down to the national "5XXXXXXXX" digits.
- * Returns null when it is not a valid Saudi mobile number.
- */
-function saudiNationalDigits(value: string): string | null {
-  let digits = value.replace(/\D/g, "");
-  if (digits.startsWith("00966")) digits = digits.slice(5);
-  else if (digits.startsWith("966")) digits = digits.slice(3);
-  else if (digits.startsWith("0")) digits = digits.slice(1);
-  if (digits.startsWith("0")) digits = digits.slice(1);
-  return /^5\d{8}$/.test(digits) ? digits : null;
-}
-
-/** Canonical local format sent to the backend: 05XXXXXXXX. */
-function toLocalSaudiPhone(value: string): string {
-  const national = saudiNationalDigits(value);
-  return national ? `0${national}` : value.trim();
-}
 
 const checkoutSchema = z.object({
   name: z.string().trim().min(2, "اكتبي الاسم الكامل"),
@@ -151,7 +137,16 @@ export function CartDrawer() {
     const purchaseEventId = crypto.randomUUID();
     const attribution = getAttribution();
 
-    firePixelEvent("Lead", { event_id: leadEventId, value: total, currency: "SAR" });
+    const phoneCountryDigits = toCountryDigits(data.phone);
+    const phoneE164 = toE164SaudiPhone(data.phone);
+
+    firePixelEvent("Lead", {
+      event_id: leadEventId,
+      value: total,
+      currency: "SAR",
+      phone_country_digits: phoneCountryDigits,
+      phone_e164: phoneE164,
+    });
 
     const finalItems = items.map((i) => ({
       product_slug: i.productSlug as string,
@@ -166,8 +161,12 @@ export function CartDrawer() {
 
     firePixelEvent("Purchase", {
       event_id: purchaseEventId,
+      transaction_id: purchaseEventId,
       value: totalFinal,
       currency: "SAR",
+      phone_country_digits: phoneCountryDigits,
+      phone_e164: phoneE164,
+      content_ids: finalItems.map((i) => i.product_slug),
       contents: finalItems.map((i) => ({
         id: i.product_slug,
         quantity: i.qty,
