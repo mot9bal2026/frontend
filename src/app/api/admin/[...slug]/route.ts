@@ -91,7 +91,7 @@ function buildOrders(): DemoOrder[] {
     const created = new Date(now - daysAgo * 86400000 - Math.floor(rnd() * 86400000));
     const product = PRODUCTS[Math.floor(rnd() * PRODUCTS.length)];
     const qty = 1 + Math.floor(rnd() * 3);
-    const unit = qty === 1 ? 129 : qty === 2 ? 199 : 239;
+    const unit = qty === 1 ? 20 : qty === 2 ? 30 : 50;
     const upsell = rnd() < 0.3;
     const subtotal = unit;
     const total = subtotal + (upsell ? 99 : 0);
@@ -180,7 +180,7 @@ function serializeDetail(o: DemoOrder) {
     upsell: { offered: o.upsell_offered, accepted: o.upsell_accepted, value_sar: o.upsell_value_sar },
     items: o.upsell_accepted
       ? [
-          { product_slug: o.upsell_offered!, product_name_ar: PRODUCTS.find((p) => p.slug === o.upsell_offered)?.name ?? o.upsell_offered!, qty: o.total_sar > 129 ? 1 : 1, price_sar: o.subtotal_sar, is_bridge_upsell: false },
+          { product_slug: o.upsell_offered!, product_name_ar: PRODUCTS.find((p) => p.slug === o.upsell_offered)?.name ?? o.upsell_offered!, qty: 1, price_sar: o.subtotal_sar, is_bridge_upsell: false },
           { product_slug: o.upsell_offered!, product_name_ar: "علبة إضافية (ترقية)", qty: 1, price_sar: 99, is_bridge_upsell: true },
         ]
       : [{ product_slug: PRODUCTS[0].slug, product_name_ar: PRODUCTS[0].name, qty: 1, price_sar: o.subtotal_sar, is_bridge_upsell: false }],

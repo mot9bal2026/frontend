@@ -266,7 +266,7 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <div className="bg-white" dir="rtl">
-      <ViewContentFire productSlug={product.slug} productNameAr={product.nameAr} price={129} />
+      <ViewContentFire productSlug={product.slug} productNameAr={product.nameAr} price={product.price.one} />
       <MobileStickyCTA product={product} />
 
       {/* ══════════════════════════════════════════
@@ -319,7 +319,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
               <span className="text-sm text-[#5A4A3E] font-semibold">4.9 ({c.numbers[1].n} · مؤكدة)</span>
               <span className="text-brand-apothecary">·</span>
-              <span className="text-sm font-black text-[#3D2817]">من 129 ريال / علبة</span>
+              <span className="text-sm font-black text-[#3D2817]">من {product.price.one} ريال / علبة</span>
             </div>
 
             {/* H1 */}
@@ -618,7 +618,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="bg-[#3D2817] text-white rounded-2xl p-4 mt-5 text-center">
                 <p className="text-sm">
                   العلبة الأولى تعطيكِ النتيجة.{" "}
-                  <span className="font-black text-[#C8A876]">العلبتان والثلاث يثبّتانها</span> — ووفّري حتى 148 ريال.
+                  <span className="font-black text-[#C8A876]">العلبتان والثلاث يثبّتانها</span> — ووفّري حتى {product.price.one * 3 - product.price.three} ريال.
                 </p>
               </div>
               <p className="text-center text-xs text-[#7A6A5E] mt-3 opacity-70">* النتائج تتفاوت من شخص لآخر. المنتج لدعم مظهر البشرة وليس علاجاً طبياً.</p>
@@ -766,7 +766,7 @@ export default async function ProductPage({ params }: Props) {
                   <img src="/product-box-lux.png?v=4" alt="إشراقة" className="w-8 h-8 object-contain rounded" />
                   قهوة كولاجين إشراقة للجمال
                 </p>
-                <span className="text-xs font-black bg-[#C8A876] text-[#3D2817] px-3 py-1 rounded-full">من 129 ريال</span>
+                <span className="text-xs font-black bg-[#C8A876] text-[#3D2817] px-3 py-1 rounded-full">من {product.price.one} ريال</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {["تشتغل عبر الدم على كل الطبقات","بدون إبر أو مخاطر","دفع عند الاستلام","حلال 100٪ · SFDA","مكونات بجرعات موزونة","ضمان 14 يوم"].map(pro => (

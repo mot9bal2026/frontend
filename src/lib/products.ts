@@ -1,6 +1,6 @@
 export type ProductSlug = "wrinkles-dark-circles";
 
-export type BundlePrice = 129 | 199 | 239;
+export type BundlePrice = 20 | 30 | 50;
 
 export type Product = {
   slug: ProductSlug;
@@ -29,7 +29,7 @@ export const products: Product[] = [
     heroAr: "التجاعيد والهالات صارت تظهر قبل وقتها؟",
     subAr:
       "قهوة كولاجين يومية لدعم مظهر البشرة وتقليل مظهر التعب حول العين.",
-    price: { one: 129, two: 199, three: 239, bridgeUpsell: 99 },
+    price: { one: 20, two: 30, three: 50, bridgeUpsell: 99 },
     image: "/images/product-1.webp",
     colorAccent: "#E3998B",
     sku: "ISHR-CLG-8842",

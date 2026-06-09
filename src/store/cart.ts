@@ -25,8 +25,8 @@ type CartState = {
      so the mobile sticky CTA can reflect the right price */
   selectedOfferQty: 1 | 2 | 3;
   selectedOfferPrice: BundlePrice;
-  selectedOfferOriginal: 129 | 258 | 387;
-  setSelectedOffer: (qty: 1 | 2 | 3, price: BundlePrice, original: 129 | 258 | 387) => void;
+  selectedOfferOriginal: number;
+  setSelectedOffer: (qty: 1 | 2 | 3, price: BundlePrice, original: number) => void;
 
   addItem: (item: CartItem) => void;
   removeItem: (slug: ProductSlug, isBridgeUpsell?: boolean) => void;
@@ -47,8 +47,8 @@ export const useCartStore = create<CartState>((set, get) => ({
   view: "cart",
 
   selectedOfferQty: 2,
-  selectedOfferPrice: 199,
-  selectedOfferOriginal: 258,
+  selectedOfferPrice: 30,
+  selectedOfferOriginal: 40,
   setSelectedOffer: (qty, price, original) =>
     set({ selectedOfferQty: qty, selectedOfferPrice: price, selectedOfferOriginal: original }),
 

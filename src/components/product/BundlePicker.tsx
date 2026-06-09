@@ -12,7 +12,7 @@ type Props = {
 
 type OfferQty = 1 | 2 | 3;
 
-const offers: {
+type OfferCard = {
   qty: OfferQty;
   price: number;
   originalPrice: number;
@@ -21,38 +21,49 @@ const offers: {
   sublabel: string;
   badge?: string;
   highlight?: boolean;
-}[] = [
-  {
-    qty: 1,
-    price: 129,
-    originalPrice: 129,
-    savings: 0,
-    label: "علبة واحدة",
-    sublabel: "30 كيساً · شهر كامل",
-    badge: "نتيجة من العلبة الأولى",
-  },
-  {
-    qty: 2,
-    price: 199,
-    originalPrice: 258,
-    savings: 59,
-    label: "علبتان · ثبّتي النتيجة",
-    sublabel: "60 كيساً · شهران",
-    badge: "الأكثر اختياراً",
-    highlight: true,
-  },
-  {
-    qty: 3,
-    price: 239,
-    originalPrice: 387,
-    savings: 148,
-    label: "ثلاث علب · النتيجة الكاملة",
-    sublabel: "90 كيساً · ثلاثة أشهر",
-    badge: "الأوفر — وفّري 148 ريال",
-  },
-];
+};
+
+function buildOffers(product: Product): OfferCard[] {
+  const base = product.price.one;
+  const twoOriginal = base * 2;
+  const threeOriginal = base * 3;
+  const twoSavings = twoOriginal - product.price.two;
+  const threeSavings = threeOriginal - product.price.three;
+
+  return [
+    {
+      qty: 1,
+      price: product.price.one,
+      originalPrice: base,
+      savings: 0,
+      label: "علبة واحدة",
+      sublabel: "30 كيساً · شهر كامل",
+      badge: "نتيجة من العلبة الأولى",
+    },
+    {
+      qty: 2,
+      price: product.price.two,
+      originalPrice: twoOriginal,
+      savings: twoSavings,
+      label: "علبتان · ثبّتي النتيجة",
+      sublabel: "60 كيساً · شهران",
+      badge: "الأكثر اختياراً",
+      highlight: true,
+    },
+    {
+      qty: 3,
+      price: product.price.three,
+      originalPrice: threeOriginal,
+      savings: threeSavings,
+      label: "ثلاث علب · النتيجة الكاملة",
+      sublabel: "90 كيساً · ثلاثة أشهر",
+      badge: threeSavings > 0 ? `الأوفر — وفّري ${threeSavings} ريال` : undefined,
+    },
+  ];
+}
 
 export function BundlePicker({ product }: Props) {
+  const offers = buildOffers(product);
   const [selected, setSelected] = useState<OfferQty>(2);
   const [viewers, setViewers] = useState(0);
   const [stock, setStock] = useState(0);
@@ -149,11 +160,7 @@ export function BundlePicker({ product }: Props) {
               checked={selected === offer.qty}
               onChange={() => {
                 setSelected(offer.qty);
-                setSelectedOffer(
-                  offer.qty,
-                  offer.price as BundlePrice,
-                  offer.originalPrice as 129 | 258 | 387
-                );
+                setSelectedOffer(offer.qty, offer.price as BundlePrice, offer.originalPrice);
               }}
               className="sr-only"
             />
