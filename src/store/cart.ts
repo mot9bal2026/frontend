@@ -47,8 +47,8 @@ export const useCartStore = create<CartState>((set, get) => ({
   view: "cart",
 
   selectedOfferQty: 2,
-  selectedOfferPrice: 30,
-  selectedOfferOriginal: 40,
+  selectedOfferPrice: 199,
+  selectedOfferOriginal: 338,
   setSelectedOffer: (qty, price, original) =>
     set({ selectedOfferQty: qty, selectedOfferPrice: price, selectedOfferOriginal: original }),
 

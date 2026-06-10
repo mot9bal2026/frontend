@@ -91,7 +91,7 @@ function buildOrders(): DemoOrder[] {
     const created = new Date(now - daysAgo * 86400000 - Math.floor(rnd() * 86400000));
     const product = PRODUCTS[Math.floor(rnd() * PRODUCTS.length)];
     const qty = 1 + Math.floor(rnd() * 3);
-    const unit = qty === 1 ? 20 : qty === 2 ? 30 : 50;
+    const unit = qty === 1 ? 169 : qty === 2 ? 199 : 249;
     const upsell = rnd() < 0.3;
     const subtotal = unit;
     const total = subtotal + (upsell ? 99 : 0);
