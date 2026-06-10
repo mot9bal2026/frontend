@@ -49,28 +49,6 @@ const checkoutSchema = z.object({
 
 type CheckoutForm = z.infer<typeof checkoutSchema>;
 
-/** Customer-facing order number starting at 4500+ for social proof. */
-function generateDisplayOrderNumber(): string {
-  const year = new Date().getFullYear();
-  const BASE = 4500;
-
-  let nextSeq: number;
-  try {
-    const stored = Number(localStorage.getItem("__ish_order_seq") ?? "0");
-    nextSeq = Number.isFinite(stored) && stored > 0 ? stored + 1 : 0;
-    if (!nextSeq) {
-      const minutesSinceEpoch = Math.floor(Date.now() / 60000);
-      nextSeq = (minutesSinceEpoch % 600) + Math.floor(Math.random() * 12);
-    }
-    localStorage.setItem("__ish_order_seq", String(nextSeq));
-  } catch {
-    nextSeq = Math.floor(Math.random() * 600);
-  }
-
-  const num = BASE + nextSeq;
-  return `ISH-${year}-${String(num).padStart(6, "0")}`;
-}
-
 export function CartDrawer() {
   const {
     isOpen,
@@ -86,6 +64,7 @@ export function CartDrawer() {
 
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const total = getTotal();
   const slugsInCart = new Set(items.map((i) => i.productSlug));
@@ -129,10 +108,10 @@ export function CartDrawer() {
     goToCheckout();
   };
 
-  const onSubmit = (data: CheckoutForm): void => {
+  const onSubmit = async (data: CheckoutForm): Promise<void> => {
     setIsSubmitting(true);
+    setSubmitError("");
 
-    const orderNumber = generateDisplayOrderNumber();
     const leadEventId = crypto.randomUUID();
     const purchaseEventId = crypto.randomUUID();
     const attribution = getAttribution();
@@ -159,21 +138,6 @@ export function CartDrawer() {
     const subtotal = finalItems.reduce((s, i) => s + i.price_sar, 0);
     const totalFinal = subtotal;
 
-    firePixelEvent("Purchase", {
-      event_id: purchaseEventId,
-      transaction_id: purchaseEventId,
-      value: totalFinal,
-      currency: "SAR",
-      phone_country_digits: phoneCountryDigits,
-      phone_e164: phoneE164,
-      content_ids: finalItems.map((i) => i.product_slug),
-      contents: finalItems.map((i) => ({
-        id: i.product_slug,
-        quantity: i.qty,
-        item_price: i.price_sar,
-      })),
-    });
-
     const payload = {
       event_id: purchaseEventId,
       customer: { name: data.name, phone: toLocalSaudiPhone(data.phone) },
@@ -193,23 +157,49 @@ export function CartDrawer() {
         url: typeof window !== "undefined" ? window.location.href : "",
         user_agent: typeof navigator !== "undefined" ? navigator.userAgent : "",
       },
-      display_order_number: orderNumber,
     };
 
     try {
-      fetch(`${API_URL}/api/orders`, {
+      const res = await fetch(`${API_URL}/api/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-        keepalive: true,
-      }).catch(() => {});
-    } catch {
-      /* network must never block the UX */
-    }
+      });
 
-    /* Single atomic reset: closes drawer, clears cart, resets view */
-    closeAll();
-    router.push(`/thank-you?order=${orderNumber}&total=${totalFinal}`);
+      let body: { ok?: boolean; order_number?: string; message?: string } = {};
+      try {
+        body = await res.json();
+      } catch {
+        /* ignore parse errors */
+      }
+
+      if (!res.ok || !body.ok || !body.order_number) {
+        setSubmitError(body.message || "تعذّر إتمام الطلب. حاولي مرة أخرى أو تواصلي معنا.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      firePixelEvent("Purchase", {
+        event_id: purchaseEventId,
+        transaction_id: purchaseEventId,
+        value: totalFinal,
+        currency: "SAR",
+        phone_country_digits: phoneCountryDigits,
+        phone_e164: phoneE164,
+        content_ids: finalItems.map((i) => i.product_slug),
+        contents: finalItems.map((i) => ({
+          id: i.product_slug,
+          quantity: i.qty,
+          item_price: i.price_sar,
+        })),
+      });
+
+      closeAll();
+      router.push(`/thank-you?order=${body.order_number}&total=${totalFinal}`);
+    } catch {
+      setSubmitError("تعذّر الاتصال بالخادم. تحققي من الإنترنت وحاولي مرة أخرى.");
+      setIsSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -273,6 +263,7 @@ export function CartDrawer() {
             onSubmit={onSubmit}
             errors={errors}
             isSubmitting={isSubmitting}
+            submitError={submitError}
           />
         ) : (
           <CartView
@@ -411,9 +402,10 @@ type CheckoutViewProps = {
   total: number;
   register: UseFormRegister<CheckoutForm>;
   handleSubmit: UseFormHandleSubmit<CheckoutForm>;
-  onSubmit: (data: CheckoutForm) => void;
+  onSubmit: (data: CheckoutForm) => void | Promise<void>;
   errors: FieldErrors<CheckoutForm>;
   isSubmitting: boolean;
+  submitError?: string;
 };
 
 /** Translates offer qty into "boxes · duration" e.g. "2 علب · شهرين" */
@@ -432,6 +424,7 @@ function CheckoutView({
   onSubmit,
   errors,
   isSubmitting,
+  submitError,
 }: CheckoutViewProps) {
   return (
     <div className="flex-1 overflow-y-auto">
@@ -555,6 +548,12 @@ function CheckoutView({
             </p>
           )}
         </div>
+
+        {submitError && (
+          <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
+            {submitError}
+          </div>
+        )}
 
         {/* Submit — Apothecary Green, always clickable */}
         <button

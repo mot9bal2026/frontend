@@ -29,6 +29,7 @@ const FILTERABLE_STATUSES = [
 
 export function OrdersTab({ range, statuses, reloadKey, onAuthError }: Props) {
   const [status, setStatus] = useState("all");
+  const [includeTest, setIncludeTest] = useState(true);
   const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -41,7 +42,7 @@ export function OrdersTab({ range, statuses, reloadKey, onAuthError }: Props) {
   // reset to page 1 when filters/range change
   useEffect(() => {
     setPage(1);
-  }, [status, search, range.from, range.to]);
+  }, [status, search, includeTest, range.from, range.to]);
 
   // debounce search
   useEffect(() => {
@@ -53,7 +54,7 @@ export function OrdersTab({ range, statuses, reloadKey, onAuthError }: Props) {
     let cancelled = false;
     setLoading(true);
     setError("");
-    getOrders(range, { status, search, page, page_size: 20 })
+    getOrders(range, { status, search, page, page_size: 20, include_test: includeTest })
       .then((d) => !cancelled && setData(d))
       .catch((e) => {
         if (cancelled) return;
@@ -64,7 +65,7 @@ export function OrdersTab({ range, statuses, reloadKey, onAuthError }: Props) {
     return () => {
       cancelled = true;
     };
-  }, [range, status, search, page, reloadKey, localReload, onAuthError]);
+  }, [range, status, search, includeTest, page, reloadKey, localReload, onAuthError]);
 
   return (
     <div className="space-y-4">
@@ -85,14 +86,25 @@ export function OrdersTab({ range, statuses, reloadKey, onAuthError }: Props) {
             </button>
           ))}
         </div>
-        <div className="relative">
-          <Search size={15} className="absolute top-1/2 -translate-y-1/2 right-3 text-[#A89A8C]" />
-          <input
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-            placeholder="بحث بالاسم، الجوال، رقم الطلب…"
-            className="w-64 max-w-full rounded-xl border border-[#E6D8C8] bg-white pr-9 pl-3 py-2 text-sm focus:outline-none focus:border-[#0F3024]"
-          />
+        <div className="flex flex-wrap items-center gap-2">
+          <label className="flex items-center gap-2 text-[12px] text-[#5A4A3E] cursor-pointer select-none">
+            <input
+              type="checkbox"
+              checked={includeTest}
+              onChange={(e) => setIncludeTest(e.target.checked)}
+              className="rounded border-[#E6D8C8] text-[#0F3024] focus:ring-[#0F3024]"
+            />
+            إظهار الطلبات التجريبية
+          </label>
+          <div className="relative">
+            <Search size={15} className="absolute top-1/2 -translate-y-1/2 right-3 text-[#A89A8C]" />
+            <input
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              placeholder="بحث بالاسم، الجوال، رقم الطلب…"
+              className="w-64 max-w-full rounded-xl border border-[#E6D8C8] bg-white pr-9 pl-3 py-2 text-sm focus:outline-none focus:border-[#0F3024]"
+            />
+          </div>
         </div>
       </div>
 
@@ -149,7 +161,10 @@ export function OrdersTab({ range, statuses, reloadKey, onAuthError }: Props) {
               ) : (
                 <tr>
                   <td colSpan={8} className="text-center text-sm text-[#7A6A5E] py-12">
-                    لا توجد طلبات مطابقة
+                    <p>لا توجد طلبات مطابقة</p>
+                    <p className="text-[11px] text-[#A89A8C] mt-2 max-w-md mx-auto">
+                      جرّبي «اليوم» أو «آخر 30 يوم»، وتأكدي من تفعيل الطلبات التجريبية. الطلبات المحظورة تظهر في تبويب «محاولات محظورة».
+                    </p>
                   </td>
                 </tr>
               )}
@@ -185,7 +200,12 @@ export function OrdersTab({ range, statuses, reloadKey, onAuthError }: Props) {
               </button>
             ))
           ) : (
-            <p className="text-center text-sm text-[#7A6A5E] py-12">لا توجد طلبات مطابقة</p>
+            <div className="text-center text-sm text-[#7A6A5E] py-12 px-4">
+              <p>لا توجد طلبات مطابقة</p>
+              <p className="text-[11px] text-[#A89A8C] mt-2">
+                جرّبي «اليوم» أو «آخر 30 يوم»، وتأكدي من تفعيل الطلبات التجريبية.
+              </p>
+            </div>
           )}
         </div>
       </div>

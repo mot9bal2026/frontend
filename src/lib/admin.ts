@@ -205,13 +205,20 @@ export const getSources = (r: Range) =>
 
 export const getOrders = (
   r: Range,
-  opts: { status?: string; search?: string; page?: number; page_size?: number } = {}
+  opts: {
+    status?: string;
+    search?: string;
+    page?: number;
+    page_size?: number;
+    include_test?: boolean;
+  } = {}
 ) => {
   const p = new URLSearchParams({ from: r.from, to: r.to });
   if (opts.status && opts.status !== "all") p.set("status", opts.status);
   if (opts.search) p.set("search", opts.search);
   if (opts.page) p.set("page", String(opts.page));
   if (opts.page_size) p.set("page_size", String(opts.page_size));
+  if (opts.include_test) p.set("include_test", "true");
   return request<OrdersResponse>(`/api/admin/orders?${p.toString()}`);
 };
 
