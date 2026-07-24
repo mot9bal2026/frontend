@@ -392,13 +392,12 @@ export default async function ProductPage({ params }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
 
             {/* ── IMAGE SLOT 1 — real product photo ── */}
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#F0E8DC] to-[#E6D8C8] order-last md:order-first flex items-center justify-center p-8" style={{ minHeight: 520 }}>
-              <ProductPhoto
-                src="/awafi-oil-bottle-box.png"
+            <div className="relative rounded-2xl overflow-hidden bg-[#F5EDE3] order-last md:order-first" style={{ minHeight: 520 }}>
+              <img
+                src="/images/praying-man-pain-relief.png"
                 alt="زيت العوافي لآلام الركبة والظهر والمفاصل"
-                className="max-h-[420px] w-auto object-contain drop-shadow-2xl"
-                fallbackWrapperClassName="h-full w-full"
-                iconSize={100}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                loading="eager"
               />
               {/* Overlay badge */}
               <div className="absolute bottom-0 inset-x-0 bg-[#0F3024]/85 px-5 py-4 z-10">
@@ -454,14 +453,13 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
-            {/* ── IMAGE SLOT 2 — real product photo ── */}
-            <div className="relative rounded-2xl overflow-hidden border border-[#E6D8C8] shadow-lg bg-gradient-to-br from-[#FBF7F0] to-[#E6D8C8] flex items-center justify-center p-8" style={{ minHeight: 480 }}>
-              <ProductPhoto
-                src="/awafi-oil-bottle-box.png"
+            {/* ── IMAGE SLOT 2 — premium product photo ── */}
+            <div className="relative rounded-2xl overflow-hidden border border-[#E6D8C8] shadow-lg bg-[#F5EDE3]" style={{ minHeight: 520 }}>
+              <img
+                src="/images/product-1.png"
                 alt="زيت العوافي من الأعشاب الطبيعية"
-                className="max-h-[380px] w-auto object-contain drop-shadow-xl relative z-10"
-                fallbackWrapperClassName="h-full w-full relative z-10"
-                iconSize={90}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                loading="eager"
               />
               <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
                 <span className="bg-[#0F3024]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
@@ -474,8 +472,7 @@ export default async function ProductPage({ params }: Props) {
                   منثول وكافور
                 </span>
               </div>
-              {/* Free-of section at bottom */}
-              <div className="absolute bottom-0 inset-x-0 bg-white border-t border-[#E6D8C8] px-4 py-3 z-10">
+              <div className="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-sm border-t border-[#E6D8C8] px-4 py-3 z-10">
                 <p className="text-xs font-bold text-[#0F3024] mb-2">ما لن تجده في عبوتك:</p>
                 <div className="flex flex-wrap gap-1.5">
                   {c.freeOf.map(f => (
@@ -484,10 +481,6 @@ export default async function ProductPage({ params }: Props) {
                     </span>
                   ))}
                 </div>
-              </div>
-              {/* Photo replace hint */}
-              <div className="hidden absolute top-3 left-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
-                
               </div>
             </div>
 
@@ -617,14 +610,13 @@ export default async function ProductPage({ params }: Props) {
               <p className="text-center text-xs text-[#7A6A5E] mt-3 opacity-70">* النتائج تتفاوت من شخص لآخر. المنتج لدعم وعلاج الألم موضعياً وليس بديلاً عن استشارة الطبيب في الحالات الشديدة.</p>
             </div>
 
-            {/* ── IMAGE SLOT 3 — real product photo ── */}
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#FBF7F0] to-[#E6D8C8] flex items-center justify-center p-6" style={{ minHeight: 420 }}>
-              <ProductPhoto
-                src="/awafi-oil-bottle-box.png"
+            {/* ── IMAGE SLOT 3 — lifestyle photo ── */}
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#FBF7F0] to-[#E6D8C8] flex items-center justify-center" style={{ minHeight: 420 }}>
+              <img
+                src="/images/lifestyle-couple.png"
                 alt="زيت العوافي بعد 30 يوم من الاستخدام"
-                className="max-h-[300px] w-auto object-contain drop-shadow-xl relative z-[1]"
-                fallbackWrapperClassName="h-full w-full relative z-[1]"
-                iconSize={80}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                loading="eager"
               />
               {/* Result badges */}
               <div className="absolute inset-0 flex flex-col justify-end p-5 z-10">
