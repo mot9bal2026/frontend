@@ -320,7 +320,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
               <span className="text-sm text-[#5A4A3E] font-semibold">4.9 ({c.numbers[1].n} · مؤكدة)</span>
               <span className="text-brand-apothecary">·</span>
-              <span className="text-sm font-black text-[#0F3024]">من {product.price.one} ريال / عبوة</span>
+              <span className="text-sm font-black text-[#0F3024]">من {product.price.three} ريال / ستة عبوة</span>
             </div>
 
             {/* H1 */}
