@@ -1,7 +1,5 @@
-"use client";
-
-import { PainStoryPanels } from "./PainStoryPanels";
+import { HeroMedia } from "./HeroMedia";
 
 export function HeroImageSlider() {
-  return <PainStoryPanels className="md:rounded-2xl md:shadow-xl" />;
+  return <HeroMedia className="md:rounded-2xl md:shadow-xl" />;
 }

@@ -7,6 +7,7 @@ import {
   ShoppingBag,
   Radio,
   ShieldAlert,
+  Megaphone,
   LogOut,
   Loader2,
 } from "lucide-react";
@@ -17,14 +18,16 @@ import { OverviewTab } from "@/components/admin/OverviewTab";
 import { OrdersTab } from "@/components/admin/OrdersTab";
 import { SourcesTab } from "@/components/admin/SourcesTab";
 import { BlockedTab } from "@/components/admin/BlockedTab";
+import { AdModeTab } from "@/components/admin/AdModeTab";
 
-type TabKey = "overview" | "orders" | "sources" | "blocked";
+type TabKey = "overview" | "orders" | "sources" | "blocked" | "ad-mode";
 
 const TABS: { key: TabKey; label: string; icon: React.ReactNode }[] = [
   { key: "overview", label: "نظرة عامة", icon: <LayoutDashboard size={16} /> },
   { key: "orders", label: "الطلبات", icon: <ShoppingBag size={16} /> },
   { key: "sources", label: "المصادر", icon: <Radio size={16} /> },
   { key: "blocked", label: "محاولات محظورة", icon: <ShieldAlert size={16} /> },
+  { key: "ad-mode", label: "وضع الإعلان", icon: <Megaphone size={16} /> },
 ];
 
 export default function AdminDashboardPage() {
@@ -143,6 +146,7 @@ export default function AdminDashboardPage() {
         {tab === "blocked" && (
           <BlockedTab range={range} reloadKey={reloadKey} onAuthError={goLogin} />
         )}
+        {tab === "ad-mode" && <AdModeTab />}
       </main>
     </div>
   );

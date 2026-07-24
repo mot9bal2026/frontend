@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, Award, Truck, Sparkles } from "lucide-react";
-import { IshraqaLogo } from "./IshraqaLogo";
 
 export function Footer() {
   return (
@@ -11,26 +11,24 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <div className="flex items-center justify-center">
-                <IshraqaLogo iconClassName="h-11 w-11" />
+                <Image
+                  src="/awafi-logo-icon.png"
+                  alt="زيت العوافي"
+                  width={44}
+                  height={44}
+                  className="h-11 w-11 object-contain"
+                />
               </div>
-              <div>
-                <p className="font-black text-brand-cream text-base leading-tight">
-                  إشراقة للجمال
-                </p>
-                <p
-                  className="text-[10px] text-brand-gold font-semibold tracking-[0.18em] uppercase leading-tight mt-0.5"
-                  style={{ fontFamily: "Inter, sans-serif" }}
-                >
-                  ISHRAQA · COLLAGEN COFFEE
-                </p>
+              <div className="flex flex-col leading-tight">
+                <span className="font-black text-brand-gold text-base">زيت العوافي</span>
+                <span className="text-[11px] tracking-wide text-brand-cream/70">Awafi Oil for Joint Pain</span>
               </div>
             </div>
 
             <p className="text-[13px] text-brand-cream/80 leading-relaxed mb-4">
-              <span className="font-bold text-brand-gold">إشراقة للجمال</span> —
-              قهوة كولاجين سعودية فاخرة للجمال من الداخل، بمكونات واضحة وطقس يومي
-              بسيط، مصمّمة لدعم <span className="font-semibold text-brand-cream">مظهر
-              أكثر شباباً وإشراقاً</span> بدون إبر أو مكياج ثقيل.
+              <span className="font-bold text-brand-gold">زيت العوافي</span> —
+              زيت عشبي طبيعي لتخفيف آلام المفاصل والركبة والظهر، بمكونات طبيعية نقية وتأثير سريع، مصمّم لدعم <span className="font-semibold text-brand-cream">حركة
+              أكثر حرية وراحة</span> بدون مسكنات كيميائية.
             </p>
 
             {/* Trust chips */}
@@ -46,7 +44,7 @@ export function Footer() {
           <div>
             <h4
               className="font-bold text-brand-gold mb-4 text-[11px] uppercase tracking-[0.2em]"
-              style={{ fontFamily: "Inter, sans-serif" }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               المتجر
             </h4>
@@ -54,7 +52,7 @@ export function Footer() {
               {[
                 { href: "/", label: "الرئيسية" },
                 { href: "/collection", label: "المنتجات" },
-                { href: "/about", label: "قصة إشراقة" },
+                { href: "/about", label: "قصة عوافي" },
                 { href: "/contact", label: "تواصل معنا" },
               ].map((link) => (
                 <li key={link.href}>
@@ -73,7 +71,7 @@ export function Footer() {
           <div>
             <h4
               className="font-bold text-brand-gold mb-4 text-[11px] uppercase tracking-[0.2em]"
-              style={{ fontFamily: "Inter, sans-serif" }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               المعلومات
             </h4>
@@ -103,7 +101,7 @@ export function Footer() {
                 href="/contact"
                 className="text-brand-cream hover:text-brand-gold transition-colors"
               >
-                info@ishraqa.shop
+                info@awafi.shop
               </Link>
             </div>
           </div>
@@ -115,10 +113,10 @@ export function Footer() {
             className="text-center text-brand-gold text-[12.5px] tracking-[0.05em] italic mb-2"
             style={{ fontFamily: "Tajawal, sans-serif" }}
           >
-            «الإشراقة تبدأ بفنجان واحد.»
+            «الراحة تبدأ بلمسة.»
           </p>
           <p className="text-center text-[10.5px] text-brand-cream/55">
-            © 2026 إشراقة للجمال · ISHRAQA Collagen Coffee · المملكة العربية السعودية
+            © 2026 عوافي · AWAFI Pain Relief Oil · المملكة العربية السعودية
           </p>
         </div>
       </div>

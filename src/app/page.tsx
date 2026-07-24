@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PainStoryPanels } from "@/components/product/PainStoryPanels";
+import { HeroMedia } from "@/components/product/HeroMedia";
 import {
   Star,
   ShieldCheck,
@@ -140,7 +140,7 @@ export default function HomePage() {
 
             {/* Hero visual — two honest panels, not a fake before/after slider */}
             <div className="order-1 md:order-2 w-full max-w-md mx-auto">
-              <PainStoryPanels />
+              <HeroMedia />
             </div>
           </div>
         </div>
@@ -176,7 +176,7 @@ export default function HomePage() {
         <div className="max-w-content mx-auto">
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-               style={{ fontFamily: "Inter, sans-serif" }}>
+               style={{ fontFamily: "var(--font-inter), sans-serif" }}>
               التزام العوافي
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
@@ -230,7 +230,7 @@ export default function HomePage() {
         <div className="max-w-content mx-auto">
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-               style={{ fontFamily: "Inter, sans-serif" }}>
+               style={{ fontFamily: "var(--font-inter), sans-serif" }}>
               المنتج
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
@@ -255,7 +255,7 @@ export default function HomePage() {
         <div className="max-w-content mx-auto">
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-               style={{ fontFamily: "Inter, sans-serif" }}>
+               style={{ fontFamily: "var(--font-inter), sans-serif" }}>
               مشاكل تعرفها
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown">
@@ -300,7 +300,7 @@ export default function HomePage() {
         <div className="max-w-content mx-auto">
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-               style={{ fontFamily: "Inter, sans-serif" }}>
+               style={{ fontFamily: "var(--font-inter), sans-serif" }}>
               التركيبة الطبيعية
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
@@ -366,7 +366,7 @@ export default function HomePage() {
             />
             <div className="relative">
               <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-4"
-                 style={{ fontFamily: "Inter, sans-serif" }}>
+                 style={{ fontFamily: "var(--font-inter), sans-serif" }}>
                 رأي طبيب · استشاري عظام
               </p>
               <blockquote className="text-brand-cream text-[15.5px] md:text-[17px] font-medium italic leading-relaxed mb-5">
@@ -392,7 +392,7 @@ export default function HomePage() {
         <div className="max-w-content mx-auto">
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-               style={{ fontFamily: "Inter, sans-serif" }}>
+               style={{ fontFamily: "var(--font-inter), sans-serif" }}>
               تجارب حقيقية
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
@@ -438,7 +438,7 @@ export default function HomePage() {
         <div className="max-w-content mx-auto">
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-               style={{ fontFamily: "Inter, sans-serif" }}>
+               style={{ fontFamily: "var(--font-inter), sans-serif" }}>
               خطوة بخطوة
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown">
@@ -506,7 +506,7 @@ export default function HomePage() {
         <div className="max-w-content mx-auto max-w-2xl">
           <div className="text-center mb-8">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-               style={{ fontFamily: "Inter, sans-serif" }}>
+               style={{ fontFamily: "var(--font-inter), sans-serif" }}>
               أسئلة شائعة
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown">
@@ -543,7 +543,7 @@ export default function HomePage() {
 
         <div className="relative max-w-content mx-auto text-center">
           <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3"
-             style={{ fontFamily: "Inter, sans-serif" }}>
+             style={{ fontFamily: "var(--font-inter), sans-serif" }}>
             ابدأ اليوم
           </p>
           <h2 className="text-[1.8rem] md:text-[2.2rem] font-black mb-3 leading-tight">

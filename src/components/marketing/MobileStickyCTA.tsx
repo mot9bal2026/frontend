@@ -86,7 +86,7 @@ export function MobileStickyCTA({ product }: Props) {
         <div className="flex items-center gap-2.5 px-3 py-2.5 sm:px-4 sm:py-3">
           <div className="flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-[#FBF7F0] to-[#E6D8C8] flex items-center justify-center overflow-hidden shadow border-2 border-[#C8A876]/40">
             <ProductPhoto
-              src="/awafi-oil-bottle.png"
+              src="/awafi-oil-bottle.webp"
               alt={product.nameAr}
               className="w-full h-full object-contain p-0.5"
               fallbackWrapperClassName="w-full h-full"

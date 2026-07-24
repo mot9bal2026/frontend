@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 type Props = {
@@ -10,6 +11,9 @@ type Props = {
   /** Extra classes applied only to the icon fallback wrapper */
   fallbackWrapperClassName?: string;
   iconSize?: number;
+  /** Mark as the largest-contentful-paint candidate to skip lazy-loading */
+  priority?: boolean;
+  sizes?: string;
 };
 
 /**
@@ -23,6 +27,8 @@ export function ProductPhoto({
   className,
   fallbackWrapperClassName,
   iconSize = 40,
+  priority = false,
+  sizes = "(min-width: 768px) 400px, 90vw",
 }: Props) {
   const [failed, setFailed] = useState(false);
 
@@ -38,14 +44,30 @@ export function ProductPhoto({
     );
   }
 
+  // `className` historically carried both sizing (w-8 h-8, h-full w-full…)
+  // and object-fit for a plain <img>. With next/image's `fill` mode, the
+  // Image element itself must stay position:absolute/inset-0, so sizing
+  // classes move to a relatively-positioned wrapper while only the
+  // object-fit class stays on the <Image>.
+  const objectFitMatch = className?.match(/object-(cover|contain|fill|none|scale-down)/);
+  const objectFitClass = objectFitMatch?.[0] ?? "object-cover";
+
   return (
-    <img
-      src={src}
-      alt={alt}
-      className={className}
-      loading="lazy"
-      onError={() => setFailed(true)}
-    />
+    <div className={`relative overflow-hidden ${className ?? ""}`}>
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        priority={priority}
+        loading={priority ? "eager" : "lazy"}
+        quality={75}
+        // Already-optimized WebP masters skip the image optimizer hop.
+        unoptimized={src.endsWith(".webp") || src.endsWith(".avif")}
+        className={objectFitClass}
+        onError={() => setFailed(true)}
+      />
+    </div>
   );
 }
 

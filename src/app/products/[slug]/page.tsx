@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Star,
   Shield,
@@ -393,11 +394,15 @@ export default async function ProductPage({ params }: Props) {
 
             {/* ── IMAGE SLOT 1 — real product photo ── */}
             <div className="relative rounded-2xl overflow-hidden bg-[#F5EDE3] order-last md:order-first" style={{ minHeight: 520 }}>
-              <img
-                src="/images/praying-man-pain-relief.png"
+              <Image
+                src="/images/praying-man-pain-relief.webp"
                 alt="زيت العوافي لآلام الركبة والظهر والمفاصل"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-                loading="eager"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                quality={75}
+                loading="lazy"
+                unoptimized
+                className="object-cover object-center"
               />
               {/* Overlay badge */}
               <div className="absolute bottom-0 inset-x-0 bg-[#0F3024]/85 px-5 py-4 z-10">
@@ -447,7 +452,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>التركيبة الطبيعية</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>التركيبة الطبيعية</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">مكوّن من 30 عشبة طبية من قلب الغابات الآسيوية</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">لسنا نبيع تركيبة كيميائية. نبيع خلطة أعشاب طبيعية تصل لمكان الألم: الزنجبيل والكركم للالتهاب، المنثول للراحة الفورية، وأعشاب الغابات لدعم المفاصل.</p>
           </div>
@@ -455,11 +460,15 @@ export default async function ProductPage({ params }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
             {/* ── IMAGE SLOT 2 — premium product photo ── */}
             <div className="relative rounded-2xl overflow-hidden border border-[#E6D8C8] shadow-lg bg-[#F5EDE3]" style={{ minHeight: 520 }}>
-              <img
-                src="/images/product-1.png"
+              <Image
+                src="/images/product-1.webp"
                 alt="زيت العوافي من الأعشاب الطبيعية"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-                loading="eager"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                quality={75}
+                loading="lazy"
+                unoptimized
+                className="object-cover object-center"
               />
               <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
                 <span className="bg-[#0F3024]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
@@ -522,7 +531,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>ماذا قال الدكتور؟</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>ماذا قال الدكتور؟</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">لماذا يوصي به استشاري العظام والمفاصل؟</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">لأنه ليس مجرد زيت. هو خلطة أعشاب طبيعية بتركيز واضح، مصادق عليها، وأثبتت نتائج مع أكثر من 1500 حالة في شهر واحد.</p>
           </div>
@@ -546,7 +555,7 @@ export default async function ProductPage({ params }: Props) {
           <div className="max-w-2xl mx-auto bg-gradient-to-br from-brand-brown to-brand-coffee text-white rounded-3xl p-7 md:p-9 text-center shadow-xl relative overflow-hidden mb-8">
             <Quote size={56} className="absolute top-4 right-4 text-brand-gold/20" strokeWidth={1.5} />
             <div className="relative">
-              <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "Inter, sans-serif" }}>
+              <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "var(--font-inter), sans-serif" }}>
                 رأي طبيب · استشاري عظام
               </p>
               <blockquote className="text-brand-cream text-[14.5px] md:text-[16px] font-medium italic leading-relaxed mb-4">
@@ -574,7 +583,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>النتائج أسبوعاً بأسبوع</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>النتائج أسبوعاً بأسبوع</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">كيف يبدأ الفرق خلال أول 30 يوم؟</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">ليس مسكّناً مؤقتاً. هو تحسّن تدريجي تلاحظه في حركتك، صلاتك، ونومك.</p>
           </div>
@@ -612,11 +621,15 @@ export default async function ProductPage({ params }: Props) {
 
             {/* ── IMAGE SLOT 3 — lifestyle photo ── */}
             <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#FBF7F0] to-[#E6D8C8] flex items-center justify-center" style={{ minHeight: 420 }}>
-              <img
-                src="/images/lifestyle-couple.png"
+              <Image
+                src="/images/lifestyle-couple.webp"
                 alt="زيت العوافي بعد 30 يوم من الاستخدام"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-                loading="eager"
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                quality={75}
+                loading="lazy"
+                unoptimized
+                className="object-cover object-center"
               />
               {/* Result badges */}
               <div className="absolute inset-0 flex flex-col justify-end p-5 z-10">
@@ -654,7 +667,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[1100px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>لمن هذا الزيت؟</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>لمن هذا الزيت؟</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">متى تبدأ زيت العوافي؟</h2>
             <p className="text-[#5A4A3E] text-sm mt-1.5">الحالات التي تستحق أن تبدأ استخدامك من اليوم</p>
           </div>
@@ -681,7 +694,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>تجارب حقيقية</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>تجارب حقيقية</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">اسمعوا تجارب الناس مع {c.numbers[1].n} حالة</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">مشتريات مؤكدة من مدن مختلفة — كيف تخلّصوا من معاناتهم مع ألم الركبة والظهر والمفاصل.</p>
           </div>
@@ -718,7 +731,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>المقارنة</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>المقارنة</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">قارن — وقرّر بنفسك</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">كل بديل جرّبته من قبل، ولماذا خذلك. وكيف يحلّه زيت العوافي بشكل مختلف.</p>
           </div>
@@ -745,7 +758,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="flex items-center justify-between mb-4">
                 <p className="font-black text-white text-base flex items-center gap-2">
                   <ProductPhoto
-                    src="/awafi-oil-bottle.png"
+                    src="/awafi-oil-bottle.webp"
                     alt="زيت العوافي"
                     className="w-8 h-8 object-contain rounded"
                     fallbackWrapperClassName="w-8 h-8"
@@ -778,7 +791,7 @@ export default async function ProductPage({ params }: Props) {
             <ShieldCheck size={36} className="text-brand-apothecary relative z-10" />
           </div>
 
-          <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الضمان الكامل</p>
+          <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>الضمان الكامل</p>
           <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024] mb-3">14 يوم — أو تُرجَع لك فلوسك. بدون أسئلة.</h2>
           <p className="text-[#5A4A3E] mb-6 md:mb-8 leading-relaxed text-sm max-w-lg mx-auto">
             بعد التوصيل بالمنتج لباب البيت وتجربته، إن لم يعجبك لأي سبب من الأسباب فقط تواصل معنا وسوف نرجّع لك المال الذي أنفقته — وبدون أي أسئلة. وأصلاً ما تدفع إلا عند الاستلام.
@@ -808,7 +821,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[800px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>طريقة الاستخدام</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>طريقة الاستخدام</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">طريقة الاستعمال سهلة جداً</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">بخّ · دلّك · ارتاح · بدون حبوب ولا التزام معقّد.</p>
           </div>
@@ -833,7 +846,7 @@ export default async function ProductPage({ params }: Props) {
                 <p className="text-[#0F3024] text-sm font-medium">{step}</p>
                 {i === 0 && (
                   <ProductPhoto
-                    src="/awafi-oil-bottle.png"
+                    src="/awafi-oil-bottle.webp"
                     alt="زيت العوافي"
                     className="mr-auto w-8 h-8 object-contain flex-shrink-0"
                     fallbackWrapperClassName="mr-auto w-8 h-8 flex-shrink-0"
@@ -855,7 +868,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[800px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>التوصيل</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>التوصيل</p>
             <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">كيف يوصلك طلبك — بكل بساطة</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">بدون دفع أونلاين، بدون التزام، بدون مفاجآت.</p>
           </div>
@@ -898,7 +911,7 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[700px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الأسئلة الشائعة</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>الأسئلة الشائعة</p>
             <h2 className="text-[1.5rem] md:text-2xl font-black text-[#0F3024]">قبل ما تطلب — كل اللي تحتاج معرفته</h2>
           </div>
           <div className="space-y-2">
@@ -923,7 +936,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-apothecary/15 rounded-full blur-3xl" />
 
         <div className="relative max-w-[600px] mx-auto text-center">
-          <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "Inter, sans-serif" }}>
+          <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "var(--font-inter), sans-serif" }}>
             قرارك اليوم
           </p>
           <h2 className="text-[1.6rem] md:text-3xl font-black text-white mb-3 leading-tight">

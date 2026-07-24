@@ -65,7 +65,7 @@ export default function AboutPage() {
           <div className="text-center mb-10">
             <p
               className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-              style={{ fontFamily: "Inter, sans-serif" }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               ركائزنا الستّ
             </p>
@@ -155,7 +155,7 @@ export default function AboutPage() {
         <div className="relative max-w-content mx-auto max-w-2xl text-center">
           <p
             className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3"
-            style={{ fontFamily: "Inter, sans-serif" }}
+            style={{ fontFamily: "var(--font-inter), sans-serif" }}
           >
             انضم للعائلة
           </p>
@@ -199,7 +199,7 @@ function StorySection({
     <div className="bg-brand-cream/60 border border-brand-border rounded-3xl p-6 md:p-8">
       <p
         className="text-[10.5px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-        style={{ fontFamily: "Inter, sans-serif" }}
+        style={{ fontFamily: "var(--font-inter), sans-serif" }}
       >
         {label}
       </p>

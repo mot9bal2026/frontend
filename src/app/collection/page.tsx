@@ -81,7 +81,7 @@ export default function CollectionPage() {
           <div className="text-center mb-9">
             <p
               className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-              style={{ fontFamily: "Inter, sans-serif" }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               لماذا زيت العوافي؟
             </p>
@@ -130,7 +130,7 @@ export default function CollectionPage() {
           <div className="text-center mb-9">
             <p
               className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-              style={{ fontFamily: "Inter, sans-serif" }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               بدون دفع أونلاين
             </p>
@@ -196,7 +196,7 @@ export default function CollectionPage() {
           <div className="text-center mb-8">
             <p
               className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
-              style={{ fontFamily: "Inter, sans-serif" }}
+              style={{ fontFamily: "var(--font-inter), sans-serif" }}
             >
               قبل ما تطلب
             </p>

@@ -37,16 +37,17 @@ export function ProductCard({ product }: Props) {
       {/* Badge */}
       <div className="relative">
         <div
-          className="h-56 flex items-center justify-center relative overflow-hidden"
+          className="h-56 relative overflow-hidden"
           style={{ background: "linear-gradient(135deg, #FAF6F0, #EDE0CE)" }}
         >
-          <div className="group-hover:scale-105 transition-transform duration-300 w-full h-full flex items-center justify-center">
+          <div className="group-hover:scale-105 transition-transform duration-300 w-full h-full">
             <ProductPhoto
-              src="/awafi-oil-bottle.png"
+              src="/awafi-oil-bottle.webp"
               alt={product.nameAr}
-              className="h-48 w-auto object-contain drop-shadow-lg"
-              fallbackWrapperClassName="h-48"
+              className="h-full w-full object-cover"
+              fallbackWrapperClassName="h-full flex items-center justify-center"
               iconSize={70}
+              sizes="(min-width: 640px) 280px, 90vw"
             />
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1" style={{ backgroundColor: product.colorAccent }} />

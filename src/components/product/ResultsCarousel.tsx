@@ -2,44 +2,56 @@
 
 import { useEffect, useState } from "react";
 
-/**
- * Auto-playing image carousel — one frame, one image at a time.
- * No buttons, no dots. Fixed size/position (square-ish, mobile-friendly);
- * only the image inside swaps every 3s, looping forever.
- */
 const SLIDES = [
-  "/results-carousel/slide-1.png",
-  "/results-carousel/slide-2.png",
-  "/results-carousel/slide-3.png",
-];
+  "/results-carousel/slide-1.webp",
+  "/results-carousel/slide-2.webp",
+  "/results-carousel/slide-3.webp",
+] as const;
 
-const INTERVAL_MS = 3000;
-
-export function ResultsCarousel({ className = "" }: { className?: string }) {
+/**
+ * Client rotator only — the LCP frame is server-rendered in HeroMedia
+ * so first paint never waits on this island.
+ */
+export function ResultsCarouselRotator() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => {
+    const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % SLIDES.length);
-    }, INTERVAL_MS);
-    return () => clearInterval(id);
+    }, 3000);
+    return () => window.clearInterval(id);
   }, []);
 
+  // Keep slide 0 as the SSR LCP img; only overlay later slides.
+  if (index === 0) return null;
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={SLIDES[index]}
+      alt=""
+      width={900}
+      height={900}
+      className="absolute inset-0 h-full w-full object-cover"
+    />
+  );
+}
+
+/** @deprecated use HeroMedia — kept for import compatibility */
+export function ResultsCarousel({ className = "" }: { className?: string }) {
   return (
     <div
       className={`relative w-full aspect-square overflow-hidden rounded-2xl border border-brand-border shadow-md ${className}`}
     >
-      {SLIDES.map((src, i) => (
-        <img
-          key={src}
-          src={src}
-          alt=""
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ease-in-out ${
-            i === index ? "opacity-100" : "opacity-0"
-          }`}
-        />
-      ))}
-
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={SLIDES[0]}
+        alt=""
+        width={900}
+        height={900}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <ResultsCarouselRotator />
       <span className="absolute top-2 left-2 rounded-full bg-[#1A0F0A]/80 px-2.5 py-1 text-[11px] font-bold text-white backdrop-blur-sm">
         مع الألم
       </span>

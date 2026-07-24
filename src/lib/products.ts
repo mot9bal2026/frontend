@@ -38,7 +38,7 @@ export const products: Product[] = [
       "زيت أعشاب طبيعي للاستخدام الموضعي يعالج آلام الركبة، الظهر، المفاصل، والديسك — بخّة واحدة وتدليك بسيط، بدون حبوب وبدون دفع أونلاين.",
     price: { one: 99, two: 129, three: 179, bridgeUpsell: 99 },
     bottles: { one: 1, two: 3, three: 6 },
-    image: "/images/product-1.png",
+    image: "/images/product-1.webp",
     colorAccent: "#B23A2E",
     sku: "AWAFI-OIL-8842",
   },

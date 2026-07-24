@@ -34,8 +34,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        arabic: ["Tajawal", "sans-serif"],
-        sans: ["Inter", "Tajawal", "sans-serif"],
+        arabic: ["var(--font-tajawal)", "sans-serif"],
+        sans: ["var(--font-inter)", "var(--font-tajawal)", "sans-serif"],
       },
       lineHeight: {
         arabic: "1.75",

@@ -6,11 +6,11 @@ type IshraqaLogoProps = {
   title?: string;
 };
 
-/** ISHRAQA Beauty mark — a coffee cup catching a rising glow (radiance). */
+/** AWAFI Pain Relief mark — a drop of oil containing a spine/joint, with a natural leaf. */
 export function IshraqaLogo({
   className,
   iconClassName,
-  title = "شعار إشراقة للجمال",
+  title = "شعار عوافي",
 }: IshraqaLogoProps) {
   return (
     <div className={cn("flex items-center gap-2.5", className)}>
@@ -21,38 +21,31 @@ export function IshraqaLogo({
         className={cn("h-10 w-10 flex-shrink-0", iconClassName)}
       >
         <title>{title}</title>
-        <rect x="6" y="6" width="52" height="52" rx="16" fill="#164A32" />
+        <rect x="6" y="6" width="52" height="52" rx="16" fill="#A6432E" />
 
-        {/* Rising glow rays behind the cup */}
-        <g stroke="#C8A876" strokeWidth="2" strokeLinecap="round">
-          <path d="M32 14v5" />
-          <path d="M22.5 17.5l3 4" />
-          <path d="M41.5 17.5l-3 4" />
-        </g>
+        {/* Sparkle / Relief Glow */}
+        <path d="M 46 22 Q 46 16 52 16 Q 46 16 46 10 Q 46 16 40 16 Q 46 16 46 22" fill="#C8A876" />
+        <path d="M 16 18 Q 16 14 20 14 Q 16 14 16 10 Q 16 14 12 14 Q 16 14 16 18" fill="#C8A876" opacity="0.6" />
 
-        {/* Coffee cup */}
+        {/* Herb Leaf sprouting from behind the drop */}
+        <path d="M 24 34 Q 12 32 12 20 Q 22 20 25 28 Z" fill="#C8A876" />
+
+        {/* Oil Drop */}
         <path
-          d="M20 27h20l-1.6 15.2A5 5 0 0 1 33.4 47H26.6a5 5 0 0 1-5-4.8L20 27Z"
+          d="M32 14 C32 14 20 28 20 38 C20 44.6 25.4 50 32 50 C38.6 50 44 44.6 44 38 C44 28 32 14 32 14 Z"
           fill="#FAF6F0"
         />
-        {/* Steam / radiance above the coffee */}
-        <path
-          d="M25.5 24c-1.2-1.6-1.2-3 0-4.6M32 23.5c-1.2-1.8-1.2-3.4 0-5.2M38.5 24c-1.2-1.6-1.2-3 0-4.6"
-          fill="none"
-          stroke="#C8A876"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        {/* Cup handle */}
-        <path
-          d="M40 30.5c3 .3 4.8 2.2 4.4 5-.4 2.7-2.8 4.2-5.6 3.9"
-          fill="none"
-          stroke="#C8A876"
-          strokeWidth="2.4"
-          strokeLinecap="round"
-        />
-        {/* Coffee surface glint (the "إشراقة" glow) */}
-        <ellipse cx="30" cy="28.6" rx="6.4" ry="1.6" fill="#C8A876" />
+
+        {/* Spine / Joints (Cutout effect inside the drop) */}
+        <g fill="#A6432E">
+          {/* Connecting line */}
+          <rect x="31" y="28" width="2" height="18" rx="1" fill="#A6432E" opacity="0.3" />
+          {/* Vertebrae blocks */}
+          <rect x="29.5" y="27" width="5" height="3.5" rx="1.5" />
+          <rect x="28" y="32.5" width="8" height="4" rx="1.5" />
+          <rect x="28" y="38.5" width="8" height="4" rx="1.5" />
+          <rect x="29.5" y="44.5" width="5" height="3.5" rx="1.5" />
+        </g>
       </svg>
     </div>
   );

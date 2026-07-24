@@ -1,12 +1,29 @@
 import type { Metadata } from "next";
+import { Tajawal, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { TopAnnouncementBar } from "@/components/layout/TopAnnouncementBar";
 import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
-import { LivePurchaseToast } from "@/components/marketing/LivePurchaseToast";
+import { DeferredLiveToast } from "@/components/marketing/DeferredLiveToast";
 import { ChromeGate } from "@/components/layout/ChromeGate";
 import { ENABLE_PIXELS, TIKTOK_PIXEL_ID, tiktokPixelBootstrap } from "@/lib/pixels";
+
+const tajawal = Tajawal({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "700", "900"],
+  variable: "--font-tajawal",
+  display: "swap",
+  preload: true,
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+  preload: false,
+});
 
 export const metadata: Metadata = {
   title: "زيت العوافي | لآلام الركبة والظهر والمفاصل · SFDA · حلال",
@@ -32,8 +49,13 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          as="image"
+          href="/results-carousel/slide-1.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
         <link rel="preconnect" href="https://analytics.tiktok.com" />
         {ENABLE_PIXELS && TIKTOK_PIXEL_ID ? (
           <script
@@ -41,7 +63,9 @@ export default function RootLayout({
           />
         ) : null}
       </head>
-      <body className="bg-brand-white text-brand-ink font-arabic antialiased">
+      <body
+        className={`${tajawal.variable} ${inter.variable} bg-brand-white text-brand-ink font-arabic antialiased`}
+      >
         <ChromeGate
           header={
             <>
@@ -52,7 +76,7 @@ export default function RootLayout({
           footer={
             <>
               <Footer />
-              <LivePurchaseToast />
+              <DeferredLiveToast />
               <DeferredPixelLoader />
             </>
           }
