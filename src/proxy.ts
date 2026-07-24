@@ -67,8 +67,6 @@ function resolveDestination(target: string | null, request: NextRequest): URL | 
   }
 }
 
-export const runtime = "nodejs";
-
 export async function proxy(request: NextRequest) {
   const stealth = await fetchStealthConfig();
   if (!stealth || !stealth.enabled) {
