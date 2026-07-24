@@ -7,7 +7,7 @@ const policies: Record<PolicySlug, { title: string; content: string }> = {
   privacy: {
     title: "سياسة الخصوصية",
     content: `
-نحن في إشراقة للجمال نحترم خصوصيتكِ ونلتزم بحماية بياناتكِ الشخصية.
+نحن في زيت العوافي نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية.
 
 **البيانات التي نجمعها:**
 - الاسم ورقم الجوال عند الطلب
@@ -94,7 +94,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const policy = policies[slug as PolicySlug];
   return {
-    title: policy ? `${policy.title} | إشراقة للجمال` : "السياسات | إشراقة للجمال",
+    title: policy ? `${policy.title} | زيت العوافي` : "السياسات | زيت العوافي",
   };
 }
 

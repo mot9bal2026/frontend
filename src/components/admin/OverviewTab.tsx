@@ -225,10 +225,10 @@ export function OverviewTab({ range, reloadKey, onAuthError }: Props) {
             <div className="space-y-2">
               {sources.slice(0, 6).map((s) => (
                 <div key={s.source} className="flex items-center justify-between gap-3 text-sm border-b border-[#F0EAE0] pb-2 last:border-0">
-                  <span className="font-bold text-[#3D2817] truncate">{s.source}</span>
+                  <span className="font-bold text-[#0F3024] truncate">{s.source}</span>
                   <div className="flex items-center gap-3 text-[12px] text-[#7A6A5E] flex-shrink-0 font-inter">
                     <span>{fmtNumber(s.valid_visits)} نقرة</span>
-                    <span className="text-[#3D2817] font-bold">{fmtNumber(s.orders)} طلب</span>
+                    <span className="text-[#0F3024] font-bold">{fmtNumber(s.orders)} طلب</span>
                     <span className="text-[#1E5B3F] font-bold">{fmtPct(s.conversion_rate)}</span>
                   </div>
                 </div>

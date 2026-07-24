@@ -18,21 +18,12 @@ import {
   Heart,
   Camera,
 } from "lucide-react";
-import { useCartStore } from "@/store/cart";
-
 const WHATSAPP_NUMBER = "966550000000";
 
 export function ThankYouContent() {
   const params = useSearchParams();
   const orderNumber = params.get("order") ?? "ISH-2026-004500";
   const total = params.get("total") ?? "0";
-
-  /* Defensive reset — guarantees the drawer can never leak onto thank-you,
-     even if the user lands here via back/forward or a deep link. */
-  const closeAll = useCartStore((s) => s.closeAll);
-  useEffect(() => {
-    closeAll();
-  }, [closeAll]);
 
   // Extract numeric customer rank for social proof (e.g. "004523" → 4523)
   const customerRank = (() => {
@@ -84,11 +75,11 @@ export function ThankYouContent() {
           </div>
 
           <h1 className="text-[1.85rem] md:text-[2.4rem] font-black text-[#0F2A1F] leading-tight">
-            تم استلام طلبكِ بنجاح
+            تم استلام طلبك بنجاح
           </h1>
-          <p className="text-[#3D2817]/80 text-[15px] md:text-base mt-2 max-w-md mx-auto leading-relaxed">
-            شكراً لثقتكِ بـ <span className="font-black text-[#3D2817]">إشراقة</span> —
-            فريقنا سيتواصل معكِ لتأكيد الطلب.
+          <p className="text-[#0F3024]/80 text-[15px] md:text-base mt-2 max-w-md mx-auto leading-relaxed">
+            شكراً لثقتك بـ <span className="font-black text-[#0F3024]">زيت العوافي</span> —
+            فريقنا سيتواصل معك لتأكيد الطلب.
           </p>
 
           {/* Social proof — customer rank */}
@@ -96,12 +87,12 @@ export function ThankYouContent() {
             <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-[#C8A876] to-[#A0764B] text-white text-sm font-black flex-shrink-0">
               <Sparkles size={14} />
             </span>
-            <span className="text-[13px] md:text-[14px] text-[#3D2817] font-bold leading-tight">
-              أنتِ العميلة رقم
+            <span className="text-[13px] md:text-[14px] text-[#0F3024] font-bold leading-tight">
+              أنت العميل رقم
               <span className="mx-1.5 font-black font-inter text-[#A0640A] text-[15px] md:text-base">
                 #{customerRank.toLocaleString("en-US")}
               </span>
-              من بدأن روتين إشراقة
+              ممن بدأوا رحلة العافية
             </span>
           </div>
         </section>
@@ -110,7 +101,7 @@ export function ThankYouContent() {
             ORDER CARD — Number + Total + COD
         ──────────────────────────────────────────── */}
         <section className="mt-7 bg-white border border-[#E8DDCC] rounded-3xl shadow-[0_12px_36px_rgba(61,40,23,0.06)] overflow-hidden">
-          <div className="bg-[#3D2817] text-white px-5 py-3.5 flex items-center justify-between">
+          <div className="bg-[#0F3024] text-white px-5 py-3.5 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Sparkles size={16} className="text-[#C8A876]" />
               <span className="text-[13px] font-bold tracking-wide">
@@ -128,7 +119,7 @@ export function ThankYouContent() {
               <p className="text-[11px] text-[#7A6A5E] font-bold mb-1.5 uppercase tracking-wider">
                 رقم الطلب
               </p>
-              <span className="font-black text-[#3D2817] text-xl md:text-2xl font-inter tracking-wide">
+              <span className="font-black text-[#0F3024] text-xl md:text-2xl font-inter tracking-wide">
                 {orderNumber}
               </span>
             </div>
@@ -139,7 +130,7 @@ export function ThankYouContent() {
                 <p className="text-[11px] text-[#7A6A5E] font-bold mb-1 uppercase tracking-wide">
                   الإجمالي
                 </p>
-                <p className="font-black text-[#3D2817] text-2xl font-inter leading-none">
+                <p className="font-black text-[#0F3024] text-2xl font-inter leading-none">
                   {total}
                 </p>
                 <p className="text-[11px] text-[#7A6A5E] mt-1 font-medium">ريال سعودي</p>
@@ -170,7 +161,7 @@ export function ThankYouContent() {
         {/* ────────────────────────────────────────────
             CALL COUNTDOWN — Trust booster
         ──────────────────────────────────────────── */}
-        <section className="mt-5 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3D2817] via-[#4A2F1C] to-[#5A3825] text-white shadow-xl">
+        <section className="mt-5 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0F3024] via-[#123A2A] to-[#164A32] text-white shadow-xl">
           <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#C8A876]/10 rounded-full blur-3xl" />
           <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl" />
 
@@ -194,7 +185,7 @@ export function ThankYouContent() {
 
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-3.5 flex items-start gap-3 border border-white/10">
               <div className="w-9 h-9 rounded-xl bg-[#C8A876] flex items-center justify-center flex-shrink-0">
-                <Phone size={16} className="text-[#3D2817]" />
+                <Phone size={16} className="text-[#0F3024]" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-[13px] font-semibold leading-relaxed">
@@ -214,7 +205,7 @@ export function ThankYouContent() {
         ──────────────────────────────────────────── */}
         <section className="mt-5 bg-white border border-[#E8DDCC] rounded-3xl p-5 shadow-sm">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-black text-[#3D2817] text-base md:text-lg">
+            <h2 className="font-black text-[#0F3024] text-base md:text-lg">
               رحلة طلبكِ
             </h2>
             <span className="text-[11px] text-[#7A6A5E] font-semibold bg-[#FBF7F0] px-2 py-1 rounded-full">
@@ -297,7 +288,7 @@ export function ThankYouContent() {
         <section className="mt-5 bg-white border border-[#E8DDCC] rounded-3xl p-5">
           <div className="flex items-center gap-2 mb-4">
             <Sparkles size={16} className="text-[#C8A876]" />
-            <h2 className="font-black text-[#3D2817] text-base md:text-lg">
+            <h2 className="font-black text-[#0F3024] text-base md:text-lg">
               نصائح لاستلام سلس
             </h2>
           </div>
@@ -327,7 +318,7 @@ export function ThankYouContent() {
                 <span className="w-7 h-7 rounded-full bg-white border border-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                   {tip.icon}
                 </span>
-                <p className="text-[13px] text-[#3D2817] leading-relaxed font-medium">
+                <p className="text-[13px] text-[#0F3024] leading-relaxed font-medium">
                   {tip.text}
                 </p>
               </li>
@@ -357,7 +348,7 @@ export function ThankYouContent() {
             />
           </div>
           <p className="text-center text-[12px] text-[#5A4A3E] mt-4 leading-relaxed">
-            <span className="font-bold text-[#3D2817]">طلبكِ مضمون.</span> إذا لم تكوني
+            <span className="font-bold text-[#0F3024]">طلبكِ مضمون.</span> إذا لم تكوني
             راضية لأي سبب خلال 14 يوماً — راسلينا وفلوسكِ تُرجَع لكِ. بدون نماذج،
             بدون أسئلة.
           </p>
@@ -369,7 +360,7 @@ export function ThankYouContent() {
         <div className="mt-7 flex flex-col items-center gap-3 text-center">
           <Link
             href="/"
-            className="text-[#7A6A5E] text-sm hover:text-[#3D2817] transition-colors underline-offset-4 hover:underline"
+            className="text-[#7A6A5E] text-sm hover:text-[#0F3024] transition-colors underline-offset-4 hover:underline"
           >
             الرجوع للرئيسية
           </Link>
@@ -419,7 +410,7 @@ function TimelineStep({
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <p
             className={`font-black text-[14px] md:text-[15px] ${
-              status === "pending" ? "text-[#7A6A5E]" : "text-[#3D2817]"
+              status === "pending" ? "text-[#7A6A5E]" : "text-[#0F3024]"
             }`}
           >
             {title}
@@ -447,10 +438,10 @@ function TrustBadge({
 }) {
   return (
     <div className="flex flex-col items-center gap-1.5">
-      <span className="w-11 h-11 rounded-2xl bg-[#3D2817] text-[#C8A876] flex items-center justify-center shadow-sm">
+      <span className="w-11 h-11 rounded-2xl bg-[#0F3024] text-[#C8A876] flex items-center justify-center shadow-sm">
         {icon}
       </span>
-      <p className="font-black text-[#3D2817] text-[12.5px] leading-tight">
+      <p className="font-black text-[#0F3024] text-[12.5px] leading-tight">
         {label}
       </p>
       <p className="text-[10.5px] text-[#7A6A5E] leading-tight">{sub}</p>

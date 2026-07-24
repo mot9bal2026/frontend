@@ -12,9 +12,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "قصة إشراقة | قهوة الجمال — للمرأة السعودية",
+  title: "قصة العوافي | زيت الأعشاب لآلام الركبة والظهر",
   description:
-    "إشراقة — قهوة الجمال من المملكة. جرعات معلنة بمعايير صيدلانية، مصممة لاستهداف الهالات والتجاعيد. SFDA · حلال · الدفع عند الاستلام.",
+    "زيت العوافي — خلطة أعشاب طبيعية من المملكة. 30 عشبة طبية مصممة لتخفيف آلام الركبة والظهر والمفاصل موضعياً. SFDA · حلال · الدفع عند الاستلام.",
 };
 
 export default function AboutPage() {
@@ -28,12 +28,12 @@ export default function AboutPage() {
             قصة العلامة
           </div>
           <h1 className="text-[2.2rem] md:text-[2.8rem] font-black text-[#1A0F0A] mb-4 leading-[1.15]">
-            <span className="text-brand-brown">قهوة الجمال</span> — من إشراقة.
+            <span className="text-brand-brown">زيت العوافي</span> — للعافية.
           </h1>
-          <p className="text-[#3D2817]/85 text-[15.5px] md:text-base leading-relaxed max-w-2xl mx-auto">
-            بُنيت إشراقة على فكرة بسيطة: المرأة السعودية تستحق منتج جمال يعمل بمنطق
-            الصيدلية — لا بمنطق الموضة. <span className="font-bold">جرعات معلنة،
-            مكونات شفافة، طقس يومي بسيط</span>، وضمان حقيقي.
+          <p className="text-[#0F3024]/85 text-[15.5px] md:text-base leading-relaxed max-w-2xl mx-auto">
+            بُني زيت العوافي على فكرة بسيطة: من يعاني من ألم الركبة والظهر يستحق حلاً
+            طبيعياً يصل لمكان الألم — لا مسكّناً مؤقتاً. <span className="font-bold">أعشاب
+            طبيعية، مكونات شفافة، استخدام بسيط</span>، وضمان حقيقي.
           </p>
         </div>
       </section>
@@ -43,18 +43,18 @@ export default function AboutPage() {
         <div className="max-w-content mx-auto max-w-3xl space-y-5">
           <StorySection
             label="البداية"
-            title="من الفجوة في السوق وُلدت إشراقة"
-            body="بعد سنوات من ملاحظة فجوة بين منتجات Instagram الجمالية بدون مصداقية، وكبسولات الصيدلية الجافة التي يصعب الالتزام بها — صمّمنا حلاً وسطياً: صيغة موزونة بدقة، في طقس قهوة لذيذ. مكونات تُعرض بجرعاتها، لا تُخفى في خلطات سرية."
+            title="من معاناة الناس مع الألم وُلد زيت العوافي"
+            body="بعد سنوات من رؤية الناس يعانون من آلام الركبة والظهر والمفاصل — بين مسكّنات مؤقتة تضر المعدة وعمليات مكلفة ومخيفة — بحثنا عن حل طبيعي وسطي: خلطة أعشاب طبية تصل لمكان الألم مباشرة. مكونات معروفة الفائدة، لا تُخفى في وصفات غامضة."
           />
           <StorySection
             label="الفلسفة"
-            title="الجمال يبدأ بجرعة دقيقة"
-            body="نؤمن أن الفرق بين منتج يعطي نتائج ومنتج يستهلك ميزانيتك هو شيء واحد: الجرعة الصحيحة + الالتزام اليومي. لهذا كل كيس من إشراقة يحمل جرعة موزونة من ٣ مكونات رئيسية فقط — لا حشو، لا مكونات للزينة."
+            title="العافية تبدأ ببخّة واحدة"
+            body="نؤمن أن الفرق بين منتج يريحك ومنتج يستهلك مالك هو شيء واحد: التركيبة الصحيحة + الاستخدام المنتظم. لهذا كل عبوة من زيت العوافي تحمل خلطة من 30 عشبة طبية مختارة بعناية — بدون كورتيزون، بدون مواد ضارة، بدون حشو."
           />
           <StorySection
             label="الالتزام"
-            title="سعودية أولاً. عربية أولاً. COD أولاً."
-            body="منتجاتنا مسجّلة لدى هيئة الغذاء والدواء السعودية، حلال 100٪ بكولاجين بحري بدلاً من الجيلاتين الحيواني، ومتاحة بنظام الدفع عند الاستلام في كل مناطق المملكة — لأن الثقة تُكسب، لا تُطلب مقدّماً."
+            title="سعودي أولاً. عربي أولاً. الدفع عند الاستلام أولاً."
+            body="منتجاتنا مصادق عليها من هيئة الغذاء والدواء السعودية، حلال 100٪ من أعشاب طبيعية، ومتاحة بنظام الدفع عند الاستلام في كل مناطق المملكة — لأن الثقة تُكسب، لا تُطلب مقدّماً."
           />
         </div>
       </section>
@@ -67,13 +67,13 @@ export default function AboutPage() {
               className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              ركائزنا الخمس
+              ركائزنا الستّ
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
-              التزامات إشراقة معكِ
+              التزامات العوافي معك
             </h2>
             <p className="text-[#5A4A3E] text-[14.5px] max-w-xl mx-auto">
-              خمسة وعود نلتزم بها مع كل علبة تخرج من مستودعنا.
+              ستة وعود نلتزم بها مع كل عبوة تخرج من مستودعنا.
             </p>
           </div>
 
@@ -81,39 +81,39 @@ export default function AboutPage() {
             <PillarCard
               num="01"
               icon={<Microscope size={20} />}
-              title="مصداقية بالأرقام"
-              desc="جرعات معلنة على كل كيس: 5000 ملجم كولاجين، 200 ملجم فيتامين C، 100 ملجم هيالورونيك. بلا خلطات سرية."
+              title="30 عشبة طبيعية"
+              desc="خلطة من 30 عشبة طبية من قلب الغابات الآسيوية: زنجبيل، كركم، منثول، كافور. بلا كورتيزون ولا مواد ضارة."
             />
             <PillarCard
               num="02"
               icon={<ShieldCheck size={20} />}
-              title="سعودية أولاً"
-              desc="SFDA · حلال 100٪ · صياغة عربية · الدفع عند الاستلام. مصنوعة لك، لا مستوردة من سوق آخر."
+              title="سعودي أولاً"
+              desc="SFDA · حلال 100٪ · دعم عربي · الدفع عند الاستلام. مصنوع لك، لا مستورد من سوق آخر."
             />
             <PillarCard
               num="03"
               icon={<FlaskConical size={20} />}
-              title="جمال وظيفي"
-              desc="كل غرام له هدف. لا فيتامينات حشو، لا نكهات صناعية، لا «روائح علاجية» وهمية."
+              title="علاج موضعي مركّز"
+              desc="كل مكوّن له هدف. لا مواد حشو، لا روائح صناعية، لا وعود وهمية. يصل لمكان الألم مباشرة."
             />
             <PillarCard
               num="04"
               icon={<Sun size={20} />}
-              title="طقس يومي بسيط"
-              desc="بدل سبع كبسولات في اليوم — كيس قهوة واحد. أسهل التزام، أعلى نتيجة."
+              title="استخدام سهل جداً"
+              desc="بدل حبوب ومواعيد علاج طبيعي — بخّة وتدليك دقائق. أسهل استخدام، راحة أسرع."
             />
             <PillarCard
               num="05"
               icon={<Sparkles size={20} />}
               title="ضمان نتيجة"
-              desc="14 يوم استرجاع كامل. ما حسّيتي بفرق؟ ترجع لكِ فلوسكِ. بدون نماذج، بدون أسئلة."
+              desc="14 يوم استرجاع كامل. ما حسّيت بفرق؟ ترجع لك فلوسك. بدون أسئلة."
               highlight
             />
             <PillarCard
               num="06"
               icon={<Droplets size={20} />}
-              title="من الداخل"
-              desc="الكولاجين البحري يصل عبر الدم لكل طبقات البشرة. ليس ترطيب سطحي يزول بغسلة وجه."
+              title="مفعول سريع"
+              desc="المنثول والأعشاب الدافئة تعطي راحة محسوسة من أول بخّة وتنشّط الدورة الدموية في مكان الألم."
             />
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
             <BadgeCard
               icon={<Award size={22} />}
               top="حلال 100٪"
-              bottom="بدون جيلاتين حيواني"
+              bottom="أعشاب طبيعية بالكامل"
             />
             <BadgeCard
               icon={<Wallet size={22} />}
@@ -157,23 +157,23 @@ export default function AboutPage() {
             className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3"
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            انضمي للعائلة
+            انضم للعائلة
           </p>
           <h2 className="text-[1.8rem] md:text-[2.2rem] font-black mb-4 leading-tight">
-            ابدئي طقس إشراقتكِ.
+            ابدأ رحلة عافيتك.
             <br />
             <span className="text-brand-gold">
-              «الجمال يبدأ بجرعة دقيقة.»
+              «العافية تبدأ ببخّة واحدة.»
             </span>
           </h2>
           <p className="text-brand-cream/80 mb-7 text-[14.5px]">
-            1,400+ سعودية بدأن — والنتائج تتكلم.
+            1,500+ حالة عولجت في شهر — والنتائج تتكلم.
           </p>
           <Link
             href="/collection"
             className="inline-flex items-center gap-2 bg-brand-gold text-brand-brown font-black px-10 py-4 rounded-2xl text-[1rem] hover:bg-amber-300 transition-colors shadow-xl active:scale-[0.98]"
           >
-            اطلعي على المنتج
+            اطّلع على المنتج
             <span>←</span>
           </Link>
         </div>
@@ -206,7 +206,7 @@ function StorySection({
       <h2 className="text-[1.2rem] md:text-[1.4rem] font-black text-brand-brown mb-3 leading-tight">
         {title}
       </h2>
-      <p className="text-[#3D2817]/85 text-[14px] leading-relaxed">{body}</p>
+      <p className="text-[#0F3024]/85 text-[14px] leading-relaxed">{body}</p>
     </div>
   );
 }

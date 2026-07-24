@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ShieldCheck, Award, Truck, Sparkles } from "lucide-react";
+import { AwafiMedicalLogo } from "./AwafiMedicalLogo";
 
 export function Footer() {
   return (
@@ -9,32 +10,27 @@ export function Footer() {
           {/* ── Brand block ── */}
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-11 h-11 rounded-full bg-[#FBF7F0] border border-brand-gold flex items-center justify-center overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/logo-icon.png"
-                  alt="إشراقة"
-                  className="w-full h-full object-cover"
-                />
+              <div className="flex items-center justify-center">
+                <AwafiMedicalLogo iconClassName="h-11 w-11" />
               </div>
               <div>
                 <p className="font-black text-brand-cream text-base leading-tight">
-                  إشراقة
+                  العوافي
                 </p>
                 <p
                   className="text-[10px] text-brand-gold font-semibold tracking-[0.18em] uppercase leading-tight mt-0.5"
                   style={{ fontFamily: "Inter, sans-serif" }}
                 >
-                  ISHRAQA · BEAUTY COFFEE
+                  AL-AWAFI · PAIN RELIEF OIL
                 </p>
               </div>
             </div>
 
             <p className="text-[13px] text-brand-cream/80 leading-relaxed mb-4">
-              <span className="font-bold text-brand-gold">قهوة الجمال</span> من إشراقة —
-              كولاجين بحري بجرعات معلنة، فيتامين C، وحمض الهيالورونيك. مصممة
-              لاستهداف <span className="font-semibold text-brand-cream">الهالات
-              والتجاعيد</span> من الداخل، بطقس يومي بسيط.
+              <span className="font-bold text-brand-gold">زيت العوافي</span> —
+              خلطة أعشاب طبيعية من 30 عشبة طبية، زنجبيل وكركم ومنثول وكافور. مصمّم
+              لتخفيف <span className="font-semibold text-brand-cream">آلام الركبة
+              والظهر والمفاصل</span> موضعياً، ببخّة وتدليك بسيط.
             </p>
 
             {/* Trust chips */}
@@ -57,9 +53,9 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm">
               {[
                 { href: "/", label: "الرئيسية" },
-                { href: "/collection", label: "قهوة الجمال" },
-                { href: "/about", label: "قصة إشراقة" },
-                { href: "/contact", label: "تواصلي معنا" },
+                { href: "/collection", label: "زيت العوافي" },
+                { href: "/about", label: "قصة العوافي" },
+                { href: "/contact", label: "تواصل معنا" },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -119,10 +115,10 @@ export function Footer() {
             className="text-center text-brand-gold text-[12.5px] tracking-[0.05em] italic mb-2"
             style={{ fontFamily: "Tajawal, sans-serif" }}
           >
-            «الجمال يبدأ بجرعة دقيقة.»
+            «العافية تبدأ ببخّة واحدة.»
           </p>
           <p className="text-center text-[10.5px] text-brand-cream/55">
-            © 2026 إشراقة · ISHRAQA Beauty Coffee · المملكة العربية السعودية
+            © 2026 العوافي · AL-AWAFI Pain Relief Oil · المملكة العربية السعودية
           </p>
         </div>
       </div>

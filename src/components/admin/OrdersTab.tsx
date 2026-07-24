@@ -144,7 +144,7 @@ export function OrdersTab({ range, statuses, reloadKey, onAuthError }: Props) {
                       {o.is_test && <span className="mr-1 text-[10px] text-gray-400">(تجريبي)</span>}
                     </td>
                     <td className="px-3 py-3">
-                      <p className="font-bold text-[#3D2817]">{o.customer_name}</p>
+                      <p className="font-bold text-[#0F3024]">{o.customer_name}</p>
                       <p className="text-[11px] text-[#A89A8C] font-inter" dir="ltr">{o.phone_local}</p>
                     </td>
                     <td className="px-3 py-3 text-[#5A4A3E]">{o.city || "—"}</td>
@@ -190,7 +190,7 @@ export function OrdersTab({ range, statuses, reloadKey, onAuthError }: Props) {
                   <StatusBadge status={o.status} />
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-bold text-[#3D2817]">{o.customer_name}</span>
+                  <span className="text-sm font-bold text-[#0F3024]">{o.customer_name}</span>
                   <span className="font-bold text-[#1E5B3F] font-inter">{fmtSar(o.total_sar)}</span>
                 </div>
                 <div className="flex items-center justify-between text-[11px] text-[#A89A8C]">

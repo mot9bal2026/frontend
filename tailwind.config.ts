@@ -11,9 +11,9 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          /* Core — coffee identity */
-          brown: "#3D2817", // espresso — primary backbone
-          coffee: "#5A3825", // mid-roast — hover states
+          /* Core — dark neutral backbone (herbal/medical identity, no coffee-brown) */
+          brown: "#0F3024", // deep forest ink — headings, dark blocks
+          coffee: "#164A32", // hover state for dark blocks
           cream: "#FAF6F0", // linen cream — backgrounds
           gold: "#C8A876", // Saudi gold — premium accents
           coral: "#E3998B", // legacy — kept for back-compat
@@ -21,10 +21,16 @@ const config: Config = {
           muted: "#7A6A5E", // secondary text
           border: "#E6D8C8", // warm hairline border
           white: "#FFFFFF",
-          /* Apothecary — clinical trust layer */
-          apothecary: "#1E5B3F", // pharmacy green — SFDA, halal, guarantees
+          /* Apothecary — clinical trust layer, the primary CTA color:
+             green reads as "safe medical treatment" for a pain-relief oil */
+          apothecary: "#1E5B3F", // pharmacy green — CTAs, SFDA, halal, guarantees
+          apothecaryDark: "#164A32", // hover state for green CTAs
           sage: "#E8F2EC", // soft sage — clinical section backgrounds
           deepSage: "#B7D6C2", // hairline border for clinical cards
+          /* Rust — sampled from the real product bottle label, ties every
+             price/urgency accent visually to the physical product shipped */
+          rust: "#A6432E",
+          rustDark: "#8A3624",
         },
       },
       fontFamily: {

@@ -6,9 +6,9 @@ const items = [
   { icon: "🚚", text: "شحن سريع لجميع مناطق المملكة" },
   { icon: "💳", text: "الدفع عند الاستلام — بدون دفع أونلاين" },
   { icon: "✅", text: "مرخّصة من هيئة الغذاء والدواء SFDA" },
-  { icon: "🌿", text: "حلال 100٪ · بكتين نباتي · بدون جيلاتين" },
+  { icon: "🌿", text: "حلال 100٪ · 30 عشبة طبيعية · بدون كورتيزون" },
   { icon: "🛡️", text: "ضمان 14 يوم — استرجاع كامل بدون أسئلة" },
-  { icon: "⭐", text: "4.9 من 5 — تقييمات عميلات سعوديات حقيقيات" },
+  { icon: "⭐", text: "4.9 من 5 — تقييمات عملاء سعوديين حقيقيين" },
 ];
 
 export function TopAnnouncementBar() {
@@ -33,7 +33,7 @@ export function TopAnnouncementBar() {
 
   return (
     <div
-      className="bg-[#3D2817] text-white flex items-center justify-center gap-2 text-[13px] font-medium"
+      className="bg-[#0F3024] text-white flex items-center justify-center gap-2 text-[13px] font-medium"
       style={{ height: "36px" }}
     >
       <span

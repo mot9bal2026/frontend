@@ -95,7 +95,7 @@ export function BlockedTab({ range, reloadKey, onAuthError }: Props) {
                 rows.map((b) => (
                   <tr key={b.id} className="border-t border-[#F0EAE0] hover:bg-[#FBF7F0]">
                     <td className="px-4 py-3 text-[11px] text-[#A89A8C] whitespace-nowrap">{fmtDateShort(b.created_at)}</td>
-                    <td className="px-4 py-3 font-bold text-[#3D2817] font-inter" dir="ltr">{b.phone_local || "—"}</td>
+                    <td className="px-4 py-3 font-bold text-[#0F3024] font-inter" dir="ltr">{b.phone_local || "—"}</td>
                     <td className="px-4 py-3 text-[12px] text-[#7A6A5E] font-inter" dir="ltr">{b.ip_address || "—"}</td>
                     <td className="px-4 py-3">
                       <div className="flex flex-wrap gap-1.5">

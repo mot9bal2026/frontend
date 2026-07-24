@@ -1,22 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingBag, Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import { LogoMark } from "./LogoMark";
-import { useCartStore } from "@/store/cart";
 
 const navLinks = [
   { href: "/", label: "الرئيسية" },
   { href: "/collection", label: "المنتجات" },
   { href: "/about", label: "من نحن" },
-  { href: "/contact", label: "تواصلي معنا" },
+  { href: "/contact", label: "تواصل معنا" },
 ];
+
+/* Single live product — the header CTA takes the customer straight to it. */
+const PRODUCT_HREF = "/products/wrinkles-dark-circles";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { items, openCart } = useCartStore();
-  const itemCount = items.length;
 
   return (
     <header className="bg-white border-b border-[#E6D8C8] sticky top-0 z-40 shadow-sm">
@@ -36,7 +36,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="hover:text-[#3D2817] transition-colors font-semibold"
+                className="hover:text-[#0F3024] transition-colors font-semibold"
               >
                 {link.label}
               </Link>
@@ -46,25 +46,20 @@ export function Header() {
           {/* ── Spacer ── */}
           <div className="flex-1" />
 
-          {/* ── Last child = LEFT in RTL: cart + hamburger ── */}
-          <div className="flex items-center gap-0.5">
-            {/* Cart */}
-            <button
-              onClick={openCart}
-              className="relative p-2 text-[#3D2817] hover:text-[#5A3825] transition-colors rounded-xl active:bg-[#FBF7F0]"
-              aria-label="السلة"
+          {/* ── Last child = LEFT in RTL: order CTA + hamburger ── */}
+          <div className="flex items-center gap-1.5">
+            {/* Order now — no cart; goes straight to the product order form */}
+            <Link
+              href={PRODUCT_HREF}
+              className="flex items-center gap-1.5 bg-brand-apothecary text-white font-black text-[12.5px] md:text-sm px-3.5 md:px-4 py-2 md:py-2.5 rounded-xl hover:bg-brand-apothecaryDark transition-colors active:scale-95 shadow-sm"
             >
-              <ShoppingBag size={22} />
-              {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#3D2817] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-black font-inter shadow-sm">
-                  {itemCount}
-                </span>
-              )}
-            </button>
+              <ShoppingBag size={16} />
+              اطلب الآن
+            </Link>
 
             {/* Hamburger — mobile only */}
             <button
-              className="md:hidden p-2 text-[#3D2817] rounded-xl active:bg-[#FBF7F0] transition-colors"
+              className="md:hidden p-2 text-[#0F3024] rounded-xl active:bg-[#FBF7F0] transition-colors"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="القائمة"
             >
@@ -83,7 +78,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#3D2817] font-bold py-2.5 px-2 rounded-xl hover:bg-white active:bg-white transition-colors text-sm"
+                className="text-[#0F3024] font-bold py-2.5 px-2 rounded-xl hover:bg-white active:bg-white transition-colors text-sm"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}

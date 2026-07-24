@@ -1,6 +1,7 @@
 export type ProductSlug = "wrinkles-dark-circles";
 
-export type BundlePrice = 169 | 199 | 249;
+/** Bundle prices are plain numbers now (99 / 129 / 179). */
+export type BundlePrice = number;
 
 export type Product = {
   slug: ProductSlug;
@@ -15,6 +16,12 @@ export type Product = {
     three: BundlePrice;
     bridgeUpsell: number;
   };
+  /** Number of bottles per offer tier (1 / 3 / 6). */
+  bottles: {
+    one: number;
+    two: number;
+    three: number;
+  };
   image: string;
   colorAccent: string;
   sku: string;
@@ -23,16 +30,17 @@ export type Product = {
 export const products: Product[] = [
   {
     slug: "wrinkles-dark-circles",
-    nameAr: "قهوة الكولاجين للتجاعيد والهالات السوداء",
-    nameEn: "Collagen Coffee for Wrinkles and Dark Circles",
-    shortAr: "التجاعيد والهالات السوداء",
-    heroAr: "التجاعيد والهالات صارت تظهر قبل وقتها؟",
+    nameAr: "زيت العوافي لآلام الركبة والظهر والمفاصل",
+    nameEn: "Al-Awafi Instant Pain Relief Herb Oil",
+    shortAr: "آلام الركبة والظهر والمفاصل",
+    heroAr: "ألم الركبة والظهر يمنعك من عيش حياتك؟",
     subAr:
-      "قهوة كولاجين يومية لدعم مظهر البشرة وتقليل مظهر التعب حول العين.",
-    price: { one: 169, two: 199, three: 249, bridgeUpsell: 99 },
+      "زيت أعشاب طبيعي للاستخدام الموضعي يعالج آلام الركبة، الظهر، المفاصل، والديسك — بخّة واحدة وتدليك بسيط، بدون حبوب وبدون دفع أونلاين.",
+    price: { one: 99, two: 129, three: 179, bridgeUpsell: 99 },
+    bottles: { one: 1, two: 3, three: 6 },
     image: "/images/product-1.webp",
-    colorAccent: "#E3998B",
-    sku: "ISHR-CLG-8842",
+    colorAccent: "#B23A2E",
+    sku: "AWAFI-OIL-8842",
   },
 ];
 

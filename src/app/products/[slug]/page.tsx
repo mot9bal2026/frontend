@@ -21,6 +21,7 @@ import { BundlePicker } from "@/components/product/BundlePicker";
 import { ViewContentFire } from "@/components/tracking/ViewContentFire";
 import { MobileStickyCTA } from "@/components/marketing/MobileStickyCTA";
 import { HeroImageSlider } from "@/components/product/HeroImageSlider";
+import { ProductPhoto } from "@/components/product/ProductPhoto";
 import Link from "next/link";
 import type { ProductSlug } from "@/lib/products";
 
@@ -34,9 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   try {
     const product = getProduct(slug as ProductSlug);
-    return { title: `${product.nameAr} | إشراقة للجمال`, description: product.subAr };
+    return { title: `${product.nameAr} | زيت العوافي`, description: product.subAr };
   } catch {
-    return { title: "المنتج | إشراقة للجمال" };
+    return { title: "المنتج | زيت العوافي" };
   }
 }
 
@@ -62,102 +63,102 @@ const content: Record<string, {
   usageStats: { n: string; l: string }[];
 }> = {
   "wrinkles-dark-circles": {
-    heroH1: ["تبدين متعبة وأكبر في الصور؟", "ابدئي روتين الهالات والتجاعيد"],
-    heroSub: "قهوة كولاجين يومية للمرأة التي ترى الهالات والخطوط كل صباح في المرآة. كيس واحد يدعم الكولاجين، النضارة، وامتلاء البشرة من الداخل — بدون إبر، بدون بوتوكس، وبدون دفع أونلاين.",
+    heroH1: ["ألم الركبة والظهر يمنعك من عيش حياتك؟", "زيت العوافي يعالج المشكلة من جذورها"],
+    heroSub: "زيت أعشاب طبيعي للاستخدام الموضعي يعالج آلام الركبة، الظهر، المفاصل، والديسك. بخّة واحدة وتدليك بسيط يوصل مفعوله مباشرة لمكان الألم — بدون حبوب، بدون عمليات، وبدون دفع أونلاين.",
     statsRow: [
-      { value: "30", label: "كيساً في العلبة" },
-      { value: "30", label: "يوم لكل علبة" },
+      { value: "30", label: "عشبة طبيعية" },
+      { value: "30", label: "يوم لكل عبوة" },
       { value: "حلال", label: "100٪ طبيعي" },
-      { value: "SFDA", label: "مرخّصة" },
+      { value: "SFDA", label: "مرخّص" },
     ],
     stat: {
-      num: "73٪",
-      text: "من النساء في الخليج يلاحظن هالات وخطوطاً مبكرة حول العين قبل سن الـ40 — لأن الشمس، السهر، والتكييف يستنزفون الكولاجين والترطيب يومياً",
-      source: "تحليل احتياجات العناية بالبشرة في الخليج",
+      num: "1500+",
+      text: "حالة عالجها د. عبدالله الحربي بزيت العوافي في شهر واحد — من آلام الركبة والظهر والمفاصل، أشخاص كان مقرراً عليهم عمليات جراحية استغنوا عنها تماماً",
+      source: "من عيادة استشاري العظام والمفاصل · الرياض",
     },
     painPoints: [
-      { q: "أنام كويس، لكن الهالات تخليني أبان متعبة كأني ما نمت.", a: "المشكلة غالباً ليست النوم فقط. منطقة تحت العين رقيقة وتفقد الكولاجين والترطيب بسرعة — لذلك ندعمها من الداخل بروتين يومي ثابت." },
-      { q: "أخفيها بالكونسيلر، وبعد ساعتين ترجع تبان في الصور.", a: "الكونسيلر يخفي المشكلة مؤقتاً ولا يبني البشرة. قهوة إشراقة تجعل العناية تبدأ من كوبك الصباحي قبل المكياج." },
-      { q: "دفعت على كريمات عين غالية، والنتيجة ترطيب يومين فقط.", a: "الكريم يلامس السطح. الكولاجين البحري + فيتامين C + الهيالورونيك يدعمون مرونة وامتلاء البشرة من الداخل." },
-      { q: "كل ما أفتح الكاميرا أحس وجهي أكبر من عمري.", a: "الخطوط حول العين والهالات هي أول ما يكبّر الملامح. الروتين اليومي يساعد البشرة تظهر أهدأ، أصفى، وأكثر راحة تدريجياً." },
+      { q: "أتألم عند الصلاة، وما أقدر أنزل للسجود ولا أقوم إلا بصعوبة.", a: "ألم الركبة عند الحركة سببه غالباً التهاب في المفصل وضعف في الأربطة. زيت العوافي يتغلغل بعمق ويهدّئ الالتهاب فتعود حركتك أسهل تدريجياً." },
+      { q: "المشي صار عذاب — كل خطوة توجعني في الركبة أو أسفل الظهر.", a: "الألم عند المشي مؤشر على إجهاد المفصل والأعصاب. الأعشاب الدافئة في الزيت تنشّط الدورة الدموية وترخي العضلة المشدودة حول المفصل." },
+      { q: "جربت حبوب المسكنات، بس مفعولها يروح وترجع الوجعة أقوى.", a: "المسكنات تخفي الألم مؤقتاً وتُتعب المعدة. زيت العوافي يشتغل موضعياً على مكان الألم مباشرة بدون أضرار الحبوب على الجسم." },
+      { q: "الديسك وألم أسفل الظهر يمنعني حتى من النوم المريح.", a: "خليط الأعشاب يعالج تشنّج العضلات المحيطة بالفقرات ويقلّل الضغط على العصب، فينتظم نومك وترتاح ظهرك أكثر." },
     ],
-    womanStat: "73٪",
+    womanStat: "1500+",
     ingredients: [
       {
-        name: "كولاجين بحري متحلّل",
-        sci: "Marine Hydrolyzed Collagen",
-        dose: "5000 ملجم",
-        icon: "🐟",
-        desc: "الجرعة التي تجعل المنتج يبدو Premium فعلاً. جزيئات صغيرة سهلة الامتصاص تدعم بنية البشرة حول العين، الخدود، وخطوط الابتسامة.",
-        benefit: "يدعم المرونة ومظهر الخطوط الدقيقة مع الاستمرار",
+        name: "زيت الزنجبيل والكركم",
+        sci: "Ginger & Curcumin Oil",
+        dose: "تركيز عالٍ",
+        icon: "🫚",
+        desc: "مضاد التهاب طبيعي قوي. يتغلغل في المفصل ويهدّئ الالتهاب والتورّم المسبّب للألم عند الحركة والصلاة والمشي.",
+        benefit: "تقليل الالتهاب والتورّم حول المفصل",
       },
       {
-        name: "فيتامين C النشط",
-        sci: "Sodium Ascorbate",
-        dose: "200 ملجم",
-        icon: "🍊",
-        desc: "الكولاجين وحده لا يكفي. فيتامين C هو العامل الذي يحتاجه الجسم لدعم بناء الكولاجين وحماية البشرة من إجهاد الشمس اليومي.",
-        benefit: "نضارة أوضح ومظهر لون أكثر توازناً",
+        name: "زيت المنثول والكافور",
+        sci: "Menthol & Camphor",
+        dose: "تأثير سريع",
+        icon: "🌿",
+        desc: "يعطي إحساساً منعشاً ودافئاً يعالج الألم خلال دقائق من التدليك، وينشّط الدورة الدموية في مكان الوجع.",
+        benefit: "راحة فورية محسوسة من أول بخّة",
       },
       {
-        name: "حمض الهيالورونيك",
-        sci: "Hyaluronic Acid",
-        dose: "100 ملجم",
-        icon: "💧",
-        desc: "مكوّن الترطيب العميق. يساعد البشرة تبدو ممتلئة وأكثر نعومة، خصوصاً تحت العين حيث يظهر الجفاف والخطوط بسرعة.",
-        benefit: "مظهر ممتلئ وناعم بدون روتين معقّد",
+        name: "خلاصة أعشاب الغابات الآسيوية",
+        sci: "Asian Herbal Blend · 30 herbs",
+        dose: "30 عشبة",
+        icon: "🍃",
+        desc: "مزيج من 30 عشبة طبية من قلب الغابات الآسيوية، مختارة لدعم المفاصل والأربطة وعلاج آلام الظهر والديسك من العمق.",
+        benefit: "دعم المفاصل والأربطة والأعصاب معاً",
       },
     ],
-    freeOf: ["سكر مضاف", "جيلاتين حيواني", "مواد حافظة", "ألوان صناعية", "GMO", "جلوتين"],
-    expertQuote: "الخلط بين كولاجين بحري متحلّل بجرعة عالية، فيتامين C، وهيالورونيك أسيد يعطي روتيناً منطقياً للنساء اللواتي يلاحظن هالات وخطوطاً مبكرة. الأهم هو الالتزام اليومي، لأن البشرة لا تتغيّر من استخدام متقطع.",
-    expertName: "د. خلود منصور أحمد · اختصاصية أمراض الجلد والتجميل",
+    freeOf: ["كورتيزون", "مواد كيميائية ضارة", "روائح صناعية قوية", "كحول مجفّف", "مسكنات دوائية", "آثار جانبية"],
+    expertQuote: "أغلب حالات آلام الركبة والظهر التي تصلني لا تحتاج فعلاً لعملية جراحية، بل لعلاج موضعي يصل لمكان الألم ويعالج الالتهاب من جذوره. زيت العوافي بخلطة أعشابه الطبيعية أعطى نتائج ممتازة مع أكثر من 1500 حالة خلال شهر — كثير منهم استغنوا عن العملية. الأهم هو الاستمرار على الاستخدام اليومي مرتين.",
+    expertName: "د. عبدالله الحربي · استشاري جراحة العظام والمفاصل · الرياض",
     numbers: [
-      { n: "60+", l: "دراسة علمية" },
-      { n: "800+", l: "عميلة سعودية راضية" },
+      { n: "1500+", l: "حالة عولجت في شهر" },
+      { n: "800+", l: "عميل سعودي راضٍ" },
       { n: "4.9★", l: "متوسط التقييم" },
       { n: "14 يوم", l: "ضمان استرجاع" },
     ],
     timeline: [
-      { label: "أول 7 أيام", desc: "أول شيء تلاحظينه غالباً هو نعومة وترطيب أفضل. المكياج يجلس بهدوء أكثر، وملامحك تبدو أقل إرهاقاً في الصباح." },
-      { label: "الأسبوع الثاني", desc: "تبدأ منطقة تحت العين تبدو أهدأ، ومظهر الجفاف حول الخطوط الدقيقة يقل. هنا تبدأين تحسينين أن الروتين يستحق الاستمرار." },
-      { label: "نهاية العلبة الأولى", desc: "تقدرين تقارنين صورتك قبل وبعد. الهدف: بشرة أكثر امتلاءً، هالات أقل وضوحاً، وخطوط تبدو أنعم. العلبة الثانية تساعد على تثبيت الروتين." },
+      { label: "أول 7 أيام", desc: "أول ما تلاحظه غالباً هو راحة أسرع بعد التدليك، وتقلّ حدّة الألم عند الحركة والوقوف. النوم يصير أهدأ." },
+      { label: "الأسبوع الثاني", desc: "يبدأ التورّم والالتهاب حول المفصل يقل، والحركة تصير أسهل — تقدر تصلي وتمشي مسافات أطول بألم أخف بكثير." },
+      { label: "نهاية العبوة الأولى", desc: "الفرق يصير واضح: مرونة أكبر في الركبة والظهر، ألم أقل بكثير، ورجوع تدريجي لحياتك الطبيعية. العبوة الثانية تثبّت النتيجة." },
     ],
     testimonials: [
-      { text: "كنت مترددة لأن السعر مو رخيص، بس الدفع عند الاستلام خلاني أطلب بدون خوف. بعد أسبوعين حسيت وجهي أهدأ والهالات أقل وضوحاً. أكثر شيء عجبني أني ما أحتاج أغيّر روتيني — فقط قهوتي الصباحية.", name: "نورة الشمري", age: "32 سنة", city: "الرياض", initials: "ن", color: "bg-rose-100 text-rose-700" },
-      { text: "عمري 26 لكن الهالات كانت تخليني أبان أكبر في الصور. بعد شهر صرت أطلع بكاميرا الجوال بدون ما أرفع الإضاءة كل مرة. صاحباتي يسألن: وش غيرتي؟", name: "ريم القرشي", age: "26 سنة", city: "جدة", initials: "ر", color: "bg-pink-100 text-pink-700" },
-      { text: "أنا في الـ 41 وكنت محتارة بين البوتوكس والكريمات الغالية. جربت علبة، وبعد ثلاثة أسابيع أمي قالت وجهي صار مرتاح. الخطوط حول عيني صارت أنعم، والثانية ثبّتت الروتين.", name: "هيا الشهري", age: "41 سنة", city: "الرياض", initials: "ه", color: "bg-amber-100 text-amber-700" },
-      { text: "طلبته قبل زواجي بشهرين لأنني ما أبي بوتوكس قبل التصوير. طلعت بإشراقة طبيعية، وكنت مرتاحة لأن النتيجة تدريجية وما تغيّر ملامحي فجأة.", name: "لينا العنزي", age: "28 سنة", city: "الرياض", initials: "ل", color: "bg-purple-100 text-purple-700" },
-      { text: "بعد الولادة صار وجهي شاحب والهالات أوضح. بعد استشارة طبيبتي بدأت الروتين. خلال أسابيع حسيت أن ملامحي أهدأ، وزوجي لاحظ الفرق قبل ما أتكلم.", name: "منى العتيبي", age: "35 سنة", city: "جدة", initials: "م", color: "bg-emerald-100 text-emerald-700" },
-      { text: "أم لـ 3 أطفال، وشغلي كله شاشة. كنت أشوف صوري وأحس أن وجهي متعب. بعد العلبة الثانية صار تحت العين أهدأ والخطوط أقل بروزاً. القهوة صارت أسهل عادة عندي.", name: "حصة الدوسري", age: "33 سنة", city: "الدمام", initials: "ح", color: "bg-blue-100 text-blue-700" },
+      { text: "ركبتي تعبتني من زمان، والدكتور كان مقرر عليها عملية. جربت زيت العوافي وما شاء الله بعد أسابيع صرت أصلي وأمشي بشكل أفضل بكثير. الحمدلله أجّلت العملية.", name: "أم فهد", age: "58 سنة", city: "الرياض", initials: "أ", color: "bg-rose-100 text-rose-700" },
+      { text: "أشتغل سواق وظهري ما يهدأ من ألم الديسك. المسكنات ما عادت تنفع. مع زيت العوافي مرتين باليوم صار الألم يخف وأقدر أشتغل وأنام مرتاح.", name: "خالد المطيري", age: "44 سنة", city: "جدة", initials: "خ", color: "bg-amber-100 text-amber-700" },
+      { text: "والدتي كبيرة بالسن وتعاني من خشونة الركبة. صار السجود صعب عليها. بعد ما استخدمت الزيت صارت تنزل للصلاة أسهل والحمدلله ارتاحت كثير.", name: "منال العتيبي", age: "37 سنة", city: "الدمام", initials: "م", color: "bg-emerald-100 text-emerald-700" },
+      { text: "لاعب كرة قديم وركبي تعبانة من الإصابات. جربت أشياء كثيرة، وهذا الزيت أحسن شي جربته لعلاج الألم والالتهاب بعد المجهود. مفعوله سريع.", name: "سعود الشهري", age: "33 سنة", city: "الرياض", initials: "س", color: "bg-blue-100 text-blue-700" },
+      { text: "ألم المفاصل في يدي وركبتي كان يمنعني حتى من أعمال البيت. الزيت عالج الوجع بشكل ما توقعته، وريحته حلوة ودافئة عند التدليك.", name: "نوف القحطاني", age: "49 سنة", city: "مكة", initials: "ن", color: "bg-pink-100 text-pink-700" },
+      { text: "أبوي كان مقرر له عملية غضروف بالركبة. أخّرناها وجربنا الزيت أول. صار يتحرك ويمشي بالسوق بدون العكاز الحمدلله. أنصح فيه كل من يعاني.", name: "عبدالعزيز الدوسري", age: "40 سنة", city: "الطائف", initials: "ع", color: "bg-purple-100 text-purple-700" },
     ],
     comparisons: [
-      { alt: "البوتوكس والفيلر", price: "3000–5000 ريال/جلسة", cons: ["إبر ومخاطر تكتلات", "تكرار كل 4–6 أشهر", "وجه مجمّد التعابير", "مكلف جداً"] },
-      { alt: "كريمات أنتي إيج الفاخرة", price: "800–1500 ريال/علبة", cons: ["تلمس 0.001 ملم فقط", "ترطيب سطحي مؤقت", "ما توصل للكولاجين", "تكلفة مدى الحياة"] },
-      { alt: "الكونسيلر اليومي", price: "300–600 ريال / ليوم", cons: ["يخفي بدون يحل", "تكلفة لا تنتهي", "يتلطّخ مع التعرّق", "يجهد البشرة"] },
+      { alt: "العملية الجراحية للركبة", price: "من 1600 ريال وأكثر", cons: ["تخدير ومخاطر", "فترة نقاهة طويلة", "تكلفة عالية جداً", "نتيجة غير مضمونة"] },
+      { alt: "جلسات العلاج الطبيعي", price: "300–600 ريال / جلسة", cons: ["تحتاج مواعيد وتنقّل", "تكلفة متراكمة", "نتيجة بطيئة", "تلتزم فترة طويلة"] },
+      { alt: "حبوب المسكنات", price: "تكلفة شهرية دائمة", cons: ["تخفي الألم مؤقتاً", "أضرار على المعدة", "مفعول يزول بسرعة", "لا تعالج السبب"] },
     ],
     faq: [
-      { q: "متى ألاحظ الفرق؟", a: "غالباً تبدئين بنعومة وترطيب أفضل خلال أول أسبوع. مظهر الهالات والخطوط يحتاج التزاماً يومياً من 30 يوم، لأننا نبني روتيناً للبشرة وليس تغطية مؤقتة." },
-      { q: "هل يناسب الحامل والمرضع؟", a: "المكونات غذائية ومعروفة، لكن أثناء الحمل أو الرضاعة ننصح دائماً بسؤال طبيبتك قبل أي مكمل أو مشروب وظيفي. سلامتك أهم من أي طلب." },
-      { q: "هل يسبب أرق؟ لأنه قهوة", a: "مصمم ليكون روتيناً صباحياً خفيفاً. الأفضل شربه صباحاً أو قبل العصر، خصوصاً إذا كنتِ حساسة للكافيين." },
-      { q: "هل أكمل قهوتي المعتادة؟", a: "نعم تماماً — قهوة إشراقة تكمّل روتينك، ما تستبدله. كثير من عميلاتنا يشربنها صباحاً ثم قهوتهن المفضلة بعد الظهر بدون مشاكل." },
-      { q: "هل تناسب البشرة الحساسة؟", a: "نعم 100٪ — لأنها تشتغل من الداخل عبر الجهاز الهضمي، ما تلامس بشرتك أبداً. مثالية للبشرات الحساسة اللي تتحسس من الكريمات والمستحضرات الموضعية." },
-      { q: "كم سعرة حرارية؟ هل يزيد الوزن؟", a: "كيس واحد = 12 سعرة حرارية فقط (أقل من نصف ملعقة سكر). ما يزيد الوزن إطلاقاً — بل العكس، شد البشرة يعطيكِ مظهراً أنحف وأكثر شباباً." },
-      { q: "هل المنتج حلال؟", a: "نعم، جميع المكونات حلال 100٪ ومتوافقة مع المعايير الخليجية. لا يحتوي على جيلاتين حيواني أو أي مواد محظورة." },
-      { q: "كيف أدفع؟", a: "الدفع عند الاستلام فقط. ما تحتاجين بطاقة بنكية أو دفع أونلاين. تدفعين كاش أو شبكة لما يوصلك الطلب لباب بيتك." },
-      { q: "هل أقدر أرجعه؟", a: "نعم — ضمان 14 يوم. إذا وصل المنتج وفيه أي مشكلة أو لم يكن مناسباً لك، تواصلي معنا ونساعدك مباشرة. نريدك تطلبين وأنتِ مطمئنة." },
+      { q: "متى ألاحظ الفرق؟", a: "كثير من العملاء يحسّون براحة سريعة بعد أول استخدام بسبب المنثول والأعشاب الدافئة. لكن النتيجة الحقيقية لعلاج الالتهاب تحتاج استخداماً يومياً مرتين لمدة تصل إلى 30 يوم." },
+      { q: "كيف أستخدم الزيت؟", a: "رجّ العبوة، بخّ كمية مناسبة على مكان الألم (ركبة، ظهر، مفصل)، ثم دلّك بحركات دائرية 2–3 دقائق حتى يمتصّه الجلد. كرّر مرتين يومياً صباحاً ومساءً." },
+      { q: "هل الزيت آمن؟ وهل له آثار جانبية؟", a: "الزيت طبيعي 100٪ من أعشاب طبية للاستخدام الموضعي فقط، بدون كورتيزون ولا مواد ضارة. لكن تجنّب الجروح المفتوحة والعينين، ولو كانت بشرتك حساسة جرّب كمية بسيطة أولاً." },
+      { q: "هل يغني عن العملية الجراحية؟", a: "كثير من الحالات التي كان مقرراً عليها عملية تحسّنت مع الاستخدام المنتظم. لكن نلتزم بالصدق: النتائج تتفاوت، ولا يُستخدم كبديل عن استشارة طبيبك في الحالات الشديدة." },
+      { q: "هل يناسب الحامل والمرضع؟", a: "لأنه موضعي وطبيعي فهو خفيف، لكن أثناء الحمل أو الرضاعة ننصح دائماً باستشارة الطبيب قبل استخدام أي مستحضر. سلامتك أهم." },
+      { q: "هل ينفع لآلام الظهر والديسك؟", a: "نعم — الزيت مصمّم لآلام الركبة، الظهر، الرقبة، الكتف، والمفاصل عموماً، ويساعد على علاج تشنّج العضلات المصاحب للديسك." },
+      { q: "هل المنتج حلال؟", a: "نعم، جميع المكونات طبيعية وحلال 100٪ ومتوافقة مع المعايير الخليجية. مصادق عليه من الجهات الصحية." },
+      { q: "كيف أدفع؟", a: "الدفع عند الاستلام فقط. ما تحتاج بطاقة بنكية أو دفع أونلاين. تدفع كاش أو شبكة لما يوصلك الطلب لباب بيتك." },
+      { q: "هل أقدر أرجعه؟", a: "نعم — ضمان 14 يوم. إذا وصل المنتج وفيه أي مشكلة أو لم يعجبك لأي سبب، تواصل معنا ونرجّع لك المال بدون أي أسئلة." },
       { q: "كم يستغرق التوصيل؟", a: "1–3 أيام للمدن الرئيسية (الرياض، جدة، الدمام، مكة، المدينة). 3–5 أيام لباقي المناطق. نوصّل لكل مدن المملكة عبر أرامكس وسمسا وريدبكس." },
     ],
     usageSteps: [
-      "ضعي كيساً واحداً في كوبك كل صباح",
-      "أضيفي ماء ساخن (180–200 مل) واخلطي جيداً",
-      "اشربيها مع الأكل أو بعده للامتصاص الأفضل",
-      "التزمي يومياً — الاستمرار هو سرّ النتيجة الحقيقية",
+      "رجّ العبوة جيداً قبل الاستخدام",
+      "بخّ كمية مناسبة على مكان الألم (ركبة · ظهر · مفصل)",
+      "دلّك بحركات دائرية 2–3 دقائق حتى يمتصّه الجلد",
+      "كرّر مرتين يومياً صباحاً ومساءً للنتيجة الأفضل",
     ],
     usageStats: [
-      { n: "30", l: "كيساً في العلبة" },
-      { n: "1", l: "كيس يومياً" },
-      { n: "30", l: "يوم لكل علبة" },
-      { n: "2 دق", l: "باليوم" },
+      { n: "30", l: "عشبة طبيعية" },
+      { n: "2×", l: "مرتين يومياً" },
+      { n: "30", l: "يوم لكل عبوة" },
+      { n: "3 دق", l: "لكل استخدام" },
     ],
   },
   "anti-aging": {
@@ -309,7 +310,7 @@ export default async function ProductPage({ params }: Props) {
             {/* Category badge */}
             <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-3 shadow-sm self-start">
               <FlaskConical size={12} />
-              قهوة الجمال · ضد الهالات والتجاعيد
+              زيت العوافي · لآلام الركبة والظهر والمفاصل
             </div>
 
             {/* Rating row */}
@@ -319,7 +320,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
               <span className="text-sm text-[#5A4A3E] font-semibold">4.9 ({c.numbers[1].n} · مؤكدة)</span>
               <span className="text-brand-apothecary">·</span>
-              <span className="text-sm font-black text-[#3D2817]">من {product.price.one} ريال / علبة</span>
+              <span className="text-sm font-black text-[#0F3024]">من {product.price.one} ريال / عبوة</span>
             </div>
 
             {/* H1 */}
@@ -332,7 +333,7 @@ export default async function ProductPage({ params }: Props) {
 
             {/* Bundle Picker */}
             <div id="bundle">
-              <BundlePicker product={product} />
+              <BundlePicker product={product} isPrimary />
             </div>
 
           </div>
@@ -364,7 +365,7 @@ export default async function ProductPage({ params }: Props) {
           STAT CALLOUT
       ══════════════════════════════════════════ */}
       <div className="bg-[#FDF3E7] border-y border-[#E8C08A] py-5 px-4 text-center">
-        <p className="text-[#3D2817] text-sm max-w-2xl mx-auto leading-relaxed">
+        <p className="text-[#0F3024] text-sm max-w-2xl mx-auto leading-relaxed">
           <span className="font-black text-[2rem] text-[#A0640A] ml-2 leading-none">{c.stat.num}</span>
           <span className="font-semibold">{c.stat.text}</span>
         </p>
@@ -378,40 +379,35 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-[1200px] mx-auto">
           {/* Section header */}
           <div className="mb-6 md:mb-8 text-right">
-            <p className="text-[11px] font-bold text-[#315B43] mb-2">هل تعانين من هذا؟</p>
+            <p className="text-[11px] font-bold text-[#315B43] mb-2">هل تعاني من هذا؟</p>
             <h2 className="text-[1.65rem] md:text-[2.15rem] font-black text-[#0F3024] leading-tight">
-              المشكلة ليست في النوم فقط — وجهك يقول إنك متعبة
+              الألم ليس قدراً تعيش معه — مشكلتك لها حل
             </h2>
             <p className="text-[#5A4A3E] text-sm md:text-[15px] mt-2">
-              الهالات والخطوط لا تظهر في المرآة فقط، تظهر في الصور، المكالمات، والمناسبات.
+              ألم الركبة والظهر والمفاصل لا يظهر عند المشي فقط، بل عند الصلاة، النوم، وأبسط حركات يومك.
             </p>
           </div>
 
           {/* 2-col: image + cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
 
-            {/* ── IMAGE SLOT 1 ── صورة بورتريه (ضعي صورتك هنا) */}
-            <div className="relative rounded-2xl overflow-hidden bg-[#F0E8DC] order-last md:order-first" style={{ minHeight: 520 }}>
-              {/* Replace this img src with your real product/model photo */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/pain-point-tired-woman.png"
-                alt="سيدة سعودية تعاني من الهالات السوداء"
-                className="w-full h-full object-cover absolute inset-0"
-                style={{ minHeight: 520 }}
+            {/* ── IMAGE SLOT 1 — real product photo ── */}
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#F0E8DC] to-[#E6D8C8] order-last md:order-first flex items-center justify-center p-8" style={{ minHeight: 520 }}>
+              <ProductPhoto
+                src="/awafi-oil-bottle-box.png"
+                alt="زيت العوافي لآلام الركبة والظهر والمفاصل"
+                className="max-h-[420px] w-auto object-contain drop-shadow-2xl"
+                fallbackWrapperClassName="h-full w-full"
+                iconSize={100}
               />
               {/* Overlay badge */}
               <div className="absolute bottom-0 inset-x-0 bg-[#0F3024]/85 px-5 py-4 z-10">
                 <p className="text-white text-sm font-bold text-center">
-                  عندما تبدين متعبة حتى وأنتِ بخير
+                  عندما يمنعك الألم من أبسط حركات يومك
                 </p>
                 <p className="text-[#C8A876] text-xs text-center mt-1">
-                  هنا يبدأ سبب الشراء الحقيقي: الثقة أمام المرآة والكاميرا
+                  هنا يبدأ الحل الحقيقي: راحة تعود لركبتك وظهرك ومفاصلك
                 </p>
-              </div>
-              {/* Photo replace hint (hidden on production — remove if unwanted) */}
-              <div className="hidden absolute top-3 right-3 bg-black/50 text-white text-[9px] px-2 py-1 rounded-full z-20 pointer-events-none">
-                
               </div>
             </div>
 
@@ -452,38 +448,35 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>التركيبة الموزونة</p>
-            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">مكونات قليلة، لكن كل واحد له وظيفة واضحة</h2>
-            <p className="text-[#5A4A3E] text-sm mt-1">لسنا نبيع قائمة طويلة. نبيع روتيناً يومياً مفهوماً: كولاجين للبنية، فيتامين C للدعم، وهيالورونيك للامتلاء.</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>التركيبة الطبيعية</p>
+            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">مكوّن من 30 عشبة طبية من قلب الغابات الآسيوية</h2>
+            <p className="text-[#5A4A3E] text-sm mt-1">لسنا نبيع تركيبة كيميائية. نبيع خلطة أعشاب طبيعية تصل لمكان الألم: الزنجبيل والكركم للالتهاب، المنثول للراحة الفورية، وأعشاب الغابات لدعم المفاصل.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
-            {/* ── IMAGE SLOT 2 ── صورة المكوّنات/المنتج (ضعي صورتك هنا) */}
-            <div className="relative rounded-2xl overflow-hidden border border-[#E6D8C8] shadow-lg" style={{ minHeight: 480 }}>
-              {/* Replace this img src with your real product flat-lay or ingredient photo */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/product-box-lifestyle.png?v=1"
-                alt="قهوة إشراقة للكولاجين"
-                className="w-full h-full object-cover absolute inset-0"
-                style={{ minHeight: 480 }}
+            {/* ── IMAGE SLOT 2 — real product photo ── */}
+            <div className="relative rounded-2xl overflow-hidden border border-[#E6D8C8] shadow-lg bg-gradient-to-br from-[#FBF7F0] to-[#E6D8C8] flex items-center justify-center p-8" style={{ minHeight: 480 }}>
+              <ProductPhoto
+                src="/awafi-oil-bottle-box.png"
+                alt="زيت العوافي من الأعشاب الطبيعية"
+                className="max-h-[380px] w-auto object-contain drop-shadow-xl relative z-10"
+                fallbackWrapperClassName="h-full w-full relative z-10"
+                iconSize={90}
               />
-              {/* Ingredient badges overlaid */}
-              <div className="absolute inset-0 bg-[#0F1A14]/30" />
               <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
-                <span className="bg-[#3D2817]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
-                  كولاجين بحري 5000 ملجم
+                <span className="bg-[#0F3024]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                  30 عشبة طبيعية
                 </span>
-                <span className="bg-[#3D2817]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
-                  فيتامين C نشط
+                <span className="bg-[#0F3024]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                  زنجبيل وكركم
                 </span>
-                <span className="bg-[#3D2817]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
-                  هيالورونيك اسيد
+                <span className="bg-[#0F3024]/90 text-white text-[11px] font-bold px-3 py-1.5 rounded-full backdrop-blur-sm">
+                  منثول وكافور
                 </span>
               </div>
               {/* Free-of section at bottom */}
               <div className="absolute bottom-0 inset-x-0 bg-white border-t border-[#E6D8C8] px-4 py-3 z-10">
-                <p className="text-xs font-bold text-[#3D2817] mb-2">ما لن تجديه في علبتك:</p>
+                <p className="text-xs font-bold text-[#0F3024] mb-2">ما لن تجده في عبوتك:</p>
                 <div className="flex flex-wrap gap-1.5">
                   {c.freeOf.map(f => (
                     <span key={f} className="text-[10px] bg-green-50 border border-green-200 text-green-700 px-2 py-0.5 rounded-full flex items-center gap-0.5">
@@ -511,7 +504,7 @@ export default async function ProductPage({ params }: Props) {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-black text-[#3D2817] text-sm">{ing.name}</h3>
+                          <h3 className="font-black text-[#0F3024] text-sm">{ing.name}</h3>
                           <span className="text-[10px] bg-brand-apothecary text-white px-2 py-0.5 rounded-full font-bold font-inter">{ing.dose}</span>
                         </div>
                         <p className="text-[10px] text-brand-apothecary font-semibold mt-0.5">{ing.sci}</p>
@@ -536,9 +529,9 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الثقة العلمية</p>
-            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">لماذا تستحق أكثر من قهوة عادية؟</h2>
-            <p className="text-[#5A4A3E] text-sm mt-1">لأنها ليست نكهة فقط. هي روتين جمال يومي بجرعات واضحة، ثقة غذائية، وطريقة استخدام سهلة.</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>ماذا قال الدكتور؟</p>
+            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">لماذا يوصي به استشاري العظام والمفاصل؟</h2>
+            <p className="text-[#5A4A3E] text-sm mt-1">لأنه ليس مجرد زيت. هو خلطة أعشاب طبيعية بتركيز واضح، مصادق عليها، وأثبتت نتائج مع أكثر من 1500 حالة في شهر واحد.</p>
           </div>
 
           {/* Certifications */}
@@ -550,7 +543,7 @@ export default async function ProductPage({ params }: Props) {
               {l:"ISO 22000",s:"سلامة غذائية دولية"}
             ].map(cert => (
               <div key={cert.l} className="bg-[#FAFAF7] border-2 border-[#C8A876] rounded-2xl px-5 py-3 text-center min-w-[100px]">
-                <p className="font-black text-[#3D2817] text-sm">{cert.l}</p>
+                <p className="font-black text-[#0F3024] text-sm">{cert.l}</p>
                 <p className="text-[10px] text-[#7A6A5E] mt-0.5">{cert.s}</p>
               </div>
             ))}
@@ -561,7 +554,7 @@ export default async function ProductPage({ params }: Props) {
             <Quote size={56} className="absolute top-4 right-4 text-brand-gold/20" strokeWidth={1.5} />
             <div className="relative">
               <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "Inter, sans-serif" }}>
-                نهج علمي · رأي خبير
+                رأي طبيب · استشاري عظام
               </p>
               <blockquote className="text-brand-cream text-[14.5px] md:text-[16px] font-medium italic leading-relaxed mb-4">
                 «{c.expertQuote}»
@@ -574,7 +567,7 @@ export default async function ProductPage({ params }: Props) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto text-center">
             {c.numbers.map(s => (
               <div key={s.l} className="bg-[#FAFAF7] rounded-2xl border border-[#E6D8C8] p-4">
-                <p className="font-black text-[#3D2817] text-xl">{s.n}</p>
+                <p className="font-black text-[#0F3024] text-xl">{s.n}</p>
                 <p className="text-[11px] text-[#7A6A5E] mt-1">{s.l}</p>
               </div>
             ))}
@@ -589,8 +582,8 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>النتائج أسبوعاً بأسبوع</p>
-            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">كيف يبدأ الفرق خلال أول 30 يوم؟</h2>
-            <p className="text-[#5A4A3E] text-sm mt-1">ليس تغييراً مفاجئاً يخوّفك. هو تحسّن تدريجي تلاحظينه في المرآة والصور.</p>
+            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">كيف يبدأ الفرق خلال أول 30 يوم؟</h2>
+            <p className="text-[#5A4A3E] text-sm mt-1">ليس مسكّناً مؤقتاً. هو تحسّن تدريجي تلاحظه في حركتك، صلاتك، ونومك.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start">
@@ -603,11 +596,11 @@ export default async function ProductPage({ params }: Props) {
                 <div className="space-y-4">
                   {c.timeline.map((t, i) => (
                     <div key={t.label} className="flex items-start gap-4 bg-white rounded-2xl border border-[#E6D8C8] p-5 relative">
-                      <div className="w-10 h-10 rounded-full bg-[#3D2817] text-white font-black flex items-center justify-center flex-shrink-0 text-sm z-10">
+                      <div className="w-10 h-10 rounded-full bg-[#0F3024] text-white font-black flex items-center justify-center flex-shrink-0 text-sm z-10">
                         {i + 1}
                       </div>
                       <div>
-                        <p className="font-black text-[#3D2817] mb-1">{t.label}</p>
+                        <p className="font-black text-[#0F3024] mb-1">{t.label}</p>
                         <p className="text-sm text-[#7A6A5E] leading-relaxed">{t.desc}</p>
                       </div>
                     </div>
@@ -615,43 +608,40 @@ export default async function ProductPage({ params }: Props) {
                 </div>
               </div>
 
-              <div className="bg-[#3D2817] text-white rounded-2xl p-4 mt-5 text-center">
+              <div className="bg-brand-apothecary text-white rounded-2xl p-4 mt-5 text-center">
                 <p className="text-sm">
-                  العلبة الأولى تعطيكِ النتيجة.{" "}
-                  <span className="font-black text-[#C8A876]">العلبتان والثلاث يثبّتانها</span> — ووفّري حتى {product.price.one * 3 - product.price.three} ريال.
+                  العلبة الأولى تعطيك الراحة الأولى.{" "}
+                  <span className="font-black text-[#C8A876]">عرض 6 علب يعطيك العلاج النهائي الكامل</span> — ووفّر حتى {product.price.one * product.bottles.three - product.price.three} ريال.
                 </p>
               </div>
-              <p className="text-center text-xs text-[#7A6A5E] mt-3 opacity-70">* النتائج تتفاوت من شخص لآخر. المنتج لدعم مظهر البشرة وليس علاجاً طبياً.</p>
+              <p className="text-center text-xs text-[#7A6A5E] mt-3 opacity-70">* النتائج تتفاوت من شخص لآخر. المنتج لدعم وعلاج الألم موضعياً وليس بديلاً عن استشارة الطبيب في الحالات الشديدة.</p>
             </div>
 
-            {/* ── IMAGE SLOT 3 ── صورة نتيجة/قبل وبعد (ضعي صورتك هنا) */}
-            <div className="relative rounded-2xl overflow-hidden" style={{ minHeight: 420 }}>
-              {/* Replace this img src with a real before/after or glowing skin photo */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/before-after-results.png?v=3"
-                alt="نتيجة قهوة كولاجين إشراقة بعد 30 يوم"
-                className="w-full h-full object-cover absolute inset-0"
-                style={{ minHeight: 420 }}
+            {/* ── IMAGE SLOT 3 — real product photo ── */}
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#FBF7F0] to-[#E6D8C8] flex items-center justify-center p-6" style={{ minHeight: 420 }}>
+              <ProductPhoto
+                src="/awafi-oil-bottle-box.png"
+                alt="زيت العوافي بعد 30 يوم من الاستخدام"
+                className="max-h-[300px] w-auto object-contain drop-shadow-xl relative z-[1]"
+                fallbackWrapperClassName="h-full w-full relative z-[1]"
+                iconSize={80}
               />
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-[#3D2817]/20" />
               {/* Result badges */}
               <div className="absolute inset-0 flex flex-col justify-end p-5 z-10">
                 <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4">
-                  <p className="text-[#3D2817] font-black text-sm mb-2">✨ بعد 30 يوم من روتين إشراقة</p>
+                  <p className="text-[#0F3024] font-black text-sm mb-2">✨ بعد 30 يوم من زيت العوافي</p>
                   <div className="grid grid-cols-3 gap-2 text-center">
                     <div>
-                      <p className="font-black text-[#A0640A] text-base">↓ 70%</p>
-                      <p className="text-[9px] text-[#7A6A5E]">هالات أخف</p>
+                      <p className="font-black text-[#A0640A] text-base">↓ 80%</p>
+                      <p className="text-[9px] text-[#7A6A5E]">ألم أقل</p>
                     </div>
                     <div>
                       <p className="font-black text-[#A0640A] text-base">↑ 85%</p>
-                      <p className="text-[9px] text-[#7A6A5E]">مرونة البشرة</p>
+                      <p className="text-[9px] text-[#7A6A5E]">حركة أسهل</p>
                     </div>
                     <div>
-                      <p className="font-black text-[#A0640A] text-base">↓ 60%</p>
-                      <p className="text-[9px] text-[#7A6A5E]">خطوط دقيقة</p>
+                      <p className="font-black text-[#A0640A] text-base">↓ 70%</p>
+                      <p className="text-[9px] text-[#7A6A5E]">التهاب أخف</p>
                     </div>
                   </div>
                 </div>
@@ -672,20 +662,20 @@ export default async function ProductPage({ params }: Props) {
       <section className="py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[1100px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
-            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>للسعوديات تحديداً</p>
-            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">متى تبدئين قهوة إشراقة؟</h2>
-            <p className="text-[#5A4A3E] text-sm mt-1.5">المواقف اللي تستاهلين فيها تبدئين روتينك من اليوم</p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>لمن هذا الزيت؟</p>
+            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">متى تبدأ زيت العوافي؟</h2>
+            <p className="text-[#5A4A3E] text-sm mt-1.5">الحالات التي تستحق أن تبدأ استخدامك من اليوم</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
             {[
-              { emoji: "👰‍♀️", title: "قبل الأعراس", text: "ابدئي قبل المناسبة بـ 60 يوم حتى تكون الإشراقة تدريجية وطبيعية في الصور" },
-              { emoji: "👶", title: "بعد الولادة", text: "عندما يسمح لك طبيبك، ابدئي روتيناً بسيطاً يساعد ملامحك تبدو أهدأ" },
-              { emoji: "🌙", title: "استعداداً للعيد", text: "30 يوم تكفي لتبدئي تلاحظين فرقاً في النعومة، الترطيب، ومظهر تحت العين" },
-              { emoji: "💼", title: "للموظفات وأمهات الدوام", text: "للوجه المتعب من الشاشات والتكييف والسهر — كوب صباحي أسهل من 5 منتجات" },
+              { emoji: "🧎", title: "ألم عند الصلاة", text: "إذا كان النزول للسجود أو القيام يؤلم ركبتك — ابدأ اليوم لتعود لصلاتك مرتاحاً" },
+              { emoji: "🚶", title: "ألم عند المشي", text: "لمن يتألم مع كل خطوة في الركبة أو أسفل الظهر ويتجنّب الخروج والحركة" },
+              { emoji: "🛏️", title: "ألم الظهر والديسك", text: "لمن يمنعه ألم أسفل الظهر من النوم المريح أو الجلوس والعمل لفترات طويلة" },
+              { emoji: "🦵", title: "خشونة وآلام المفاصل", text: "لكبار السن وأصحاب خشونة الركبة الذين يبحثون عن راحة بدون حبوب أو عمليات" },
             ].map((item) => (
               <div key={item.title} className="bg-[#FBF7F0] border border-[#E6D8C8] rounded-2xl p-4 md:p-5 text-center hover:shadow-md transition-shadow">
                 <div className="text-3xl md:text-4xl mb-2">{item.emoji}</div>
-                <p className="font-black text-[#3D2817] text-sm md:text-base mb-1.5">{item.title}</p>
+                <p className="font-black text-[#0F3024] text-sm md:text-base mb-1.5">{item.title}</p>
                 <p className="text-[#7A6A5E] text-[12px] md:text-[13px] leading-relaxed">{item.text}</p>
               </div>
             ))}
@@ -700,8 +690,8 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>تجارب حقيقية</p>
-            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">ما تقوله {c.numbers[1].n} سعودية</h2>
-            <p className="text-[#5A4A3E] text-sm mt-1">مشتريات مؤكدة من مدن مختلفة — من الشابات للأمهات، من العرائس لأمهات الأطفال.</p>
+            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">اسمعوا تجارب الناس مع {c.numbers[1].n} حالة</h2>
+            <p className="text-[#5A4A3E] text-sm mt-1">مشتريات مؤكدة من مدن مختلفة — كيف تخلّصوا من معاناتهم مع ألم الركبة والظهر والمفاصل.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
@@ -719,10 +709,10 @@ export default async function ProductPage({ params }: Props) {
                     {t.initials}
                   </div>
                   <div>
-                    <p className="font-black text-[#3D2817] text-sm">{t.name}</p>
+                    <p className="font-black text-[#0F3024] text-sm">{t.name}</p>
                     <p className="text-[11px] text-[#7A6A5E]">{t.age} · {t.city}</p>
                   </div>
-                  <span className="mr-auto text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-bold">✓ مؤكدة</span>
+                  <span className="mr-auto text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-bold">✓ مؤكد</span>
                 </div>
               </div>
             ))}
@@ -737,15 +727,15 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>المقارنة</p>
-            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">قارني — وقرّري بنفسك</h2>
-            <p className="text-[#5A4A3E] text-sm mt-1">كل بديل جربتيه من قبل، وليه فشل. وكيف إشراقة تحلّه بشكل مختلف.</p>
+            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">قارن — وقرّر بنفسك</h2>
+            <p className="text-[#5A4A3E] text-sm mt-1">كل بديل جرّبته من قبل، ولماذا خذلك. وكيف يحلّه زيت العوافي بشكل مختلف.</p>
           </div>
 
           <div className="space-y-3">
             {c.comparisons.map(comp => (
               <div key={comp.alt} className="bg-white rounded-2xl border border-[#E6D8C8] p-4 md:p-5">
                 <div className="flex items-center justify-between mb-3">
-                  <p className="font-black text-[#3D2817]">{comp.alt}</p>
+                  <p className="font-black text-[#0F3024]">{comp.alt}</p>
                   <span className="text-xs text-red-600 font-bold bg-red-50 border border-red-200 px-2.5 py-1 rounded-full">{comp.price}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
@@ -759,17 +749,22 @@ export default async function ProductPage({ params }: Props) {
             ))}
 
             {/* Our product */}
-            <div className="bg-[#3D2817] rounded-2xl p-5 border-2 border-[#C8A876]">
+            <div className="bg-[#0F3024] rounded-2xl p-5 border-2 border-[#C8A876]">
               <div className="flex items-center justify-between mb-4">
                 <p className="font-black text-white text-base flex items-center gap-2">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/product-box-lux.png?v=4" alt="إشراقة" className="w-8 h-8 object-contain rounded" />
-                  قهوة كولاجين إشراقة للجمال
+                  <ProductPhoto
+                    src="/awafi-oil-bottle.png"
+                    alt="زيت العوافي"
+                    className="w-8 h-8 object-contain rounded"
+                    fallbackWrapperClassName="w-8 h-8"
+                    iconSize={16}
+                  />
+                  زيت العوافي لآلام الركبة والمفاصل
                 </p>
-                <span className="text-xs font-black bg-[#C8A876] text-[#3D2817] px-3 py-1 rounded-full">من {product.price.one} ريال</span>
+                <span className="text-xs font-black bg-brand-rust text-white px-3 py-1 rounded-full">من {product.price.one} ريال</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-                {["تشتغل عبر الدم على كل الطبقات","بدون إبر أو مخاطر","دفع عند الاستلام","حلال 100٪ · SFDA","مكونات بجرعات موزونة","ضمان 14 يوم"].map(pro => (
+                {["يصل مباشرة لمكان الألم","بدون عمليات أو مخاطر","دفع عند الاستلام","حلال 100٪ · SFDA","30 عشبة طبيعية","ضمان 14 يوم"].map(pro => (
                   <p key={pro} className="text-xs text-[#C8A876] flex items-center gap-1.5">
                     <span className="font-bold">✓</span>{pro}
                   </p>
@@ -792,22 +787,22 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الضمان الكامل</p>
-          <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817] mb-3">14 يوم — أو فلوسكِ ترجع. بدون أسئلة.</h2>
+          <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024] mb-3">14 يوم — أو تُرجَع لك فلوسك. بدون أسئلة.</h2>
           <p className="text-[#5A4A3E] mb-6 md:mb-8 leading-relaxed text-sm max-w-lg mx-auto">
-            جرّبي العلبة الأولى كاملة. إذا ما حسّيتي بفرق يستاهل، تواصلي معنا وفلوسكِ ترجع — بدون نماذج، بدون أسئلة، بدون مكسلات. وأصلاً ما تدفعين إلا عند الاستلام.
+            بعد التوصيل بالمنتج لباب البيت وتجربته، إن لم يعجبك لأي سبب من الأسباب فقط تواصل معنا وسوف نرجّع لك المال الذي أنفقته — وبدون أي أسئلة. وأصلاً ما تدفع إلا عند الاستلام.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
             {[
-              { icon: <Phone size={20} />, t: "تواصلي معنا", s: "في أي يوم خلال الـ 14 يوم" },
-              { icon: <Package size={20} />, t: "رجّعي العلبة", s: "حتى لو فاضية — ما يهمّنا" },
-              { icon: <Wallet size={20} />, t: "فلوسكِ ترجع كاملة", s: "خلال 3–5 أيام عمل" },
+              { icon: <Phone size={20} />, t: "تواصل معنا", s: "في أي يوم خلال الـ 14 يوم" },
+              { icon: <Package size={20} />, t: "أرجِع العبوة", s: "حتى لو مفتوحة — ما يهمّنا" },
+              { icon: <Wallet size={20} />, t: "فلوسك ترجع كاملة", s: "خلال 3–5 أيام عمل" },
             ].map(s => (
               <div key={s.t} className="bg-white rounded-2xl border border-brand-deepSage p-4 text-center shadow-sm">
                 <div className="w-11 h-11 rounded-2xl bg-brand-sage border border-brand-deepSage text-brand-apothecary flex items-center justify-center mx-auto mb-2">
                   {s.icon}
                 </div>
-                <p className="font-black text-[#3D2817] text-sm">{s.t}</p>
+                <p className="font-black text-[#0F3024] text-sm">{s.t}</p>
                 <p className="text-[11px] text-[#5A4A3E] mt-1">{s.s}</p>
               </div>
             ))}
@@ -822,15 +817,15 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-[800px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>طريقة الاستخدام</p>
-            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">أبسط روتين عمرك جربتيه</h2>
-            <p className="text-[#5A4A3E] text-sm mt-1">دقيقتان باليوم · قهوة حقيقية اللذة · بدون التزام معقّد.</p>
+            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">طريقة الاستعمال سهلة جداً</h2>
+            <p className="text-[#5A4A3E] text-sm mt-1">بخّ · دلّك · ارتاح · بدون حبوب ولا التزام معقّد.</p>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-5 text-center">
             {c.usageStats.map(s => (
               <div key={s.l} className="bg-white rounded-2xl border border-[#E6D8C8] p-3">
-                <p className="font-black text-[#3D2817] text-lg">{s.n}</p>
+                <p className="font-black text-[#0F3024] text-lg">{s.n}</p>
                 <p className="text-[10px] text-[#7A6A5E] mt-1">{s.l}</p>
               </div>
             ))}
@@ -840,13 +835,21 @@ export default async function ProductPage({ params }: Props) {
           <div className="space-y-3">
             {c.usageSteps.map((step, i) => (
               <div key={i} className="flex items-center gap-4 bg-white rounded-xl border border-[#E6D8C8] p-4">
-                <div className="w-10 h-10 rounded-full bg-[#3D2817] text-white font-black flex items-center justify-center flex-shrink-0 text-sm">
+                <div className="w-10 h-10 rounded-full bg-[#0F3024] text-white font-black flex items-center justify-center flex-shrink-0 text-sm">
                   {i + 1}
                 </div>
-                <p className="text-[#3D2817] text-sm font-medium">{step}</p>
-                {i === 0 && <img src="/product-box-lux.png?v=4" alt="إشراقة" className="mr-auto w-8 h-8 object-contain flex-shrink-0" />}
-                {i === 1 && <span className="mr-auto text-2xl">💧</span>}
-                {i === 2 && <span className="mr-auto text-2xl">🌅</span>}
+                <p className="text-[#0F3024] text-sm font-medium">{step}</p>
+                {i === 0 && (
+                  <ProductPhoto
+                    src="/awafi-oil-bottle.png"
+                    alt="زيت العوافي"
+                    className="mr-auto w-8 h-8 object-contain flex-shrink-0"
+                    fallbackWrapperClassName="mr-auto w-8 h-8 flex-shrink-0"
+                    iconSize={16}
+                  />
+                )}
+                {i === 1 && <span className="mr-auto text-2xl">💦</span>}
+                {i === 2 && <span className="mr-auto text-2xl">🤲</span>}
                 {i === 3 && <span className="mr-auto text-2xl">✨</span>}
               </div>
             ))}
@@ -861,15 +864,15 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-[800px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>التوصيل</p>
-            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#3D2817]">كيف يوصلك طلبك — بكل بساطة</h2>
+            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024]">كيف يوصلك طلبك — بكل بساطة</h2>
             <p className="text-[#5A4A3E] text-sm mt-1">بدون دفع أونلاين، بدون التزام، بدون مفاجآت.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
             {[
-              { n: "1", icon: <PackageCheck size={22} />, t: "اطلبي الآن", d: "اختاري العرض، اكتبي اسمكِ ورقم جوالكِ. بدون دفع أونلاين أو بطاقة بنكية." },
-              { n: "2", icon: <Phone size={22} />, t: "نتصل للتأكيد", d: "فريقنا السعودي يتواصل معكِ خلال ساعات لتأكيد الطلب. عربي 100٪." },
-              { n: "3", icon: <Wallet size={22} />, t: "استلمي وادفعي", d: "1–3 أيام للمدن الرئيسية. تدفعين كاش أو شبكة وقت وصول الطلب." },
+              { n: "1", icon: <PackageCheck size={22} />, t: "اطلب الآن", d: "اختر العرض، اكتب اسمك ورقم جوالك. بدون دفع أونلاين أو بطاقة بنكية." },
+              { n: "2", icon: <Phone size={22} />, t: "نتصل للتأكيد", d: "فريقنا السعودي يتواصل معك خلال ساعات لتأكيد الطلب. عربي 100٪." },
+              { n: "3", icon: <Wallet size={22} />, t: "استلم وادفع", d: "1–3 أيام للمدن الرئيسية. تدفع كاش أو شبكة وقت وصول الطلب." },
             ].map(s => (
               <div key={s.n} className="bg-brand-sage/40 rounded-2xl border border-brand-deepSage/40 p-4 sm:p-5 flex items-start gap-3 sm:flex-col sm:items-center sm:text-center">
                 <div className="w-11 h-11 rounded-2xl bg-white border border-brand-deepSage text-brand-apothecary flex items-center justify-center flex-shrink-0 sm:mx-auto sm:mb-2">
@@ -877,7 +880,7 @@ export default async function ProductPage({ params }: Props) {
                 </div>
                 <div>
                   <div className="w-7 h-7 rounded-full bg-brand-brown text-brand-gold font-black flex items-center justify-center mx-auto mb-2 text-[12px] font-inter">{s.n}</div>
-                  <p className="font-black text-[#3D2817] text-sm mb-0.5 sm:mb-1">{s.t}</p>
+                  <p className="font-black text-[#0F3024] text-sm mb-0.5 sm:mb-1">{s.t}</p>
                   <p className="text-[11px] text-[#5A4A3E] leading-relaxed">{s.d}</p>
                 </div>
               </div>
@@ -886,7 +889,7 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Cities */}
           <div className="bg-[#FAFAF7] rounded-2xl border border-[#E6D8C8] p-5">
-            <p className="font-black text-[#3D2817] text-sm mb-3 text-center">نوصّل لكل مدن المملكة</p>
+            <p className="font-black text-[#0F3024] text-sm mb-3 text-center">نوصّل لكل مدن المملكة</p>
             <div className="flex flex-wrap gap-2 justify-center">
               {saudiCities.map(city => (
                 <span key={city} className="text-[11px] bg-white text-[#7A6A5E] px-2.5 py-1 rounded-full border border-[#E6D8C8]">{city}</span>
@@ -904,12 +907,12 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-[700px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "Inter, sans-serif" }}>الأسئلة الشائعة</p>
-            <h2 className="text-[1.5rem] md:text-2xl font-black text-[#3D2817]">قبل ما تطلبين — كل اللي تحتاجين</h2>
+            <h2 className="text-[1.5rem] md:text-2xl font-black text-[#0F3024]">قبل ما تطلب — كل اللي تحتاج معرفته</h2>
           </div>
           <div className="space-y-2">
             {c.faq.map((faq, i) => (
               <details key={i} className="bg-white rounded-xl border border-[#E0D0BC] group shadow-sm">
-                <summary className="flex items-center justify-between p-4 cursor-pointer font-bold text-[#3D2817] text-sm select-none list-none active:bg-[#FBF7F0] rounded-xl">
+                <summary className="flex items-center justify-between p-4 cursor-pointer font-bold text-[#0F3024] text-sm select-none list-none active:bg-[#FBF7F0] rounded-xl">
                   {faq.q}
                   <span className="text-[#C8A876] text-xl font-bold flex-shrink-0 mr-2 transition-transform duration-200 group-open:rotate-45">+</span>
                 </summary>
@@ -929,14 +932,14 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="relative max-w-[600px] mx-auto text-center">
           <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "Inter, sans-serif" }}>
-            قراركِ اليوم
+            قرارك اليوم
           </p>
           <h2 className="text-[1.6rem] md:text-3xl font-black text-white mb-3 leading-tight">
-            كل يوم تأجّلين فيه — تجاعيدكِ تكبر معكِ
+            الخيار بين يديك — هل تتخلّص من ألم الركبة أم تعاني مدى حياتك؟
           </h2>
-          <p className="text-brand-gold text-[14.5px] italic mb-2">«الجمال يبدأ بجرعة دقيقة.»</p>
+          <p className="text-brand-gold text-[14.5px] italic mb-2">«العافية تبدأ ببخّة واحدة.»</p>
           <p className="text-brand-cream/80 mb-7 text-[13.5px] leading-relaxed">
-            ابدئي اليوم — وبعد 30 يوم رح تشكرين نفسكِ
+            ابدأ اليوم — وبعد 30 يوم رح تشكر نفسك
           </p>
           <div className="bg-white rounded-3xl p-4 md:p-6 shadow-2xl border border-brand-gold/30">
             <BundlePicker product={product} />

@@ -33,7 +33,7 @@ export default function AdminLoginPage() {
           <div className="w-14 h-14 rounded-2xl bg-[#0F3024] text-white flex items-center justify-center mx-auto mb-3">
             <Lock size={24} />
           </div>
-          <h1 className="text-xl font-black text-[#1A0F0A]">لوحة تحكم إشراقة</h1>
+          <h1 className="text-xl font-black text-[#1A0F0A]">لوحة تحكم العوافي</h1>
           <p className="text-sm text-[#7A6A5E] mt-1">Admin Dashboard · دخول الإدارة</p>
         </div>
 

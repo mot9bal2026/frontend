@@ -62,7 +62,7 @@ export function SourcesTab({ range, reloadKey, onAuthError }: Props) {
               ) : rows.length > 0 ? (
                 rows.map((s) => (
                   <tr key={s.source} className="border-t border-[#F0EAE0] hover:bg-[#FBF7F0]">
-                    <td className="px-4 py-3 font-bold text-[#3D2817]">{s.source}</td>
+                    <td className="px-4 py-3 font-bold text-[#0F3024]">{s.source}</td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
                         <span className="font-inter text-[#5A4A3E] w-12">{fmtNumber(s.valid_visits)}</span>

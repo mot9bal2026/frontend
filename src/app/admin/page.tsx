@@ -77,7 +77,7 @@ export default function AdminDashboardPage() {
               <LayoutDashboard size={18} />
             </div>
             <div>
-              <h1 className="font-black text-sm md:text-base leading-none">لوحة تحكم إشراقة</h1>
+              <h1 className="font-black text-sm md:text-base leading-none">لوحة تحكم العوافي</h1>
               <p className="text-[11px] text-white/50 mt-0.5">{username ? `أهلاً ${username}` : "Admin"}</p>
             </div>
           </div>

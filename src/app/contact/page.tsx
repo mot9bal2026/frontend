@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { Mail, Phone, MessageCircle, Clock, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "تواصلي معنا | إشراقة — قهوة الجمال",
+  title: "تواصل معنا | زيت العوافي",
   description:
-    "فريق إشراقة جاهز لمساعدتكِ. تواصلي معنا عبر البريد الإلكتروني أو واتساب. خدمة عملاء سعودية من الأحد إلى الخميس.",
+    "فريق العوافي جاهز لمساعدتك. تواصل معنا عبر البريد الإلكتروني أو واتساب. خدمة عملاء سعودية من الأحد إلى الخميس.",
 };
 
 export default function ContactPage() {
@@ -18,10 +18,10 @@ export default function ContactPage() {
             خدمة عملاء سعودية
           </div>
           <h1 className="text-[2rem] md:text-[2.4rem] font-black text-[#1A0F0A] mb-3 leading-[1.2]">
-            خبرتنا في خدمتكِ
+            خبرتنا في خدمتك
           </h1>
           <p className="text-[#5A4A3E] text-[14.5px] leading-relaxed max-w-md mx-auto">
-            عندكِ سؤال؟ راسلينا، ونرد عليكِ خلال دقائق. فريقنا سعودي ومتاح طوال
+            عندك سؤال؟ راسلنا، ونرد عليك خلال دقائق. فريقنا سعودي ومتاح طوال
             أيام العمل.
           </p>
         </div>
@@ -99,10 +99,10 @@ export default function ContactPage() {
             <ShieldCheck size={26} />
           </div>
           <p className="font-black text-[1.05rem] mb-1">
-            سؤال عن طلبكِ الحالي؟
+            سؤال عن طلبك الحالي؟
           </p>
           <p className="text-brand-cream/85 text-[13.5px] leading-relaxed">
-            راسلينا برقم الطلب على واتساب وسنساعدكِ فوراً — بدون انتظار.
+            راسلنا برقم الطلب على واتساب وسنساعدك فوراً — بدون انتظار.
           </p>
         </div>
       </div>

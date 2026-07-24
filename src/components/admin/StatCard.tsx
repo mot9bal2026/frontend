@@ -14,7 +14,7 @@ type Props = {
 const ACCENTS: Record<NonNullable<Props["accent"]>, string> = {
   green: "bg-[#E8F2EC] text-[#1E5B3F]",
   gold: "bg-[#F6EEDD] text-[#A0640A]",
-  brown: "bg-[#F0E7DC] text-[#3D2817]",
+  brown: "bg-[#F0E7DC] text-[#0F3024]",
   blue: "bg-blue-50 text-blue-700",
   red: "bg-red-50 text-red-600",
   neutral: "bg-[#F4F0EA] text-[#7A6A5E]",

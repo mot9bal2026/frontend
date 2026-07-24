@@ -14,23 +14,23 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "قهوة الجمال | إشراقة — للهالات والتجاعيد",
+  title: "زيت العوافي | لآلام الركبة والظهر والمفاصل",
   description:
-    "صيغة موزونة بدقة: كولاجين بحري 5000 ملجم + فيتامين C + هيالورونيك. لاستهداف الهالات والتجاعيد مباشرة. SFDA · حلال · الدفع عند الاستلام.",
+    "خلطة أعشاب طبيعية من 30 عشبة طبية: زنجبيل وكركم ومنثول وكافور. لتخفيف آلام الركبة والظهر والمفاصل والديسك موضعياً. SFDA · حلال · الدفع عند الاستلام.",
 };
 
 const faqs = [
   {
     q: "هل الدفع عند الاستلام متاح؟",
-    a: "نعم — الدفع عند الاستلام فقط، كاش أو شبكة، في كل مناطق المملكة. ما تدفعين ريال واحد قبل ما تستلمي الطلب وتفحصيه.",
+    a: "نعم — الدفع عند الاستلام فقط، كاش أو شبكة، في كل مناطق المملكة. ما تدفع ريال واحد قبل ما تستلم الطلب وتفحصه.",
   },
   {
     q: "هل المنتج مرخّص من الجهات السعودية؟",
-    a: "نعم. مسجّل لدى هيئة الغذاء والدواء السعودية (SFDA) ومتوافق مع معايير الخليج. المكونات حلال 100٪ — كولاجين بحري بدلاً من الجيلاتين الحيواني.",
+    a: "نعم. مصادق عليه من هيئة الغذاء والدواء السعودية (SFDA) ومتوافق مع معايير الخليج. المكونات طبيعية وحلال 100٪ — أعشاب طبية بدون كورتيزون أو مواد ضارة.",
   },
   {
-    q: "كيف أعرف الجرعة المناسبة لي؟",
-    a: "كل كيس يحوي الجرعة الموزونة كاملة: 5000 ملجم كولاجين، 200 ملجم فيتامين C، 100 ملجم هيالورونيك. كيس واحد يومياً مع قهوتكِ الصباحية — هذا كل ما تحتاجين.",
+    q: "كيف أستخدم الزيت بشكل صحيح؟",
+    a: "رجّ العبوة، بخّ كمية مناسبة على مكان الألم (ركبة، ظهر، مفصل)، ثم دلّك بحركات دائرية 2–3 دقائق حتى يمتصّه الجلد. كرّر مرتين يومياً صباحاً ومساءً.",
   },
   {
     q: "كم يستغرق التوصيل؟",
@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     q: "وش يحصل لو ما حسّيت بفرق؟",
-    a: "ضمان رضاكِ 14 يوماً. اتصلي علينا أو راسلينا على واتساب، وفلوسكِ ترجع — بدون نماذج، بدون أسئلة. ما في مخاطرة لأنكِ ما دفعتي إلا عند الاستلام أصلاً.",
+    a: "ضمان رضاك 14 يوماً. اتصل علينا أو راسلنا على واتساب، وفلوسك ترجع — بدون أسئلة. ما في مخاطرة لأنك ما دفعت إلا عند الاستلام أصلاً.",
   },
 ];
 
@@ -50,16 +50,16 @@ export default function CollectionPage() {
         <div className="max-w-content mx-auto text-center max-w-2xl">
           <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-5 shadow-sm">
             <FlaskConical size={12} />
-            صيغة موزونة · SFDA · حلال
+            30 عشبة طبيعية · SFDA · حلال
           </div>
           <h1 className="text-[2rem] md:text-[2.4rem] font-black text-[#1A0F0A] mb-3 leading-[1.2]">
-            قهوة الجمال
+            زيت العوافي
           </h1>
           <p className="text-[#5A4A3E] text-[14.5px] md:text-[15.5px] leading-relaxed">
-            صيغة موزونة من <span className="font-bold font-inter text-brand-brown">5000 ملجم</span>{" "}
-            كولاجين بحري + <span className="font-bold font-inter text-brand-brown">200 ملجم</span>{" "}
-            فيتامين C + <span className="font-bold font-inter text-brand-brown">100 ملجم</span>{" "}
-            هيالورونيك — لاستهداف الهالات والتجاعيد من الداخل.
+            خلطة أعشاب من <span className="font-bold font-inter text-brand-brown">30 عشبة</span>{" "}
+            طبية + <span className="font-bold font-inter text-brand-brown">زنجبيل وكركم</span>{" "}
+            + <span className="font-bold font-inter text-brand-brown">منثول وكافور</span>{" "}
+            — لتخفيف آلام الركبة والظهر والمفاصل موضعياً.
           </p>
         </div>
       </section>
@@ -75,7 +75,7 @@ export default function CollectionPage() {
         </div>
       </section>
 
-      {/* ── WHY BEAUTY COFFEE ────────────── */}
+      {/* ── WHY AL-AWAFI OIL ────────────── */}
       <section className="py-14 px-4 bg-brand-sage/40">
         <div className="max-w-content mx-auto max-w-4xl">
           <div className="text-center mb-9">
@@ -83,28 +83,28 @@ export default function CollectionPage() {
               className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              لماذا قهوة الجمال؟
+              لماذا زيت العوافي؟
             </p>
             <h2 className="text-[1.6rem] md:text-2xl font-black text-brand-brown">
-              ثلاث ميزات لا توفّرها لكِ كبسولة عادية
+              ثلاث ميزات لا توفّرها لك حبة مسكّن عادية
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               {
                 icon: <Microscope size={20} />,
-                title: "مكونات معلنة بجرعاتها",
-                desc: "كل كيس يعرض الكمية الدقيقة لكل مكوّن. لا «خلطات سرية» ولا «مزيج خاص».",
+                title: "أعشاب طبيعية معروفة",
+                desc: "30 عشبة طبية معروفة الفائدة: زنجبيل، كركم، منثول، كافور. بدون كورتيزون ولا مواد كيميائية ضارة.",
               },
               {
                 icon: <Droplets size={20} />,
-                title: "تشتغل من الداخل",
-                desc: "الكولاجين البحري يُمتص عبر الدم ويصل لكل طبقات البشرة — ليس ترطيب سطحي.",
+                title: "يصل لمكان الألم",
+                desc: "زيت موضعي يتغلغل مباشرة في المفصل والعضلة — ليس مسكّناً يمرّ على المعدة.",
               },
               {
                 icon: <FlaskConical size={20} />,
-                title: "أبسط طقس التزام",
-                desc: "كيس واحد مع قهوتكِ الصباحية. أعلى نسبة التزام، أعلى نتيجة.",
+                title: "أسهل استخدام",
+                desc: "بخّة وتدليك دقائق، مرتين باليوم. بدون مواعيد علاج طبيعي ولا حبوب.",
               },
             ].map((item) => (
               <div
@@ -135,15 +135,15 @@ export default function CollectionPage() {
               بدون دفع أونلاين
             </p>
             <h2 className="text-[1.6rem] md:text-2xl font-black text-brand-brown">
-              كيف يصلكِ طلبكِ في 4 خطوات
+              كيف يصلك طلبك في 4 خطوات
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: <PackageCheck size={20} />, label: "اختاري عرضكِ" },
+              { icon: <PackageCheck size={20} />, label: "اختر عرضك" },
               { icon: <Phone size={20} />, label: "نتصل للتأكيد" },
               { icon: <Truck size={20} />, label: "يصل 1–3 أيام" },
-              { icon: <Wallet size={20} />, label: "ادفعي عند الاستلام" },
+              { icon: <Wallet size={20} />, label: "ادفع عند الاستلام" },
             ].map((s, i) => (
               <div
                 key={i}
@@ -155,7 +155,7 @@ export default function CollectionPage() {
                 <div className="w-6 h-6 rounded-full bg-brand-brown text-brand-gold text-[11px] font-black flex items-center justify-center mb-2 font-inter">
                   {i + 1}
                 </div>
-                <p className="text-[#3D2817] text-[12.5px] font-semibold leading-tight">
+                <p className="text-[#0F3024] text-[12.5px] font-semibold leading-tight">
                   {s.label}
                 </p>
               </div>
@@ -173,18 +173,18 @@ export default function CollectionPage() {
             </div>
             <div className="text-center md:text-right flex-1">
               <h3 className="font-black text-brand-brown text-[1.05rem] md:text-[1.15rem] mb-1">
-                ضمان رضاكِ 14 يوماً — صفر مخاطرة
+                ضمان رضاك 14 يوماً — صفر مخاطرة
               </h3>
               <p className="text-[#5A4A3E] text-[13px] leading-relaxed">
-                ما حسّيتي بفرق؟ تواصلي معنا وفلوسكِ ترجع — بدون نماذج، بدون أسئلة. وأصلاً
-                ما تدفعين إلا عند الاستلام.
+                ما حسّيت بفرق؟ تواصل معنا وفلوسك ترجع — بدون أسئلة. وأصلاً
+                ما تدفع إلا عند الاستلام.
               </p>
             </div>
             <Link
               href="#top"
               className="inline-block bg-brand-brown text-white font-black px-5 py-3 rounded-xl hover:bg-brand-coffee transition-colors text-[13px] whitespace-nowrap shadow-md"
             >
-              جرّبي الآن
+              جرّب الآن
             </Link>
           </div>
         </div>
@@ -198,7 +198,7 @@ export default function CollectionPage() {
               className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
-              قبل ما تطلبين
+              قبل ما تطلب
             </p>
             <h2 className="text-[1.6rem] md:text-2xl font-black text-brand-brown">
               أسئلة شائعة

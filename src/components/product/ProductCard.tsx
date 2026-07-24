@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Star } from "lucide-react";
 import type { Product } from "@/lib/products";
+import { ProductPhoto } from "./ProductPhoto";
 
 type Props = {
   product: Product;
@@ -11,13 +12,13 @@ type Props = {
 const productMeta: Record<string, { reviewCount: string; tagline: string; urgency: string; badge: string }> = {
   "wrinkles-dark-circles": {
     reviewCount: "800+",
-    tagline: "للهالات والتجاعيد · كولاجين بحري + فيتامين C",
+    tagline: "لآلام الركبة والظهر والمفاصل · 30 عشبة طبيعية",
     urgency: "آخر 48 ساعة على عرض الشحن المجاني",
     badge: "الأكثر مبيعاً",
   },
   "anti-aging": {
     reviewCount: "600+",
-    tagline: "ضد الشيخوخة المبكرة · كولاجين + هيالورونيك",
+    tagline: "لآلام المفاصل والديسك · زنجبيل وكركم ومنثول",
     urgency: "العرض محدود لهذا الأسبوع",
     badge: "الأعلى تقييماً",
   },
@@ -40,8 +41,13 @@ export function ProductCard({ product }: Props) {
           style={{ background: "linear-gradient(135deg, #FAF6F0, #EDE0CE)" }}
         >
           <div className="group-hover:scale-105 transition-transform duration-300 w-full h-full flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/product-box-lux.png?v=4" alt={product.nameAr} className="h-48 w-auto object-contain drop-shadow-lg" />
+            <ProductPhoto
+              src="/awafi-oil-bottle.png"
+              alt={product.nameAr}
+              className="h-48 w-auto object-contain drop-shadow-lg"
+              fallbackWrapperClassName="h-48"
+              iconSize={70}
+            />
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-1" style={{ backgroundColor: product.colorAccent }} />
         </div>
@@ -70,9 +76,9 @@ export function ProductCard({ product }: Props) {
         {/* Offers mini */}
         <div className="grid grid-cols-3 gap-1.5 mb-3">
           {[
-            { qty: "1 علبة", price: String(product.price.one) },
-            { qty: "علبتان", price: String(product.price.two) },
-            { qty: "3 علب", price: String(product.price.three) },
+            { qty: `${product.bottles.one} علبة`, price: String(product.price.one) },
+            { qty: `${product.bottles.two} علب`, price: String(product.price.two) },
+            { qty: `${product.bottles.three} علب`, price: String(product.price.three) },
           ].map((o) => (
             <div key={o.qty} className="bg-brand-cream rounded-lg px-1 py-1.5 text-center border border-brand-border min-w-0">
               <p className="text-[10px] text-brand-muted leading-tight truncate">{o.qty}</p>
@@ -92,9 +98,9 @@ export function ProductCard({ product }: Props) {
         <div className="mt-auto">
           <Link
             href={`/products/${product.slug}`}
-            className="block w-full bg-brand-brown text-white text-center font-bold py-3 rounded-xl hover:bg-brand-coffee transition-colors active:scale-95 text-sm"
+            className="block w-full bg-brand-apothecary text-white text-center font-bold py-3 rounded-xl hover:bg-brand-apothecaryDark transition-colors active:scale-95 text-sm"
           >
-            تصفحي العروض
+            تصفّح العروض
           </Link>
           <p className="text-center text-xs text-brand-muted mt-2">الدفع عند الاستلام · شحن مجاني</p>
         </div>

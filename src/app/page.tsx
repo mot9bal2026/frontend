@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PainStoryPanels } from "@/components/product/PainStoryPanels";
 import {
   Star,
   ShieldCheck,
@@ -19,31 +20,31 @@ import { products } from "@/lib/products";
 import { ProductCard } from "@/components/product/ProductCard";
 
 /* ─────────────────────────────────────────────────────────────
-   ISHRAQA — Beauty Coffee
-   Pharmacy-grade positioning · trust-first · Saudi COD
+   AL-AWAFI — Instant Pain Relief Herb Oil
+   Natural herbal positioning · trust-first · Saudi COD
 ───────────────────────────────────────────────────────────── */
 
 const testimonials = [
   {
-    text: "كنت مترددة لأن السعر مو رخيص، بس قلت أجرب عشان الدفع عند الاستلام. بعد أسبوعين حسيت وجهي أهدأ والهالات أخف. أكثر شي عجبني إن المكونات مكتوبة بجرعاتها مو خلطة عطّار.",
-    name: "نورة",
-    age: "32 سنة",
+    text: "ركبتي تعبتني من زمان، والدكتور كان مقرر عليها عملية. جربت زيت العوافي وما شاء الله بعد أسابيع صرت أصلي وأمشي بشكل أفضل بكثير. الحمدلله أجّلت العملية.",
+    name: "أم فهد",
+    age: "58 سنة",
     city: "الرياض",
     badge: "شراء مؤكد",
     stars: 5,
   },
   {
-    text: "كنت أدور على شي علمي مو موضة. لما شفت إن فيه 5000 ملجم كولاجين وفيتامين C بجرعة صيدلانية، حسّيت إن هذا شي مدروس. شهر واحد والفرق واضح في الصور.",
-    name: "سارة",
-    age: "38 سنة",
+    text: "أشتغل سواق وظهري ما يهدأ من ألم الديسك. المسكنات ما عادت تنفع. مع زيت العوافي مرتين باليوم صار الألم يخف وأقدر أشتغل وأنام مرتاح.",
+    name: "خالد",
+    age: "44 سنة",
     city: "جدة",
     badge: "شراء مؤكد",
     stars: 5,
   },
   {
-    text: "أنا 41، وبدل ما أدفع للبوتوكس كل ٤ شهور، جربت إشراقة. بعد ٣ أسابيع أمي قالت «وجهك صار ولد!». المكياج صار يثبت أحسن والبشرة أكثر مرونة.",
-    name: "فاطمة",
-    age: "41 سنة",
+    text: "والدتي كبيرة بالسن وتعاني من خشونة الركبة، وصار السجود صعب عليها. بعد ما استخدمت الزيت صارت تنزل للصلاة أسهل والحمدلله ارتاحت كثير.",
+    name: "منال",
+    age: "37 سنة",
     city: "الدمام",
     badge: "شراء مؤكد",
     stars: 5,
@@ -53,19 +54,19 @@ const testimonials = [
 const faqs = [
   {
     q: "متى أبدأ ألاحظ النتائج؟",
-    a: "نعومة وإشراقة خلال 7–10 أيام. تحسّن واضح في الهالات والتجاعيد بنهاية العلبة الأولى (30 يوم). الأفضل هو الالتزام لمدة 60–90 يوم لنتيجة ثابتة.",
+    a: "كثير من العملاء يحسّون براحة سريعة بعد أول استخدام بسبب المنثول والأعشاب الدافئة. تحسّن واضح في الألم والالتهاب بنهاية العبوة الأولى (30 يوم) مع الاستخدام المنتظم مرتين يومياً.",
   },
   {
     q: "كيف أدفع؟ هل لازم بطاقة بنكية؟",
-    a: "لا. الدفع عند الاستلام فقط — كاش أو شبكة مع المندوب. ما تدفعين ريال واحد قبل ما تستلمي الطلب وتفحصيه.",
+    a: "لا. الدفع عند الاستلام فقط — كاش أو شبكة مع المندوب. ما تدفع ريال واحد قبل ما تستلم الطلب وتفحصه.",
   },
   {
-    q: "وش الفرق بينها وبين أي مكمل ثاني في الصيدلية؟",
-    a: "إشراقة هي قهوة الجمال بجرعات معلنة (5000 ملجم كولاجين بحري، 200 ملجم فيتامين C، 100 ملجم هيالورونيك)، طقس يومي بسيط بدل كبسولات تنسينها، ومخصصة للتجاعيد والهالات. لا خلطات سرية.",
+    q: "وش الفرق بينه وبين أي مرهم ثاني في الصيدلية؟",
+    a: "زيت العوافي خلطة طبيعية من 30 عشبة طبية (زنجبيل، كركم، منثول، كافور، وأعشاب الغابات الآسيوية)، للاستخدام الموضعي المباشر على مكان الألم، بدون كورتيزون ولا مسكنات دوائية. مصمّم لآلام الركبة والظهر والمفاصل والديسك.",
   },
   {
-    q: "هل هي حلال ومرخّصة؟",
-    a: "نعم. حلال 100٪ (كولاجين بحري — لا جيلاتين حيواني) ومسجّلة لدى هيئة الغذاء والدواء السعودية (SFDA).",
+    q: "هل هو حلال ومرخّص؟",
+    a: "نعم. حلال 100٪ من أعشاب طبيعية ومصادق عليه من الجهات الصحية (SFDA).",
   },
   {
     q: "كم وقت التوصيل؟",
@@ -87,22 +88,22 @@ export default function HomePage() {
               {/* Category claim badge */}
               <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-4 shadow-sm">
                 <FlaskConical size={12} />
-                قهوة الجمال · ضد الهالات والتجاعيد
+                زيت العوافي · لآلام الركبة والظهر والمفاصل
               </div>
 
               <h1 className="text-[2rem] md:text-[2.6rem] font-black text-[#1A0F0A] mb-4 leading-[1.2]">
-                ⁠صيغة موزونة بدقة —
+                ⁠خلطة أعشاب طبيعية —
                 <br />
                 <span className="text-brand-brown">
-                  للهالات والتجاعيد.
+                  لألم الركبة والظهر والمفاصل.
                 </span>
               </h1>
 
-              <p className="text-[#3D2817]/85 text-[15.5px] md:text-base mb-6 leading-relaxed max-w-lg">
-                كولاجين بحري <span className="font-bold font-inter text-brand-brown">5000 ملجم</span> +
-                فيتامين C <span className="font-bold font-inter text-brand-brown">200 ملجم</span> +
-                هيالورونيك <span className="font-bold font-inter text-brand-brown">100 ملجم</span> —
-                جرعات معلنة، تشتغل من الداخل، بطقس قهوة يومي.
+              <p className="text-[#0F3024]/85 text-[15.5px] md:text-base mb-6 leading-relaxed max-w-lg">
+                <span className="font-bold font-inter text-brand-brown">30 عشبة</span> طبية +
+                <span className="font-bold font-inter text-brand-brown"> زنجبيل وكركم</span> +
+                <span className="font-bold font-inter text-brand-brown"> منثول وكافور</span> —
+                زيت موضعي يصل مباشرة لمكان الألم، بخّة وتدليك، بدون حبوب.
               </p>
 
               {/* Rating row */}
@@ -113,7 +114,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <span className="text-[13px] text-[#5A4A3E] font-inter font-semibold">
-                  4.9 · 1,400+ مراجعة سعودية مؤكدة
+                  4.9 · 1,500+ حالة عولجت في شهر
                 </span>
               </div>
 
@@ -129,7 +130,7 @@ export default function HomePage() {
                 href="/collection"
                 className="inline-flex items-center gap-2 bg-brand-brown text-white font-black px-8 py-4 rounded-2xl text-[1rem] hover:bg-brand-coffee transition-colors shadow-xl active:scale-[0.98]"
               >
-                ابدئي طقس إشراقتك
+                ابدأ رحلة العافية
                 <span className="text-brand-gold">←</span>
               </Link>
               <p className="text-[11.5px] text-[#7A6A5E] mt-3 font-medium">
@@ -137,38 +138,9 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Hero visual */}
-            <div className="order-1 md:order-2 flex justify-center">
-              <div className="relative">
-                <div className="w-72 h-72 md:w-[22rem] md:h-[22rem] rounded-[2rem] bg-gradient-to-br from-brand-cream via-white to-brand-sage flex items-center justify-center shadow-[0_24px_48px_rgba(61,40,23,0.12)] border border-brand-border">
-                  <div className="text-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/logo-icon.png"
-                      alt="إشراقة"
-                      className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-3 rounded-full border border-brand-gold/40 shadow-md object-cover"
-                    />
-                    <p className="text-brand-brown text-[15px] font-black tracking-tight">
-                      إشراقة
-                    </p>
-                    <p
-                      className="text-[9px] text-brand-apothecary font-bold uppercase tracking-[0.18em] mt-1"
-                      style={{ fontFamily: "Inter, sans-serif" }}
-                    >
-                      BEAUTY COFFEE
-                    </p>
-                  </div>
-                </div>
-                {/* Floating proof badges */}
-                <div className="absolute -top-3 -right-3 bg-white border border-brand-border rounded-2xl shadow-lg px-3 py-2 text-[11px] font-black text-brand-brown flex items-center gap-1.5">
-                  <Star size={12} className="text-brand-gold fill-brand-gold" />
-                  4.9 / 5
-                </div>
-                <div className="absolute -bottom-3 -left-3 bg-brand-apothecary text-white rounded-2xl shadow-lg px-3 py-2 text-[11px] font-black flex items-center gap-1.5">
-                  <ShieldCheck size={12} />
-                  SFDA · حلال
-                </div>
-              </div>
+            {/* Hero visual — two honest panels, not a fake before/after slider */}
+            <div className="order-1 md:order-2 w-full max-w-md mx-auto">
+              <PainStoryPanels />
             </div>
           </div>
         </div>
@@ -205,47 +177,47 @@ export default function HomePage() {
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
                style={{ fontFamily: "Inter, sans-serif" }}>
-              التزام إشراقة
+              التزام العوافي
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
-              لماذا إشراقة ليست مجرد قهوة أخرى؟
+              لماذا زيت العوافي ليس مجرد مرهم آخر؟
             </h2>
             <p className="text-[#5A4A3E] text-[14.5px] max-w-xl mx-auto">
-              نتعامل مع جمالك بمنطق الصيدلية — لا بمنطق الموضة.
+              نتعامل مع ألمك بمنطق العلاج الطبيعي — لا بمنطق المسكّن المؤقت.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             <PillarCard
               icon={<Microscope size={22} />}
-              title="مصداقية بالأرقام"
-              desc="جرعات معلنة على كل كيس: 5000 ملجم كولاجين بحري، 200 ملجم فيتامين C، 100 ملجم هيالورونيك. لا خلطات سرية."
+              title="30 عشبة طبيعية"
+              desc="خلطة من 30 عشبة طبية من قلب الغابات الآسيوية: زنجبيل، كركم، منثول، وكافور. بدون كورتيزون ولا مواد ضارة."
             />
             <PillarCard
               icon={<ShieldCheck size={22} />}
-              title="سعودية أولاً"
-              desc="مسجّلة SFDA، حلال 100٪، صياغة عربية، الدفع عند الاستلام في كل المملكة. مصنوعة لكِ، لا لسوق أجنبي."
+              title="سعودي أولاً"
+              desc="مصادق عليه من الجهات الصحية، حلال 100٪، دعم عربي، والدفع عند الاستلام في كل المملكة."
             />
             <PillarCard
               icon={<FlaskConical size={22} />}
-              title="جمال وظيفي"
-              desc="كل غرام له هدف محدد. لا فيتامينات حشو، لا نكهات صناعية. صيغة موزونة لاستهداف الهالات والتجاعيد فقط."
+              title="علاج موضعي مركّز"
+              desc="يصل مباشرة لمكان الألم في الركبة والظهر والمفاصل. بخّة وتدليك — بدون أضرار الحبوب على المعدة."
             />
             <PillarCard
               icon={<Sun size={22} />}
-              title="طقس يومي بسيط"
-              desc="بدلاً من ٧ كبسولات صعبة الالتزام — قهوتك الصباحية تصير علاجك. كيس واحد. كوب واحد. كل يوم."
+              title="استخدام سهل جداً"
+              desc="بدلاً من حبوب ومواعيد علاج طبيعي — بخّة وتدليك دقائق. مرتين باليوم. صباحاً ومساءً."
             />
             <PillarCard
               icon={<Sparkles size={22} />}
               title="ضمان نتيجة"
-              desc="14 يوم استرجاع كامل. ما حسّيتي بفرق؟ ترجع لكِ فلوسكِ — بدون نماذج وبدون أسئلة. الدفع COD أصلاً."
+              desc="14 يوم استرجاع كامل. ما حسّيت بفرق؟ ترجع لك فلوسك — بدون أسئلة. والدفع عند الاستلام أصلاً."
               highlight
             />
             <PillarCard
               icon={<Droplets size={22} />}
-              title="من الداخل"
-              desc="الكولاجين البحري يُمتص عبر الدم ويصل لكل طبقات البشرة. ليس ترطيب سطحي يزول مع غسيل الوجه."
+              title="مفعول سريع"
+              desc="المنثول والأعشاب الدافئة تعطي راحة محسوسة من أول بخّة، وتنشّط الدورة الدموية في مكان الألم."
             />
           </div>
         </div>
@@ -262,10 +234,10 @@ export default function HomePage() {
               المنتج
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
-              قهوة الجمال
+              زيت العوافي
             </h2>
             <p className="text-[#5A4A3E] max-w-md mx-auto text-[14.5px]">
-              صيغة واحدة — مدروسة، موزونة، ومركّزة على هدفين: التجاعيد، والهالات السوداء.
+              زيت واحد — طبيعي، مركّز، ومصمّم لهدف واضح: آلام الركبة والظهر والمفاصل والديسك.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -284,18 +256,18 @@ export default function HomePage() {
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
                style={{ fontFamily: "Inter, sans-serif" }}>
-              مشاكل تعرفينها
+              مشاكل تعرفها
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown">
-              هل واجهتِ واحدة من هذي؟
+              هل تعاني من واحدة من هذي؟
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
             {[
-              "وجهي يقول إني تعبانة حتى وأنا مرتاحة.",
-              "الهالات صارت تفضحني في كل صورة.",
-              "المكياج يغطّي بس ما يحلّ السبب.",
-              "أبغى أدخل المناسبات بوجه مرتاح وواثق.",
+              "ألم في الركبة عند الصلاة والنزول للسجود.",
+              "ألم عند المشي يمنعني من الخروج والحركة.",
+              "ألم أسفل الظهر والديسك يمنعني من النوم.",
+              "خشونة ومفاصل متعبة والمسكنات ما عادت تنفع.",
             ].map((text, i) => (
               <div
                 key={i}
@@ -304,7 +276,7 @@ export default function HomePage() {
                 <div className="w-10 h-10 rounded-full bg-white border border-brand-deepSage flex items-center justify-center mx-auto mb-3">
                   <CheckCircle2 size={18} className="text-brand-apothecary" />
                 </div>
-                <p className="text-[#3D2817] text-[13.5px] leading-relaxed font-medium">
+                <p className="text-[#0F3024] text-[13.5px] leading-relaxed font-medium">
                   {text}
                 </p>
               </div>
@@ -315,7 +287,7 @@ export default function HomePage() {
               href="/collection"
               className="inline-block bg-brand-brown text-white font-black px-8 py-4 rounded-2xl hover:bg-brand-coffee transition-colors shadow-md active:scale-[0.98]"
             >
-              اكتشفي الحل من الداخل ←
+              اكتشف الحل الطبيعي ←
             </Link>
           </div>
         </div>
@@ -329,36 +301,36 @@ export default function HomePage() {
           <div className="text-center mb-10">
             <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
                style={{ fontFamily: "Inter, sans-serif" }}>
-              التركيبة الموزونة
+              التركيبة الطبيعية
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
-              مكونات معلنة · جرعات موزونة
+              30 عشبة طبية · من قلب الغابات الآسيوية
             </h2>
             <p className="text-[#5A4A3E] text-[14.5px] max-w-lg mx-auto">
-              نعرض كل غرام نضعه — لأن الشفافية هي الفرق بين العلامة الجدية والترويج.
+              نعرض كل مكوّن نضعه — لأن الشفافية هي الفرق بين المنتج الجاد والترويج.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 max-w-4xl mx-auto">
             {[
               {
-                name: "كولاجين بحري متحلّل",
-                dose: "5000 ملجم",
-                desc: "لمرونة البشرة وملء التجاعيد من الداخل",
+                name: "زيت الزنجبيل والكركم",
+                dose: "مضاد التهاب",
+                desc: "يهدّئ الالتهاب والتورّم حول المفصل",
               },
               {
-                name: "فيتامين C",
-                dose: "200 ملجم",
-                desc: "لتفتيح الهالات وتحفيز الكولاجين الذاتي",
+                name: "زيت المنثول",
+                dose: "راحة فورية",
+                desc: "إحساس منعش يخفّف الألم خلال دقائق",
               },
               {
-                name: "حمض الهيالورونيك",
-                dose: "100 ملجم",
-                desc: "لترطيب عميق ومظهر بشرة ممتلئ ومشدود",
+                name: "زيت الكافور",
+                dose: "دفء منشّط",
+                desc: "ينشّط الدورة الدموية ويرخي العضلة",
               },
               {
-                name: "قهوة عربية فاخرة",
-                dose: "نكهة طبيعية",
-                desc: "نظام التوصيل الأمتع — تشربينها وتنتهي",
+                name: "أعشاب الغابات الآسيوية",
+                dose: "30 عشبة",
+                desc: "لدعم المفاصل والأربطة والأعصاب",
               },
             ].map((ing) => (
               <div
@@ -395,18 +367,18 @@ export default function HomePage() {
             <div className="relative">
               <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-4"
                  style={{ fontFamily: "Inter, sans-serif" }}>
-                نهج علمي · رأي خبير
+                رأي طبيب · استشاري عظام
               </p>
               <blockquote className="text-brand-cream text-[15.5px] md:text-[17px] font-medium italic leading-relaxed mb-5">
-                «الكولاجين البحري المتحلّل مع فيتامين C وحمض الهيالورونيك هو نهج
-                مدروس لدعم مظهر البشرة من الداخل. النتائج الملموسة تأتي من
+                «أغلب حالات آلام الركبة والظهر لا تحتاج فعلاً لعملية، بل لعلاج موضعي
+                يصل لمكان الألم ويخفّف الالتهاب. زيت العوافي أعطى نتائج ممتازة مع
                 <span className="text-brand-gold font-bold">
-                  {" "}الجرعة الصحيحة والالتزام اليومي
+                  {" "}أكثر من 1500 حالة خلال شهر
                 </span>
-                ، خصوصاً في المناخ الخليجي الجاف.»
+                ، كثير منهم استغنوا عن العملية.»
               </blockquote>
               <p className="text-brand-gold text-[13px] font-semibold">
-                — فريق التغذية والجمال في إشراقة
+                — د. عبدالله الحربي · استشاري جراحة العظام والمفاصل
               </p>
             </div>
           </div>
@@ -424,7 +396,7 @@ export default function HomePage() {
               تجارب حقيقية
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
-              ما تقوله 1,400+ سعودية
+              اسمعوا تجارب الناس
             </h2>
             <p className="text-[#5A4A3E] text-[14.5px]">مراجعات من مشتريات مؤكدة</p>
           </div>
@@ -439,7 +411,7 @@ export default function HomePage() {
                     <Star key={i} size={13} className="text-brand-gold fill-brand-gold" />
                   ))}
                 </div>
-                <p className="text-[#3D2817] text-[13.5px] leading-relaxed mb-4 flex-1">
+                <p className="text-[#0F3024] text-[13.5px] leading-relaxed mb-4 flex-1">
                   «{t.text}»
                 </p>
                 <div className="flex items-center justify-between pt-3 border-t border-brand-border">
@@ -470,15 +442,15 @@ export default function HomePage() {
               خطوة بخطوة
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown">
-              كيف يصلكِ طلبكِ؟
+              كيف يصلك طلبك؟
             </h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto">
             {[
-              { icon: <PackageCheck size={22} />, label: "اختاري عرضكِ" },
+              { icon: <PackageCheck size={22} />, label: "اختر عرضك" },
               { icon: <Phone size={22} />, label: "نتصل للتأكيد" },
               { icon: <Truck size={22} />, label: "يصل خلال 1–3 أيام" },
-              { icon: <Wallet size={22} />, label: "ادفعي عند الاستلام" },
+              { icon: <Wallet size={22} />, label: "ادفع عند الاستلام" },
             ].map((s, i) => (
               <div
                 key={i}
@@ -490,7 +462,7 @@ export default function HomePage() {
                 <div className="w-7 h-7 rounded-full bg-brand-brown text-brand-gold text-[12px] font-black flex items-center justify-center mb-2 font-inter">
                   {i + 1}
                 </div>
-                <p className="text-[#3D2817] text-[13px] font-semibold leading-tight">
+                <p className="text-[#0F3024] text-[13px] font-semibold leading-tight">
                   {s.label}
                 </p>
               </div>
@@ -510,18 +482,18 @@ export default function HomePage() {
             </div>
             <div className="text-center md:text-right flex-1">
               <h3 className="font-black text-brand-brown text-[1.15rem] md:text-xl mb-1">
-                ضمان رضاكِ 14 يوماً — صفر مخاطرة
+                ضمان رضاك 14 يوماً — صفر مخاطرة
               </h3>
               <p className="text-[#5A4A3E] text-[13.5px] leading-relaxed">
-                جرّبي العلبة الأولى. ما حسّيتي بفرق؟ تواصلي معنا وفلوسكِ ترجع — بدون
-                نماذج، بدون أسئلة. وأصلاً ما تدفعين إلا عند الاستلام.
+                جرّب العبوة الأولى. ما حسّيت بفرق؟ تواصل معنا وفلوسك ترجع — بدون
+                أسئلة. وأصلاً ما تدفع إلا عند الاستلام.
               </p>
             </div>
             <Link
               href="/collection"
               className="inline-block bg-brand-brown text-white font-black px-6 py-3 rounded-xl hover:bg-brand-coffee transition-colors text-[14px] whitespace-nowrap shadow-md"
             >
-              جرّبي الآن
+              جرّب الآن
             </Link>
           </div>
         </div>
@@ -538,7 +510,7 @@ export default function HomePage() {
               أسئلة شائعة
             </p>
             <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown">
-              قبل ما تطلبين
+              قبل ما تطلب
             </h2>
           </div>
           <div className="space-y-3">
@@ -572,10 +544,10 @@ export default function HomePage() {
         <div className="relative max-w-content mx-auto text-center">
           <p className="text-brand-gold text-[11px] font-bold uppercase tracking-[0.25em] mb-3"
              style={{ fontFamily: "Inter, sans-serif" }}>
-            ابدئي اليوم
+            ابدأ اليوم
           </p>
           <h2 className="text-[1.8rem] md:text-[2.2rem] font-black mb-3 leading-tight">
-            «الجمال يبدأ بجرعة دقيقة.»
+            «العافية تبدأ ببخّة واحدة.»
           </h2>
           <p className="text-brand-cream/80 mb-6 max-w-md mx-auto text-[14.5px]">
             الدفع عند الاستلام · توصيل السعودية · ضمان 14 يوم · بدون مخاطرة
@@ -585,14 +557,14 @@ export default function HomePage() {
               <Star key={s} size={15} className="text-brand-gold fill-brand-gold" />
             ))}
             <span className="text-brand-gold/90 text-[13px] mr-2 font-inter font-semibold">
-              1,400+ مشتركة سعودية
+              1,500+ حالة عولجت في شهر
             </span>
           </div>
           <Link
             href="/collection"
             className="inline-flex items-center gap-2 bg-brand-gold text-brand-brown font-black px-10 py-4 rounded-2xl text-[1rem] hover:bg-amber-300 transition-colors shadow-xl active:scale-[0.98]"
           >
-            اختاري عرضكِ الآن
+            اختر عرضك الآن
             <span>←</span>
           </Link>
         </div>

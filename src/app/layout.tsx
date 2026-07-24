@@ -3,23 +3,22 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { TopAnnouncementBar } from "@/components/layout/TopAnnouncementBar";
-import { CartDrawer } from "@/components/cart/CartDrawer";
 import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
 import { LivePurchaseToast } from "@/components/marketing/LivePurchaseToast";
 import { ChromeGate } from "@/components/layout/ChromeGate";
 import { ENABLE_PIXELS, TIKTOK_PIXEL_ID, tiktokPixelBootstrap } from "@/lib/pixels";
 
 export const metadata: Metadata = {
-  title: "إشراقة | قهوة الجمال — للهالات والتجاعيد · SFDA · حلال",
+  title: "زيت العوافي | لآلام الركبة والظهر والمفاصل · SFDA · حلال",
   description:
-    "قهوة الجمال من إشراقة. كولاجين بحري 5000 ملجم + فيتامين C + هيالورونيك — جرعات معلنة تستهدف الهالات والتجاعيد مباشرة. مرخّصة SFDA · حلال 100٪ · الدفع عند الاستلام · توصيل 1–3 أيام.",
+    "زيت العوافي — خلطة أعشاب طبيعية من 30 عشبة طبية لعلاج آلام الركبة، الظهر، المفاصل، والديسك. زيت موضعي يصل مباشرة لمكان الألم. مصادق عليه SFDA · حلال 100٪ · الدفع عند الاستلام · توصيل 1–3 أيام.",
   openGraph: {
     locale: "ar_SA",
     type: "website",
     url: "https://ishraqa.shop",
-    title: "إشراقة — قهوة الجمال",
+    title: "زيت العوافي — لآلام الركبة والظهر والمفاصل",
     description:
-      "صيغة موزونة بمعايير صيدلانية. تشتغل من الداخل على التجاعيد والهالات السوداء. الدفع عند الاستلام.",
+      "خلطة أعشاب طبيعية تصل مباشرة لمكان الألم في الركبة والظهر والمفاصل. بدون حبوب، بدون عمليات. الدفع عند الاستلام.",
   },
 };
 
@@ -53,7 +52,6 @@ export default function RootLayout({
           footer={
             <>
               <Footer />
-              <CartDrawer />
               <LivePurchaseToast />
               <DeferredPixelLoader />
             </>

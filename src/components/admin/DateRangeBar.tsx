@@ -58,7 +58,7 @@ export function DateRangeBar({ range, onChange, onRefresh, refreshing }: Props) 
             value={range.from}
             max={range.to}
             onChange={(e) => onChange({ ...range, from: e.target.value })}
-            className="text-[12px] text-[#3D2817] bg-transparent focus:outline-none font-inter"
+            className="text-[12px] text-[#0F3024] bg-transparent focus:outline-none font-inter"
           />
           <span className="text-[#A89A8C] text-xs">←</span>
           <input
@@ -66,7 +66,7 @@ export function DateRangeBar({ range, onChange, onRefresh, refreshing }: Props) 
             value={range.to}
             min={range.from}
             onChange={(e) => onChange({ ...range, to: e.target.value })}
-            className="text-[12px] text-[#3D2817] bg-transparent focus:outline-none font-inter"
+            className="text-[12px] text-[#0F3024] bg-transparent focus:outline-none font-inter"
           />
         </div>
       )}

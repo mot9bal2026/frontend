@@ -195,7 +195,7 @@ export function OrderDetailDrawer({ orderId, statuses, onClose, onSaved, onAuthE
                     className="flex items-center justify-between gap-3 bg-white rounded-xl border border-[#E6D8C8] px-3 py-2.5"
                   >
                     <div className="min-w-0">
-                      <p className="text-[13px] font-bold text-[#3D2817] truncate">{it.product_name_ar}</p>
+                      <p className="text-[13px] font-bold text-[#0F3024] truncate">{it.product_name_ar}</p>
                       <p className="text-[11px] text-[#A89A8C]">
                         {it.product_slug}
                         {it.is_bridge_upsell && (
@@ -241,7 +241,7 @@ export function OrderDetailDrawer({ orderId, statuses, onClose, onSaved, onAuthE
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className="w-full rounded-xl border border-[#E6D8C8] bg-white px-3 py-2.5 text-sm font-bold text-[#3D2817] focus:outline-none focus:border-[#0F3024] mb-3"
+                className="w-full rounded-xl border border-[#E6D8C8] bg-white px-3 py-2.5 text-sm font-bold text-[#0F3024] focus:outline-none focus:border-[#0F3024] mb-3"
               >
                 {statuses.map((s) => (
                   <option key={s} value={s}>
@@ -383,7 +383,7 @@ function Section({ icon, title, children }: { icon: React.ReactNode; title: stri
     <div>
       <div className="flex items-center gap-2 mb-2.5">
         <span className="w-7 h-7 rounded-lg bg-[#E8F2EC] text-[#1E5B3F] flex items-center justify-center">{icon}</span>
-        <h4 className="font-black text-[#3D2817] text-[13px]">{title}</h4>
+        <h4 className="font-black text-[#0F3024] text-[13px]">{title}</h4>
       </div>
       {children}
     </div>
@@ -403,7 +403,7 @@ function Kv({ k, v }: { k: string; v: string }) {
   return (
     <div className="bg-white rounded-lg border border-[#E6D8C8] px-2.5 py-1.5">
       <p className="text-[10px] text-[#A89A8C]">{k}</p>
-      <p className="text-[12px] font-bold text-[#3D2817] truncate">{v}</p>
+      <p className="text-[12px] font-bold text-[#0F3024] truncate">{v}</p>
     </div>
   );
 }

@@ -86,7 +86,7 @@ export function TrendChart({ series }: Props) {
           <span className="flex items-center gap-1"><span className="w-3 h-1.5 rounded-sm bg-[#C8A876] inline-block" /> طلبات</span>
         </div>
         {hover !== null && (
-          <div className="text-[11px] text-[#3D2817] font-semibold">
+          <div className="text-[11px] text-[#0F3024] font-semibold">
             {series[hover].date} · {series[hover].valid_visits} نقرة · {series[hover].orders} طلب · {series[hover].revenue_sar} ر.س
           </div>
         )}
