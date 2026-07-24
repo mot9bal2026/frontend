@@ -241,6 +241,22 @@ export const getBlocked = (r: Range, page = 1) =>
     attempts: { id: string; created_at: string; phone_local: string | null; ip_address: string | null; reasons: string[] | null }[];
   }>(`/api/admin/blocked?from=${r.from}&to=${r.to}&page=${page}`);
 
+export type StealthSettings = {
+  enabled: boolean;
+  ksa_url: string | null;
+  other_url: string | null;
+};
+
+export const getStealthMode = () => request<StealthSettings>(`/api/admin/stealth-mode`);
+
+export const updateStealthMode = (
+  body: { enabled?: boolean; ksa_url?: string; other_url?: string }
+) =>
+  request<StealthSettings>(`/api/admin/stealth-mode`, {
+    method: "PATCH",
+    body: JSON.stringify(body),
+  });
+
 // ── Shared label maps (Arabic) ──
 export const STATUS_LABELS: Record<string, string> = {
   new: "جديد",
