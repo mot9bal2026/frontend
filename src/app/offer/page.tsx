@@ -65,7 +65,7 @@ export default function OfferPage() {
           {/* صورة المنتج */}
           <div className="relative bg-[#F3EDE2] aspect-square md:aspect-auto min-h-[280px]">
             <Image
-              src="/awafi-oil-bottle.png"
+              src="/awafi-box-bottle.png"
               alt="زيت العوافي الطبيعي"
               fill
               className="object-contain p-6"

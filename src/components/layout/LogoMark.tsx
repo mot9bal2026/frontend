@@ -18,8 +18,8 @@ export function LogoMark() {
         <span className="font-black text-lg text-[#0F3024] leading-none">
           زيت العوافي
         </span>
-        <span className="text-[10px] font-semibold tracking-wide text-[#7A6A5E] leading-none mt-0.5">
-          Awafi Oil for Joint Pain
+        <span className="text-[10px] font-semibold tracking-wide text-[#7A6A5E] leading-none mt-1">
+          Awafi Joint Pain Oil
         </span>
       </div>
     </Link>

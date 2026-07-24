@@ -86,8 +86,16 @@ export default function HomePage() {
             {/* Copy */}
             <div className="order-2 md:order-1">
               {/* Category claim badge */}
-              <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-4 shadow-sm">
-                <FlaskConical size={12} />
+              <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold pl-3 pr-1.5 py-1.5 rounded-full mb-4 shadow-sm">
+                <span className="w-5 h-5 rounded-full bg-white overflow-hidden flex-shrink-0 flex items-center justify-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/awafi-bottle-clean.png"
+                    alt=""
+                    className="w-full h-full object-contain scale-150"
+                    style={{ objectPosition: "60% center" }}
+                  />
+                </span>
                 زيت العوافي · لآلام الركبة والظهر والمفاصل
               </div>
 

@@ -67,6 +67,11 @@ function resolveDestination(target: string | null, request: NextRequest): URL | 
   }
 }
 
+// geoip-lite reads its data files from disk at import time, so this proxy
+// must run on the Node.js runtime — the Edge runtime has no filesystem
+// access and would crash on every request (causing a blank homepage).
+export const runtime = "nodejs";
+
 export async function proxy(request: NextRequest) {
   const stealth = await fetchStealthConfig();
   if (!stealth || !stealth.enabled) {

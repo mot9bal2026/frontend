@@ -309,8 +309,16 @@ export default async function ProductPage({ params }: Props) {
           <div className="px-4 pt-5 pb-8 md:px-0 md:pt-0 md:pb-0 md:order-first md:flex md:flex-col md:justify-center">
 
             {/* Category badge */}
-            <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-3 shadow-sm self-start">
-              <FlaskConical size={12} />
+            <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold pl-3 pr-1.5 py-1.5 rounded-full mb-3 shadow-sm self-start">
+              <span className="w-5 h-5 rounded-full bg-white overflow-hidden flex-shrink-0 flex items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/awafi-bottle-clean.png"
+                  alt=""
+                  className="w-full h-full object-contain scale-150"
+                  style={{ objectPosition: "60% center" }}
+                />
+              </span>
               زيت العوافي · لآلام الركبة والظهر والمفاصل
             </div>
 
@@ -756,7 +764,7 @@ export default async function ProductPage({ params }: Props) {
             {/* Our product */}
             <div className="bg-[#0F3024] rounded-2xl p-5 border-2 border-[#C8A876]">
               <div className="flex items-center justify-between mb-4">
-                <p className="font-black text-white text-base flex items-center gap-2">
+                <span className="font-black text-white text-base flex items-center gap-2">
                   <ProductPhoto
                     src="/awafi-oil-bottle.webp"
                     alt="زيت العوافي"
@@ -765,7 +773,7 @@ export default async function ProductPage({ params }: Props) {
                     iconSize={16}
                   />
                   زيت العوافي لآلام الركبة والمفاصل
-                </p>
+                </span>
                 <span className="text-xs font-black bg-brand-rust text-white px-3 py-1 rounded-full">من {product.price.one} ريال</span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
