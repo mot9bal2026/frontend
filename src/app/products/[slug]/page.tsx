@@ -873,56 +873,35 @@ export default async function ProductPage({ params }: Props) {
           GUARANTEE — Apothecary Green
       ══════════════════════════════════════════ */}
       <section className="py-10 md:py-14 px-4 bg-brand-sage/40 border-y border-brand-deepSage/40">
-        <div className="max-w-[1100px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_320px] gap-8 md:gap-10 items-center">
-            {/* Text + guarantee steps */}
-            <div className="text-center md:text-right">
-              {/* Apothecary shield */}
-              <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">
-                <div className="absolute inset-0 rounded-full bg-white border-4 border-brand-apothecary shadow-md" />
-                <ShieldCheck size={36} className="text-brand-apothecary relative z-10" />
-              </div>
-
-              <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>الضمان الكامل</p>
-              <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024] mb-3">14 يوم — أو تُرجَع لك فلوسك. بدون أسئلة.</h2>
-              <p className="text-[#5A4A3E] mb-6 md:mb-8 leading-relaxed text-sm max-w-lg mx-auto md:mx-0">
-                بعد التوصيل بالمنتج لباب البيت وتجربته، إن لم يعجبك لأي سبب من الأسباب فقط تواصل معنا وسوف نرجّع لك المال الذي أنفقته — وبدون أي أسئلة. وأصلاً ما تدفع إلا عند الاستلام.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-                {[
-                  { icon: <Phone size={20} />, t: "تواصل معنا", s: "في أي يوم خلال الـ 14 يوم" },
-                  { icon: <Package size={20} />, t: "أرجِع العبوة", s: "حتى لو مفتوحة — ما يهمّنا" },
-                  { icon: <Wallet size={20} />, t: "فلوسك ترجع كاملة", s: "خلال 3–5 أيام عمل" },
-                ].map(s => (
-                  <div key={s.t} className="bg-white rounded-2xl border border-brand-deepSage p-4 text-center shadow-sm">
-                    <div className="w-11 h-11 rounded-2xl bg-brand-sage border border-brand-deepSage text-brand-apothecary flex items-center justify-center mx-auto mb-2">
-                      {s.icon}
-                    </div>
-                    <p className="font-black text-[#0F3024] text-sm">{s.t}</p>
-                    <p className="text-[11px] text-[#5A4A3E] mt-1">{s.s}</p>
-                  </div>
-                ))}
-              </div>
+        <div className="max-w-[800px] mx-auto">
+          {/* Text + guarantee steps */}
+          <div className="text-center">
+            {/* Apothecary shield */}
+            <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">
+              <div className="absolute inset-0 rounded-full bg-white border-4 border-brand-apothecary shadow-md" />
+              <ShieldCheck size={36} className="text-brand-apothecary relative z-10" />
             </div>
 
-            {/* Product shot — this is exactly what arrives, and exactly
-                what you'd send back under the guarantee. White card wraps
-                the photo so its white backdrop doesn't clash with anything. */}
-            <div className="bg-white rounded-3xl border border-brand-deepSage shadow-sm p-6 mx-auto w-full max-w-[280px] md:max-w-none">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/pain-relief-oil-product.webp"
-                alt="زيت العوافي — العلبة والزجاجة الأصلية"
-                width={498}
-                height={501}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-auto object-contain"
-              />
-              <p className="text-center text-[12px] font-bold text-brand-apothecary mt-3">
-                هذا تماماً ما يصلك — بختم أصلي
-              </p>
+            <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>الضمان الكامل</p>
+            <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024] mb-3">14 يوم — أو تُرجَع لك فلوسك. بدون أسئلة.</h2>
+            <p className="text-[#5A4A3E] mb-6 md:mb-8 leading-relaxed text-sm max-w-lg mx-auto">
+              بعد التوصيل بالمنتج لباب البيت وتجربته، إن لم يعجبك لأي سبب من الأسباب فقط تواصل معنا وسوف نرجّع لك المال الذي أنفقته — وبدون أي أسئلة. وأصلاً ما تدفع إلا عند الاستلام.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+              {[
+                { icon: <Phone size={20} />, t: "تواصل معنا", s: "في أي يوم خلال الـ 14 يوم" },
+                { icon: <Package size={20} />, t: "أرجِع العبوة", s: "حتى لو مفتوحة — ما يهمّنا" },
+                { icon: <Wallet size={20} />, t: "فلوسك ترجع كاملة", s: "خلال 3–5 أيام عمل" },
+              ].map(s => (
+                <div key={s.t} className="bg-white rounded-2xl border border-brand-deepSage p-4 text-center shadow-sm">
+                  <div className="w-11 h-11 rounded-2xl bg-brand-sage border border-brand-deepSage text-brand-apothecary flex items-center justify-center mx-auto mb-2">
+                    {s.icon}
+                  </div>
+                  <p className="font-black text-[#0F3024] text-sm">{s.t}</p>
+                  <p className="text-[11px] text-[#5A4A3E] mt-1">{s.s}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
