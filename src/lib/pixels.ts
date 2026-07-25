@@ -2,7 +2,7 @@
  * Pixel IDs are public (visible in network tab). NEXT_PUBLIC_* is baked at
  * `next build` time. EasyPanel often passes empty strings — use `||` not `??`.
  */
-const DEFAULT_TIKTOK_PIXEL_ID = "D8J13V3C77U48KTDRIEG";
+const DEFAULT_TIKTOK_PIXEL_ID = "D9HVUCRC77UD7F80B5S0";
 
 function envOrEmpty(value: string | undefined): string {
   return (value ?? "").trim();

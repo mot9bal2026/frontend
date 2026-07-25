@@ -4,7 +4,11 @@ declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
     ttq?: {
-      track: (event: string, data?: Record<string, unknown>) => void;
+      track: (
+        event: string,
+        data?: Record<string, unknown>,
+        options?: { event_id?: string; test_event_code?: string }
+      ) => void;
       identify: (data?: Record<string, unknown>) => void;
       load: (id: string) => void;
       page: () => void;
@@ -113,7 +117,6 @@ export function firePixelEvent(eventName: string, data: PixelEventData): void {
   try {
     if (window.ttq) {
       const ttqPayload: Record<string, unknown> = {
-        event_id: eventId,
         currency,
         content_type: "product",
       };
@@ -130,7 +133,11 @@ export function firePixelEvent(eventName: string, data: PixelEventData): void {
       }
       if (data.content_name) ttqPayload.content_name = data.content_name;
 
-      window.ttq.track(tiktokEvent, ttqPayload);
+      // event_id MUST be in the options (3rd) argument — this is what TikTok's
+      // Events Manager matches against the same event_id sent by the backend
+      // Events API call. Putting it inside the properties object breaks dedup
+      // and is the root cause of a single order showing as 2-3 purchases.
+      window.ttq.track(tiktokEvent, ttqPayload, { event_id: eventId });
     }
   } catch {}
 
