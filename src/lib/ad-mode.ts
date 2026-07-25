@@ -3,9 +3,10 @@
 const KEY = "ad_review_mode";
 
 export function getAdReviewMode(): boolean {
-  if (typeof window === "undefined") return true;
+  if (typeof window === "undefined") return false;
   const v = window.localStorage.getItem(KEY);
-  return v === null ? true : v === "1";
+  // Default OFF (sales) so ad visitors never get stuck on a blank/review gate
+  return v === "1";
 }
 
 export function setAdReviewMode(on: boolean) {

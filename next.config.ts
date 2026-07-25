@@ -31,6 +31,10 @@ const nextConfig: NextConfig = {
         source: "/awafi-oil-bottle.webp",
         headers: immutableCache,
       },
+      {
+        source: "/pain-relief-oil-product.webp",
+        headers: immutableCache,
+      },
     ];
   },
 };

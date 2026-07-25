@@ -10,12 +10,15 @@ export function HeroMedia({ className = "" }: { className?: string }) {
   return (
     <div className={`w-full ${className}`}>
       <div className="relative w-full aspect-square overflow-hidden rounded-2xl border border-brand-border shadow-md">
+        {/* Mobile-first LCP (~27KB). Desktop upgrades via srcSet. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/results-carousel/slide-1.webp"
+          src="/results-carousel/slide-1-m.webp"
+          srcSet="/results-carousel/slide-1-m.webp 750w, /results-carousel/slide-1.webp 1080w"
+          sizes="(max-width: 768px) 100vw, 50vw"
           alt=""
-          width={1080}
-          height={1080}
+          width={750}
+          height={750}
           fetchPriority="high"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"

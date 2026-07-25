@@ -49,13 +49,6 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-          rel="preload"
-          as="image"
-          href="/results-carousel/slide-1.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
         <link rel="preconnect" href="https://analytics.tiktok.com" />
         {ENABLE_PIXELS && TIKTOK_PIXEL_ID ? (
           <script

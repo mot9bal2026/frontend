@@ -17,9 +17,11 @@ export function ChromeGate({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isAdmin = pathname?.startsWith("/admin");
+  // Bare shell: admin + ad lander (/awafi) — no header/footer/toast drag on first paint
+  const isBare =
+    pathname?.startsWith("/admin") || pathname?.startsWith("/awafi");
 
-  if (isAdmin) {
+  if (isBare) {
     return <>{children}</>;
   }
 
