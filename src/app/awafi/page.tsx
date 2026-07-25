@@ -46,30 +46,35 @@ function OfferPageContent() {
       return;
     }
 
-    // Otherwise, check ad review mode (server-side first, then localStorage fallback)
+    // Check ad review mode from server
     async function checkAdMode() {
       try {
         const res = await fetch(`${API_URL}/api/ad-review-mode/public`, { cache: "no-store" });
         if (res.ok) {
           const data = await res.json();
           if (data.enabled) {
+            // Ad mode is ON - show the simple form
             setShowForm(true);
             setReady(true);
+            return;
+          } else {
+            // Ad mode is OFF - redirect to product page
+            router.replace("/products/wrinkles-dark-circles");
             return;
           }
         }
       } catch {
         // Server unavailable, fallback to localStorage
+        const localMode = getAdReviewMode();
+        if (localMode) {
+          setShowForm(true);
+          setReady(true);
+          return;
+        }
       }
       
-      // Fallback to localStorage
-      const localMode = getAdReviewMode();
-      if (!localMode) {
-        router.replace("/");
-        return;
-      }
-      setShowForm(true);
-      setReady(true);
+      // Default: redirect to product page
+      router.replace("/products/wrinkles-dark-circles");
     }
     
     checkAdMode();
