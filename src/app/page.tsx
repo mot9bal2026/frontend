@@ -86,16 +86,8 @@ export default function HomePage() {
             {/* Copy */}
             <div className="order-2 md:order-1">
               {/* Category claim badge */}
-              <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold pl-3 pr-1.5 py-1.5 rounded-full mb-4 shadow-sm">
-                <span className="w-5 h-5 rounded-full bg-white overflow-hidden flex-shrink-0 flex items-center justify-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/awafi-bottle-clean.png"
-                    alt=""
-                    className="w-full h-full object-contain scale-150"
-                    style={{ objectPosition: "60% center" }}
-                  />
-                </span>
+              <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-4 shadow-sm">
+                <FlaskConical size={12} />
                 زيت العوافي · لآلام الركبة والظهر والمفاصل
               </div>
 
@@ -252,6 +244,46 @@ export default function HomePage() {
             {products.map((product) => (
               <ProductCard key={product.slug} product={product} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────────────────────────────────────
+          PRODUCT SPOTLIGHT — clean standalone shot
+      ───────────────────────────────────────────── */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-content mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 bg-brand-cream rounded-3xl border border-brand-border p-6 md:p-10 max-w-4xl mx-auto">
+            <div className="w-full max-w-[280px] md:max-w-xs mx-auto bg-white rounded-2xl border border-brand-border shadow-sm p-6">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/pain-relief-oil-product.webp"
+                alt="زيت العوافي — علبة وزجاجة"
+                width={498}
+                height={501}
+                decoding="async"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+            <div className="text-center md:text-right flex-1">
+              <p className="text-[11px] text-brand-apothecary font-bold uppercase tracking-[0.25em] mb-2"
+                 style={{ fontFamily: "var(--font-inter), sans-serif" }}>
+                المنتج الأصلي
+              </p>
+              <h2 className="text-[1.6rem] md:text-3xl font-black text-brand-brown mb-3">
+                زيت العوافي — العلبة والزجاجة
+              </h2>
+              <p className="text-[#5A4A3E] text-[14.5px] leading-relaxed max-w-md mx-auto md:mx-0 mb-5">
+                زجاجة بخّاخة سهلة الاستخدام، بعبوة أصلية مختومة تصلك مباشرة للمنزل — بدون دفع أونلاين، وبضمان استرجاع كامل لمدة 14 يوماً.
+              </p>
+              <Link
+                href="/collection"
+                className="inline-flex items-center gap-2 bg-brand-brown text-white font-black px-7 py-3.5 rounded-2xl text-[0.95rem] hover:bg-brand-coffee transition-colors shadow-md active:scale-[0.98]"
+              >
+                اطلب الآن
+                <span className="text-brand-gold">←</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

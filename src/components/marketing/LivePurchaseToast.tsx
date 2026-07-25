@@ -60,7 +60,7 @@ const cities = [
 ];
 
 /* Only the converting offers: 3 bottles or 6 bottles */
-const bundles = ["3 علب", "6 علب", "3 علب", "3 علب", "6 علب"];
+const bundles = ["3 عبوات", "6 عبوات", "3 عبوات", "3 عبوات", "6 عبوات"];
 
 const times = [
   "قبل دقيقة",

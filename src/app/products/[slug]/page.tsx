@@ -309,16 +309,8 @@ export default async function ProductPage({ params }: Props) {
           <div className="px-4 pt-5 pb-8 md:px-0 md:pt-0 md:pb-0 md:order-first md:flex md:flex-col md:justify-center">
 
             {/* Category badge */}
-            <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold pl-3 pr-1.5 py-1.5 rounded-full mb-3 shadow-sm self-start">
-              <span className="w-5 h-5 rounded-full bg-white overflow-hidden flex-shrink-0 flex items-center justify-center">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/awafi-bottle-clean.png"
-                  alt=""
-                  className="w-full h-full object-contain scale-150"
-                  style={{ objectPosition: "60% center" }}
-                />
-              </span>
+            <div className="inline-flex items-center gap-2 bg-brand-apothecary text-white text-[11px] font-bold px-3 py-1.5 rounded-full mb-3 shadow-sm self-start">
+              <FlaskConical size={12} />
               زيت العوافي · لآلام الركبة والظهر والمفاصل
             </div>
 
@@ -329,7 +321,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
               <span className="text-sm text-[#5A4A3E] font-semibold">4.9 ({c.numbers[1].n} · مؤكدة)</span>
               <span className="text-brand-apothecary">·</span>
-              <span className="text-sm font-black text-[#0F3024]">من {product.price.three} ريال / ستة عبوة</span>
+              <span className="text-sm font-black text-[#0F3024]">من {product.price.three} ريال / ست عبوات</span>
             </div>
 
             {/* H1 */}
@@ -620,8 +612,8 @@ export default async function ProductPage({ params }: Props) {
 
               <div className="bg-brand-apothecary text-white rounded-2xl p-4 mt-5 text-center">
                 <p className="text-sm">
-                  العلبة الأولى تعطيك الراحة الأولى.{" "}
-                  <span className="font-black text-[#C8A876]">عرض 6 علب يعطيك العلاج النهائي الكامل</span> — ووفّر حتى {product.price.one * product.bottles.three - product.price.three} ريال.
+                  العبوة الأولى تعطيك الراحة الأولى.{" "}
+                  <span className="font-black text-[#C8A876]">عرض 6 عبوات يعطيك العلاج النهائي الكامل</span> — ووفّر حتى {product.price.one * product.bottles.three - product.price.three} ريال.
                 </p>
               </div>
               <p className="text-center text-xs text-[#7A6A5E] mt-3 opacity-70">* النتائج تتفاوت من شخص لآخر. المنتج لدعم وعلاج الألم موضعياً وليس بديلاً عن استشارة الطبيب في الحالات الشديدة.</p>

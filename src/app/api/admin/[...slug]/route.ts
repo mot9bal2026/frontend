@@ -102,7 +102,7 @@ function buildOrders(): DemoOrder[] {
       { product_slug: product.slug, product_name_ar: product.name, qty, price_sar: unit, is_bridge_upsell: false },
     ];
     if (upsell) {
-      items.push({ product_slug: product.slug, product_name_ar: product.name + " (علبة إضافية)", qty: 1, price_sar: 99, is_bridge_upsell: true });
+      items.push({ product_slug: product.slug, product_name_ar: product.name + " (عبوة إضافية)", qty: 1, price_sar: 99, is_bridge_upsell: true });
     }
     orders.push({
       id: `demo-${1000 + i}`,
@@ -181,7 +181,7 @@ function serializeDetail(o: DemoOrder) {
     items: o.upsell_accepted
       ? [
           { product_slug: o.upsell_offered!, product_name_ar: PRODUCTS.find((p) => p.slug === o.upsell_offered)?.name ?? o.upsell_offered!, qty: 1, price_sar: o.subtotal_sar, is_bridge_upsell: false },
-          { product_slug: o.upsell_offered!, product_name_ar: "علبة إضافية (ترقية)", qty: 1, price_sar: 99, is_bridge_upsell: true },
+          { product_slug: o.upsell_offered!, product_name_ar: "عبوة إضافية (ترقية)", qty: 1, price_sar: 99, is_bridge_upsell: true },
         ]
       : [{ product_slug: PRODUCTS[0].slug, product_name_ar: PRODUCTS[0].name, qty: 1, price_sar: o.subtotal_sar, is_bridge_upsell: false }],
     attribution: {

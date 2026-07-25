@@ -10,9 +10,9 @@ type Props = {
 };
 
 const offerLabels: Record<1 | 2 | 3, string> = {
-  1: "علبة واحدة",
-  2: "3 علب · فرق تلمسه",
-  3: "6 علب · العلاج النهائي",
+  1: "عبوة واحدة",
+  2: "3 عبوات · فرق تلمسه",
+  3: "6 عبوات · العلاج النهائي",
 };
 
 /* Mobile-only sticky CTA bar that appears after user scrolls past hero.
