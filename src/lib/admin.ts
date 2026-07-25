@@ -245,12 +245,13 @@ export type StealthSettings = {
   enabled: boolean;
   ksa_url: string | null;
   other_url: string | null;
+  ad_review_mode: boolean;
 };
 
 export const getStealthMode = () => request<StealthSettings>(`/api/admin/stealth-mode`);
 
 export const updateStealthMode = (
-  body: { enabled?: boolean; ksa_url?: string; other_url?: string }
+  body: { enabled?: boolean; ksa_url?: string; other_url?: string; ad_review_mode?: boolean }
 ) =>
   request<StealthSettings>(`/api/admin/stealth-mode`, {
     method: "PATCH",

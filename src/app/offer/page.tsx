@@ -1,21 +1,33 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { getAdReviewMode } from "@/lib/ad-mode";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://api.ishraqa.shop";
+
 /**
- * صفحة الإعلان (وضع المراجعة)
+ * صفحة الإعلان / نموذج الطلب المبسط
+ * - تُستخدم لوضع المراجعة (ad review) أو للزوار من خارج السعودية (geo redirect)
  * - لا تحتوي على أي ادعاءات صحية أو ذكر لأمراض/أعراض
  * - فقط: صورة المنتج + السعر + نموذج طلب بسيط (Checkout)
  * - مطابقة لسياسات TikTok / Meta أثناء المراجعة
  */
 
 export default function OfferPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#FBF7F0]" />}>
+      <OfferPageContent />
+    </Suspense>
+  );
+}
+
+function OfferPageContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [ready, setReady] = useState(false);
-  const [review, setReview] = useState(true);
+  const [showForm, setShowForm] = useState(true);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -26,11 +38,42 @@ export default function OfferPage() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const r = getAdReviewMode();
-    setReview(r);
-    setReady(true);
-    if (!r) router.replace("/");
-  }, [router]);
+    // If accessed via geo redirect (stealth mode), always show the form
+    const isGeoRedirect = searchParams.get("geo") === "1";
+    if (isGeoRedirect) {
+      setShowForm(true);
+      setReady(true);
+      return;
+    }
+
+    // Otherwise, check ad review mode (server-side first, then localStorage fallback)
+    async function checkAdMode() {
+      try {
+        const res = await fetch(`${API_URL}/api/ad-review-mode/public`, { cache: "no-store" });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.enabled) {
+            setShowForm(true);
+            setReady(true);
+            return;
+          }
+        }
+      } catch {
+        // Server unavailable, fallback to localStorage
+      }
+      
+      // Fallback to localStorage
+      const localMode = getAdReviewMode();
+      if (!localMode) {
+        router.replace("/");
+        return;
+      }
+      setShowForm(true);
+      setReady(true);
+    }
+    
+    checkAdMode();
+  }, [router, searchParams]);
 
   const price = 149;
   const total = price * qty;
@@ -43,7 +86,7 @@ export default function OfferPage() {
     setDone(true);
   };
 
-  if (!ready || !review) return null;
+  if (!ready || !showForm) return null;
 
   if (done) {
     return (

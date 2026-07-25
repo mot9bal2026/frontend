@@ -1,25 +1,57 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Megaphone, CheckCircle2, AlertTriangle } from "lucide-react";
-import { getAdReviewMode, setAdReviewMode } from "@/lib/ad-mode";
+import { Megaphone, CheckCircle2, AlertTriangle, Loader2 } from "lucide-react";
+import { AuthError, getStealthMode, updateStealthMode } from "@/lib/admin";
 
-export function AdModeTab() {
-  const [on, setOn] = useState(true);
-  const [mounted, setMounted] = useState(false);
+type Props = {
+  onAuthError: () => void;
+};
+
+export function AdModeTab({ onAuthError }: Props) {
+  const [on, setOn] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setOn(getAdReviewMode());
-    setMounted(true);
-  }, []);
+    getStealthMode()
+      .then((s) => {
+        setOn(s.ad_review_mode);
+      })
+      .catch((e) => {
+        if (e instanceof AuthError) return onAuthError();
+        setError(e?.message || "تعذّر تحميل الإعدادات");
+      })
+      .finally(() => setLoading(false));
+  }, [onAuthError]);
 
-  const toggle = () => {
+  const toggle = async () => {
     const next = !on;
     setOn(next);
-    setAdReviewMode(next);
+    setSaving(true);
+    setError(null);
+    try {
+      await updateStealthMode({ ad_review_mode: next });
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    } catch (e) {
+      setOn(!next);
+      if (e instanceof AuthError) return onAuthError();
+      setError(e instanceof Error ? e.message : "تعذّر حفظ الإعدادات");
+    } finally {
+      setSaving(false);
+    }
   };
 
-  if (!mounted) return null;
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-16">
+        <Loader2 size={26} className="animate-spin text-[#0F3024]" />
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-2xl border border-black/5 p-5 md:p-6 shadow-sm max-w-2xl">
@@ -33,7 +65,15 @@ export function AdModeTab() {
             التحكم في محتوى صفحة <code>/offer</code> التي تضعها في رابط الإعلان.
           </p>
         </div>
+        {saved && <span className="mr-auto text-[12px] text-emerald-700 font-bold">تم الحفظ ✓</span>}
       </div>
+
+      {error && (
+        <div className="mb-4 flex items-start gap-2 rounded-xl px-4 py-3 text-[12px] bg-red-50 border border-red-300 text-red-700">
+          <AlertTriangle size={16} />
+          <span>{error}</span>
+        </div>
+      )}
 
       <div className="flex items-center justify-between bg-[#FBF7F0] rounded-xl px-4 py-3 border border-black/5">
         <div>
@@ -48,7 +88,8 @@ export function AdModeTab() {
         </div>
         <button
           onClick={toggle}
-          className={`relative inline-flex h-7 w-14 items-center rounded-full transition-colors ${
+          disabled={saving}
+          className={`relative inline-flex h-7 w-14 items-center rounded-full transition-colors disabled:opacity-60 ${
             on ? "bg-[#1E5B3F]" : "bg-black/20"
           }`}
         >
@@ -80,8 +121,8 @@ export function AdModeTab() {
           <li>ضع رابط الإعلان: <code>/offer?utm_source=meta</code></li>
           <li>بعد قبول الإعلان، أطفئ المفتاح من هنا.</li>
         </ol>
-        <p className="mt-2 text-[11px] text-black/45">
-          ملاحظة: هذا المفتاح يُحفظ في متصفح الأدمن الحالي فقط. للتطبيق العالمي على كل الزوار، انقله لاحقاً إلى إعداد على السيرفر.
+        <p className="mt-2 text-[11px] text-emerald-700 font-medium">
+          ✓ هذا الإعداد يعمل على مستوى السيرفر ويؤثر على جميع الزوار.
         </p>
       </div>
     </div>
