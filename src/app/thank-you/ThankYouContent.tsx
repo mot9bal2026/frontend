@@ -151,8 +151,8 @@ export function ThankYouContent() {
             <div className="mt-3 bg-amber-50 border border-amber-200 rounded-2xl px-3.5 py-2.5 text-amber-900 text-[12.5px] font-semibold flex items-start gap-2">
               <AlertCircle size={15} className="flex-shrink-0 mt-0.5" />
               <span>
-                لا تدفعي أي مبلغ مقدّماً. الدفع <span className="font-black">فقط</span>{" "}
-                عند استلام الطلب لباب بيتكِ.
+                لا تدفع أي مبلغ مقدّماً. الدفع <span className="font-black">فقط</span>{" "}
+                عند استلام الطلب لباب بيتك.
               </span>
             </div>
           </div>
@@ -464,19 +464,25 @@ function addBusinessDays(date: Date, days: number) {
 }
 
 function formatDateAr(date: Date) {
-  return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  // Convert to Saudi Arabia timezone (UTC+3)
+  const saudiTime = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Riyadh" }));
+  return `${saudiTime.getDate()}/${saudiTime.getMonth() + 1}/${saudiTime.getFullYear()}`;
 }
 
 function formatTimeAr(date: Date) {
-  const h = date.getHours();
-  const m = String(date.getMinutes()).padStart(2, "0");
+  // Convert to Saudi Arabia timezone (UTC+3)
+  const saudiTime = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Riyadh" }));
+  const h = saudiTime.getHours();
+  const m = String(saudiTime.getMinutes()).padStart(2, "0");
   const ampm = h >= 12 ? "م" : "ص";
   const h12 = h % 12 || 12;
   return `${h12}:${m} ${ampm}`;
 }
 
 function formatShortDate(date: Date) {
+  // Convert to Saudi Arabia timezone (UTC+3)
+  const saudiTime = new Date(date.toLocaleString("en-US", { timeZone: "Asia/Riyadh" }));
   const days = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
-  return `${days[date.getDay()]} ${date.getDate()}/${date.getMonth() + 1}`;
+  return `${days[saudiTime.getDay()]} ${saudiTime.getDate()}/${saudiTime.getMonth() + 1}`;
 }
 
