@@ -1,32 +1,38 @@
+import { redirect } from "next/navigation";
 import { AwafiReviewForm } from "@/components/awafi/AwafiReviewForm";
-import { AwafiSalesLander } from "@/components/awafi/AwafiSalesLander";
 import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
 import { getAdReviewModeServer } from "@/lib/ad-review-server";
 
 /**
- * /awafi — TikTok / Meta ad landing URL.
- *
- * - Ad review ON  → safe form (no health claims)
- * - Ad review OFF → ultra-fast sales lander (SSR + LCP image in first paint)
- *
- * Never returns a blank screen. Never waits on client JS before painting.
+ * /awafi — رابط الإعلان
+ * - وضع المراجعة ON  → صفحة آمنة للمراجعين (SSR فوري، بدون شاشة فارغة)
+ * - وضع المراجعة OFF → توجيه لصفحة المنتج
  */
 export default async function OfferPage({
   searchParams,
 }: {
-  searchParams: Promise<{ geo?: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const params = await searchParams;
-  const forceReview = params.geo === "1";
-  const adReviewOn = forceReview || (await getAdReviewModeServer());
+  const isGeoRedirect = params.geo === "1";
 
-  if (!adReviewOn) {
-    return (
-      <>
-        <AwafiSalesLander />
-        <DeferredPixelLoader />
-      </>
-    );
+  if (!isGeoRedirect) {
+    const adReviewOn = await getAdReviewModeServer();
+    if (!adReviewOn) {
+      // Preserve UTM / ad params on redirect
+      const qs = new URLSearchParams();
+      for (const [key, value] of Object.entries(params)) {
+        if (value == null) continue;
+        if (Array.isArray(value)) value.forEach((v) => qs.append(key, v));
+        else qs.set(key, value);
+      }
+      const query = qs.toString();
+      redirect(
+        query
+          ? `/products/wrinkles-dark-circles?${query}`
+          : "/products/wrinkles-dark-circles"
+      );
+    }
   }
 
   return (

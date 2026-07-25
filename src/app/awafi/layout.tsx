@@ -14,11 +14,10 @@ export default function AwafiLayout({
 }) {
   return (
     <>
-      {/* Hoisted into <head> by Next.js App Router */}
       <link
         rel="preload"
         as="image"
-        href="/results-carousel/slide-1-m.webp"
+        href="/pain-relief-oil-product.webp"
         type="image/webp"
         fetchPriority="high"
       />
