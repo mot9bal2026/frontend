@@ -10,19 +10,21 @@ import { ChromeGate } from "@/components/layout/ChromeGate";
 import { ENABLE_PIXELS, TIKTOK_PIXEL_ID, tiktokPixelBootstrap } from "@/lib/pixels";
 
 const tajawal = Tajawal({
-  subsets: ["arabic", "latin"],
-  weight: ["400", "500", "700", "900"],
+  subsets: ["arabic"],
+  weight: ["400", "700", "900"],
   variable: "--font-tajawal",
   display: "swap",
   preload: true,
+  adjustFontFallback: true,
 });
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["700"],
   variable: "--font-inter",
-  display: "swap",
+  display: "optional",
   preload: false,
+  adjustFontFallback: true,
 });
 
 export const metadata: Metadata = {

@@ -20,7 +20,7 @@ import {
 import { products, getProduct } from "@/lib/products";
 import { BundlePicker } from "@/components/product/BundlePicker";
 import { ViewContentFire } from "@/components/tracking/ViewContentFire";
-import { MobileStickyCTA } from "@/components/marketing/MobileStickyCTA";
+import { DeferredMobileStickyCTA } from "@/components/marketing/DeferredMobileStickyCTA";
 import { HeroImageSlider } from "@/components/product/HeroImageSlider";
 import { ProductPhoto } from "@/components/product/ProductPhoto";
 import Link from "next/link";
@@ -269,7 +269,7 @@ export default async function ProductPage({ params }: Props) {
   return (
     <div className="bg-white" dir="rtl">
       <ViewContentFire productSlug={product.slug} productNameAr={product.nameAr} price={product.price.one} />
-      <MobileStickyCTA product={product} />
+      <DeferredMobileStickyCTA product={product} />
 
       {/* ══════════════════════════════════════════
           HERO
@@ -365,7 +365,7 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           STAT CALLOUT
       ══════════════════════════════════════════ */}
-      <div className="bg-[#FDF3E7] border-y border-[#E8C08A] py-5 px-4 text-center">
+      <div className="cv-auto bg-[#FDF3E7] border-y border-[#E8C08A] py-5 px-4 text-center">
         <p className="text-[#0F3024] text-sm max-w-2xl mx-auto leading-relaxed">
           <span className="font-black text-[2rem] text-[#A0640A] ml-2 leading-none">{c.stat.num}</span>
           <span className="font-semibold">{c.stat.text}</span>
@@ -376,7 +376,7 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           PAIN POINTS — 2-col with portrait image
       ══════════════════════════════════════════ */}
-      <section className="py-12 md:py-16 px-4 bg-white">
+      <section className="cv-auto py-12 md:py-16 px-4 bg-white">
         <div className="max-w-[1200px] mx-auto">
           {/* Section header */}
           <div className="mb-6 md:mb-8 text-right">
@@ -399,7 +399,7 @@ export default async function ProductPage({ params }: Props) {
                 alt="زيت العوافي لآلام الركبة والظهر والمفاصل"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
-                quality={85}
+                quality={65}
                 loading="lazy"
                 unoptimized
                 className="object-cover object-center"
@@ -449,7 +449,7 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           PRODUCT SPOTLIGHT — High-end presentation
       ══════════════════════════════════════════ */}
-      <section className="py-12 md:py-20 px-4 bg-white relative overflow-hidden">
+      <section className="cv-auto py-12 md:py-20 px-4 bg-white relative overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-[#F5EDE3]/50 blur-[100px] rounded-full pointer-events-none" />
         
@@ -538,7 +538,7 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           INGREDIENTS — with product image
       ══════════════════════════════════════════ */}
-      <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
+      <section className="cv-auto py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>التركيبة الطبيعية</p>
@@ -554,7 +554,7 @@ export default async function ProductPage({ params }: Props) {
                 alt="زيت العوافي من الأعشاب الطبيعية"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
-                quality={85}
+                quality={65}
                 loading="lazy"
                 unoptimized
                 className="object-cover object-center"
@@ -617,7 +617,7 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           AUTHORITY
       ══════════════════════════════════════════ */}
-      <section className="py-10 md:py-14 px-4 bg-white">
+      <section className="cv-auto py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>ماذا قال الدكتور؟</p>
@@ -669,7 +669,7 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           TIMELINE — with lifestyle image
       ══════════════════════════════════════════ */}
-      <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
+      <section className="cv-auto py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>النتائج أسبوعاً بأسبوع</p>
@@ -715,7 +715,7 @@ export default async function ProductPage({ params }: Props) {
                 alt="زيت العوافي بعد 30 يوم من الاستخدام"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
-                quality={85}
+                quality={65}
                 loading="lazy"
                 unoptimized
                 className="object-cover object-center"
@@ -753,7 +753,7 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           WHEN TO START — Cultural use cases
       ══════════════════════════════════════════ */}
-      <section className="py-10 md:py-14 px-4 bg-white">
+      <section className="cv-auto py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[1100px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>لمن هذا الزيت؟</p>
@@ -780,7 +780,7 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           TESTIMONIALS
       ══════════════════════════════════════════ */}
-      <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
+      <section className="cv-auto py-10 md:py-14 px-4 bg-[#FBF7F0]">
         <div className="max-w-[1200px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>تجارب حقيقية</p>
@@ -817,7 +817,7 @@ export default async function ProductPage({ params }: Props) {
       {/* ══════════════════════════════════════════
           COMPARISON
       ══════════════════════════════════════════ */}
-      <section className="py-10 md:py-14 px-4 bg-white">
+      <section className="cv-auto py-10 md:py-14 px-4 bg-white">
         <div className="max-w-[900px] mx-auto">
           <div className="text-center mb-6 md:mb-8">
             <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>المقارنة</p>

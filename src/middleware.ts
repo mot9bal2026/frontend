@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://api.ishraqa.shop";
 const SETTINGS_CACHE_TTL_MS = 15_000;
-const FETCH_TIMEOUT_MS = 2_500;
+const FETCH_TIMEOUT_MS = 2_000;
 
 type StealthConfig = {
   enabled: boolean;
@@ -10,30 +10,52 @@ type StealthConfig = {
   other_url: string | null;
 };
 
-let settingsCache: { data: StealthConfig; at: number } | null = null;
+let stealthCache: { data: StealthConfig; at: number } | null = null;
+let adReviewCache: { enabled: boolean; at: number } | null = null;
 
 async function fetchStealthConfig(): Promise<StealthConfig | null> {
-  if (settingsCache && Date.now() - settingsCache.at < SETTINGS_CACHE_TTL_MS) {
-    return settingsCache.data;
+  if (stealthCache && Date.now() - stealthCache.at < SETTINGS_CACHE_TTL_MS) {
+    return stealthCache.data;
   }
   try {
     const res = await fetch(`${API_URL}/api/stealth-mode/public`, {
       cache: "no-store",
       signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
-    if (!res.ok) return settingsCache?.data ?? null;
+    if (!res.ok) return stealthCache?.data ?? null;
     const data = (await res.json()) as StealthConfig;
-    settingsCache = { data, at: Date.now() };
+    stealthCache = { data, at: Date.now() };
     return data;
   } catch {
-    return settingsCache?.data ?? null;
+    return stealthCache?.data ?? null;
+  }
+}
+
+async function fetchAdReviewEnabled(): Promise<boolean | null> {
+  if (adReviewCache && Date.now() - adReviewCache.at < SETTINGS_CACHE_TTL_MS) {
+    return adReviewCache.enabled;
+  }
+  try {
+    const res = await fetch(`${API_URL}/api/ad-review-mode/public`, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+    });
+    if (!res.ok) return adReviewCache?.enabled ?? null;
+    const data = (await res.json()) as { enabled?: boolean };
+    const enabled = Boolean(data.enabled);
+    adReviewCache = { enabled, at: Date.now() };
+    return enabled;
+  } catch {
+    return adReviewCache?.enabled ?? null;
   }
 }
 
 function getClientCountry(request: NextRequest): string | null {
-  return request.headers.get("cf-ipcountry") ?? 
-         request.headers.get("x-vercel-ip-country") ?? 
-         null;
+  return (
+    request.headers.get("cf-ipcountry") ??
+    request.headers.get("x-vercel-ip-country") ??
+    null
+  );
 }
 
 function resolveDestination(target: string | null, request: NextRequest): URL | null {
@@ -46,7 +68,22 @@ function resolveDestination(target: string | null, request: NextRequest): URL | 
   }
 }
 
-export async function middleware(request: NextRequest) {
+/** Fast edge redirect for /awafi when ad-review is OFF (same behavior, less wait). */
+async function handleAwafi(request: NextRequest): Promise<NextResponse | null> {
+  if (request.nextUrl.searchParams.get("geo") === "1") return null;
+
+  const enabled = await fetchAdReviewEnabled();
+  // null = unknown → let the page decide; false = redirect to product
+  if (enabled !== false) return null;
+
+  const dest = new URL("/products/wrinkles-dark-circles", request.url);
+  request.nextUrl.searchParams.forEach((value, key) => {
+    dest.searchParams.set(key, value);
+  });
+  return NextResponse.redirect(dest, 307);
+}
+
+async function handleHome(request: NextRequest): Promise<NextResponse> {
   try {
     const stealth = await fetchStealthConfig();
     if (!stealth || !stealth.enabled) {
@@ -70,6 +107,18 @@ export async function middleware(request: NextRequest) {
   }
 }
 
+export async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  if (pathname === "/awafi" || pathname === "/awafi/") {
+    const early = await handleAwafi(request);
+    if (early) return early;
+    return NextResponse.next();
+  }
+
+  return handleHome(request);
+}
+
 export const config = {
-  matcher: ["/"],
+  matcher: ["/", "/awafi"],
 };

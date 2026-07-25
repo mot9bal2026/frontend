@@ -1,7 +1,3 @@
-"use client";
-
-import { useState, useEffect } from "react";
-
 const items = [
   { icon: "🚚", text: "شحن سريع لجميع مناطق المملكة" },
   { icon: "💳", text: "الدفع عند الاستلام — بدون دفع أونلاين" },
@@ -11,42 +7,21 @@ const items = [
   { icon: "⭐", text: "4.9 من 5 — تقييمات عملاء سعوديين حقيقيين" },
 ];
 
+/** Static SSR bar — no client JS on first paint (mobile speed). */
 export function TopAnnouncementBar() {
-  const [current, setCurrent] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      /* fade out */
-      setVisible(false);
-      setTimeout(() => {
-        setCurrent((prev) => (prev + 1) % items.length);
-        /* fade in */
-        setVisible(true);
-      }, 400);
-    }, 10000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const item = items[current];
-
   return (
     <div
-      className="bg-[#0F3024] text-white flex items-center justify-center gap-2 text-[13px] font-medium"
+      className="bg-[#0F3024] text-white text-[12px] md:text-[13px] font-medium overflow-hidden"
       style={{ height: "36px" }}
     >
-      <span
-        style={{
-          transition: "opacity 0.4s ease",
-          opacity: visible ? 1 : 0,
-        }}
-        className="flex items-center gap-2"
-      >
-        <span>{item.icon}</span>
-        <span className="text-[#FAF6F0]">{item.text}</span>
-      </span>
+      <div className="flex h-full items-center animate-ticker whitespace-nowrap">
+        {[...items, ...items].map((item, i) => (
+          <span key={i} className="inline-flex items-center gap-2 px-6 shrink-0">
+            <span aria-hidden>{item.icon}</span>
+            <span className="text-[#FAF6F0]">{item.text}</span>
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
-

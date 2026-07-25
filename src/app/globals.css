@@ -32,7 +32,18 @@
 
 html {
   direction: rtl;
-  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Skip layout/paint for offscreen sections on mobile */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
 }
 
 body {
