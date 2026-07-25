@@ -460,7 +460,7 @@ export default async function ProductPage({ params }: Props) {
             <div className="relative rounded-[2rem] border border-[#E6D8C8] shadow-2xl overflow-hidden mx-auto w-full max-w-[340px] md:max-w-none group bg-[#FAF6F0]">
               {/* Pattern Background */}
               <div className="absolute inset-0 opacity-15 mix-blend-multiply transition-transform duration-700 group-hover:scale-110">
-                <Image src="/product-pattern-bg.webp" alt="" fill className="object-cover" />
+                <Image src="/product-pattern-bg.webp" alt="" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
               </div>
               
               {/* Gradient Overlay */}

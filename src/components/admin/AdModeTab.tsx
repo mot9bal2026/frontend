@@ -62,7 +62,7 @@ export function AdModeTab({ onAuthError }: Props) {
         <div>
           <h2 className="font-black text-[15px]">وضع مراجعة الإعلان</h2>
           <p className="text-[12px] text-black/55">
-            التحكم في محتوى صفحة <code>/offer</code> التي تضعها في رابط الإعلان.
+            التحكم في محتوى صفحة <code>/awafi</code> التي تضعها في رابط الإعلان.
           </p>
         </div>
         {saved && <span className="mr-auto text-[12px] text-emerald-700 font-bold">تم الحفظ ✓</span>}
@@ -109,8 +109,8 @@ export function AdModeTab({ onAuthError }: Props) {
         {on ? <AlertTriangle size={16} /> : <CheckCircle2 size={16} />}
         <span>
           {on
-            ? "الحالة الآن: أي زائر يفتح /offer يرى صفحة المراجعة. بعد قبول الإعلان أطفئ المفتاح."
-            : "الحالة الآن: /offer يعيد التوجيه لصفحة البيع الفعلية."}
+            ? "الحالة الآن: أي زائر يفتح /awafi يرى صفحة المراجعة. بعد قبول الإعلان أطفئ المفتاح."
+            : "الحالة الآن: /awafi يعيد التوجيه لصفحة البيع الفعلية."}
         </span>
       </div>
 
@@ -118,7 +118,7 @@ export function AdModeTab({ onAuthError }: Props) {
         <p className="font-bold text-black/75">خطوات الاستخدام:</p>
         <ol className="list-decimal pr-5 space-y-1">
           <li>فعّل «وضع المراجعة» قبل رفع الإعلان.</li>
-          <li>ضع رابط الإعلان: <code>/offer?utm_source=meta</code></li>
+          <li>ضع رابط الإعلان: <code>/awafi?utm_source=meta</code></li>
           <li>بعد قبول الإعلان، أطفئ المفتاح من هنا.</li>
         </ol>
         <p className="mt-2 text-[11px] text-emerald-700 font-medium">
