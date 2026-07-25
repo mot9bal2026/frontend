@@ -1,4 +1,4 @@
-import { ShieldCheck, Sparkles } from "lucide-react";
+import { ShieldCheck, Sparkles } from "@/components/icons/Icons";
 import { ResultsCarouselRotator } from "./ResultsCarousel";
 
 /**

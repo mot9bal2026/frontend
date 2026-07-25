@@ -15,7 +15,7 @@ import {
   toE164SaudiPhone,
   toLocalSaudiPhone,
 } from "@/lib/phone";
-import { ShieldCheck, Eye, Flame, Phone, XCircle, ChevronLeft } from "lucide-react";
+import { ShieldCheck, Eye, Flame, Phone, XCircle, ChevronLeft } from "@/components/icons/Icons";
 
 type Props = {
   product: Product;

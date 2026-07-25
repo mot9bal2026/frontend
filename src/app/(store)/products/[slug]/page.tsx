@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import {
   Star,
-  Shield,
   Truck,
   CheckCircle,
   ShieldCheck,
@@ -16,7 +15,7 @@ import {
   Phone,
   PackageCheck,
   Quote,
-} from "lucide-react";
+} from "@/components/icons/Icons";
 import { products, getProduct } from "@/lib/products";
 import { LazyBundlePicker } from "@/components/product/LazyBundlePicker";
 import { DeferredBundlePicker } from "@/components/product/DeferredBundlePicker";
