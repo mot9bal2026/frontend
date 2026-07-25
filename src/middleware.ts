@@ -68,19 +68,21 @@ function resolveDestination(target: string | null, request: NextRequest): URL | 
   }
 }
 
-/** Fast edge redirect for /awafi when ad-review is OFF (same behavior, less wait). */
+/**
+ * When ad-review is OFF: internal rewrite to product page.
+ * Same sales content, no extra redirect round-trip (critical for TikTok + PageSpeed).
+ * Browser URL stays /awafi.
+ */
 async function handleAwafi(request: NextRequest): Promise<NextResponse | null> {
   if (request.nextUrl.searchParams.get("geo") === "1") return null;
 
   const enabled = await fetchAdReviewEnabled();
-  // null = unknown → let the page decide; false = redirect to product
+  // null = unknown → let the page decide; false = serve product
   if (enabled !== false) return null;
 
-  const dest = new URL("/products/wrinkles-dark-circles", request.url);
-  request.nextUrl.searchParams.forEach((value, key) => {
-    dest.searchParams.set(key, value);
-  });
-  return NextResponse.redirect(dest, 307);
+  const dest = request.nextUrl.clone();
+  dest.pathname = "/products/wrinkles-dark-circles";
+  return NextResponse.rewrite(dest);
 }
 
 async function handleHome(request: NextRequest): Promise<NextResponse> {

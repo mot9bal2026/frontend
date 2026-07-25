@@ -5,8 +5,8 @@ import { getAdReviewModeServer } from "@/lib/ad-review-server";
 
 /**
  * /awafi — رابط الإعلان
- * - وضع المراجعة ON  → صفحة آمنة للمراجعين (SSR فوري، بدون شاشة فارغة)
- * - وضع المراجعة OFF → توجيه لصفحة المنتج
+ * - وضع المراجعة ON  → صفحة آمنة للمراجعين
+ * - وضع المراجعة OFF → عادةً middleware rewrite لصفحة المنتج؛ هذا fallback فقط
  */
 export default async function OfferPage({
   searchParams,
@@ -19,19 +19,7 @@ export default async function OfferPage({
   if (!isGeoRedirect) {
     const adReviewOn = await getAdReviewModeServer();
     if (!adReviewOn) {
-      // Preserve UTM / ad params on redirect
-      const qs = new URLSearchParams();
-      for (const [key, value] of Object.entries(params)) {
-        if (value == null) continue;
-        if (Array.isArray(value)) value.forEach((v) => qs.append(key, v));
-        else qs.set(key, value);
-      }
-      const query = qs.toString();
-      redirect(
-        query
-          ? `/products/wrinkles-dark-circles?${query}`
-          : "/products/wrinkles-dark-circles"
-      );
+      redirect("/products/wrinkles-dark-circles");
     }
   }
 

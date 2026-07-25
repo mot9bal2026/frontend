@@ -33,15 +33,19 @@ const nextConfig: NextConfig = {
         headers: immutableCache,
       },
       {
-        source: "/awafi-:path*",
+        source: "/awafi-logo-icon.webp",
         headers: immutableCache,
       },
       {
-        source: "/pain-relief-:path*",
+        source: "/awafi-logo-icon-44.webp",
         headers: immutableCache,
       },
       {
-        source: "/_next/static/:path*",
+        source: "/awafi-oil-bottle.webp",
+        headers: immutableCache,
+      },
+      {
+        source: "/pain-relief-oil-product.webp",
         headers: immutableCache,
       },
     ];

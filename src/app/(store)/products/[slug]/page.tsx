@@ -18,7 +18,7 @@ import {
   Quote,
 } from "lucide-react";
 import { products, getProduct } from "@/lib/products";
-import { BundlePicker } from "@/components/product/BundlePicker";
+import { LazyBundlePicker } from "@/components/product/LazyBundlePicker";
 import { DeferredBundlePicker } from "@/components/product/DeferredBundlePicker";
 import { ViewContentFire } from "@/components/tracking/ViewContentFire";
 import { DeferredMobileStickyCTA } from "@/components/marketing/DeferredMobileStickyCTA";
@@ -335,7 +335,7 @@ export default async function ProductPage({ params }: Props) {
 
             {/* Bundle Picker */}
             <div id="bundle">
-              <BundlePicker product={product} isPrimary />
+              <LazyBundlePicker product={product} isPrimary />
             </div>
 
           </div>

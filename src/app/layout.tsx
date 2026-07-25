@@ -2,12 +2,6 @@ import type { Metadata } from "next";
 import { Tajawal } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { TopAnnouncementBar } from "@/components/layout/TopAnnouncementBar";
-import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
-import { DeferredLiveToast } from "@/components/marketing/DeferredLiveToast";
-import { ChromeGate } from "@/components/layout/ChromeGate";
 import { ENABLE_PIXELS, TIKTOK_PIXEL_ID, tiktokPixelBootstrap } from "@/lib/pixels";
 
 const tajawal = Tajawal({
@@ -43,7 +37,6 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* Critical paint — avoid white flash before CSS */}
         <style
           dangerouslySetInnerHTML={{
             __html:
@@ -59,25 +52,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-brand-white text-brand-ink font-arabic antialiased">
-        <ChromeGate
-          header={
-            <>
-              <TopAnnouncementBar />
-              <Header />
-            </>
-          }
-          footer={
-            <>
-              <Footer />
-              <DeferredLiveToast />
-              <DeferredPixelLoader />
-            </>
-          }
-        >
-          {children}
-        </ChromeGate>
-
-        {/* TikTok after paint — do not block first frame */}
+        {children}
         {ENABLE_PIXELS && TIKTOK_PIXEL_ID ? (
           <Script id="ttq" strategy="lazyOnload">
             {tiktokPixelBootstrap(TIKTOK_PIXEL_ID)}
