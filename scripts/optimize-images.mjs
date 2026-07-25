@@ -11,6 +11,7 @@ const jobs = [
   { in: "public/images/product-1.png", out: "public/images/product-1.webp", w: 900 },
   { in: "public/images/lifestyle-couple.png", out: "public/images/lifestyle-couple.webp", w: 1000 },
   { in: "public/pain-relief-oil-product.png", out: "public/pain-relief-oil-product.webp", w: 900 },
+  { in: "public/product-pattern-bg.png", out: "public/product-pattern-bg.webp", w: 1200 },
 ];
 
 for (const j of jobs) {

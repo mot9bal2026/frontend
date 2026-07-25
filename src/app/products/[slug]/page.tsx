@@ -447,6 +447,95 @@ export default async function ProductPage({ params }: Props) {
       </section>
 
       {/* ══════════════════════════════════════════
+          PRODUCT SPOTLIGHT — High-end presentation
+      ══════════════════════════════════════════ */}
+      <section className="py-12 md:py-20 px-4 bg-white relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl h-[400px] bg-[#F5EDE3]/50 blur-[100px] rounded-full pointer-events-none" />
+        
+        <div className="max-w-[1000px] mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+            
+            {/* Premium Image Card */}
+            <div className="relative rounded-[2rem] border border-[#E6D8C8] shadow-2xl overflow-hidden mx-auto w-full max-w-[340px] md:max-w-none group bg-[#FAF6F0]">
+              {/* Pattern Background */}
+              <div className="absolute inset-0 opacity-15 mix-blend-multiply transition-transform duration-700 group-hover:scale-110">
+                <Image src="/product-pattern-bg.webp" alt="" fill className="object-cover" />
+              </div>
+              
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#E6D8C8]/90 via-[#FBF7F0]/40 to-transparent" />
+
+              {/* Inner Content */}
+              <div className="relative p-8 pt-12 flex flex-col items-center">
+                {/* Glow effect behind bottle */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white/80 blur-3xl rounded-full" />
+                
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/pain-relief-oil-product.webp"
+                  alt="زيت العوافي — العلبة والزجاجة الأصلية"
+                  width={498}
+                  height={501}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-contain relative z-10 drop-shadow-2xl transition-transform duration-500 group-hover:-translate-y-2"
+                />
+                
+                <div className="mt-8 relative z-10 bg-white/90 backdrop-blur-md border border-white shadow-sm rounded-2xl px-5 py-3 w-full text-center">
+                  <div className="flex items-center justify-center gap-1.5 mb-1">
+                    <ShieldCheck size={16} className="text-brand-apothecary" />
+                    <span className="text-[11px] font-black text-brand-brown uppercase tracking-wider">المنتج الأصلي</span>
+                  </div>
+                  <p className="text-[13px] font-bold text-[#0F3024]">
+                    عبوة أصلية مختومة — 100٪ طبيعي
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Text Content */}
+            <div className="text-center md:text-right">
+              <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-3" style={{ fontFamily: "var(--font-inter), sans-serif" }}>
+                العلاج بين يديك
+              </p>
+              <h2 className="text-[1.8rem] md:text-[2.5rem] font-black text-[#0F3024] leading-tight mb-4">
+                زيت العوافي — الحل الطبيعي لآلام المفاصل
+              </h2>
+              <p className="text-[#5A4A3E] text-[15px] leading-relaxed mb-6">
+                زجاجة بخّاخة مصممة لسهولة الاستخدام والوصول المباشر لمكان الألم. بفضل تركيبته الغنية بـ 30 عشبة طبية، يمنحك زيت العوافي راحة سريعة وعلاجاً فعّالاً من جذور المشكلة.
+              </p>
+              
+              <div className="flex flex-col gap-3 mb-8">
+                {[
+                  "بخّاخ عملي يسهّل الوصول لمكان الألم",
+                  "حجم مثالي يكفي لاستخدام شهر كامل",
+                  "تركيبة مركّزة سريعة الامتصاص",
+                  "لا يترك أثراً دهنياً مزعجاً على الملابس"
+                ].map((feature, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-brand-sage flex items-center justify-center flex-shrink-0">
+                      <CheckCircle size={14} className="text-brand-apothecary" />
+                    </div>
+                    <p className="text-[#0F3024] font-semibold text-sm">{feature}</p>
+                  </div>
+                ))}
+              </div>
+
+              <Link
+                href="#bundle"
+                className="inline-flex items-center justify-center gap-2 bg-brand-brown text-white font-black px-8 py-4 rounded-2xl text-[1rem] hover:bg-brand-coffee transition-all shadow-lg hover:shadow-xl active:scale-[0.98] w-full md:w-auto"
+              >
+                اطلب عبوتك الآن
+                <span className="text-brand-gold">←</span>
+              </Link>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════
           INGREDIENTS — with product image
       ══════════════════════════════════════════ */}
       <section className="py-10 md:py-14 px-4 bg-[#FBF7F0]">
@@ -784,33 +873,57 @@ export default async function ProductPage({ params }: Props) {
           GUARANTEE — Apothecary Green
       ══════════════════════════════════════════ */}
       <section className="py-10 md:py-14 px-4 bg-brand-sage/40 border-y border-brand-deepSage/40">
-        <div className="max-w-[700px] mx-auto text-center">
-          {/* Apothecary shield */}
-          <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">
-            <div className="absolute inset-0 rounded-full bg-white border-4 border-brand-apothecary shadow-md" />
-            <ShieldCheck size={36} className="text-brand-apothecary relative z-10" />
-          </div>
-
-          <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>الضمان الكامل</p>
-          <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024] mb-3">14 يوم — أو تُرجَع لك فلوسك. بدون أسئلة.</h2>
-          <p className="text-[#5A4A3E] mb-6 md:mb-8 leading-relaxed text-sm max-w-lg mx-auto">
-            بعد التوصيل بالمنتج لباب البيت وتجربته، إن لم يعجبك لأي سبب من الأسباب فقط تواصل معنا وسوف نرجّع لك المال الذي أنفقته — وبدون أي أسئلة. وأصلاً ما تدفع إلا عند الاستلام.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-            {[
-              { icon: <Phone size={20} />, t: "تواصل معنا", s: "في أي يوم خلال الـ 14 يوم" },
-              { icon: <Package size={20} />, t: "أرجِع العبوة", s: "حتى لو مفتوحة — ما يهمّنا" },
-              { icon: <Wallet size={20} />, t: "فلوسك ترجع كاملة", s: "خلال 3–5 أيام عمل" },
-            ].map(s => (
-              <div key={s.t} className="bg-white rounded-2xl border border-brand-deepSage p-4 text-center shadow-sm">
-                <div className="w-11 h-11 rounded-2xl bg-brand-sage border border-brand-deepSage text-brand-apothecary flex items-center justify-center mx-auto mb-2">
-                  {s.icon}
-                </div>
-                <p className="font-black text-[#0F3024] text-sm">{s.t}</p>
-                <p className="text-[11px] text-[#5A4A3E] mt-1">{s.s}</p>
+        <div className="max-w-[1100px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_320px] gap-8 md:gap-10 items-center">
+            {/* Text + guarantee steps */}
+            <div className="text-center md:text-right">
+              {/* Apothecary shield */}
+              <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4">
+                <div className="absolute inset-0 rounded-full bg-white border-4 border-brand-apothecary shadow-md" />
+                <ShieldCheck size={36} className="text-brand-apothecary relative z-10" />
               </div>
-            ))}
+
+              <p className="text-[11px] font-bold text-brand-apothecary uppercase tracking-[0.25em] mb-2" style={{ fontFamily: "var(--font-inter), sans-serif" }}>الضمان الكامل</p>
+              <h2 className="text-[1.5rem] md:text-3xl font-black text-[#0F3024] mb-3">14 يوم — أو تُرجَع لك فلوسك. بدون أسئلة.</h2>
+              <p className="text-[#5A4A3E] mb-6 md:mb-8 leading-relaxed text-sm max-w-lg mx-auto md:mx-0">
+                بعد التوصيل بالمنتج لباب البيت وتجربته، إن لم يعجبك لأي سبب من الأسباب فقط تواصل معنا وسوف نرجّع لك المال الذي أنفقته — وبدون أي أسئلة. وأصلاً ما تدفع إلا عند الاستلام.
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+                {[
+                  { icon: <Phone size={20} />, t: "تواصل معنا", s: "في أي يوم خلال الـ 14 يوم" },
+                  { icon: <Package size={20} />, t: "أرجِع العبوة", s: "حتى لو مفتوحة — ما يهمّنا" },
+                  { icon: <Wallet size={20} />, t: "فلوسك ترجع كاملة", s: "خلال 3–5 أيام عمل" },
+                ].map(s => (
+                  <div key={s.t} className="bg-white rounded-2xl border border-brand-deepSage p-4 text-center shadow-sm">
+                    <div className="w-11 h-11 rounded-2xl bg-brand-sage border border-brand-deepSage text-brand-apothecary flex items-center justify-center mx-auto mb-2">
+                      {s.icon}
+                    </div>
+                    <p className="font-black text-[#0F3024] text-sm">{s.t}</p>
+                    <p className="text-[11px] text-[#5A4A3E] mt-1">{s.s}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Product shot — this is exactly what arrives, and exactly
+                what you'd send back under the guarantee. White card wraps
+                the photo so its white backdrop doesn't clash with anything. */}
+            <div className="bg-white rounded-3xl border border-brand-deepSage shadow-sm p-6 mx-auto w-full max-w-[280px] md:max-w-none">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/pain-relief-oil-product.webp"
+                alt="زيت العوافي — العلبة والزجاجة الأصلية"
+                width={498}
+                height={501}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-contain"
+              />
+              <p className="text-center text-[12px] font-bold text-brand-apothecary mt-3">
+                هذا تماماً ما يصلك — بختم أصلي
+              </p>
+            </div>
           </div>
         </div>
       </section>
