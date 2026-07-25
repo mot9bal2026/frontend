@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Tajawal, Inter } from "next/font/google";
+import { Tajawal } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -11,19 +12,10 @@ import { ENABLE_PIXELS, TIKTOK_PIXEL_ID, tiktokPixelBootstrap } from "@/lib/pixe
 
 const tajawal = Tajawal({
   subsets: ["arabic"],
-  weight: ["400", "700", "900"],
+  weight: ["400", "700"],
   variable: "--font-tajawal",
   display: "swap",
   preload: true,
-  adjustFontFallback: true,
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-inter",
-  display: "optional",
-  preload: false,
   adjustFontFallback: true,
 });
 
@@ -47,20 +39,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir="rtl" className={tajawal.variable}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preconnect" href="https://analytics.tiktok.com" />
-        {ENABLE_PIXELS && TIKTOK_PIXEL_ID ? (
-          <script
-            dangerouslySetInnerHTML={{ __html: tiktokPixelBootstrap(TIKTOK_PIXEL_ID) }}
-          />
-        ) : null}
+        {/* Critical paint — avoid white flash before CSS */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              "html,body{background:#FAF6F0;margin:0}body{font-family:var(--font-tajawal),Tahoma,sans-serif;color:#211915}",
+          }}
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="/results-carousel/slide-1-m.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
       </head>
-      <body
-        className={`${tajawal.variable} ${inter.variable} bg-brand-white text-brand-ink font-arabic antialiased`}
-      >
+      <body className="bg-brand-white text-brand-ink font-arabic antialiased">
         <ChromeGate
           header={
             <>
@@ -78,8 +76,14 @@ export default function RootLayout({
         >
           {children}
         </ChromeGate>
+
+        {/* TikTok after paint — do not block first frame */}
+        {ENABLE_PIXELS && TIKTOK_PIXEL_ID ? (
+          <Script id="ttq" strategy="lazyOnload">
+            {tiktokPixelBootstrap(TIKTOK_PIXEL_ID)}
+          </Script>
+        ) : null}
       </body>
     </html>
   );
 }
-

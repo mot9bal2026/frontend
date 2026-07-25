@@ -80,7 +80,7 @@ export default function HomePage() {
       {/* ─────────────────────────────────────────────
           HERO — Category claim
       ───────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-b from-brand-cream via-white to-brand-cream/40 pt-12 pb-14 md:pt-16 md:pb-20 px-4 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-brand-cream via-white to-brand-cream/40 pt-3 pb-10 md:pt-16 md:pb-20 px-3 md:px-4 overflow-hidden">
         <div className="max-w-content mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             {/* Copy */}

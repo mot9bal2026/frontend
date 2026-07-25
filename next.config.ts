@@ -9,15 +9,20 @@ const immutableCache = [
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
-    qualities: [65, 75, 85],
+    qualities: [65, 75],
     minimumCacheTTL: 60 * 60 * 24 * 30,
-    deviceSizes: [640, 750, 828, 1080, 1200, 1600],
+    deviceSizes: [640, 750, 828, 1080],
     imageSizes: [64, 96, 128, 256, 384],
   },
   async headers() {
-    // Long-lived cache only for static public assets (avoid /_next/* in dev).
     return [
       {
         source: "/results-carousel/:path*",
@@ -28,11 +33,15 @@ const nextConfig: NextConfig = {
         headers: immutableCache,
       },
       {
-        source: "/awafi-oil-bottle.webp",
+        source: "/awafi-:path*",
         headers: immutableCache,
       },
       {
-        source: "/pain-relief-oil-product.webp",
+        source: "/pain-relief-:path*",
+        headers: immutableCache,
+      },
+      {
+        source: "/_next/static/:path*",
         headers: immutableCache,
       },
     ];

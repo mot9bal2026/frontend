@@ -1,17 +1,18 @@
-import Image from "next/image";
 import Link from "next/link";
 
 export function LogoMark() {
   return (
     <Link href="/" className="flex items-center gap-2.5 group" aria-label="زيت العوافي">
       <div className="transition-transform group-hover:scale-105">
-        <Image
-          src="/awafi-logo-icon.png"
-          alt="زيت العوافي"
+        {/* Tiny WebP (~2KB) — never compete with LCP hero */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/awafi-logo-icon.webp"
+          alt=""
           width={40}
           height={40}
+          decoding="async"
           className="h-10 w-10 object-contain drop-shadow-sm"
-          priority
         />
       </div>
       <div className="flex flex-col leading-tight">

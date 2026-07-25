@@ -1,8 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
 import { LogoMark } from "./LogoMark";
 
 const navLinks = [
@@ -12,9 +8,8 @@ const navLinks = [
   { href: "/contact", label: "تواصل معنا" },
 ];
 
+/** Server Header — no client JS. Mobile menu via native <details>. */
 export function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   return (
     <header className="bg-white border-b border-[#E6D8C8] sticky top-0 z-40 shadow-sm">
       <div className="max-w-content mx-auto px-3 md:px-4">
@@ -35,32 +30,31 @@ export function Header() {
 
           <div className="flex-1" />
 
-          <button
-            className="md:hidden p-2 text-[#0F3024] rounded-xl active:bg-[#FBF7F0] transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="القائمة"
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          <details className="md:hidden relative group">
+            <summary
+              className="list-none p-2 text-[#0F3024] rounded-xl active:bg-[#FBF7F0] transition-colors cursor-pointer select-none [&::-webkit-details-marker]:hidden"
+              aria-label="القائمة"
+            >
+              <span className="block w-5 space-y-1" aria-hidden>
+                <span className="block h-0.5 bg-current rounded" />
+                <span className="block h-0.5 bg-current rounded" />
+                <span className="block h-0.5 bg-current rounded" />
+              </span>
+            </summary>
+            <nav className="absolute left-0 top-full mt-1 w-56 bg-[#FBF7F0] border border-[#E6D8C8] rounded-2xl shadow-lg px-2 py-2 z-50">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block text-[#0F3024] font-bold py-2.5 px-3 rounded-xl hover:bg-white active:bg-white transition-colors text-sm"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </details>
         </div>
       </div>
-
-      {mobileOpen && (
-        <div className="md:hidden bg-[#FBF7F0] border-t border-[#E6D8C8] px-4 py-3">
-          <nav className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-[#0F3024] font-bold py-2.5 px-2 rounded-xl hover:bg-white active:bg-white transition-colors text-sm"
-                onClick={() => setMobileOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
     </header>
   );
 }

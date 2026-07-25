@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ShieldCheck, Award, Truck, Sparkles } from "lucide-react";
 
@@ -11,11 +10,14 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <div className="flex items-center justify-center">
-                <Image
-                  src="/awafi-logo-icon.png"
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/awafi-logo-icon-44.webp"
                   alt="زيت العوافي"
                   width={44}
                   height={44}
+                  loading="lazy"
+                  decoding="async"
                   className="h-11 w-11 object-contain"
                 />
               </div>

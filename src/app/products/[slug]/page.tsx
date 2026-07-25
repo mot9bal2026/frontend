@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { products, getProduct } from "@/lib/products";
 import { BundlePicker } from "@/components/product/BundlePicker";
+import { DeferredBundlePicker } from "@/components/product/DeferredBundlePicker";
 import { ViewContentFire } from "@/components/tracking/ViewContentFire";
 import { DeferredMobileStickyCTA } from "@/components/marketing/DeferredMobileStickyCTA";
 import { HeroImageSlider } from "@/components/product/HeroImageSlider";
@@ -1039,7 +1040,7 @@ export default async function ProductPage({ params }: Props) {
             ابدأ اليوم — وبعد 30 يوم رح تشكر نفسك
           </p>
           <div className="bg-white rounded-3xl p-4 md:p-6 shadow-2xl border border-brand-gold/30">
-            <BundlePicker product={product} />
+            <DeferredBundlePicker product={product} />
           </div>
           <div className="flex items-center justify-center gap-4 mt-6 text-[11.5px] text-brand-gold font-semibold flex-wrap">
             <span className="flex items-center gap-1.5"><ShieldCheck size={13} /> SFDA</span>

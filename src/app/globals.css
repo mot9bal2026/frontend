@@ -91,7 +91,16 @@ h1, h2, h3, h4, h5, h6 {
 .pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
 
 .font-inter {
-  font-family: var(--font-inter), sans-serif;
+  /* Inter removed for mobile speed — Tajawal covers Arabic + Latin digits */
+  font-family: var(--font-tajawal), Tahoma, sans-serif;
+  font-weight: 700;
+}
+
+@layer utilities {
+  /* font-black normally 900; we only ship weight 700 */
+  .font-black {
+    font-weight: 700;
+  }
 }
 
 @layer utilities {
