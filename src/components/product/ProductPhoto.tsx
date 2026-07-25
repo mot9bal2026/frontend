@@ -61,7 +61,7 @@ export function ProductPhoto({
         sizes={sizes}
         priority={priority}
         loading={priority ? "eager" : "lazy"}
-        quality={75}
+        quality={85}
         // Already-optimized WebP masters skip the image optimizer hop.
         unoptimized={src.endsWith(".webp") || src.endsWith(".avif")}
         className={objectFitClass}

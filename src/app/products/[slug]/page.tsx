@@ -399,7 +399,7 @@ export default async function ProductPage({ params }: Props) {
                 alt="زيت العوافي لآلام الركبة والظهر والمفاصل"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
-                quality={75}
+                quality={85}
                 loading="lazy"
                 unoptimized
                 className="object-cover object-center"
@@ -554,7 +554,7 @@ export default async function ProductPage({ params }: Props) {
                 alt="زيت العوافي من الأعشاب الطبيعية"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
-                quality={75}
+                quality={85}
                 loading="lazy"
                 unoptimized
                 className="object-cover object-center"
@@ -715,7 +715,7 @@ export default async function ProductPage({ params }: Props) {
                 alt="زيت العوافي بعد 30 يوم من الاستخدام"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
-                quality={75}
+                quality={85}
                 loading="lazy"
                 unoptimized
                 className="object-cover object-center"

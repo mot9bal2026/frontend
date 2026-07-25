@@ -14,8 +14,8 @@ export function HeroMedia({ className = "" }: { className?: string }) {
         <img
           src="/results-carousel/slide-1.webp"
           alt=""
-          width={900}
-          height={900}
+          width={1080}
+          height={1080}
           fetchPriority="high"
           decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
