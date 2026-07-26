@@ -321,7 +321,7 @@ export default async function ProductPage({ params }: Props) {
               </div>
               <span className="text-sm text-[#5A4A3E] font-semibold">4.9 ({c.numbers[1].n} · مؤكدة)</span>
               <span className="text-brand-apothecary">·</span>
-              <span className="text-sm font-black text-[#0F3024]">من {product.price.three} ريال / ست عبوات</span>
+              <span className="text-sm font-black text-[#0F3024]">من {product.price.three} ريال / {product.bottles.three} عبوات</span>
             </div>
 
             {/* H1 */}
@@ -702,7 +702,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="bg-brand-apothecary text-white rounded-2xl p-4 mt-5 text-center">
                 <p className="text-sm">
                   العبوة الأولى تعطيك الراحة الأولى.{" "}
-                  <span className="font-black text-[#C8A876]">عرض 6 عبوات يعطيك العلاج النهائي الكامل</span> — ووفّر حتى {product.price.one * product.bottles.three - product.price.three} ريال.
+                  <span className="font-black text-[#C8A876]">عرض {product.bottles.three} عبوات يعطيك العلاج النهائي الكامل</span> — ووفّر حتى {product.price.one * product.bottles.three - product.price.three} ريال.
                 </p>
               </div>
               <p className="text-center text-xs text-[#7A6A5E] mt-3 opacity-70">* النتائج تتفاوت من شخص لآخر. المنتج لدعم وعلاج الألم موضعياً وليس بديلاً عن استشارة الطبيب في الحالات الشديدة.</p>

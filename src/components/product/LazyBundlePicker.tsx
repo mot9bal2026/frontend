@@ -50,7 +50,7 @@ function BundlePickerShell({ product }: { product: Product }) {
   return (
     <div className="space-y-3" aria-busy="true">
       <div className="rounded-2xl border-2 border-[#C8A876] bg-[#FBF7F0] p-4">
-        <p className="font-black text-[#0F3024] text-sm">3 عبوات · الأكثر طلباً</p>
+        <p className="font-black text-[#0F3024] text-sm">4 عبوات · الأكثر طلباً</p>
         <p className="text-[13px] text-[#5A4A3E] mt-1">
           {product.price.two} ريال{" "}
           <span className="line-through text-[#9A8A7E] text-[11px]">

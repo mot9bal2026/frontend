@@ -15,8 +15,8 @@ type OfferState = {
 
 export const useCartStore = create<OfferState>((set) => ({
   selectedOfferQty: 2,
-  selectedOfferPrice: 129,
-  selectedOfferOriginal: 297,
+  selectedOfferPrice: 149,
+  selectedOfferOriginal: 516,
   setSelectedOffer: (qty, price, original) =>
     set({ selectedOfferQty: qty, selectedOfferPrice: price, selectedOfferOriginal: original }),
 }));

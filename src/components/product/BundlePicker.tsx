@@ -50,7 +50,7 @@ const orderSchema = z.object({
 type OrderForm = z.infer<typeof orderSchema>;
 
 function buildOffers(product: Product): OfferCard[] {
-  const unit = product.price.one; // price of a single bottle (99)
+  const unit = product.price.one; // price of a single bottle
   const b = product.bottles;
 
   const twoOriginal = unit * b.two;
