@@ -1,17 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { getProduct } from "@/lib/products";
 import { LazyBundlePicker } from "@/components/product/LazyBundlePicker";
+import { AwafiStickyCta } from "@/components/marketing/AwafiStickyCta";
 import { ViewContentFire } from "@/components/tracking/ViewContentFire";
 import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
-
-/* Client-only sticky bar — keeps its JS out of the initial awafi RSC payload. */
-const AwafiStickyCta = dynamic(
-  () =>
-    import("@/components/marketing/AwafiStickyCta").then((m) => m.AwafiStickyCta),
-  { ssr: false },
-);
 
 /* Regenerate at least once a minute so the daily-offer banner at the top
    flips to the new weekday within a minute of midnight in Riyadh, even when
