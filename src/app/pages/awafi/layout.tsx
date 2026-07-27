@@ -17,8 +17,8 @@ export default function AwafiLandingLayout({
       <link
         rel="preload"
         as="image"
-        href="/images/product-1.webp"
-        type="image/webp"
+        href="/images/awafi-ramadan-ad.png"
+        type="image/png"
         fetchPriority="high"
       />
       {children}
