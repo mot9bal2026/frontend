@@ -6,7 +6,7 @@ import { getAdReviewModeServer } from "@/lib/ad-review-server";
 /**
  * /awafi — رابط الإعلان
  * - وضع المراجعة ON  → صفحة آمنة للمراجعين
- * - وضع المراجعة OFF → عادةً middleware rewrite لصفحة المنتج؛ هذا fallback فقط
+ * - وضع المراجعة OFF → عادةً middleware rewrite لـ /pages/awafi؛ هذا fallback فقط
  */
 export default async function OfferPage({
   searchParams,
@@ -19,7 +19,7 @@ export default async function OfferPage({
   if (!isGeoRedirect) {
     const adReviewOn = await getAdReviewModeServer();
     if (!adReviewOn) {
-      redirect("/products/wrinkles-dark-circles");
+      redirect("/pages/awafi");
     }
   }
 

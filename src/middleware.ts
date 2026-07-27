@@ -69,19 +69,19 @@ function resolveDestination(target: string | null, request: NextRequest): URL | 
 }
 
 /**
- * When ad-review is OFF: internal rewrite to product page.
- * Same sales content, no extra redirect round-trip (critical for TikTok + PageSpeed).
- * Browser URL stays /awafi.
+ * When ad-review is OFF: internal rewrite to the sales landing.
+ * Same content as /pages/awafi, no extra redirect round-trip (critical for
+ * TikTok + PageSpeed). Browser URL stays /awafi.
  */
 async function handleAwafi(request: NextRequest): Promise<NextResponse | null> {
   if (request.nextUrl.searchParams.get("geo") === "1") return null;
 
   const enabled = await fetchAdReviewEnabled();
-  // null = unknown → let the page decide; false = serve product
+  // null = unknown → let the page decide; false = serve the sales landing
   if (enabled !== false) return null;
 
   const dest = request.nextUrl.clone();
-  dest.pathname = "/products/wrinkles-dark-circles";
+  dest.pathname = "/pages/awafi";
   return NextResponse.rewrite(dest);
 }
 

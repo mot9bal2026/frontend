@@ -83,7 +83,7 @@ export function AdModeTab({ onAuthError }: Props) {
           <p className="text-[11px] text-black/55 mt-0.5">
             {on
               ? "الزوار يشاهدون صفحة هبوط آمنة للمراجعين."
-              : "الزوار يذهبون مباشرة لصفحة البيع."}
+              : "الزوار يرون صفحة الهبوط البيعية (/pages/awafi) على نفس الرابط /awafi."}
           </p>
         </div>
         <button
@@ -110,7 +110,7 @@ export function AdModeTab({ onAuthError }: Props) {
         <span>
           {on
             ? "الحالة الآن: أي زائر يفتح /awafi يرى صفحة المراجعة. بعد قبول الإعلان أطفئ المفتاح."
-            : "الحالة الآن: /awafi يعيد التوجيه لصفحة البيع الفعلية."}
+            : "الحالة الآن: /awafi يعرض صفحة الهبوط البيعية مباشرة (بدون تحويل ظاهر)."}
         </span>
       </div>
 
