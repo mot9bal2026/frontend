@@ -1,10 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { getProduct } from "@/lib/products";
 import { LazyBundlePicker } from "@/components/product/LazyBundlePicker";
-import { AwafiStickyCta } from "@/components/marketing/AwafiStickyCta";
 import { ViewContentFire } from "@/components/tracking/ViewContentFire";
 import { DeferredPixelLoader } from "@/components/tracking/DeferredPixelLoader";
+
+/* Client-only sticky bar — keeps its JS out of the initial awafi RSC payload. */
+const AwafiStickyCta = dynamic(
+  () =>
+    import("@/components/marketing/AwafiStickyCta").then((m) => m.AwafiStickyCta),
+  { ssr: false },
+);
 
 /* Regenerate at least once a minute so the daily-offer banner at the top
    flips to the new weekday within a minute of midnight in Riyadh, even when
@@ -71,9 +78,10 @@ const formTheme = `
 .lp-red .text-\\[\\#C8A876\\]{color:#FFE2DB!important}
 .lp-red .bg-\\[\\#E6D8C8\\]{background-color:${RED_TINT}!important}
 .lp-red details[open] > summary .lp-plus{transform:rotate(45deg)}
-@keyframes lpPulse{0%,100%{box-shadow:0 8px 24px -6px rgba(232,17,45,.55)}50%{box-shadow:0 8px 34px 2px rgba(232,17,45,.85)}}
-.lp-cta{animation:lpPulse 2.4s ease-in-out infinite}
-@media (prefers-reduced-motion:reduce){.lp-cta{animation:none}}
+@keyframes lpPulse{0%,100%{box-shadow:0 8px 24px -6px rgba(232,17,45,.45)}50%{box-shadow:0 8px 28px 0 rgba(232,17,45,.7)}}
+.lp-cta-pulse{animation:lpPulse 2.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.lp-cta-pulse{animation:none}}
+.lp-cv{content-visibility:auto;contain-intrinsic-size:auto 640px}
 `;
 
 /* ── Copy carried over from the full product page ── */
@@ -302,9 +310,10 @@ function Hi({ children }: { children: React.ReactNode }) {
   return <span style={{ color: AD_RED }}>{children}</span>;
 }
 
-/* Photography lifted out of the creatives. Pre-encoded at native resolution,
-   so Next's optimizer is bypassed — at quality 75 it visibly muddied the
-   product label and the red pain glow. */
+/* Photography is pre-resized to ≤820px WebP (~220KB total for the page).
+   unoptimized avoids a second encode on the server; sizes keep the attribute
+   honest for the layout. decoding=async keeps decode off the critical path
+   for everything except the LCP hero. */
 function Photo({
   src,
   alt,
@@ -327,7 +336,9 @@ function Photo({
       width={w}
       height={h}
       priority={priority}
+      fetchPriority={priority ? "high" : "auto"}
       loading={priority ? undefined : "lazy"}
+      decoding={priority ? "sync" : "async"}
       sizes="(max-width: 512px) 100vw, 512px"
       unoptimized
       className={`w-full h-auto block ${className}`}
@@ -345,7 +356,7 @@ function Section({
   kicker?: string;
 }) {
   return (
-    <section className="px-3 py-6">
+    <section className="lp-cv px-3 py-6">
       {(kicker || title) && (
         <div className="text-center mb-4">
           {kicker && (
@@ -382,7 +393,7 @@ function CtaButton({ label }: { label: string }) {
     <div className="mt-5">
       <a
         href="#order"
-        className="lp-cta flex items-center justify-center w-full text-white font-black text-[19px] md:text-[20px] py-5 rounded-2xl active:scale-[0.98] transition-transform"
+        className="flex items-center justify-center w-full text-white font-black text-[19px] md:text-[20px] py-5 rounded-2xl active:scale-[0.98] transition-transform shadow-[0_8px_24px_-6px_rgba(232,17,45,.45)]"
         style={{ backgroundColor: AD_RED }}
       >
         {label}
@@ -503,8 +514,8 @@ export default function AwafiLandingPage() {
               <Photo
                 src="hero-man"
                 alt="رجل سعودي يعاني من ألم الركبة مع عبوة زيت العوافي"
-                w={908}
-                h={1101}
+                w={820}
+                h={994}
                 priority
               />
             </div>
@@ -571,7 +582,7 @@ export default function AwafiLandingPage() {
               health product sold to Saudi buyers it is the single fastest
               trust win available, so it now backs the form directly instead of
               arriving after the visitor has already decided. */}
-          <section className="pt-2">
+          <section className="lp-cv pt-2">
             <AdHeadline>
               <Hi>مصادق عليه</Hi> من وزارة الصحة
             </AdHeadline>
@@ -601,7 +612,7 @@ export default function AwafiLandingPage() {
           </section>
 
           {/* ── 1. المشكلة ── */}
-          <section className="pt-2">
+          <section className="lp-cv pt-2">
             <AdHeadline>
               يعالج جميع مشاكل <Hi>الركبة</Hi>
               <br />
@@ -669,7 +680,7 @@ export default function AwafiLandingPage() {
               their own complaint written down, the most persuasive next thing
               is someone exactly like them saying it worked — not another
               product claim. */}
-          <section className="pt-4">
+          <section className="lp-cv pt-4">
             <AdHeadline>
               اسمعوا تجارب الناس وكيف
               <br />
@@ -679,8 +690,8 @@ export default function AwafiLandingPage() {
               <Photo
                 src="whatsapp-chat"
                 alt="محادثات واتساب حقيقية لعملاء استخدموا زيت العوافي"
-                w={822}
-                h={711}
+                w={820}
+                h={709}
               />
             </div>
             <div className="px-3">
@@ -689,7 +700,7 @@ export default function AwafiLandingPage() {
           </section>
 
           {/* ── 2. رأي الطبيبة ── */}
-          <section className="pt-2">
+          <section className="lp-cv pt-2">
             <AdHeadline>
               ماذا قالت <Hi>دكتورة هدى</Hi>
               <br />
@@ -760,7 +771,7 @@ export default function AwafiLandingPage() {
           </Section>
 
           {/* ── 3. المكوّنات ── */}
-          <section className="pt-2">
+          <section className="lp-cv pt-2">
             <AdHeadline>
               مكون من <Hi>30 عشبة طبية</Hi>
               <br />
@@ -805,7 +816,7 @@ export default function AwafiLandingPage() {
           </Section>
 
           {/* ── 4. طريقة الاستعمال ── */}
-          <section className="pt-4 px-3">
+          <section className="lp-cv pt-4 px-3">
             <AdHeadline>
               <Hi>طريقة الإستعمال</Hi> سهلة جداً
             </AdHeadline>
@@ -849,7 +860,7 @@ export default function AwafiLandingPage() {
           </section>
 
           {/* ── 5. النتائج ── */}
-          <section className="pt-6">
+          <section className="lp-cv pt-6">
             <AdHeadline>
               نتائجه <Hi>سريعة</Hi> تبدأ بالظهور
               <br />
@@ -859,8 +870,8 @@ export default function AwafiLandingPage() {
               <Photo
                 src="couple-jumping"
                 alt="زوجان يستعيدان حركتهما بعد استخدام زيت العوافي"
-                w={982}
-                h={677}
+                w={820}
+                h={565}
               />
             </div>
           </section>
@@ -901,7 +912,7 @@ export default function AwafiLandingPage() {
           </Section>
 
           {/* ── 6. المقارنة بالعملية ── */}
-          <section className="pt-2">
+          <section className="lp-cv pt-2">
             <AdHeadline>
               البديل <Hi>النهائي</Hi> للعمليات الطبية
             </AdHeadline>
@@ -909,8 +920,8 @@ export default function AwafiLandingPage() {
               <Photo
                 src="surgery-vs-oil"
                 alt="مقارنة بين سعر العملية الجراحية وسعر زيت العوافي"
-                w={895}
-                h={439}
+                w={820}
+                h={402}
               />
             </div>
             {/* Price row mirrors the photo left→right (surgery | oil). dir=ltr
@@ -1072,7 +1083,7 @@ export default function AwafiLandingPage() {
           </Section>
 
           {/* ── 9. ضمان الرضا — drawn inline, no raster ── */}
-          <section className="pt-4 px-3 text-center">
+          <section className="lp-cv pt-4 px-3 text-center">
             {/* Big cog-outlined checkmark badge, echoing the guarantee art */}
             <svg
               viewBox="0 0 100 100"
@@ -1213,7 +1224,7 @@ export default function AwafiLandingPage() {
           </Section>
 
           {/* ── 10. القرار النهائي ── */}
-          <section className="pt-2">
+          <section className="lp-cv pt-2">
             <AdHeadline>
               الآن الخيار بين يديك
               <br />
@@ -1225,14 +1236,14 @@ export default function AwafiLandingPage() {
               <Photo
                 src="knee-outdoors"
                 alt="التخلص من ألم الركبة مع زيت العوافي"
-                w={884}
-                h={636}
+                w={820}
+                h={590}
               />
             </div>
           </section>
 
           {/* Closing block — guarantee recap + last CTA */}
-          <section className="px-3 py-6">
+          <section className="lp-cv px-3 py-6">
             <div
               className="text-white rounded-2xl p-5 text-center shadow-lg"
               style={{ backgroundColor: INK }}

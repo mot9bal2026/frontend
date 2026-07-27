@@ -43,13 +43,6 @@ export default function RootLayout({
               "html,body{background:#FAF6F0;margin:0}body{font-family:var(--font-tajawal),Tahoma,sans-serif;color:#211915}",
           }}
         />
-        <link
-          rel="preload"
-          as="image"
-          href="/results-carousel/slide-1-m.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
       </head>
       <body className="bg-brand-white text-brand-ink font-arabic antialiased">
         {children}

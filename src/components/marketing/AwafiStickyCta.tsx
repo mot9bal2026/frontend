@@ -71,7 +71,7 @@ export function AwafiStickyCta({ price, originalPrice }: Props) {
         </div>
         <a
           href="#order"
-          className="lp-cta flex-1 flex flex-col items-center justify-center text-white font-black py-2.5 rounded-xl active:scale-[0.98] transition-transform"
+          className={`lp-cta-pulse flex-1 flex flex-col items-center justify-center text-white font-black py-2.5 rounded-xl active:scale-[0.98] transition-transform`}
           style={{ backgroundColor: AD_RED }}
         >
           <span className="text-[17px] md:text-[18px]">اطلب الآن ←</span>
