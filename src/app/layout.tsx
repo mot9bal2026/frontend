@@ -53,8 +53,13 @@ export default function RootLayout({
       </head>
       <body className="bg-brand-white text-brand-ink font-arabic antialiased">
         {children}
+        {/* The id must not be "ttq": a DOM id becomes a property of window, so
+            <script id="ttq"> makes window.ttq resolve to the element itself.
+            The vendor snippet's `w[t] = w[t] || []` then adopts that element as
+            the event queue and every ttq.page()/track() throws "push is not a
+            function". */}
         {ENABLE_PIXELS && TIKTOK_PIXEL_ID ? (
-          <Script id="ttq" strategy="lazyOnload">
+          <Script id="tiktok-pixel" strategy="lazyOnload">
             {tiktokPixelBootstrap(TIKTOK_PIXEL_ID)}
           </Script>
         ) : null}
