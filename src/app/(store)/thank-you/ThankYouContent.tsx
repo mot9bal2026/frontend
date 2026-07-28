@@ -343,7 +343,7 @@ export function ThankYouContent() {
             />
             <TrustBadge
               icon={<Star size={18} />}
-              label="800+ سعودية"
+              label="6,359+ سعودي"
               sub="مرضيات بالنتيجة"
             />
           </div>

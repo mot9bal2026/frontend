@@ -11,13 +11,13 @@ type Props = {
 
 const productMeta: Record<string, { reviewCount: string; tagline: string; urgency: string; badge: string }> = {
   "wrinkles-dark-circles": {
-    reviewCount: "800+",
+    reviewCount: "6,359+",
     tagline: "لآلام الركبة والظهر والمفاصل · 30 عشبة طبيعية",
     urgency: "آخر 48 ساعة على عرض الشحن المجاني",
     badge: "الأكثر مبيعاً",
   },
   "anti-aging": {
-    reviewCount: "600+",
+    reviewCount: "6,359+",
     tagline: "لآلام المفاصل والديسك · زنجبيل وكركم ومنثول",
     urgency: "العرض محدود لهذا الأسبوع",
     badge: "الأعلى تقييماً",
@@ -26,7 +26,7 @@ const productMeta: Record<string, { reviewCount: string; tagline: string; urgenc
 
 export function ProductCard({ product }: Props) {
   const meta = productMeta[product.slug] ?? {
-    reviewCount: "800+",
+    reviewCount: "6,359+",
     tagline: product.subAr,
     urgency: "عرض محدود",
     badge: "مميز",

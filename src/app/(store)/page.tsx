@@ -114,7 +114,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <span className="text-[13px] text-[#5A4A3E] font-inter font-semibold">
-                  4.9 · 1,500+ حالة عولجت في شهر
+                  4.9 · 2,401+ حالة عولجت في شهر
                 </span>
               </div>
 
@@ -413,7 +413,7 @@ export default function HomePage() {
                 «أغلب حالات آلام الركبة والظهر لا تحتاج فعلاً لعملية، بل لعلاج موضعي
                 يصل لمكان الألم ويخفّف الالتهاب. زيت العوافي أعطى نتائج ممتازة مع
                 <span className="text-brand-gold font-bold">
-                  {" "}أكثر من 1500 حالة خلال شهر
+                  {" "}أكثر من 2401 حالة خلال شهر
                 </span>
                 ، كثير منهم استغنوا عن العملية.»
               </blockquote>
@@ -597,7 +597,7 @@ export default function HomePage() {
               <Star key={s} size={15} className="text-brand-gold fill-brand-gold" />
             ))}
             <span className="text-brand-gold/90 text-[13px] mr-2 font-inter font-semibold">
-              1,500+ حالة عولجت في شهر
+              2,401+ حالة عولجت في شهر
             </span>
           </div>
           <Link

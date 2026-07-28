@@ -167,7 +167,7 @@ export default function AboutPage() {
             </span>
           </h2>
           <p className="text-brand-cream/80 mb-7 text-[14.5px]">
-            1,500+ حالة عولجت في شهر — والنتائج تتكلم.
+            2,401+ حالة عولجت في شهر — والنتائج تتكلم.
           </p>
           <Link
             href="/collection"

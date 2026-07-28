@@ -80,8 +80,8 @@ const formTheme = `
 /* ── Copy carried over from the full product page ── */
 
 const numbers = [
-  { n: "1500+", l: "حالة عولجت في شهر" },
-  { n: "800+", l: "عميل سعودي راضٍ" },
+  { n: "2,401+", l: "حالة عولجت في شهر" },
+  { n: "6,359+", l: "عميل سعودي راضٍ" },
   { n: "4.9★", l: "تقييم العملاء" },
   { n: "14 يوم", l: "ضمان استرجاع" },
 ];
@@ -480,7 +480,7 @@ export default function AwafiLandingPage() {
               <span className="font-black" style={{ color: INK }}>
                 4.9
               </span>{" "}
-              من أكثر من <span className="font-black">800 عميل سعودي</span>
+              من أكثر من <span className="font-black">6,359 عميل سعودي</span>
             </p>
 
             <div className="grid grid-cols-3 gap-2 px-3 mt-3.5">
@@ -717,7 +717,7 @@ export default function AwafiLandingPage() {
             </p>
           </section>
 
-          {/* Second authority — orthopedic consultant + the 1500 cases stat */}
+          {/* Second authority — orthopedic consultant + the 2401 cases stat */}
           <Section kicker="رأي طبيب · استشاري عظام" title="لماذا يوصي به استشاري العظام؟">
             <div
               className="rounded-2xl p-5 text-white"
@@ -732,7 +732,7 @@ export default function AwafiLandingPage() {
                   className="font-black"
                   style={{ color: "#FF6B57" }}
                 >
-                  1500 حالة
+                  2401 حالة
                 </span>{" "}
                 خلال شهر — كثير منهم استغنوا عن العملية.»
               </p>
@@ -751,7 +751,7 @@ export default function AwafiLandingPage() {
                 className="text-[38px] md:text-[44px] font-black leading-none"
                 style={{ color: AD_RED }}
               >
-                1500+
+                2,401+
               </p>
               <p className="text-[14.5px] md:text-[15.5px] text-[#211915] leading-[1.85] mt-3 font-semibold">
                 حالة عالجها د. عبدالله الحربي بزيت العوافي في شهر واحد — أشخاص
@@ -1032,7 +1032,7 @@ export default function AwafiLandingPage() {
           </Section>
 
           {/* Written testimonials from different cities/ages */}
-          <Section kicker="تجارب حقيقية" title="800+ عميل سعودي راضٍ">
+          <Section kicker="تجارب حقيقية" title="6,359+ عميل سعودي راضٍ">
             <div className="space-y-3">
               {testimonials.map((t) => (
                 <div
