@@ -53,7 +53,7 @@ export default async function OfferPage({
               </p>
 
               <div className="flex items-baseline gap-2 mt-3">
-                <span className="text-2xl font-black text-[#1E5B3F]">149 ر.س</span>
+                <span className="text-2xl font-black text-[#1E5B3F]">129 ر.س</span>
                 <span className="text-[12px] text-black/45">شامل الضريبة</span>
               </div>
 

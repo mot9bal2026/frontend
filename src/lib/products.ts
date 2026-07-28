@@ -1,6 +1,6 @@
 export type ProductSlug = "wrinkles-dark-circles";
 
-/** Bundle prices are plain numbers now (129 / 149 / 199). */
+/** Bundle prices are plain numbers now (99 / 129 / 169). */
 export type BundlePrice = number;
 
 export type Product = {
@@ -16,7 +16,7 @@ export type Product = {
     three: BundlePrice;
     bridgeUpsell: number;
   };
-  /** Number of bottles per offer tier (1 / 4 / 8). */
+  /** Number of bottles per offer tier (1 / 4 / 6). */
   bottles: {
     one: number;
     two: number;
@@ -36,8 +36,8 @@ export const products: Product[] = [
     heroAr: "ألم الركبة والظهر يمنعك من عيش حياتك؟",
     subAr:
       "زيت أعشاب طبيعي للاستخدام الموضعي يعالج آلام الركبة، الظهر، المفاصل، والديسك — بخّة واحدة وتدليك بسيط، بدون حبوب وبدون دفع أونلاين.",
-    price: { one: 129, two: 149, three: 199, bridgeUpsell: 99 },
-    bottles: { one: 1, two: 4, three: 8 },
+    price: { one: 99, two: 129, three: 169, bridgeUpsell: 99 },
+    bottles: { one: 1, two: 4, three: 6 },
     image: "/images/product-1.webp",
     colorAccent: "#B23A2E",
     sku: "AWAFI-OIL-8842",

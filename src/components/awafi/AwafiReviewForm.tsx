@@ -15,7 +15,7 @@ export function AwafiReviewForm() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
 
-  const price = 149;
+  const price = 99;
   const total = price * qty;
 
   const submit = async (e: React.FormEvent) => {

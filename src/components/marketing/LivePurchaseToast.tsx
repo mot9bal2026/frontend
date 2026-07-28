@@ -59,8 +59,8 @@ const cities = [
   "ينبع",
 ];
 
-/* Only the converting offers: 4 bottles or 8 bottles */
-const bundles = ["4 عبوات", "8 عبوات", "4 عبوات", "4 عبوات", "8 عبوات"];
+/* Only the converting offers: 4 bottles or 6 bottles */
+const bundles = ["4 عبوات", "6 عبوات", "4 عبوات", "4 عبوات", "6 عبوات"];
 
 const times = [
   "قبل دقيقة",
