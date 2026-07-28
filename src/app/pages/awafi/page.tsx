@@ -1304,8 +1304,9 @@ export default function AwafiLandingPage() {
         </div>
 
         <AwafiStickyCta
-          price={product.price.one}
-          originalPrice={ORIGINAL_PRICE_SAR}
+          price={product.price.two}
+          originalPrice={product.price.one * product.bottles.two}
+          bottles={product.bottles.two}
         />
       </main>
 

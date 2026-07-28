@@ -1,17 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useCartStore } from "@/store/cart";
 
 const AD_RED = "#E8112D";
 const RED_BORDER = "#EBCFC9";
 
 type Props = {
+  /** Middle offer price — the converting / profitable pack. */
   price: number;
+  /** Strikethrough “was” price for the middle pack. */
   originalPrice: number;
+  /** Bottle count shown on the bar (e.g. 4). */
+  bottles: number;
 };
 
 /**
  * Floating order bar for the Awafi landing page.
+ *
+ * Always promotes the middle offer (default 4 bottles). The 1-bottle trial
+ * has little/no margin — the sticky CTA should never push it.
  *
  * Two behaviours matter here:
  *
@@ -23,9 +31,10 @@ type Props = {
  *    competing button next to the real submit, and it covers the bottom of the
  *    form on short screens.
  */
-export function AwafiStickyCta({ price, originalPrice }: Props) {
+export function AwafiStickyCta({ price, originalPrice, bottles }: Props) {
   const [revealed, setRevealed] = useState(false);
   const [retired, setRetired] = useState(false);
+  const setSelectedOffer = useCartStore((s) => s.setSelectedOffer);
 
   useEffect(() => {
     const t = setTimeout(() => setRevealed(true), 4000);
@@ -44,6 +53,11 @@ export function AwafiStickyCta({ price, originalPrice }: Props) {
     return () => document.removeEventListener("input", onInput, true);
   }, []);
 
+  /* Keep BundlePicker on the middle offer when the visitor taps the sticky CTA. */
+  const handleClick = () => {
+    setSelectedOffer(2, price, originalPrice);
+  };
+
   const visible = revealed && !retired;
 
   return (
@@ -58,25 +72,31 @@ export function AwafiStickyCta({ price, originalPrice }: Props) {
       style={{ backgroundColor: "#fff", borderColor: RED_BORDER }}
     >
       <div className="mx-auto max-w-lg flex items-center gap-3 px-3 py-2.5">
-        <div className="flex-shrink-0 text-center leading-none">
+        <div className="flex-shrink-0 text-center leading-none min-w-[4.5rem]">
+          <p className="text-[10px] font-bold text-[#7A6A5E] mb-0.5">
+            {bottles} عبوات
+          </p>
           <p
             className="text-[19px] md:text-[21px] font-black"
             style={{ color: AD_RED }}
           >
             {price} ريال
           </p>
-          <p className="text-[11.5px] text-[#7A6A5E] line-through mt-1 font-semibold">
-            {originalPrice} ريال
-          </p>
+          {originalPrice > price && (
+            <p className="text-[11.5px] text-[#7A6A5E] line-through mt-1 font-semibold">
+              {originalPrice} ريال
+            </p>
+          )}
         </div>
         <a
           href="#order"
+          onClick={handleClick}
           className={`lp-cta-pulse flex-1 flex flex-col items-center justify-center text-white font-black py-2.5 rounded-xl active:scale-[0.98] transition-transform`}
           style={{ backgroundColor: AD_RED }}
         >
           <span className="text-[17px] md:text-[18px]">اطلب الآن ←</span>
           <span className="text-[11px] font-bold text-white/90 mt-0.5">
-            الدفع عند الاستلام
+            الدفع عند الاستلام · الأكثر طلباً
           </span>
         </a>
       </div>

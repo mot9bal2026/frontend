@@ -95,13 +95,13 @@ function buildOffers(product: Product): OfferCard[] {
 
 export function BundlePicker({ product, isPrimary = false }: Props) {
   const offers = buildOffers(product);
-  const [selected, setSelected] = useState<OfferQty>(2);
+  const selected = useCartStore((s) => s.selectedOfferQty) as OfferQty;
+  const setSelectedOffer = useCartStore((s) => s.setSelectedOffer);
   const [viewers, setViewers] = useState(0);
   const [stock, setStock] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const router = useRouter();
-  const { setSelectedOffer } = useCartStore();
 
   const {
     register,
@@ -130,12 +130,13 @@ export function BundlePicker({ product, isPrimary = false }: Props) {
     };
   }, []);
 
-  const selectedOffer = offers.find((o) => o.qty === selected)!;
+  const selectedOffer = offers.find((o) => o.qty === selected) ?? offers.find((o) => o.qty === 2)!;
 
-  /* Keep the store in sync so the mobile sticky bar shows the right price */
-  useEffect(() => {
-    setSelectedOffer(selected, selectedOffer.price as BundlePrice, selectedOffer.originalPrice);
-  }, [selected, selectedOffer.price, selectedOffer.originalPrice, setSelectedOffer]);
+  const selectOffer = (qty: OfferQty) => {
+    const offer = offers.find((o) => o.qty === qty);
+    if (!offer) return;
+    setSelectedOffer(qty, offer.price as BundlePrice, offer.originalPrice);
+  };
 
   const onSubmit = async (data: OrderForm): Promise<void> => {
     setIsSubmitting(true);
@@ -272,7 +273,7 @@ export function BundlePicker({ product, isPrimary = false }: Props) {
               name="offer"
               value={offer.qty}
               checked={selected === offer.qty}
-              onChange={() => setSelected(offer.qty)}
+              onChange={() => selectOffer(offer.qty)}
               className="sr-only"
             />
             <div className="flex items-center gap-2.5 md:gap-3 flex-1 min-w-0">
